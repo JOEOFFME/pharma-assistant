@@ -1,0 +1,52 @@
+seed: 42
+medications_config: configs/medications.yaml
+pharmacies_config: configs/pharmacies.yaml
+lexicon_seed: docs/examples/nlu_build_seed.jsonl
+match_threshold: 0.9
+rule_confidence: 0.65
+fallback_confidence: 0.3
+rules:
+  request_medication: [bghit, بغيت, أريد, اريد, voudrais, besoin, ntleb, n7taj, طلب]
+  check_availability: [kayn, kayna, disponible, dispo, stock, عندكم, كاين, كاينة, يتوفر, متوفر, avez, trouver]
+  price_inquiry: [prix, tarif, taman, bch7al, ثمن, سعر, بشحال]
+  pharmacy_info_location: [fin, فين, أين, اين, adresse, proche, اقرب, أقرب, localisation]
+  pharmacy_info_hours: [garde, horaire, horaires, ouverte, ouvert, heure, lighla9, m7lola, mkhellsa, الحراسة, مسدودة, مفتوحة, المناوبة]
+  pharmacy_info_phone: [numero, telephone, هاتف, نمرة, رقم, نتاصل, contact]
+  greeting_smalltalk: [bonjour, salut, salam, السلام, سلام, merci, شكرا, chokran]
+medical_advice: [combien par jour, quelle dose, dois je prendre, remplacer, dose d, nakhod, nakhdo, ناخد, أتناول, اتناول, نشرب, nbdel, يمكنني تناول, شنو ندير, chno ndir, diagnostic, diagnosticquer, substitution]
+quantity_units:
+  boites: box
+  boite: box
+  boîtes: box
+  boîte: box
+  plaquettes: blister
+  plaquette: blister
+  علب: box
+  علبة: box
+  flacons: bottle
+  comprimés: tablet
+  comprimes: tablet
+forms:
+  sirop: syrup
+  comprimés: tablet
+  comprimes: tablet
+  comprimé: tablet
+  gelule: capsule
+  gélule: capsule
+  شراب: syrup
+  أقراص: tablet
+times:
+  aujourd'hui: today
+  lyoum: today
+  اليوم: today
+  ce soir: tonight
+  had lila: tonight
+  الليلة: tonight
+  هذه الليلة: tonight
+  daba: now
+  db: now
+  دابا: now
+  الآن: now
+  demain: tomorrow
+  غدا: tomorrow
+urgency: [urgent, ضروري, مستعجل, عاجل]

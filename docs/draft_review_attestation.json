@@ -1,0 +1,7 @@
+{
+  "user_statement": "the gold file is verified , next task",
+  "reviewed_source_commit": "92ee525b4269b1b67c9be053d1773cda67f9b5d0",
+  "draft_sha256": "386bdfeba4806f3a985bf0c930c00f650519e18d6b27c47591b117e7ed721a94",
+  "annotations_sha256": "c5ab8408602959f89db7364b29dd57f650c5dc6e3d7a6b326aadc65042240c4f",
+  "scope": "User attestation covers corrected draft messages/intent labels. Entity spans regenerated automatically after source edits; entity metrics remain provisional. Original assistant authorship retained. Not independent human gold."
+}

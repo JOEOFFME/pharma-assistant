@@ -49,9 +49,9 @@ def test_every_original_text_and_label_preserved_in_provenance() -> None:
         assert row["draft"]["line_number"] == source["line_number"]
         assert row["draft"]["proposed_intent"] == source["proposed_intent"]
         assert row["draft"]["notes"] == source["notes"]
-    assert PROPOSALS[12]["draft"]["proposed_intent"] == "price_inquiy"
+    assert PROPOSALS[12]["draft"]["proposed_intent"] == "price_inquiry"
     assert PROPOSALS[12]["intent"] == "price_inquiry"
-    assert PROPOSALS[62]["draft"]["proposed_intent"] == "greeting_smalltalk"
+    assert PROPOSALS[62]["draft"]["proposed_intent"] == "check_availability"
     assert PROPOSALS[62]["intent"] == "check_availability"
     assert {e["type"] for r in PROPOSALS for e in r["entities"]} == {
         "MEDICATION",
