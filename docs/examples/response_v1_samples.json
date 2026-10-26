@@ -1,0 +1,320 @@
+[
+  {
+    "request_id": "00000000-0000-4000-8000-000000000001",
+    "input": {
+      "modality": "text",
+      "raw_text": "wach kayn Doliprane 500 mg?",
+      "transcript": null,
+      "language": "darija_latn"
+    },
+    "intent": {
+      "label": "check_availability",
+      "confidence": 0.5
+    },
+    "entities": [
+      {
+        "type": "MEDICATION",
+        "text": "Doliprane",
+        "start": 10,
+        "end": 19
+      },
+      {
+        "type": "DOSAGE",
+        "text": "500 mg",
+        "value": 500,
+        "unit": "mg"
+      }
+    ],
+    "pharmacy_query": {
+      "needs_pharmacy_info": false,
+      "info_type": null,
+      "location_text": null
+    },
+    "needs_clarification": false,
+    "clarification_question": {
+      "fr": null,
+      "ar": null
+    },
+    "disclaimer": "Cet assistant ne fournit pas de conseil médical.",
+    "latency_ms": 0
+  },
+  {
+    "request_id": "00000000-0000-4000-8000-000000000001",
+    "input": {
+      "modality": "text",
+      "raw_text": "واش عندكم دوليبران؟",
+      "transcript": null,
+      "language": "darija_ar"
+    },
+    "intent": {
+      "label": "check_availability",
+      "confidence": 0.5
+    },
+    "entities": [
+      {
+        "type": "MEDICATION",
+        "text": "دوليبران",
+        "start": 10,
+        "end": 18
+      }
+    ],
+    "pharmacy_query": {
+      "needs_pharmacy_info": false,
+      "info_type": null,
+      "location_text": null
+    },
+    "needs_clarification": false,
+    "clarification_question": {
+      "fr": null,
+      "ar": null
+    },
+    "disclaimer": "Cet assistant ne fournit pas de conseil médical.",
+    "latency_ms": 0
+  },
+  {
+    "request_id": "00000000-0000-4000-8000-000000000001",
+    "input": {
+      "modality": "text",
+      "raw_text": "هل لديكم دوليبران؟",
+      "transcript": null,
+      "language": "ar"
+    },
+    "intent": {
+      "label": "check_availability",
+      "confidence": 0.5
+    },
+    "entities": [
+      {
+        "type": "MEDICATION",
+        "text": "دوليبران",
+        "start": 9,
+        "end": 17
+      }
+    ],
+    "pharmacy_query": {
+      "needs_pharmacy_info": false,
+      "info_type": null,
+      "location_text": null
+    },
+    "needs_clarification": false,
+    "clarification_question": {
+      "fr": null,
+      "ar": null
+    },
+    "disclaimer": "Cet assistant ne fournit pas de conseil médical.",
+    "latency_ms": 0
+  },
+  {
+    "request_id": "00000000-0000-4000-8000-000000000001",
+    "input": {
+      "modality": "text",
+      "raw_text": "Avez-vous Doliprane ?",
+      "transcript": null,
+      "language": "fr"
+    },
+    "intent": {
+      "label": "check_availability",
+      "confidence": 0.5
+    },
+    "entities": [
+      {
+        "type": "MEDICATION",
+        "text": "Doliprane",
+        "start": 10,
+        "end": 19
+      }
+    ],
+    "pharmacy_query": {
+      "needs_pharmacy_info": false,
+      "info_type": null,
+      "location_text": null
+    },
+    "needs_clarification": false,
+    "clarification_question": {
+      "fr": null,
+      "ar": null
+    },
+    "disclaimer": "Cet assistant ne fournit pas de conseil médical.",
+    "latency_ms": 0
+  },
+  {
+    "request_id": "00000000-0000-4000-8000-000000000001",
+    "input": {
+      "modality": "text",
+      "raw_text": "واش Doliprane disponible ?",
+      "transcript": null,
+      "language": "mixed"
+    },
+    "intent": {
+      "label": "check_availability",
+      "confidence": 0.5
+    },
+    "entities": [
+      {
+        "type": "MEDICATION",
+        "text": "Doliprane",
+        "start": 4,
+        "end": 13
+      }
+    ],
+    "pharmacy_query": {
+      "needs_pharmacy_info": false,
+      "info_type": null,
+      "location_text": null
+    },
+    "needs_clarification": false,
+    "clarification_question": {
+      "fr": null,
+      "ar": null
+    },
+    "disclaimer": "Cet assistant ne fournit pas de conseil médical.",
+    "latency_ms": 0
+  },
+  {
+    "request_id": "00000000-0000-4000-8000-000000000001",
+    "input": {
+      "modality": "text",
+      "raw_text": "Bonjour",
+      "transcript": null,
+      "language": "fr"
+    },
+    "intent": {
+      "label": "greeting_smalltalk",
+      "confidence": 0.5
+    },
+    "entities": [],
+    "pharmacy_query": {
+      "needs_pharmacy_info": false,
+      "info_type": null,
+      "location_text": null
+    },
+    "needs_clarification": false,
+    "clarification_question": {
+      "fr": null,
+      "ar": null
+    },
+    "disclaimer": "Cet assistant ne fournit pas de conseil médical.",
+    "latency_ms": 0
+  },
+  {
+    "request_id": "00000000-0000-4000-8000-000000000001",
+    "input": {
+      "modality": "text",
+      "raw_text": "Je voudrais 2 boîtes",
+      "transcript": null,
+      "language": "fr"
+    },
+    "intent": {
+      "label": "request_medication",
+      "confidence": 0.5
+    },
+    "entities": [
+      {
+        "type": "QUANTITY",
+        "text": "2 boîtes",
+        "value": 2,
+        "unit": "box"
+      }
+    ],
+    "pharmacy_query": {
+      "needs_pharmacy_info": false,
+      "info_type": null,
+      "location_text": null
+    },
+    "needs_clarification": true,
+    "clarification_question": {
+      "fr": "Quel médicament souhaitez-vous ?",
+      "ar": null
+    },
+    "disclaimer": "Cet assistant ne fournit pas de conseil médical.",
+    "latency_ms": 0
+  },
+  {
+    "request_id": "00000000-0000-4000-8000-000000000001",
+    "input": {
+      "modality": "text",
+      "raw_text": "Où est la pharmacie à Rabat ?",
+      "transcript": null,
+      "language": "fr"
+    },
+    "intent": {
+      "label": "pharmacy_info_location",
+      "confidence": 0.5
+    },
+    "entities": [
+      {
+        "type": "LOCATION",
+        "text": "Rabat"
+      }
+    ],
+    "pharmacy_query": {
+      "needs_pharmacy_info": true,
+      "info_type": "location",
+      "location_text": "Rabat"
+    },
+    "needs_clarification": false,
+    "clarification_question": {
+      "fr": null,
+      "ar": null
+    },
+    "disclaimer": "Cet assistant ne fournit pas de conseil médical.",
+    "latency_ms": 0
+  },
+  {
+    "request_id": "00000000-0000-4000-8000-000000000001",
+    "input": {
+      "modality": "text",
+      "raw_text": "Combien dois-je prendre ?",
+      "transcript": null,
+      "language": "fr"
+    },
+    "intent": {
+      "label": "out_of_scope",
+      "confidence": 0.5
+    },
+    "entities": [],
+    "pharmacy_query": {
+      "needs_pharmacy_info": false,
+      "info_type": null,
+      "location_text": null
+    },
+    "needs_clarification": false,
+    "clarification_question": {
+      "fr": null,
+      "ar": null
+    },
+    "disclaimer": "Cet assistant ne fournit pas de conseil médical.",
+    "latency_ms": 0
+  },
+  {
+    "request_id": "00000000-0000-4000-8000-000000000001",
+    "input": {
+      "modality": "voice",
+      "raw_text": "",
+      "transcript": "wach kayn Doliprane?",
+      "language": "darija_latn"
+    },
+    "intent": {
+      "label": "check_availability",
+      "confidence": 0.5
+    },
+    "entities": [
+      {
+        "type": "MEDICATION",
+        "text": "Doliprane"
+      }
+    ],
+    "pharmacy_query": {
+      "needs_pharmacy_info": false,
+      "info_type": null,
+      "location_text": null
+    },
+    "needs_clarification": false,
+    "clarification_question": {
+      "fr": null,
+      "ar": null
+    },
+    "disclaimer": "Cet assistant ne fournit pas de conseil médical.",
+    "latency_ms": 0
+  }
+]

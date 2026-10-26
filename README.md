@@ -3,11 +3,14 @@
 Arabic, Moroccan Darija (Arabic/Latin script), French, and code-mixed
 patient-pharmacy assistance prototype.
 
-## Current scope: TASK 0 implementation and TASK 1 study
+## Current scope: TASK 0 scaffold, TASK 1 study and TASK 2 NLU contract
 
 Repository scaffolding and an operational FastAPI health endpoint, plus the
 [TASK 1 problem study](docs/01_problem_study.md) and
-[validation report](docs/01_validation.md). NLU, speech,
+[TASK 1 validation report](docs/01_validation.md), the
+[TASK 2 NLU specification](docs/02_nlu_spec.md), typed response models and
+[200 annotation examples](docs/examples/nlu_annotation_examples.md).
+The examples are authored and unreviewed, not a gold dataset. NLU inference, speech,
 medication data, pharmacy data and evaluation are later tasks and are not implemented.
 No medical diagnosis, dosage recommendations or substitution advice is provided.
 
@@ -78,3 +81,17 @@ in `.env.example`; no stochastic model is used in TASK 0.
 Data directories are intentionally empty. Do not commit personal health data,
 credentials, local datasets, generated reports, models or `.env` files.
 Follow `AGENTS.md`: execute tasks in order, with user validation between them.
+
+## NLU response contract (TASK 2)
+
+```bash
+make schema
+uv run --frozen pytest tests/test_schemas.py -v
+```
+
+The JSON Schema is generated from `AnalysisResponse` in
+`src/pharma_assistant/api/schemas.py`. Pydantic also enforces cross-field rules
+that JSON Schema alone does not express. See
+[the specification](docs/02_nlu_spec.md) and
+[TASK 2 validation report](docs/02_validation.md). These define output contracts;
+analysis endpoints are not implemented yet.

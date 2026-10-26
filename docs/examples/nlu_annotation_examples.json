@@ -1,0 +1,3362 @@
+[
+  {
+    "id": "check_availability.darija_ar.01",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "darija_ar",
+    "text": "واش عندكم دوليبران؟",
+    "intent": "check_availability",
+    "entities": [
+      {
+        "type": "MEDICATION",
+        "text": "دوليبران",
+        "entity_id": "med1",
+        "start": 10,
+        "end": 18
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "check_availability.darija_ar.02",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "darija_ar",
+    "text": "كاين بانادول دابا؟",
+    "intent": "check_availability",
+    "entities": [
+      {
+        "type": "MEDICATION",
+        "text": "بانادول",
+        "entity_id": "med1",
+        "start": 5,
+        "end": 12
+      },
+      {
+        "type": "TIME_REF",
+        "text": "دابا",
+        "normalized": "now",
+        "start": 13,
+        "end": 17
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "check_availability.darija_ar.03",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "darija_ar",
+    "text": "واش متوفر أموكسيسيلين؟",
+    "intent": "check_availability",
+    "entities": [
+      {
+        "type": "MEDICATION",
+        "text": "أموكسيسيلين",
+        "entity_id": "med1",
+        "start": 10,
+        "end": 21
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "check_availability.darija_ar.04",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "darija_ar",
+    "text": "باقي عندكم دوليبران 500 mg؟",
+    "intent": "check_availability",
+    "entities": [
+      {
+        "type": "MEDICATION",
+        "text": "دوليبران",
+        "entity_id": "med1",
+        "start": 11,
+        "end": 19
+      },
+      {
+        "type": "DOSAGE",
+        "text": "500 mg",
+        "value": 500,
+        "unit": "mg",
+        "medication_ref": "med1",
+        "start": 20,
+        "end": 26
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "check_availability.darija_ar.05",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "darija_ar",
+    "text": "عندكم أوغمنتين ولا سالا؟",
+    "intent": "check_availability",
+    "entities": [
+      {
+        "type": "MEDICATION",
+        "text": "أوغمنتين",
+        "entity_id": "med1",
+        "start": 6,
+        "end": 14
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "check_availability.darija_latn.01",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "darija_latn",
+    "text": "wach kayn Doliprane?",
+    "intent": "check_availability",
+    "entities": [
+      {
+        "type": "MEDICATION",
+        "text": "Doliprane",
+        "entity_id": "med1",
+        "start": 10,
+        "end": 19
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "check_availability.darija_latn.02",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "darija_latn",
+    "text": "3andkom Panadol daba?",
+    "intent": "check_availability",
+    "entities": [
+      {
+        "type": "MEDICATION",
+        "text": "Panadol",
+        "entity_id": "med1",
+        "start": 8,
+        "end": 15
+      },
+      {
+        "type": "TIME_REF",
+        "text": "daba",
+        "normalized": "now",
+        "start": 16,
+        "end": 20
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "check_availability.darija_latn.03",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "darija_latn",
+    "text": "wach Amoxicilline disponible?",
+    "intent": "check_availability",
+    "entities": [
+      {
+        "type": "MEDICATION",
+        "text": "Amoxicilline",
+        "entity_id": "med1",
+        "start": 5,
+        "end": 17
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "check_availability.darija_latn.04",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "darija_latn",
+    "text": "ba9i kayn Doliprane 500 mg?",
+    "intent": "check_availability",
+    "entities": [
+      {
+        "type": "MEDICATION",
+        "text": "Doliprane",
+        "entity_id": "med1",
+        "start": 10,
+        "end": 19
+      },
+      {
+        "type": "DOSAGE",
+        "text": "500 mg",
+        "value": 500,
+        "unit": "mg",
+        "medication_ref": "med1",
+        "start": 20,
+        "end": 26
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "check_availability.darija_latn.05",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "darija_latn",
+    "text": "Augmentin kayn wla sala?",
+    "intent": "check_availability",
+    "entities": [
+      {
+        "type": "MEDICATION",
+        "text": "Augmentin",
+        "entity_id": "med1",
+        "start": 0,
+        "end": 9
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "check_availability.ar.01",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "ar",
+    "text": "هل يتوفر دوليبران؟",
+    "intent": "check_availability",
+    "entities": [
+      {
+        "type": "MEDICATION",
+        "text": "دوليبران",
+        "entity_id": "med1",
+        "start": 9,
+        "end": 17
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "check_availability.ar.02",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "ar",
+    "text": "هل بانادول متوفر الآن؟",
+    "intent": "check_availability",
+    "entities": [
+      {
+        "type": "MEDICATION",
+        "text": "بانادول",
+        "entity_id": "med1",
+        "start": 3,
+        "end": 10
+      },
+      {
+        "type": "TIME_REF",
+        "text": "الآن",
+        "normalized": "now",
+        "start": 17,
+        "end": 21
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "check_availability.ar.03",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "ar",
+    "text": "هل لديكم أموكسيسيلين؟",
+    "intent": "check_availability",
+    "entities": [
+      {
+        "type": "MEDICATION",
+        "text": "أموكسيسيلين",
+        "entity_id": "med1",
+        "start": 9,
+        "end": 20
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "check_availability.ar.04",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "ar",
+    "text": "هل يتوفر دوليبران 500 mg؟",
+    "intent": "check_availability",
+    "entities": [
+      {
+        "type": "MEDICATION",
+        "text": "دوليبران",
+        "entity_id": "med1",
+        "start": 9,
+        "end": 17
+      },
+      {
+        "type": "DOSAGE",
+        "text": "500 mg",
+        "value": 500,
+        "unit": "mg",
+        "medication_ref": "med1",
+        "start": 18,
+        "end": 24
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "check_availability.ar.05",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "ar",
+    "text": "هل أوغمنتين موجود لديكم؟",
+    "intent": "check_availability",
+    "entities": [
+      {
+        "type": "MEDICATION",
+        "text": "أوغمنتين",
+        "entity_id": "med1",
+        "start": 3,
+        "end": 11
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "check_availability.fr.01",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "fr",
+    "text": "Avez-vous Doliprane ?",
+    "intent": "check_availability",
+    "entities": [
+      {
+        "type": "MEDICATION",
+        "text": "Doliprane",
+        "entity_id": "med1",
+        "start": 10,
+        "end": 19
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "check_availability.fr.02",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "fr",
+    "text": "Panadol est-il disponible maintenant ?",
+    "intent": "check_availability",
+    "entities": [
+      {
+        "type": "MEDICATION",
+        "text": "Panadol",
+        "entity_id": "med1",
+        "start": 0,
+        "end": 7
+      },
+      {
+        "type": "TIME_REF",
+        "text": "maintenant",
+        "normalized": "now",
+        "start": 26,
+        "end": 36
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "check_availability.fr.03",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "fr",
+    "text": "Est-ce que vous avez Amoxicilline ?",
+    "intent": "check_availability",
+    "entities": [
+      {
+        "type": "MEDICATION",
+        "text": "Amoxicilline",
+        "entity_id": "med1",
+        "start": 21,
+        "end": 33
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "check_availability.fr.04",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "fr",
+    "text": "Avez-vous Doliprane 500 mg ?",
+    "intent": "check_availability",
+    "entities": [
+      {
+        "type": "MEDICATION",
+        "text": "Doliprane",
+        "entity_id": "med1",
+        "start": 10,
+        "end": 19
+      },
+      {
+        "type": "DOSAGE",
+        "text": "500 mg",
+        "value": 500,
+        "unit": "mg",
+        "medication_ref": "med1",
+        "start": 20,
+        "end": 26
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "check_availability.fr.05",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "fr",
+    "text": "Augmentin est-il en stock ?",
+    "intent": "check_availability",
+    "entities": [
+      {
+        "type": "MEDICATION",
+        "text": "Augmentin",
+        "entity_id": "med1",
+        "start": 0,
+        "end": 9
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "check_availability.mixed.01",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "mixed",
+    "text": "wach kayn Doliprane en stock ?",
+    "intent": "check_availability",
+    "entities": [
+      {
+        "type": "MEDICATION",
+        "text": "Doliprane",
+        "entity_id": "med1",
+        "start": 10,
+        "end": 19
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "check_availability.mixed.02",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "mixed",
+    "text": "عندكم Panadol disponible ?",
+    "intent": "check_availability",
+    "entities": [
+      {
+        "type": "MEDICATION",
+        "text": "Panadol",
+        "entity_id": "med1",
+        "start": 6,
+        "end": 13
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "check_availability.mixed.03",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "mixed",
+    "text": "Amoxicilline disponible daba ?",
+    "intent": "check_availability",
+    "entities": [
+      {
+        "type": "MEDICATION",
+        "text": "Amoxicilline",
+        "entity_id": "med1",
+        "start": 0,
+        "end": 12
+      },
+      {
+        "type": "TIME_REF",
+        "text": "daba",
+        "normalized": "now",
+        "start": 24,
+        "end": 28
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "check_availability.mixed.04",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "mixed",
+    "text": "واش Doliprane 500 mg disponible ?",
+    "intent": "check_availability",
+    "entities": [
+      {
+        "type": "MEDICATION",
+        "text": "Doliprane",
+        "entity_id": "med1",
+        "start": 4,
+        "end": 13
+      },
+      {
+        "type": "DOSAGE",
+        "text": "500 mg",
+        "value": 500,
+        "unit": "mg",
+        "medication_ref": "med1",
+        "start": 14,
+        "end": 20
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "check_availability.mixed.05",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "mixed",
+    "text": "Est-ce que Augmentin kayn 3andkom ?",
+    "intent": "check_availability",
+    "entities": [
+      {
+        "type": "MEDICATION",
+        "text": "Augmentin",
+        "entity_id": "med1",
+        "start": 11,
+        "end": 20
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "request_medication.darija_ar.01",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "darija_ar",
+    "text": "بغيت جوج علب ديال دوليبران",
+    "intent": "request_medication",
+    "entities": [
+      {
+        "type": "QUANTITY",
+        "text": "جوج علب",
+        "value": 2,
+        "unit": "box",
+        "medication_ref": "med1",
+        "start": 5,
+        "end": 12
+      },
+      {
+        "type": "MEDICATION",
+        "text": "دوليبران",
+        "entity_id": "med1",
+        "start": 18,
+        "end": 26
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "request_medication.darija_ar.02",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "darija_ar",
+    "text": "عافاك بغيت بانادول",
+    "intent": "request_medication",
+    "entities": [
+      {
+        "type": "MEDICATION",
+        "text": "بانادول",
+        "entity_id": "med1",
+        "start": 11,
+        "end": 18
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "request_medication.darija_ar.03",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "darija_ar",
+    "text": "بغيت علبة ديال أموكسيسيلين",
+    "intent": "request_medication",
+    "entities": [
+      {
+        "type": "QUANTITY",
+        "text": "علبة",
+        "value": 1,
+        "unit": "box",
+        "medication_ref": "med1",
+        "start": 5,
+        "end": 9
+      },
+      {
+        "type": "MEDICATION",
+        "text": "أموكسيسيلين",
+        "entity_id": "med1",
+        "start": 15,
+        "end": 26
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "request_medication.darija_ar.04",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "darija_ar",
+    "text": "بغيت أوغمنتين دابا",
+    "intent": "request_medication",
+    "entities": [
+      {
+        "type": "MEDICATION",
+        "text": "أوغمنتين",
+        "entity_id": "med1",
+        "start": 5,
+        "end": 13
+      },
+      {
+        "type": "TIME_REF",
+        "text": "دابا",
+        "normalized": "now",
+        "start": 14,
+        "end": 18
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "request_medication.darija_ar.05",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "darija_ar",
+    "text": "بغيت دوليبران 500 mg",
+    "intent": "request_medication",
+    "entities": [
+      {
+        "type": "MEDICATION",
+        "text": "دوليبران",
+        "entity_id": "med1",
+        "start": 5,
+        "end": 13
+      },
+      {
+        "type": "DOSAGE",
+        "text": "500 mg",
+        "value": 500,
+        "unit": "mg",
+        "medication_ref": "med1",
+        "start": 14,
+        "end": 20
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "request_medication.darija_latn.01",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "darija_latn",
+    "text": "bghit 2 boites dyal Doliprane",
+    "intent": "request_medication",
+    "entities": [
+      {
+        "type": "QUANTITY",
+        "text": "2 boites",
+        "value": 2,
+        "unit": "box",
+        "medication_ref": "med1",
+        "start": 6,
+        "end": 14
+      },
+      {
+        "type": "MEDICATION",
+        "text": "Doliprane",
+        "entity_id": "med1",
+        "start": 20,
+        "end": 29
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "request_medication.darija_latn.02",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "darija_latn",
+    "text": "3afak bghit Panadol",
+    "intent": "request_medication",
+    "entities": [
+      {
+        "type": "MEDICATION",
+        "text": "Panadol",
+        "entity_id": "med1",
+        "start": 12,
+        "end": 19
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "request_medication.darija_latn.03",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "darija_latn",
+    "text": "bghit 1 boite dyal Amoxicilline",
+    "intent": "request_medication",
+    "entities": [
+      {
+        "type": "QUANTITY",
+        "text": "1 boite",
+        "value": 1,
+        "unit": "box",
+        "medication_ref": "med1",
+        "start": 6,
+        "end": 13
+      },
+      {
+        "type": "MEDICATION",
+        "text": "Amoxicilline",
+        "entity_id": "med1",
+        "start": 19,
+        "end": 31
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "request_medication.darija_latn.04",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "darija_latn",
+    "text": "bghit Augmentin daba",
+    "intent": "request_medication",
+    "entities": [
+      {
+        "type": "MEDICATION",
+        "text": "Augmentin",
+        "entity_id": "med1",
+        "start": 6,
+        "end": 15
+      },
+      {
+        "type": "TIME_REF",
+        "text": "daba",
+        "normalized": "now",
+        "start": 16,
+        "end": 20
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "request_medication.darija_latn.05",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "darija_latn",
+    "text": "bghit Doliprane 500 mg",
+    "intent": "request_medication",
+    "entities": [
+      {
+        "type": "MEDICATION",
+        "text": "Doliprane",
+        "entity_id": "med1",
+        "start": 6,
+        "end": 15
+      },
+      {
+        "type": "DOSAGE",
+        "text": "500 mg",
+        "value": 500,
+        "unit": "mg",
+        "medication_ref": "med1",
+        "start": 16,
+        "end": 22
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "request_medication.ar.01",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "ar",
+    "text": "أريد علبتين من دوليبران",
+    "intent": "request_medication",
+    "entities": [
+      {
+        "type": "QUANTITY",
+        "text": "علبتين",
+        "value": 2,
+        "unit": "box",
+        "medication_ref": "med1",
+        "start": 5,
+        "end": 11
+      },
+      {
+        "type": "MEDICATION",
+        "text": "دوليبران",
+        "entity_id": "med1",
+        "start": 15,
+        "end": 23
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "request_medication.ar.02",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "ar",
+    "text": "أود طلب بانادول",
+    "intent": "request_medication",
+    "entities": [
+      {
+        "type": "MEDICATION",
+        "text": "بانادول",
+        "entity_id": "med1",
+        "start": 8,
+        "end": 15
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "request_medication.ar.03",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "ar",
+    "text": "أريد علبة من أموكسيسيلين",
+    "intent": "request_medication",
+    "entities": [
+      {
+        "type": "QUANTITY",
+        "text": "علبة",
+        "value": 1,
+        "unit": "box",
+        "medication_ref": "med1",
+        "start": 5,
+        "end": 9
+      },
+      {
+        "type": "MEDICATION",
+        "text": "أموكسيسيلين",
+        "entity_id": "med1",
+        "start": 13,
+        "end": 24
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "request_medication.ar.04",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "ar",
+    "text": "أريد أوغمنتين الآن",
+    "intent": "request_medication",
+    "entities": [
+      {
+        "type": "MEDICATION",
+        "text": "أوغمنتين",
+        "entity_id": "med1",
+        "start": 5,
+        "end": 13
+      },
+      {
+        "type": "TIME_REF",
+        "text": "الآن",
+        "normalized": "now",
+        "start": 14,
+        "end": 18
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "request_medication.ar.05",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "ar",
+    "text": "أريد دوليبران 500 mg",
+    "intent": "request_medication",
+    "entities": [
+      {
+        "type": "MEDICATION",
+        "text": "دوليبران",
+        "entity_id": "med1",
+        "start": 5,
+        "end": 13
+      },
+      {
+        "type": "DOSAGE",
+        "text": "500 mg",
+        "value": 500,
+        "unit": "mg",
+        "medication_ref": "med1",
+        "start": 14,
+        "end": 20
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "request_medication.fr.01",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "fr",
+    "text": "Je voudrais 2 boîtes de Doliprane",
+    "intent": "request_medication",
+    "entities": [
+      {
+        "type": "QUANTITY",
+        "text": "2 boîtes",
+        "value": 2,
+        "unit": "box",
+        "medication_ref": "med1",
+        "start": 12,
+        "end": 20
+      },
+      {
+        "type": "MEDICATION",
+        "text": "Doliprane",
+        "entity_id": "med1",
+        "start": 24,
+        "end": 33
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "request_medication.fr.02",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "fr",
+    "text": "Je souhaite commander Panadol",
+    "intent": "request_medication",
+    "entities": [
+      {
+        "type": "MEDICATION",
+        "text": "Panadol",
+        "entity_id": "med1",
+        "start": 22,
+        "end": 29
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "request_medication.fr.03",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "fr",
+    "text": "Je voudrais une boîte de Amoxicilline",
+    "intent": "request_medication",
+    "entities": [
+      {
+        "type": "QUANTITY",
+        "text": "une boîte",
+        "value": 1,
+        "unit": "box",
+        "medication_ref": "med1",
+        "start": 12,
+        "end": 21
+      },
+      {
+        "type": "MEDICATION",
+        "text": "Amoxicilline",
+        "entity_id": "med1",
+        "start": 25,
+        "end": 37
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "request_medication.fr.04",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "fr",
+    "text": "Je voudrais Augmentin maintenant",
+    "intent": "request_medication",
+    "entities": [
+      {
+        "type": "MEDICATION",
+        "text": "Augmentin",
+        "entity_id": "med1",
+        "start": 12,
+        "end": 21
+      },
+      {
+        "type": "TIME_REF",
+        "text": "maintenant",
+        "normalized": "now",
+        "start": 22,
+        "end": 32
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "request_medication.fr.05",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "fr",
+    "text": "Je voudrais Doliprane 500 mg",
+    "intent": "request_medication",
+    "entities": [
+      {
+        "type": "MEDICATION",
+        "text": "Doliprane",
+        "entity_id": "med1",
+        "start": 12,
+        "end": 21
+      },
+      {
+        "type": "DOSAGE",
+        "text": "500 mg",
+        "value": 500,
+        "unit": "mg",
+        "medication_ref": "med1",
+        "start": 22,
+        "end": 28
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "request_medication.mixed.01",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "mixed",
+    "text": "bghit 2 boîtes de Doliprane",
+    "intent": "request_medication",
+    "entities": [
+      {
+        "type": "QUANTITY",
+        "text": "2 boîtes",
+        "value": 2,
+        "unit": "box",
+        "medication_ref": "med1",
+        "start": 6,
+        "end": 14
+      },
+      {
+        "type": "MEDICATION",
+        "text": "Doliprane",
+        "entity_id": "med1",
+        "start": 18,
+        "end": 27
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "request_medication.mixed.02",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "mixed",
+    "text": "بغيت Panadol s’il vous plaît",
+    "intent": "request_medication",
+    "entities": [
+      {
+        "type": "MEDICATION",
+        "text": "Panadol",
+        "entity_id": "med1",
+        "start": 5,
+        "end": 12
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "request_medication.mixed.03",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "mixed",
+    "text": "Je voudrais une boîte dyal Amoxicilline",
+    "intent": "request_medication",
+    "entities": [
+      {
+        "type": "QUANTITY",
+        "text": "une boîte",
+        "value": 1,
+        "unit": "box",
+        "medication_ref": "med1",
+        "start": 12,
+        "end": 21
+      },
+      {
+        "type": "MEDICATION",
+        "text": "Amoxicilline",
+        "entity_id": "med1",
+        "start": 27,
+        "end": 39
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "request_medication.mixed.04",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "mixed",
+    "text": "بغيت Augmentin maintenant",
+    "intent": "request_medication",
+    "entities": [
+      {
+        "type": "MEDICATION",
+        "text": "Augmentin",
+        "entity_id": "med1",
+        "start": 5,
+        "end": 14
+      },
+      {
+        "type": "TIME_REF",
+        "text": "maintenant",
+        "normalized": "now",
+        "start": 15,
+        "end": 25
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "request_medication.mixed.05",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "mixed",
+    "text": "bghit Doliprane 500 mg s’il vous plaît",
+    "intent": "request_medication",
+    "entities": [
+      {
+        "type": "MEDICATION",
+        "text": "Doliprane",
+        "entity_id": "med1",
+        "start": 6,
+        "end": 15
+      },
+      {
+        "type": "DOSAGE",
+        "text": "500 mg",
+        "value": 500,
+        "unit": "mg",
+        "medication_ref": "med1",
+        "start": 16,
+        "end": 22
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "pharmacy_info_phone.darija_ar.01",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "darija_ar",
+    "text": "شنو نمرة الصيدلية؟",
+    "intent": "pharmacy_info_phone",
+    "entities": [],
+    "needs_clarification": true,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "pharmacy_info_phone.darija_ar.02",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "darija_ar",
+    "text": "عطيني تليفون الصيدلية عافاك",
+    "intent": "pharmacy_info_phone",
+    "entities": [],
+    "needs_clarification": true,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "pharmacy_info_phone.darija_ar.03",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "darija_ar",
+    "text": "بغيت نمرة صيدلية ف الرباط",
+    "intent": "pharmacy_info_phone",
+    "entities": [
+      {
+        "type": "LOCATION",
+        "text": "الرباط",
+        "start": 19,
+        "end": 25
+      }
+    ],
+    "needs_clarification": true,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "pharmacy_info_phone.darija_ar.04",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "darija_ar",
+    "text": "كيفاش نعيط للصيدلية؟",
+    "intent": "pharmacy_info_phone",
+    "entities": [],
+    "needs_clarification": true,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "pharmacy_info_phone.darija_ar.05",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "darija_ar",
+    "text": "فين نلقى تليفون الصيدلية؟",
+    "intent": "pharmacy_info_phone",
+    "entities": [],
+    "needs_clarification": true,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "pharmacy_info_phone.darija_latn.01",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "darija_latn",
+    "text": "chno nemra dyal pharmacie?",
+    "intent": "pharmacy_info_phone",
+    "entities": [],
+    "needs_clarification": true,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "pharmacy_info_phone.darija_latn.02",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "darija_latn",
+    "text": "3tini telephone dyal pharmacie 3afak",
+    "intent": "pharmacy_info_phone",
+    "entities": [],
+    "needs_clarification": true,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "pharmacy_info_phone.darija_latn.03",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "darija_latn",
+    "text": "bghit nemra dyal pharmacie f Rabat",
+    "intent": "pharmacy_info_phone",
+    "entities": [
+      {
+        "type": "LOCATION",
+        "text": "Rabat",
+        "start": 29,
+        "end": 34
+      }
+    ],
+    "needs_clarification": true,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "pharmacy_info_phone.darija_latn.04",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "darija_latn",
+    "text": "kifach n3ayet l pharmacie?",
+    "intent": "pharmacy_info_phone",
+    "entities": [],
+    "needs_clarification": true,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "pharmacy_info_phone.darija_latn.05",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "darija_latn",
+    "text": "fin nel9a telephone dyal pharmacie?",
+    "intent": "pharmacy_info_phone",
+    "entities": [],
+    "needs_clarification": true,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "pharmacy_info_phone.ar.01",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "ar",
+    "text": "ما رقم هاتف الصيدلية؟",
+    "intent": "pharmacy_info_phone",
+    "entities": [],
+    "needs_clarification": true,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "pharmacy_info_phone.ar.02",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "ar",
+    "text": "أريد هاتف الصيدلية من فضلك",
+    "intent": "pharmacy_info_phone",
+    "entities": [],
+    "needs_clarification": true,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "pharmacy_info_phone.ar.03",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "ar",
+    "text": "ما رقم صيدلية في الرباط؟",
+    "intent": "pharmacy_info_phone",
+    "entities": [
+      {
+        "type": "LOCATION",
+        "text": "الرباط",
+        "start": 17,
+        "end": 23
+      }
+    ],
+    "needs_clarification": true,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "pharmacy_info_phone.ar.04",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "ar",
+    "text": "كيف أتصل بالصيدلية؟",
+    "intent": "pharmacy_info_phone",
+    "entities": [],
+    "needs_clarification": true,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "pharmacy_info_phone.ar.05",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "ar",
+    "text": "أين أجد رقم الصيدلية؟",
+    "intent": "pharmacy_info_phone",
+    "entities": [],
+    "needs_clarification": true,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "pharmacy_info_phone.fr.01",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "fr",
+    "text": "Quel est le numéro de la pharmacie ?",
+    "intent": "pharmacy_info_phone",
+    "entities": [],
+    "needs_clarification": true,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "pharmacy_info_phone.fr.02",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "fr",
+    "text": "Donnez-moi le téléphone de la pharmacie",
+    "intent": "pharmacy_info_phone",
+    "entities": [],
+    "needs_clarification": true,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "pharmacy_info_phone.fr.03",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "fr",
+    "text": "Je cherche le numéro d’une pharmacie à Rabat",
+    "intent": "pharmacy_info_phone",
+    "entities": [
+      {
+        "type": "LOCATION",
+        "text": "Rabat",
+        "start": 39,
+        "end": 44
+      }
+    ],
+    "needs_clarification": true,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "pharmacy_info_phone.fr.04",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "fr",
+    "text": "Comment appeler la pharmacie ?",
+    "intent": "pharmacy_info_phone",
+    "entities": [],
+    "needs_clarification": true,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "pharmacy_info_phone.fr.05",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "fr",
+    "text": "Où trouver le numéro de téléphone de la pharmacie ?",
+    "intent": "pharmacy_info_phone",
+    "entities": [],
+    "needs_clarification": true,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "pharmacy_info_phone.mixed.01",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "mixed",
+    "text": "chno le numéro de la pharmacie ?",
+    "intent": "pharmacy_info_phone",
+    "entities": [],
+    "needs_clarification": true,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "pharmacy_info_phone.mixed.02",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "mixed",
+    "text": "عطيني téléphone de la pharmacie",
+    "intent": "pharmacy_info_phone",
+    "entities": [],
+    "needs_clarification": true,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "pharmacy_info_phone.mixed.03",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "mixed",
+    "text": "Je cherche nemra dyal pharmacie f Rabat",
+    "intent": "pharmacy_info_phone",
+    "entities": [
+      {
+        "type": "LOCATION",
+        "text": "Rabat",
+        "start": 34,
+        "end": 39
+      }
+    ],
+    "needs_clarification": true,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "pharmacy_info_phone.mixed.04",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "mixed",
+    "text": "كيفاش نعيط à la pharmacie ?",
+    "intent": "pharmacy_info_phone",
+    "entities": [],
+    "needs_clarification": true,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "pharmacy_info_phone.mixed.05",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "mixed",
+    "text": "fin nel9a le numéro de la pharmacie ?",
+    "intent": "pharmacy_info_phone",
+    "entities": [],
+    "needs_clarification": true,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "pharmacy_info_location.darija_ar.01",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "darija_ar",
+    "text": "فين كاينة الصيدلية؟",
+    "intent": "pharmacy_info_location",
+    "entities": [],
+    "needs_clarification": true,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "pharmacy_info_location.darija_ar.02",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "darija_ar",
+    "text": "بغيت عنوان الصيدلية",
+    "intent": "pharmacy_info_location",
+    "entities": [],
+    "needs_clarification": true,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "pharmacy_info_location.darija_ar.03",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "darija_ar",
+    "text": "فين أقرب صيدلية ف الرباط؟",
+    "intent": "pharmacy_info_location",
+    "entities": [
+      {
+        "type": "LOCATION",
+        "text": "الرباط",
+        "start": 18,
+        "end": 24
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "pharmacy_info_location.darija_ar.04",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "darija_ar",
+    "text": "كاينة شي صيدلية حدايا؟",
+    "intent": "pharmacy_info_location",
+    "entities": [],
+    "needs_clarification": true,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "pharmacy_info_location.darija_ar.05",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "darija_ar",
+    "text": "فين كاينة شي صيدلية ف مراكش؟",
+    "intent": "pharmacy_info_location",
+    "entities": [
+      {
+        "type": "LOCATION",
+        "text": "مراكش",
+        "start": 22,
+        "end": 27
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "pharmacy_info_location.darija_latn.01",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "darija_latn",
+    "text": "fin kayna pharmacie?",
+    "intent": "pharmacy_info_location",
+    "entities": [],
+    "needs_clarification": true,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "pharmacy_info_location.darija_latn.02",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "darija_latn",
+    "text": "bghit adresse dyal pharmacie",
+    "intent": "pharmacy_info_location",
+    "entities": [],
+    "needs_clarification": true,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "pharmacy_info_location.darija_latn.03",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "darija_latn",
+    "text": "fin a9rab pharmacie f Rabat?",
+    "intent": "pharmacy_info_location",
+    "entities": [
+      {
+        "type": "LOCATION",
+        "text": "Rabat",
+        "start": 22,
+        "end": 27
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "pharmacy_info_location.darija_latn.04",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "darija_latn",
+    "text": "kayna chi pharmacie 7daya?",
+    "intent": "pharmacy_info_location",
+    "entities": [],
+    "needs_clarification": true,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "pharmacy_info_location.darija_latn.05",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "darija_latn",
+    "text": "fin kayna chi pharmacie f Marrakech?",
+    "intent": "pharmacy_info_location",
+    "entities": [
+      {
+        "type": "LOCATION",
+        "text": "Marrakech",
+        "start": 26,
+        "end": 35
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "pharmacy_info_location.ar.01",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "ar",
+    "text": "أين تقع الصيدلية؟",
+    "intent": "pharmacy_info_location",
+    "entities": [],
+    "needs_clarification": true,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "pharmacy_info_location.ar.02",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "ar",
+    "text": "أريد عنوان الصيدلية",
+    "intent": "pharmacy_info_location",
+    "entities": [],
+    "needs_clarification": true,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "pharmacy_info_location.ar.03",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "ar",
+    "text": "أين أقرب صيدلية في الرباط؟",
+    "intent": "pharmacy_info_location",
+    "entities": [
+      {
+        "type": "LOCATION",
+        "text": "الرباط",
+        "start": 19,
+        "end": 25
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "pharmacy_info_location.ar.04",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "ar",
+    "text": "هل توجد صيدلية قريبة مني؟",
+    "intent": "pharmacy_info_location",
+    "entities": [],
+    "needs_clarification": true,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "pharmacy_info_location.ar.05",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "ar",
+    "text": "أين توجد صيدلية في مراكش؟",
+    "intent": "pharmacy_info_location",
+    "entities": [
+      {
+        "type": "LOCATION",
+        "text": "مراكش",
+        "start": 19,
+        "end": 24
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "pharmacy_info_location.fr.01",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "fr",
+    "text": "Où se trouve la pharmacie ?",
+    "intent": "pharmacy_info_location",
+    "entities": [],
+    "needs_clarification": true,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "pharmacy_info_location.fr.02",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "fr",
+    "text": "Je cherche l’adresse de la pharmacie",
+    "intent": "pharmacy_info_location",
+    "entities": [],
+    "needs_clarification": true,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "pharmacy_info_location.fr.03",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "fr",
+    "text": "Où est la pharmacie la plus proche à Rabat ?",
+    "intent": "pharmacy_info_location",
+    "entities": [
+      {
+        "type": "LOCATION",
+        "text": "Rabat",
+        "start": 37,
+        "end": 42
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "pharmacy_info_location.fr.04",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "fr",
+    "text": "Y a-t-il une pharmacie près de moi ?",
+    "intent": "pharmacy_info_location",
+    "entities": [],
+    "needs_clarification": true,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "pharmacy_info_location.fr.05",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "fr",
+    "text": "Où trouver une pharmacie à Marrakech ?",
+    "intent": "pharmacy_info_location",
+    "entities": [
+      {
+        "type": "LOCATION",
+        "text": "Marrakech",
+        "start": 27,
+        "end": 36
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "pharmacy_info_location.mixed.01",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "mixed",
+    "text": "fin kayna la pharmacie ?",
+    "intent": "pharmacy_info_location",
+    "entities": [],
+    "needs_clarification": true,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "pharmacy_info_location.mixed.02",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "mixed",
+    "text": "بغيت l’adresse de la pharmacie",
+    "intent": "pharmacy_info_location",
+    "entities": [],
+    "needs_clarification": true,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "pharmacy_info_location.mixed.03",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "mixed",
+    "text": "Où est a9rab pharmacie f Rabat ?",
+    "intent": "pharmacy_info_location",
+    "entities": [
+      {
+        "type": "LOCATION",
+        "text": "Rabat",
+        "start": 25,
+        "end": 30
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "pharmacy_info_location.mixed.04",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "mixed",
+    "text": "كاينة une pharmacie près de moi ?",
+    "intent": "pharmacy_info_location",
+    "entities": [],
+    "needs_clarification": true,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "pharmacy_info_location.mixed.05",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "mixed",
+    "text": "fin kayna une pharmacie à Marrakech ?",
+    "intent": "pharmacy_info_location",
+    "entities": [
+      {
+        "type": "LOCATION",
+        "text": "Marrakech",
+        "start": 26,
+        "end": 35
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "pharmacy_info_hours.darija_ar.01",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "darija_ar",
+    "text": "الصيدلية محلولة دابا؟",
+    "intent": "pharmacy_info_hours",
+    "entities": [
+      {
+        "type": "TIME_REF",
+        "text": "دابا",
+        "normalized": "now",
+        "start": 16,
+        "end": 20
+      }
+    ],
+    "needs_clarification": true,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "pharmacy_info_hours.darija_ar.02",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "darija_ar",
+    "text": "فوقاش كتسد الصيدلية؟",
+    "intent": "pharmacy_info_hours",
+    "entities": [],
+    "needs_clarification": true,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "pharmacy_info_hours.darija_ar.03",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "darija_ar",
+    "text": "شحال كتفتح الصيدلية؟",
+    "intent": "pharmacy_info_hours",
+    "entities": [],
+    "needs_clarification": true,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "pharmacy_info_hours.darija_ar.04",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "darija_ar",
+    "text": "كاينة شي صيدلية ديال الحراسة الليلة؟",
+    "intent": "pharmacy_info_hours",
+    "entities": [
+      {
+        "type": "TIME_REF",
+        "text": "الليلة",
+        "normalized": "tonight",
+        "start": 29,
+        "end": 35
+      }
+    ],
+    "needs_clarification": true,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "pharmacy_info_hours.darija_ar.05",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "darija_ar",
+    "text": "غدا الصيدلية محلولة؟",
+    "intent": "pharmacy_info_hours",
+    "entities": [
+      {
+        "type": "TIME_REF",
+        "text": "غدا",
+        "normalized": "tomorrow",
+        "start": 0,
+        "end": 3
+      }
+    ],
+    "needs_clarification": true,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "pharmacy_info_hours.darija_latn.01",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "darija_latn",
+    "text": "pharmacie me7loula daba?",
+    "intent": "pharmacy_info_hours",
+    "entities": [
+      {
+        "type": "TIME_REF",
+        "text": "daba",
+        "normalized": "now",
+        "start": 19,
+        "end": 23
+      }
+    ],
+    "needs_clarification": true,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "pharmacy_info_hours.darija_latn.02",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "darija_latn",
+    "text": "fo9ach katsed pharmacie?",
+    "intent": "pharmacy_info_hours",
+    "entities": [],
+    "needs_clarification": true,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "pharmacy_info_hours.darija_latn.03",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "darija_latn",
+    "text": "ch7al kat7el pharmacie?",
+    "intent": "pharmacy_info_hours",
+    "entities": [],
+    "needs_clarification": true,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "pharmacy_info_hours.darija_latn.04",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "darija_latn",
+    "text": "kayna pharmacie de garde lila?",
+    "intent": "pharmacy_info_hours",
+    "entities": [
+      {
+        "type": "TIME_REF",
+        "text": "lila",
+        "normalized": "tonight",
+        "start": 25,
+        "end": 29
+      }
+    ],
+    "needs_clarification": true,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "pharmacy_info_hours.darija_latn.05",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "darija_latn",
+    "text": "ghdda pharmacie me7loula?",
+    "intent": "pharmacy_info_hours",
+    "entities": [
+      {
+        "type": "TIME_REF",
+        "text": "ghdda",
+        "normalized": "tomorrow",
+        "start": 0,
+        "end": 5
+      }
+    ],
+    "needs_clarification": true,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "pharmacy_info_hours.ar.01",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "ar",
+    "text": "هل الصيدلية مفتوحة الآن؟",
+    "intent": "pharmacy_info_hours",
+    "entities": [
+      {
+        "type": "TIME_REF",
+        "text": "الآن",
+        "normalized": "now",
+        "start": 19,
+        "end": 23
+      }
+    ],
+    "needs_clarification": true,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "pharmacy_info_hours.ar.02",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "ar",
+    "text": "متى تغلق الصيدلية؟",
+    "intent": "pharmacy_info_hours",
+    "entities": [],
+    "needs_clarification": true,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "pharmacy_info_hours.ar.03",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "ar",
+    "text": "متى تفتح الصيدلية؟",
+    "intent": "pharmacy_info_hours",
+    "entities": [],
+    "needs_clarification": true,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "pharmacy_info_hours.ar.04",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "ar",
+    "text": "هل توجد صيدلية مناوبة الليلة؟",
+    "intent": "pharmacy_info_hours",
+    "entities": [
+      {
+        "type": "TIME_REF",
+        "text": "الليلة",
+        "normalized": "tonight",
+        "start": 22,
+        "end": 28
+      }
+    ],
+    "needs_clarification": true,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "pharmacy_info_hours.ar.05",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "ar",
+    "text": "هل تفتح الصيدلية غدا؟",
+    "intent": "pharmacy_info_hours",
+    "entities": [
+      {
+        "type": "TIME_REF",
+        "text": "غدا",
+        "normalized": "tomorrow",
+        "start": 17,
+        "end": 20
+      }
+    ],
+    "needs_clarification": true,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "pharmacy_info_hours.fr.01",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "fr",
+    "text": "La pharmacie est-elle ouverte maintenant ?",
+    "intent": "pharmacy_info_hours",
+    "entities": [
+      {
+        "type": "TIME_REF",
+        "text": "maintenant",
+        "normalized": "now",
+        "start": 30,
+        "end": 40
+      }
+    ],
+    "needs_clarification": true,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "pharmacy_info_hours.fr.02",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "fr",
+    "text": "À quelle heure ferme la pharmacie ?",
+    "intent": "pharmacy_info_hours",
+    "entities": [],
+    "needs_clarification": true,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "pharmacy_info_hours.fr.03",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "fr",
+    "text": "Quand ouvre la pharmacie ?",
+    "intent": "pharmacy_info_hours",
+    "entities": [],
+    "needs_clarification": true,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "pharmacy_info_hours.fr.04",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "fr",
+    "text": "Quelle pharmacie est de garde ce soir ?",
+    "intent": "pharmacy_info_hours",
+    "entities": [
+      {
+        "type": "TIME_REF",
+        "text": "ce soir",
+        "normalized": "tonight",
+        "start": 30,
+        "end": 37
+      }
+    ],
+    "needs_clarification": true,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "pharmacy_info_hours.fr.05",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "fr",
+    "text": "La pharmacie ouvre-t-elle demain ?",
+    "intent": "pharmacy_info_hours",
+    "entities": [
+      {
+        "type": "TIME_REF",
+        "text": "demain",
+        "normalized": "tomorrow",
+        "start": 26,
+        "end": 32
+      }
+    ],
+    "needs_clarification": true,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "pharmacy_info_hours.mixed.01",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "mixed",
+    "text": "wach la pharmacie ouverte daba ?",
+    "intent": "pharmacy_info_hours",
+    "entities": [
+      {
+        "type": "TIME_REF",
+        "text": "daba",
+        "normalized": "now",
+        "start": 26,
+        "end": 30
+      }
+    ],
+    "needs_clarification": true,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "pharmacy_info_hours.mixed.02",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "mixed",
+    "text": "فوقاش ferme la pharmacie ?",
+    "intent": "pharmacy_info_hours",
+    "entities": [],
+    "needs_clarification": true,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "pharmacy_info_hours.mixed.03",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "mixed",
+    "text": "Quand kat7el la pharmacie ?",
+    "intent": "pharmacy_info_hours",
+    "entities": [],
+    "needs_clarification": true,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "pharmacy_info_hours.mixed.04",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "mixed",
+    "text": "كاينة une pharmacie de garde الليلة؟",
+    "intent": "pharmacy_info_hours",
+    "entities": [
+      {
+        "type": "TIME_REF",
+        "text": "الليلة",
+        "normalized": "tonight",
+        "start": 29,
+        "end": 35
+      }
+    ],
+    "needs_clarification": true,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "pharmacy_info_hours.mixed.05",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "mixed",
+    "text": "ghdda la pharmacie sera ouverte ?",
+    "intent": "pharmacy_info_hours",
+    "entities": [
+      {
+        "type": "TIME_REF",
+        "text": "ghdda",
+        "normalized": "tomorrow",
+        "start": 0,
+        "end": 5
+      }
+    ],
+    "needs_clarification": true,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "price_inquiry.darija_ar.01",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "darija_ar",
+    "text": "بشحال دوليبران؟",
+    "intent": "price_inquiry",
+    "entities": [
+      {
+        "type": "MEDICATION",
+        "text": "دوليبران",
+        "entity_id": "med1",
+        "start": 6,
+        "end": 14
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "price_inquiry.darija_ar.02",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "darija_ar",
+    "text": "شحال ثمن بانادول؟",
+    "intent": "price_inquiry",
+    "entities": [
+      {
+        "type": "MEDICATION",
+        "text": "بانادول",
+        "entity_id": "med1",
+        "start": 9,
+        "end": 16
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "price_inquiry.darija_ar.03",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "darija_ar",
+    "text": "بغيت نعرف ثمن أموكسيسيلين",
+    "intent": "price_inquiry",
+    "entities": [
+      {
+        "type": "MEDICATION",
+        "text": "أموكسيسيلين",
+        "entity_id": "med1",
+        "start": 14,
+        "end": 25
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "price_inquiry.darija_ar.04",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "darija_ar",
+    "text": "دوليبران 500 mg بشحال؟",
+    "intent": "price_inquiry",
+    "entities": [
+      {
+        "type": "MEDICATION",
+        "text": "دوليبران",
+        "entity_id": "med1",
+        "start": 0,
+        "end": 8
+      },
+      {
+        "type": "DOSAGE",
+        "text": "500 mg",
+        "value": 500,
+        "unit": "mg",
+        "medication_ref": "med1",
+        "start": 9,
+        "end": 15
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "price_inquiry.darija_ar.05",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "darija_ar",
+    "text": "شحال كيدير أوغمنتين؟",
+    "intent": "price_inquiry",
+    "entities": [
+      {
+        "type": "MEDICATION",
+        "text": "أوغمنتين",
+        "entity_id": "med1",
+        "start": 11,
+        "end": 19
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "price_inquiry.darija_latn.01",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "darija_latn",
+    "text": "bch7al Doliprane?",
+    "intent": "price_inquiry",
+    "entities": [
+      {
+        "type": "MEDICATION",
+        "text": "Doliprane",
+        "entity_id": "med1",
+        "start": 7,
+        "end": 16
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "price_inquiry.darija_latn.02",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "darija_latn",
+    "text": "ch7al taman Panadol?",
+    "intent": "price_inquiry",
+    "entities": [
+      {
+        "type": "MEDICATION",
+        "text": "Panadol",
+        "entity_id": "med1",
+        "start": 12,
+        "end": 19
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "price_inquiry.darija_latn.03",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "darija_latn",
+    "text": "bghit n3ref prix dyal Amoxicilline",
+    "intent": "price_inquiry",
+    "entities": [
+      {
+        "type": "MEDICATION",
+        "text": "Amoxicilline",
+        "entity_id": "med1",
+        "start": 22,
+        "end": 34
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "price_inquiry.darija_latn.04",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "darija_latn",
+    "text": "Doliprane 500 mg bch7al?",
+    "intent": "price_inquiry",
+    "entities": [
+      {
+        "type": "MEDICATION",
+        "text": "Doliprane",
+        "entity_id": "med1",
+        "start": 0,
+        "end": 9
+      },
+      {
+        "type": "DOSAGE",
+        "text": "500 mg",
+        "value": 500,
+        "unit": "mg",
+        "medication_ref": "med1",
+        "start": 10,
+        "end": 16
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "price_inquiry.darija_latn.05",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "darija_latn",
+    "text": "ch7al kaydir Augmentin?",
+    "intent": "price_inquiry",
+    "entities": [
+      {
+        "type": "MEDICATION",
+        "text": "Augmentin",
+        "entity_id": "med1",
+        "start": 13,
+        "end": 22
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "price_inquiry.ar.01",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "ar",
+    "text": "ما سعر دوليبران؟",
+    "intent": "price_inquiry",
+    "entities": [
+      {
+        "type": "MEDICATION",
+        "text": "دوليبران",
+        "entity_id": "med1",
+        "start": 7,
+        "end": 15
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "price_inquiry.ar.02",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "ar",
+    "text": "كم ثمن بانادول؟",
+    "intent": "price_inquiry",
+    "entities": [
+      {
+        "type": "MEDICATION",
+        "text": "بانادول",
+        "entity_id": "med1",
+        "start": 7,
+        "end": 14
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "price_inquiry.ar.03",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "ar",
+    "text": "أريد معرفة سعر أموكسيسيلين",
+    "intent": "price_inquiry",
+    "entities": [
+      {
+        "type": "MEDICATION",
+        "text": "أموكسيسيلين",
+        "entity_id": "med1",
+        "start": 15,
+        "end": 26
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "price_inquiry.ar.04",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "ar",
+    "text": "ما سعر دوليبران 500 mg؟",
+    "intent": "price_inquiry",
+    "entities": [
+      {
+        "type": "MEDICATION",
+        "text": "دوليبران",
+        "entity_id": "med1",
+        "start": 7,
+        "end": 15
+      },
+      {
+        "type": "DOSAGE",
+        "text": "500 mg",
+        "value": 500,
+        "unit": "mg",
+        "medication_ref": "med1",
+        "start": 16,
+        "end": 22
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "price_inquiry.ar.05",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "ar",
+    "text": "كم يكلف أوغمنتين؟",
+    "intent": "price_inquiry",
+    "entities": [
+      {
+        "type": "MEDICATION",
+        "text": "أوغمنتين",
+        "entity_id": "med1",
+        "start": 8,
+        "end": 16
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "price_inquiry.fr.01",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "fr",
+    "text": "Quel est le prix de Doliprane ?",
+    "intent": "price_inquiry",
+    "entities": [
+      {
+        "type": "MEDICATION",
+        "text": "Doliprane",
+        "entity_id": "med1",
+        "start": 20,
+        "end": 29
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "price_inquiry.fr.02",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "fr",
+    "text": "Combien coûte Panadol ?",
+    "intent": "price_inquiry",
+    "entities": [
+      {
+        "type": "MEDICATION",
+        "text": "Panadol",
+        "entity_id": "med1",
+        "start": 14,
+        "end": 21
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "price_inquiry.fr.03",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "fr",
+    "text": "Je voudrais connaître le prix de Amoxicilline",
+    "intent": "price_inquiry",
+    "entities": [
+      {
+        "type": "MEDICATION",
+        "text": "Amoxicilline",
+        "entity_id": "med1",
+        "start": 33,
+        "end": 45
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "price_inquiry.fr.04",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "fr",
+    "text": "Quel est le prix de Doliprane 500 mg ?",
+    "intent": "price_inquiry",
+    "entities": [
+      {
+        "type": "MEDICATION",
+        "text": "Doliprane",
+        "entity_id": "med1",
+        "start": 20,
+        "end": 29
+      },
+      {
+        "type": "DOSAGE",
+        "text": "500 mg",
+        "value": 500,
+        "unit": "mg",
+        "medication_ref": "med1",
+        "start": 30,
+        "end": 36
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "price_inquiry.fr.05",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "fr",
+    "text": "Combien coûte Augmentin ?",
+    "intent": "price_inquiry",
+    "entities": [
+      {
+        "type": "MEDICATION",
+        "text": "Augmentin",
+        "entity_id": "med1",
+        "start": 14,
+        "end": 23
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "price_inquiry.mixed.01",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "mixed",
+    "text": "bch7al le Doliprane ?",
+    "intent": "price_inquiry",
+    "entities": [
+      {
+        "type": "MEDICATION",
+        "text": "Doliprane",
+        "entity_id": "med1",
+        "start": 10,
+        "end": 19
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "price_inquiry.mixed.02",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "mixed",
+    "text": "شحال le prix de Panadol ?",
+    "intent": "price_inquiry",
+    "entities": [
+      {
+        "type": "MEDICATION",
+        "text": "Panadol",
+        "entity_id": "med1",
+        "start": 16,
+        "end": 23
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "price_inquiry.mixed.03",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "mixed",
+    "text": "Je voudrais n3ref prix dyal Amoxicilline",
+    "intent": "price_inquiry",
+    "entities": [
+      {
+        "type": "MEDICATION",
+        "text": "Amoxicilline",
+        "entity_id": "med1",
+        "start": 28,
+        "end": 40
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "price_inquiry.mixed.04",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "mixed",
+    "text": "دوليبران 500 mg quel prix ?",
+    "intent": "price_inquiry",
+    "entities": [
+      {
+        "type": "MEDICATION",
+        "text": "دوليبران",
+        "entity_id": "med1",
+        "start": 0,
+        "end": 8
+      },
+      {
+        "type": "DOSAGE",
+        "text": "500 mg",
+        "value": 500,
+        "unit": "mg",
+        "medication_ref": "med1",
+        "start": 9,
+        "end": 15
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "price_inquiry.mixed.05",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "mixed",
+    "text": "ch7al coûte Augmentin ?",
+    "intent": "price_inquiry",
+    "entities": [
+      {
+        "type": "MEDICATION",
+        "text": "Augmentin",
+        "entity_id": "med1",
+        "start": 12,
+        "end": 21
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "greeting_smalltalk.darija_ar.01",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "darija_ar",
+    "text": "السلام عليكم",
+    "intent": "greeting_smalltalk",
+    "entities": [],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "greeting_smalltalk.darija_ar.02",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "darija_ar",
+    "text": "سلام",
+    "intent": "greeting_smalltalk",
+    "entities": [],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "greeting_smalltalk.darija_ar.03",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "darija_ar",
+    "text": "شكرا بزاف",
+    "intent": "greeting_smalltalk",
+    "entities": [],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "greeting_smalltalk.darija_ar.04",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "darija_ar",
+    "text": "صباح الخير",
+    "intent": "greeting_smalltalk",
+    "entities": [],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "greeting_smalltalk.darija_ar.05",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "darija_ar",
+    "text": "لباس عليكم؟",
+    "intent": "greeting_smalltalk",
+    "entities": [],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "greeting_smalltalk.darija_latn.01",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "darija_latn",
+    "text": "salam 3likom",
+    "intent": "greeting_smalltalk",
+    "entities": [],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "greeting_smalltalk.darija_latn.02",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "darija_latn",
+    "text": "salam",
+    "intent": "greeting_smalltalk",
+    "entities": [],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "greeting_smalltalk.darija_latn.03",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "darija_latn",
+    "text": "chokran bzzaf",
+    "intent": "greeting_smalltalk",
+    "entities": [],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "greeting_smalltalk.darija_latn.04",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "darija_latn",
+    "text": "sba7 lkhir",
+    "intent": "greeting_smalltalk",
+    "entities": [],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "greeting_smalltalk.darija_latn.05",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "darija_latn",
+    "text": "labas 3likom?",
+    "intent": "greeting_smalltalk",
+    "entities": [],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "greeting_smalltalk.ar.01",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "ar",
+    "text": "السلام عليكم ورحمة الله",
+    "intent": "greeting_smalltalk",
+    "entities": [],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "greeting_smalltalk.ar.02",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "ar",
+    "text": "مرحبا",
+    "intent": "greeting_smalltalk",
+    "entities": [],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "greeting_smalltalk.ar.03",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "ar",
+    "text": "شكرا لكم",
+    "intent": "greeting_smalltalk",
+    "entities": [],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "greeting_smalltalk.ar.04",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "ar",
+    "text": "صباح الخير لكم",
+    "intent": "greeting_smalltalk",
+    "entities": [],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "greeting_smalltalk.ar.05",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "ar",
+    "text": "كيف حالكم؟",
+    "intent": "greeting_smalltalk",
+    "entities": [],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "greeting_smalltalk.fr.01",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "fr",
+    "text": "Bonjour",
+    "intent": "greeting_smalltalk",
+    "entities": [],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "greeting_smalltalk.fr.02",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "fr",
+    "text": "Salut",
+    "intent": "greeting_smalltalk",
+    "entities": [],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "greeting_smalltalk.fr.03",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "fr",
+    "text": "Merci beaucoup",
+    "intent": "greeting_smalltalk",
+    "entities": [],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "greeting_smalltalk.fr.04",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "fr",
+    "text": "Bonsoir",
+    "intent": "greeting_smalltalk",
+    "entities": [],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "greeting_smalltalk.fr.05",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "fr",
+    "text": "Comment allez-vous ?",
+    "intent": "greeting_smalltalk",
+    "entities": [],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "greeting_smalltalk.mixed.01",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "mixed",
+    "text": "salam, bonjour",
+    "intent": "greeting_smalltalk",
+    "entities": [],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "greeting_smalltalk.mixed.02",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "mixed",
+    "text": "سلام et bonsoir",
+    "intent": "greeting_smalltalk",
+    "entities": [],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "greeting_smalltalk.mixed.03",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "mixed",
+    "text": "Merci bzzaf",
+    "intent": "greeting_smalltalk",
+    "entities": [],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "greeting_smalltalk.mixed.04",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "mixed",
+    "text": "صباح الخير, bonjour",
+    "intent": "greeting_smalltalk",
+    "entities": [],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "greeting_smalltalk.mixed.05",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "mixed",
+    "text": "labas, comment allez-vous ?",
+    "intent": "greeting_smalltalk",
+    "entities": [],
+    "needs_clarification": false,
+    "expected_action": "interpret_only"
+  },
+  {
+    "id": "out_of_scope.darija_ar.01",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "darija_ar",
+    "text": "شنو ناخد لوجع الراس؟",
+    "intent": "out_of_scope",
+    "entities": [],
+    "needs_clarification": false,
+    "expected_action": "refuse_or_redirect"
+  },
+  {
+    "id": "out_of_scope.darija_ar.02",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "darija_ar",
+    "text": "شحال من حبة ناخد ديال دوليبران؟",
+    "intent": "out_of_scope",
+    "entities": [
+      {
+        "type": "MEDICATION",
+        "text": "دوليبران",
+        "entity_id": "med1",
+        "start": 22,
+        "end": 30
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "refuse_or_redirect"
+  },
+  {
+    "id": "out_of_scope.darija_ar.03",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "darija_ar",
+    "text": "واش نبدل هاد الدوا بشي واحد آخر؟",
+    "intent": "out_of_scope",
+    "entities": [],
+    "needs_clarification": false,
+    "expected_action": "refuse_or_redirect"
+  },
+  {
+    "id": "out_of_scope.darija_ar.04",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "darija_ar",
+    "text": "شخص ليا هاد الأعراض",
+    "intent": "out_of_scope",
+    "entities": [],
+    "needs_clarification": false,
+    "expected_action": "refuse_or_redirect"
+  },
+  {
+    "id": "out_of_scope.darija_ar.05",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "darija_ar",
+    "text": "شنو نتيجة الماتش؟",
+    "intent": "out_of_scope",
+    "entities": [],
+    "needs_clarification": false,
+    "expected_action": "refuse_or_redirect"
+  },
+  {
+    "id": "out_of_scope.darija_latn.01",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "darija_latn",
+    "text": "chno nakhod l sda3?",
+    "intent": "out_of_scope",
+    "entities": [],
+    "needs_clarification": false,
+    "expected_action": "refuse_or_redirect"
+  },
+  {
+    "id": "out_of_scope.darija_latn.02",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "darija_latn",
+    "text": "ch7al men 7ebba nakhod dyal Doliprane?",
+    "intent": "out_of_scope",
+    "entities": [
+      {
+        "type": "MEDICATION",
+        "text": "Doliprane",
+        "entity_id": "med1",
+        "start": 28,
+        "end": 37
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "refuse_or_redirect"
+  },
+  {
+    "id": "out_of_scope.darija_latn.03",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "darija_latn",
+    "text": "wach nbdel had dwa b chi wa7ed akhor?",
+    "intent": "out_of_scope",
+    "entities": [],
+    "needs_clarification": false,
+    "expected_action": "refuse_or_redirect"
+  },
+  {
+    "id": "out_of_scope.darija_latn.04",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "darija_latn",
+    "text": "chakhess lia had l a3rad",
+    "intent": "out_of_scope",
+    "entities": [],
+    "needs_clarification": false,
+    "expected_action": "refuse_or_redirect"
+  },
+  {
+    "id": "out_of_scope.darija_latn.05",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "darija_latn",
+    "text": "chno resultat dyal match?",
+    "intent": "out_of_scope",
+    "entities": [],
+    "needs_clarification": false,
+    "expected_action": "refuse_or_redirect"
+  },
+  {
+    "id": "out_of_scope.ar.01",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "ar",
+    "text": "ماذا أتناول لعلاج الصداع؟",
+    "intent": "out_of_scope",
+    "entities": [],
+    "needs_clarification": false,
+    "expected_action": "refuse_or_redirect"
+  },
+  {
+    "id": "out_of_scope.ar.02",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "ar",
+    "text": "كم حبة من دوليبران يجب أن أتناول؟",
+    "intent": "out_of_scope",
+    "entities": [
+      {
+        "type": "MEDICATION",
+        "text": "دوليبران",
+        "entity_id": "med1",
+        "start": 10,
+        "end": 18
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "refuse_or_redirect"
+  },
+  {
+    "id": "out_of_scope.ar.03",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "ar",
+    "text": "هل أستبدل هذا الدواء بآخر؟",
+    "intent": "out_of_scope",
+    "entities": [],
+    "needs_clarification": false,
+    "expected_action": "refuse_or_redirect"
+  },
+  {
+    "id": "out_of_scope.ar.04",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "ar",
+    "text": "شخص هذه الأعراض من فضلك",
+    "intent": "out_of_scope",
+    "entities": [],
+    "needs_clarification": false,
+    "expected_action": "refuse_or_redirect"
+  },
+  {
+    "id": "out_of_scope.ar.05",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "ar",
+    "text": "ما نتيجة المباراة؟",
+    "intent": "out_of_scope",
+    "entities": [],
+    "needs_clarification": false,
+    "expected_action": "refuse_or_redirect"
+  },
+  {
+    "id": "out_of_scope.fr.01",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "fr",
+    "text": "Quel médicament prendre contre le mal de tête ?",
+    "intent": "out_of_scope",
+    "entities": [],
+    "needs_clarification": false,
+    "expected_action": "refuse_or_redirect"
+  },
+  {
+    "id": "out_of_scope.fr.02",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "fr",
+    "text": "Combien de comprimés de Doliprane dois-je prendre ?",
+    "intent": "out_of_scope",
+    "entities": [
+      {
+        "type": "MEDICATION",
+        "text": "Doliprane",
+        "entity_id": "med1",
+        "start": 24,
+        "end": 33
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "refuse_or_redirect"
+  },
+  {
+    "id": "out_of_scope.fr.03",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "fr",
+    "text": "Puis-je remplacer ce médicament par un autre ?",
+    "intent": "out_of_scope",
+    "entities": [],
+    "needs_clarification": false,
+    "expected_action": "refuse_or_redirect"
+  },
+  {
+    "id": "out_of_scope.fr.04",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "fr",
+    "text": "Pouvez-vous diagnostiquer ces symptômes ?",
+    "intent": "out_of_scope",
+    "entities": [],
+    "needs_clarification": false,
+    "expected_action": "refuse_or_redirect"
+  },
+  {
+    "id": "out_of_scope.fr.05",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "fr",
+    "text": "Quel est le résultat du match ?",
+    "intent": "out_of_scope",
+    "entities": [],
+    "needs_clarification": false,
+    "expected_action": "refuse_or_redirect"
+  },
+  {
+    "id": "out_of_scope.mixed.01",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "mixed",
+    "text": "chno prendre pour le mal de tête ?",
+    "intent": "out_of_scope",
+    "entities": [],
+    "needs_clarification": false,
+    "expected_action": "refuse_or_redirect"
+  },
+  {
+    "id": "out_of_scope.mixed.02",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "mixed",
+    "text": "شحال de comprimés de Doliprane ناخد؟",
+    "intent": "out_of_scope",
+    "entities": [
+      {
+        "type": "MEDICATION",
+        "text": "Doliprane",
+        "entity_id": "med1",
+        "start": 21,
+        "end": 30
+      }
+    ],
+    "needs_clarification": false,
+    "expected_action": "refuse_or_redirect"
+  },
+  {
+    "id": "out_of_scope.mixed.03",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "mixed",
+    "text": "wach je peux remplacer had dwa ?",
+    "intent": "out_of_scope",
+    "entities": [],
+    "needs_clarification": false,
+    "expected_action": "refuse_or_redirect"
+  },
+  {
+    "id": "out_of_scope.mixed.04",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "mixed",
+    "text": "شخص ليا ces symptômes",
+    "intent": "out_of_scope",
+    "entities": [],
+    "needs_clarification": false,
+    "expected_action": "refuse_or_redirect"
+  },
+  {
+    "id": "out_of_scope.mixed.05",
+    "source": "authored_unreviewed",
+    "review_status": "pending_native_speaker_review",
+    "language": "mixed",
+    "text": "chno le résultat du match ?",
+    "intent": "out_of_scope",
+    "entities": [],
+    "needs_clarification": false,
+    "expected_action": "refuse_or_redirect"
+  }
+]

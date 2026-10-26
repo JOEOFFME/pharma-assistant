@@ -6,7 +6,7 @@ PORT ?= 8000
 LOG_LEVEL ?= info
 PYTHONHASHSEED ?= 42
 
-.PHONY: install lint test run format hooks
+.PHONY: install lint test run format hooks schema
 install:
 	$(UV) sync --frozen --python 3.11
 	@test -f .env || cp .env.example .env
@@ -27,3 +27,6 @@ format:
 
 hooks:
 	$(UV) run --frozen pre-commit install
+
+schema:
+	$(UV) run --frozen python scripts/export_schema.py
