@@ -3,7 +3,7 @@
 Arabic, Moroccan Darija (Arabic/Latin script), French, and code-mixed
 patient-pharmacy assistance prototype.
 
-## Current scope: TASK 0-4
+## Current scope: TASK 0-5 preparation
 
 Repository scaffolding and an operational FastAPI health endpoint, plus the
 [TASK 1 problem study](docs/01_problem_study.md) and
@@ -124,3 +124,17 @@ portal could not be downloaded. It provides no Moroccan availability or PPV.
 Generated Arabic/typo aliases and the query mini-set require review. See
 [the reference report](docs/data_medications.md) and
 [TASK 4 validation](docs/04_validation.md).
+
+## NLU dataset preparation (TASK 5)
+
+```bash
+make dataset
+```
+
+Inputs include 200 assistant-authored hand-style seed examples and 100 held-out
+gold candidates. Augmentation is synthetic and training-only; related template
+families stay together. The candidates are **not human-verified gold**.
+See [dataset instructions](data/nlu/README.md),
+[gold review table](docs/gold_candidates_review.md) and
+[TASK 5 validation](docs/05_validation.md). `make gold-lock` refuses admission
+until every candidate has explicit, hash-bound human review.

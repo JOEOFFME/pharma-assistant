@@ -45,3 +45,10 @@ medications:
 
 fetch-medications:
 	$(UV) run --frozen python -m pharma_assistant.data_tools.ingest_medications --fetch
+
+.PHONY: dataset gold-lock
+dataset:
+	$(UV) run --frozen python scripts/dataset_stats.py
+
+gold-lock:
+	$(UV) run --frozen python scripts/lock_gold.py

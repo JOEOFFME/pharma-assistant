@@ -1,0 +1,52 @@
+name: TASK 5 dataset checks
+on:
+  push:
+    branches: [codex/task5-nlu-dataset]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Check out public repository at the triggering commit
+        run: |
+          git init .
+          git remote add origin "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY.git"
+          git fetch --depth 1 origin "$GITHUB_SHA"
+          git checkout --detach FETCH_HEAD
+      - name: Install pinned uv and Python
+        run: |
+          python3 -m venv /tmp/pharma-task5-bootstrap
+          /tmp/pharma-task5-bootstrap/bin/pip install uv==0.13.4
+          echo "/tmp/pharma-task5-bootstrap/bin" >> "$GITHUB_PATH"
+          /tmp/pharma-task5-bootstrap/bin/uv python install 3.11.17
+      - name: Install frozen project dependencies
+        run: make install
+      - name: Rebuild dataset and verify read-only project checks
+        run: |
+          make dataset
+          make lint
+          make test
+      - name: Verify gold review controls
+        run: |
+          uv run --frozen python - <<'PY'
+          import json
+          import subprocess
+          from pathlib import Path
+          from pharma_assistant.data_tools.gold_review import load_locked_gold
+          gold = Path("data/nlu/gold_test.jsonl")
+          lock = Path("data/nlu/gold.lock.json")
+          if gold.exists() or lock.exists():
+              assert len(load_locked_gold(gold, lock)) >= 100
+          else:
+              reviews = json.loads(Path("data/nlu/gold_review.json").read_text())
+              assert not all(row["approved"] for row in reviews["rows"]), "Reviewed gold needs a lock"
+              result = subprocess.run(["make", "gold-lock"], capture_output=True, text=True)
+              assert result.returncode != 0
+              assert "Human review missing" in result.stderr
+              assert not gold.exists() and not lock.exists()
+          PY
+      - name: Verify committed data and reports reproduce exactly
+        run: git diff --exit-code

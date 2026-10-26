@@ -1,0 +1,122 @@
+[
+  {
+    "id": "bdpm_fr_60234100",
+    "brand_name": "DOLIPRANE",
+    "full_name": "DOLIPRANE 1000 mg, comprimé",
+    "strength_text": "1000 mg",
+    "strength_value": 1000,
+    "strength_unit": "mg",
+    "source_country": "FR",
+    "source_sha256": "332b95926f76f1a2ab3d70cdf64205397fc13e74b7cc9afad9b625fbb6961640"
+  },
+  {
+    "id": "bdpm_fr_62815944",
+    "brand_name": "DAFALGAN",
+    "full_name": "DAFALGAN 500 mg, comprimé effervescent sécable",
+    "strength_text": "500 mg",
+    "strength_value": 500,
+    "strength_unit": "mg",
+    "source_country": "FR",
+    "source_sha256": "332b95926f76f1a2ab3d70cdf64205397fc13e74b7cc9afad9b625fbb6961640"
+  },
+  {
+    "id": "bdpm_fr_60025403",
+    "brand_name": "EFFERALGAN",
+    "full_name": "EFFERALGAN 1000 mg, comprimé pelliculé",
+    "strength_text": "1000 mg",
+    "strength_value": 1000,
+    "strength_unit": "mg",
+    "source_country": "FR",
+    "source_sha256": "332b95926f76f1a2ab3d70cdf64205397fc13e74b7cc9afad9b625fbb6961640"
+  },
+  {
+    "id": "bdpm_fr_69118175",
+    "brand_name": "AMOXICILLINE BIOGARAN",
+    "full_name": "AMOXICILLINE BIOGARAN 500 mg, gélule",
+    "strength_text": "500 mg",
+    "strength_value": 500,
+    "strength_unit": "mg",
+    "source_country": "FR",
+    "source_sha256": "332b95926f76f1a2ab3d70cdf64205397fc13e74b7cc9afad9b625fbb6961640"
+  },
+  {
+    "id": "bdpm_fr_61000075",
+    "brand_name": "IBUPROFENE BIOGARAN",
+    "full_name": "IBUPROFENE BIOGARAN 400 mg, comprimé pelliculé",
+    "strength_text": "400 mg",
+    "strength_value": 400,
+    "strength_unit": "mg",
+    "source_country": "FR",
+    "source_sha256": "332b95926f76f1a2ab3d70cdf64205397fc13e74b7cc9afad9b625fbb6961640"
+  },
+  {
+    "id": "bdpm_fr_60310861",
+    "brand_name": "DOLIPRANE",
+    "full_name": "DOLIPRANE 150 mg, suppositoire",
+    "strength_text": "150 mg",
+    "strength_value": 150,
+    "strength_unit": "mg",
+    "source_country": "FR",
+    "source_sha256": "332b95926f76f1a2ab3d70cdf64205397fc13e74b7cc9afad9b625fbb6961640"
+  },
+  {
+    "id": "bdpm_fr_62887947",
+    "brand_name": "DAFALGAN",
+    "full_name": "DAFALGAN 1000 mg, comprimé pelliculé",
+    "strength_text": "1000 mg",
+    "strength_value": 1000,
+    "strength_unit": "mg",
+    "source_country": "FR",
+    "source_sha256": "332b95926f76f1a2ab3d70cdf64205397fc13e74b7cc9afad9b625fbb6961640"
+  },
+  {
+    "id": "bdpm_fr_60298455",
+    "brand_name": "EFFERALGAN",
+    "full_name": "EFFERALGAN 80 mg, suppositoire",
+    "strength_text": "80 mg",
+    "strength_value": 80,
+    "strength_unit": "mg",
+    "source_country": "FR",
+    "source_sha256": "332b95926f76f1a2ab3d70cdf64205397fc13e74b7cc9afad9b625fbb6961640"
+  },
+  {
+    "id": "bdpm_fr_68337369",
+    "brand_name": "IBUPROFENE BIOGARAN",
+    "full_name": "IBUPROFENE BIOGARAN 200 mg, comprimé pelliculé",
+    "strength_text": "200 mg",
+    "strength_value": 200,
+    "strength_unit": "mg",
+    "source_country": "FR",
+    "source_sha256": "332b95926f76f1a2ab3d70cdf64205397fc13e74b7cc9afad9b625fbb6961640"
+  },
+  {
+    "id": "bdpm_fr_61681702",
+    "brand_name": "DOLIPRANE",
+    "full_name": "DOLIPRANE 1000 mg, poudre pour solution buvable en sachet-dose",
+    "strength_text": "1000 mg",
+    "strength_value": 1000,
+    "strength_unit": "mg",
+    "source_country": "FR",
+    "source_sha256": "332b95926f76f1a2ab3d70cdf64205397fc13e74b7cc9afad9b625fbb6961640"
+  },
+  {
+    "id": "bdpm_fr_63264636",
+    "brand_name": "DAFALGAN",
+    "full_name": "DAFALGAN 1000 mg, comprimé effervescent",
+    "strength_text": "1000 mg",
+    "strength_value": 1000,
+    "strength_unit": "mg",
+    "source_country": "FR",
+    "source_sha256": "332b95926f76f1a2ab3d70cdf64205397fc13e74b7cc9afad9b625fbb6961640"
+  },
+  {
+    "id": "bdpm_fr_61128406",
+    "brand_name": "EFFERALGAN",
+    "full_name": "EFFERALGAN 300 mg, suppositoire",
+    "strength_text": "300 mg",
+    "strength_value": 300,
+    "strength_unit": "mg",
+    "source_country": "FR",
+    "source_sha256": "332b95926f76f1a2ab3d70cdf64205397fc13e74b7cc9afad9b625fbb6961640"
+  }
+]
