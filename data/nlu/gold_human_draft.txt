@@ -1,4 +1,3 @@
-# DRAFT messages for the gold set - written by an assistant, NOT verified.
 # Format: variety | proposed_intent | notes | text
 # Review every line as a native speaker: fix naturalness, delete what you would never type.
 # Notes: needs_clarification = no medication named; mixed_oos = in-scope request + medical-advice question;
@@ -17,12 +16,12 @@ darija_latn | request_medication | form | 3afak 1 sirop dyal Toplexil
 darija_latn | request_medication | multi_med,quantity | bghit 1 boite dyal Maalox w 2 dyal Nurofen 400
 darija_latn | request_medication | urgent,dosage | urgent bghit Levothyrox 100
 darija_latn | price_inquiry | | bch7al Smecta?
-darija_latn | price_inquiy | | ch7al dyar protex
+darija_latn | price_inquiry | | ch7al dyar protex?
 darija_latn | price_inquiry | dosage | ch7al taman dyal Glucophage 850?
 darija_latn | pharmacy_info_phone | pharmacy_name,location | chno numero dyal Pharmacie Ibn Sina f Agdal?
 darija_latn | pharmacy_info_location | location | fin kayna a9reb pharmacie l Hay Riad?
 darija_latn | pharmacy_info_hours | location,time | pharmacie de garde f Fes lyoum?
-darija_latn | pharmacy_info_hours | pharmacy_name | wach Pharmacie Al Amal mkhellsa db?
+darija_latn | pharmacy_info_hours | pharmacy_name | wach Pharmacie Al Amal m7lola db?
 darija_latn | check_availability | needs_clarification | nsit smiyt dwa, wach kayn?
 darija_latn | out_of_scope | dosage_advice | ch7al men 7ebba dyal doliprane nakhod l tfl?
 darija_latn | check_availability | mixed_oos | Voltarene kayn? w wach nakhdo m3a Aspirine?
@@ -67,7 +66,7 @@ fr | check_availability | mixed_oos | Amoxicilline 500 : dispo ? et combien par 
 fr | out_of_scope | dosage_advice | Quelle dose d'ibuprofène pour un enfant ?
 fr | out_of_scope | substitution | Je peux remplacer Augmentin par autre chose ?
 fr | greeting_smalltalk | | Salut, bonne journée
-fr | greeting_smalltalk | | Salut, ou je peux trouver Amoxline
+fr | check_availability | | Salut, ou je peux trouver Amoxline
 ar | check_availability | dosage | هل يتوفر لديكم أوغمنتين 1 غ؟
 ar | request_medication | quantity,dosage | أريد علبتين من دوليبران 500
 ar | price_inquiry | | كم سعر فنتولين؟
