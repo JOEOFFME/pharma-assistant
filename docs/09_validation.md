@@ -20,7 +20,7 @@ uv run --frozen pytest tests/test_project_service.py tests/test_health.py -q
 
 Mandatory health/version/text/voice/search/nearby routes implemented. Auth, rate limit, invalid input, original evidence, voice conversion and request IDs are tested. A real uvicorn HTTP run returned 200 for health, text, medication search, nearby directory, demo and actual Whisper synthetic-voice analysis. No stub ASR was used in that HTTP smoke. No optional chat endpoint is claimed. Coordinate hints are validated; nearby lookup uses its explicit lat/lon route. Rate limits are process-local.
 
-Shared project checks: Ruff and Black passed. The complete suite passed with **514 tests and one existing Starlette/AnyIO deprecation warning**. Detailed aggregate evidence and unresolved external-input validations are in [the final report](11_validation.md).
+Shared project checks: Ruff and Black passed. The complete suite passed with **519 tests and one existing Starlette/AnyIO deprecation warning**. Detailed aggregate evidence and unresolved external-input validations are in [the final report](11_validation.md).
 
 - ✅ Required implementation paths and reproducible commands provided.
 - ✅ Relevant automated and actual execution evidence recorded.

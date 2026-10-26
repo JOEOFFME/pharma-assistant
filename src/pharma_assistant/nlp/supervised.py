@@ -88,7 +88,10 @@ class SupervisedNLU:
                 tag.startswith("I-")
                 and entities
                 and entities[-1]["type"] == kind
-                and text[entities[-1]["end"] : word.start()].isspace()
+                and (
+                    not text[entities[-1]["end"] : word.start()]
+                    or text[entities[-1]["end"] : word.start()].isspace()
+                )
             ):
                 entities[-1]["end"] = word.end()
                 entities[-1]["text"] = text[entities[-1]["start"] : word.end()]

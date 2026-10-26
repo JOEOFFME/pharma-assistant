@@ -65,6 +65,8 @@ A separate optional local encoder fine-tuning path is available:
 uv sync --frozen --extra encoder
 uv run --frozen --extra encoder python scripts/fine_tune_encoder.py \
   --model-path <licensed-local-encoder-snapshot> --output models/encoder --steps 40
+uv run --frozen --extra encoder python scripts/evaluate_encoder.py \
+  --model-dir models/encoder --output reports/encoder_dev.json
 ```
 
 No encoder snapshots were supplied or encoder training results claimed. Two

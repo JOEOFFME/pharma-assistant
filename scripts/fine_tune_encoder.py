@@ -26,6 +26,7 @@ def main() -> None:
     torch.use_deterministic_algorithms(True)
     rows = read_jsonl(Path("data/nlu/generated/train.jsonl"))
     validate_rows(rows)
+    random.shuffle(rows)
     intents = sorted({r["intent"] for r in rows})
     tags = ["O"] + [
         prefix + kind

@@ -20,7 +20,9 @@ baseline entities and reference matching; learned BIO spans are evaluated
 separately, not automatically trusted as dispensable products. The LLM track
 accepts only strict v1 JSON through a provider-neutral HTTPS adapter. Schema,
 raw-text evidence, reference grounding and baseline clinical-routing checks
-remain in control. Failure falls back to the baseline.
+remain in control. Failure falls back to the baseline. Provider-authored
+clarification prose is replaced with fixed safe templates, and numeric count/
+strength claims must agree with the original source text.
 
 Normalizers preserve a Unicode code-point alignment map. Span extraction refers
 to the original text/transcript. Arabic digit/mark/alef/ya folding and lexical

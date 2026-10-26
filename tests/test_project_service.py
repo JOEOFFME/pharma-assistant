@@ -206,3 +206,51 @@ def test_unexpected_error_does_not_leak_internal_details() -> None:
         assert response.json()["error"]["message"] == "Internal service error"
         assert "patient text" not in response.text
         assert response.json()["request_id"]
+
+
+def test_bio_decoder_merges_adjacent_subtokens() -> None:
+    """A compound strength remains one entity even when punctuation has no spaces."""
+    import numpy as np
+
+    model = SupervisedNLU()
+    model.intent = SimpleNamespace(
+        classes_=np.array(["check_availability"]),
+        predict_proba=lambda texts: np.array([[1.0]]),
+    )
+    model.ner = SimpleNamespace(
+        predict=lambda features: [
+            "B-MEDICATION",
+            "B-DOSAGE",
+            "I-DOSAGE",
+            "I-DOSAGE",
+            "I-DOSAGE",
+        ]
+    )
+    result = model.predict("Doliprane 875/125 mg")
+    assert [e["text"] for e in result["entities"]] == ["Doliprane", "875/125 mg"]
+
+
+def test_llm_cannot_inject_medical_advice_as_clarification(pipeline) -> None:
+    """Schema-valid provider text must never become generated dosage advice."""
+    text = "Je voudrais Spasfon"
+    payload = pipeline.analyze(text).model_dump(mode="json", by_alias=True)
+    payload["needs_clarification"] = True
+    payload["clarification_question"] = {"fr": "Prenez 1000 mg trois fois par jour."}
+    result = LLMExtractor(FakeLLM([json.dumps(payload)]), pipeline).analyze(text)
+    assert (
+        result.clarification_question.fr
+        == "Pouvez-vous préciser le produit ou la demande ?"
+    )
+
+
+@pytest.mark.parametrize(
+    "patch", [{"value": 3}, {"unit": "bottle"}, {"value": 2, "unit": "tablet"}]
+)
+def test_llm_quantity_claims_must_match_source(pipeline, patch: dict) -> None:
+    """A provider cannot change the explicitly requested package count or unit."""
+    text = "Je voudrais 2 boîtes de Spasfon"
+    payload = pipeline.analyze(text).model_dump(mode="json", by_alias=True)
+    next(e for e in payload["entities"] if e["type"] == "QUANTITY").update(patch)
+    result = LLMExtractor(FakeLLM([json.dumps(payload)]), pipeline).analyze(text)
+    quantity = next(e for e in result.entities if e.type == "QUANTITY")
+    assert quantity.value == 2 and quantity.unit == "box"

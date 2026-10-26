@@ -17,7 +17,7 @@ from scientific validation that requires additional external inputs.
 | Script/lexicon language ID and rule baseline | nlp/langid.py; nlp/intent.py; nlp/entities.py | Implemented and measured |
 | Full text/voice v1 pipeline | pipeline/text_pipeline.py; api/service.py | Implemented; real HTTP smoke passed |
 | Learned intent and token-level NER | nlp/supervised.py; scripts/train_nlu.py | Two lightweight variants trained; dev results saved |
-| Fine-tune and benchmark 2–3 pretrained encoders | scripts/fine_tune_encoder.py; optional encoder deps | Training path implemented; encoder snapshots/experiments not run |
+| Fine-tune and benchmark 2–3 pretrained encoders | scripts/fine_tune_encoder.py; scripts/evaluate_encoder.py; optional encoder deps | Training path implemented; encoder snapshots/experiments not run |
 | Strict JSON LLM and provider swapping, timeout/retry/FakeLLM | nlp/llm.py | Implemented/tested; real-provider benchmark not run |
 | Hybrid and safe reference grounding | pipeline/hybrid.py | Implemented and measured on dev |
 | Configurable CPU Whisper, VAD, audio limits/resampling | asr/transcriber.py; configs/asr.yaml | Real pinned model inference executed |
@@ -29,7 +29,7 @@ from scientific validation that requires additional external inputs.
 | Docker and Compose | docker/Dockerfile; docker-compose.yml | Recipe provided; build checked in GitHub CI |
 | Demo with text, audio and entity highlighting | web/index.html | Served locally; real HTTP routes smoke-tested |
 | Setup, architecture and expected-output mapping | README.md; docs/architecture.md; this checklist | Implemented |
-| Frozen dependencies, lint and tests | pyproject.toml; uv.lock; CI | Local lint passed; 514 tests passed before final documentation |
+| Frozen dependencies, lint and tests | pyproject.toml; uv.lock; CI | Local lint passed; 519 tests passed before final documentation |
 
 No live stock, Moroccan PPV, missing pharmacy contact, human authorship, clinical
 recommendation, LLM score, encoder score or real-recording WER is invented.

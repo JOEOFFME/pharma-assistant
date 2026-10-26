@@ -1,6 +1,7 @@
 """Provider-neutral strict-JSON extraction with bounded retries and safe fallback."""
 
 import json
+import re
 from typing import Protocol
 from urllib.request import Request, urlopen
 
@@ -116,6 +117,65 @@ class LLMExtractor:
                         payload["clarification_question"] = {
                             "fr": "Pouvez-vous préciser le produit ?"
                         }
+                # Only fixed safe templates may become clarification responses.
+                payload["clarification_question"] = {
+                    "fr": (
+                        "Pouvez-vous préciser le produit ou la demande ?"
+                        if payload["needs_clarification"]
+                        else None
+                    ),
+                    "ar": None,
+                }
+                for entity in payload["entities"]:
+                    if entity["type"] in {"LOCATION", "PHARMACY_NAME", "FORM"}:
+                        entity["normalized"] = None
+                    if entity["type"] == "QUANTITY":
+                        quantity = re.match(r"[1-9]\d*", entity["text"])
+                        if quantity:
+                            package = (
+                                entity["text"][quantity.end() :].strip().casefold()
+                            )
+                            expected_unit = (
+                                self.baseline.config["quantity_units"].get(package)
+                                if package
+                                else "unit"
+                            )
+                            if (
+                                int(quantity.group()) != entity["value"]
+                                or expected_unit != entity["unit"]
+                            ):
+                                raise ValueError("Provider quantity contradicts source")
+                        elif entity["text"] in {"علبتين", "علبتان"}:
+                            if entity["value"] != 2 or entity["unit"] != "box":
+                                raise ValueError(
+                                    "Provider dual count contradicts source"
+                                )
+                        else:
+                            raise ValueError(
+                                "Quantity needs deterministic source parsing"
+                            )
+                    if entity["type"] == "DOSAGE" and entity["value"] is not None:
+                        scalar = re.fullmatch(
+                            r"(\d+(?:[.,]\d+)?)\s*(mg/mL|g/L|mcg|mg|g|IU|%|غ|ملغ)",
+                            entity["text"],
+                            re.I,
+                        )
+                        if (
+                            not scalar
+                            or float(scalar[1].replace(",", ".")) != entity["value"]
+                        ):
+                            raise ValueError("Provider strength contradicts source")
+                        unit = {
+                            "غ": "g",
+                            "ملغ": "mg",
+                            "iu": "IU",
+                            "mg/ml": "mg/mL",
+                            "g/l": "g/L",
+                        }.get(scalar[2].lower(), scalar[2].lower())
+                        if unit != entity["unit"]:
+                            raise ValueError(
+                                "Provider strength unit contradicts source"
+                            )
                 if language_hint is not None:
                     payload["input"]["language"] = language_hint
                 return AnalysisResponse.model_validate(payload)

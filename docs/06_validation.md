@@ -23,7 +23,7 @@ uv run --frozen pytest tests/test_text_baseline.py -q
 
 84 user-reviewed draft messages: intent accuracy 0.880952, macro-F1 0.876969. Entity exact agreement 0.853755 against automatic proposals, not verified-gold entity accuracy. Raw offsets, unknown/ambiguous strengths and explicit alternatives are tested. Independent human gold remains empty.
 
-Shared project checks: Ruff and Black passed. The complete suite passed with **514 tests and one existing Starlette/AnyIO deprecation warning**. Detailed aggregate evidence and unresolved external-input validations are in [the final report](11_validation.md).
+Shared project checks: Ruff and Black passed. The complete suite passed with **519 tests and one existing Starlette/AnyIO deprecation warning**. Detailed aggregate evidence and unresolved external-input validations are in [the final report](11_validation.md).
 
 - ✅ Required implementation paths and reproducible commands provided.
 - ✅ Relevant automated and actual execution evidence recorded.

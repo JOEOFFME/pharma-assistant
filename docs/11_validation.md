@@ -10,7 +10,7 @@ annotations, recordings, encoder runs or real-provider scores are invented.
 | Area | Main files | Result |
 | --- | --- | --- |
 | TASK 6 baseline | nlp/normalize.py, langid.py, intent.py, entities.py; pipeline/text_pipeline.py; configs/baseline.yaml | Original Unicode spans preserved, five language varieties, eight intents/entities, reference matching, relations and clarification. |
-| TASK 7 supervised/LLM/hybrid | nlp/supervised.py, llm.py; pipeline/hybrid.py; train_nlu.py, compare_tracks.py, fine_tune_encoder.py | Two small supervised models trained; strict JSON provider/fallback and safe hybrid tested; optional local encoder training supplied. |
+| TASK 7 supervised/LLM/hybrid | nlp/supervised.py, llm.py; pipeline/hybrid.py; train_nlu.py, compare_tracks.py, fine_tune_encoder.py | Two small supervised models trained; strict JSON provider/fallback and safe hybrid tested; optional local encoder training/evaluation supplied. |
 | TASK 8 speech | asr/transcriber.py; eval/speech.py; configs/asr.yaml; cache_asr.py, evaluate_speech.py; data/audio/README.md | Real pinned Whisper inference, actual ffmpeg/ffprobe validation, explicit cache/download step, 40 recording prompts and WER/CER tooling. |
 | TASK 9 API | api/app.py, api/service.py; .env.example; tests/test_project_service.py | Health/version, text/voice, medication search, nearby directory, IDs/errors, CORS, optional API key, body/rate limits and privacy-conscious structured logs. |
 | TASK 10 evaluation | run_scenarios.py, run_ablations.py; docs/10_evaluation.md; saved JSONs | Forty actual scenarios, confusion matrices, 20 failure examples, entity metrics, normalization/resolution ablations and latency samples. |
@@ -23,6 +23,11 @@ Source paths for scripts are `scripts/`; modules are under
 Their regenerated review annotations remain assistant-sourced and unverified;
 user intent-review attestation is recorded separately with exact file hashes.
 `gold_human.jsonl` is still empty and unchanged.
+
+Follow-up checks enforce fixed safe clarification templates for LLM output,
+source-consistent numeric quantities/strengths, and adjacent BIO subtoken merging.
+Local encoder evaluation is provided by scripts/evaluate_encoder.py; no encoder
+experiment is claimed without actual local weights and a completed run.
 
 ## Actual commands and checks
 
@@ -49,10 +54,10 @@ Actual final local output:
 uv run --frozen ruff check .
 All checks passed!
 uv run --frozen black --check .
-57 files would be left unchanged.
+58 files would be left unchanged.
 
 uv run --frozen pytest
-514 passed, 1 warning in 42.53s
+519 passed, 1 warning in 41.01s
 ```
 
 The one warning is the existing Starlette/AnyIO BlockingPortal deprecation, not
@@ -121,7 +126,7 @@ scores are reported as observed. The baseline remains the default.
 ## Acceptance status
 
 - ✅ All remaining implementation layers, commands, tests, UI and packaging supplied.
-- ✅ Final local lint and 514-test suite pass; real text/voice HTTP smoke passes.
+- ✅ Final local lint and 519-test suite pass; real text/voice HTTP smoke passes.
 - ✅ Source attribution, original texts, provenance and failures remain explicit.
 - ✅ No approval pauses or next-task gates retained after the user's instruction.
 - ✅ Scientific measurements that were actually executed are saved and reproducible.
