@@ -1,0 +1,1700 @@
+{
+  "scenario_count": 40,
+  "passed": 33,
+  "failed": 7,
+  "status": "development scenarios; not final gold",
+  "results": [
+    {
+      "id": "check_availability.darija_ar.01",
+      "text": "واش عندكم دوليبران؟",
+      "expected_intent": "check_availability",
+      "passed": true,
+      "prediction": {
+        "request_id": "1cbf06e9-a077-4980-96c2-68f5353c1599",
+        "input": {
+          "modality": "text",
+          "raw_text": "واش عندكم دوليبران؟",
+          "transcript": null,
+          "language": "darija_ar"
+        },
+        "intent": {
+          "label": "check_availability",
+          "confidence": 0.65
+        },
+        "entities": [
+          {
+            "text": "دوليبران",
+            "start": 10,
+            "end": 18,
+            "entity_id": "medication1",
+            "assertion": "affirmed",
+            "confidence": null,
+            "type": "MEDICATION",
+            "normalized": null,
+            "dci": null,
+            "matched_id": null
+          }
+        ],
+        "relations": [],
+        "contains_out_of_scope_request": false,
+        "pharmacy_query": {
+          "needs_pharmacy_info": false,
+          "info_type": null,
+          "location_text": null
+        },
+        "needs_clarification": true,
+        "clarification_question": {
+          "fr": "Pouvez-vous préciser le produit ou la demande ?",
+          "ar": null
+        },
+        "disclaimer": "Cet assistant ne fournit pas de conseil médical.",
+        "latency_ms": 121
+      }
+    },
+    {
+      "id": "request_medication.darija_ar.01",
+      "text": "بغيت جوج علب ديال دوليبران",
+      "expected_intent": "request_medication",
+      "passed": true,
+      "prediction": {
+        "request_id": "cf6f0a7e-7ee6-49e0-aa79-ce86cbbdf805",
+        "input": {
+          "modality": "text",
+          "raw_text": "بغيت جوج علب ديال دوليبران",
+          "transcript": null,
+          "language": "darija_ar"
+        },
+        "intent": {
+          "label": "request_medication",
+          "confidence": 0.65
+        },
+        "entities": [
+          {
+            "text": "دوليبران",
+            "start": 18,
+            "end": 26,
+            "entity_id": "medication1",
+            "assertion": "affirmed",
+            "confidence": null,
+            "type": "MEDICATION",
+            "normalized": null,
+            "dci": null,
+            "matched_id": null
+          }
+        ],
+        "relations": [],
+        "contains_out_of_scope_request": false,
+        "pharmacy_query": {
+          "needs_pharmacy_info": false,
+          "info_type": null,
+          "location_text": null
+        },
+        "needs_clarification": true,
+        "clarification_question": {
+          "fr": "Pouvez-vous préciser le produit ou la demande ?",
+          "ar": null
+        },
+        "disclaimer": "Cet assistant ne fournit pas de conseil médical.",
+        "latency_ms": 113
+      }
+    },
+    {
+      "id": "pharmacy_info_phone.darija_ar.01",
+      "text": "شنو نمرة الصيدلية؟",
+      "expected_intent": "pharmacy_info_phone",
+      "passed": true,
+      "prediction": {
+        "request_id": "15e6e0aa-7921-4c51-a558-f7710f5a9136",
+        "input": {
+          "modality": "text",
+          "raw_text": "شنو نمرة الصيدلية؟",
+          "transcript": null,
+          "language": "darija_ar"
+        },
+        "intent": {
+          "label": "pharmacy_info_phone",
+          "confidence": 0.65
+        },
+        "entities": [],
+        "relations": [],
+        "contains_out_of_scope_request": false,
+        "pharmacy_query": {
+          "needs_pharmacy_info": true,
+          "info_type": "phone",
+          "location_text": null
+        },
+        "needs_clarification": true,
+        "clarification_question": {
+          "fr": "Pouvez-vous préciser le produit ou la demande ?",
+          "ar": null
+        },
+        "disclaimer": "Cet assistant ne fournit pas de conseil médical.",
+        "latency_ms": 0
+      }
+    },
+    {
+      "id": "pharmacy_info_location.darija_ar.01",
+      "text": "فين كاينة الصيدلية؟",
+      "expected_intent": "pharmacy_info_location",
+      "passed": false,
+      "prediction": {
+        "request_id": "437cf5a7-f090-49ac-b6a8-260a147389e3",
+        "input": {
+          "modality": "text",
+          "raw_text": "فين كاينة الصيدلية؟",
+          "transcript": null,
+          "language": "darija_ar"
+        },
+        "intent": {
+          "label": "check_availability",
+          "confidence": 0.65
+        },
+        "entities": [],
+        "relations": [],
+        "contains_out_of_scope_request": false,
+        "pharmacy_query": {
+          "needs_pharmacy_info": false,
+          "info_type": null,
+          "location_text": null
+        },
+        "needs_clarification": true,
+        "clarification_question": {
+          "fr": "Pouvez-vous préciser le produit ou la demande ?",
+          "ar": null
+        },
+        "disclaimer": "Cet assistant ne fournit pas de conseil médical.",
+        "latency_ms": 0
+      }
+    },
+    {
+      "id": "pharmacy_info_hours.darija_ar.01",
+      "text": "الصيدلية محلولة دابا؟",
+      "expected_intent": "pharmacy_info_hours",
+      "passed": false,
+      "prediction": {
+        "request_id": "c125aafd-450a-4a9f-8a28-dc05e8951cb3",
+        "input": {
+          "modality": "text",
+          "raw_text": "الصيدلية محلولة دابا؟",
+          "transcript": null,
+          "language": "darija_ar"
+        },
+        "intent": {
+          "label": "out_of_scope",
+          "confidence": 0.3
+        },
+        "entities": [
+          {
+            "text": "محلولة",
+            "start": 9,
+            "end": 15,
+            "entity_id": "pharmacy_name1",
+            "assertion": "affirmed",
+            "confidence": null,
+            "type": "PHARMACY_NAME",
+            "normalized": null
+          },
+          {
+            "text": "دابا",
+            "start": 16,
+            "end": 20,
+            "entity_id": "time_ref1",
+            "assertion": "affirmed",
+            "confidence": null,
+            "type": "TIME_REF",
+            "normalized": "now"
+          }
+        ],
+        "relations": [],
+        "contains_out_of_scope_request": false,
+        "pharmacy_query": {
+          "needs_pharmacy_info": false,
+          "info_type": null,
+          "location_text": null
+        },
+        "needs_clarification": false,
+        "clarification_question": {
+          "fr": null,
+          "ar": null
+        },
+        "disclaimer": "Cet assistant ne fournit pas de conseil médical.",
+        "latency_ms": 0
+      }
+    },
+    {
+      "id": "out_of_scope.darija_ar.01",
+      "text": "شنو ناخد لوجع الراس؟",
+      "expected_intent": "out_of_scope",
+      "passed": true,
+      "prediction": {
+        "request_id": "1b2cce2c-a70e-4d5d-be84-3da46001481d",
+        "input": {
+          "modality": "text",
+          "raw_text": "شنو ناخد لوجع الراس؟",
+          "transcript": null,
+          "language": "darija_ar"
+        },
+        "intent": {
+          "label": "out_of_scope",
+          "confidence": 0.3
+        },
+        "entities": [],
+        "relations": [],
+        "contains_out_of_scope_request": false,
+        "pharmacy_query": {
+          "needs_pharmacy_info": false,
+          "info_type": null,
+          "location_text": null
+        },
+        "needs_clarification": false,
+        "clarification_question": {
+          "fr": null,
+          "ar": null
+        },
+        "disclaimer": "Cet assistant ne fournit pas de conseil médical.",
+        "latency_ms": 0
+      }
+    },
+    {
+      "id": "price_inquiry.darija_ar.01",
+      "text": "بشحال دوليبران؟",
+      "expected_intent": "price_inquiry",
+      "passed": true,
+      "prediction": {
+        "request_id": "705b6fe8-e247-4aca-bdc5-1d7f358926f1",
+        "input": {
+          "modality": "text",
+          "raw_text": "بشحال دوليبران؟",
+          "transcript": null,
+          "language": "darija_ar"
+        },
+        "intent": {
+          "label": "price_inquiry",
+          "confidence": 0.65
+        },
+        "entities": [
+          {
+            "text": "دوليبران",
+            "start": 6,
+            "end": 14,
+            "entity_id": "medication1",
+            "assertion": "affirmed",
+            "confidence": null,
+            "type": "MEDICATION",
+            "normalized": null,
+            "dci": null,
+            "matched_id": null
+          }
+        ],
+        "relations": [],
+        "contains_out_of_scope_request": false,
+        "pharmacy_query": {
+          "needs_pharmacy_info": false,
+          "info_type": null,
+          "location_text": null
+        },
+        "needs_clarification": true,
+        "clarification_question": {
+          "fr": "Pouvez-vous préciser le produit ou la demande ?",
+          "ar": null
+        },
+        "disclaimer": "Cet assistant ne fournit pas de conseil médical.",
+        "latency_ms": 116
+      }
+    },
+    {
+      "id": "greeting_smalltalk.darija_ar.01",
+      "text": "السلام عليكم",
+      "expected_intent": "greeting_smalltalk",
+      "passed": true,
+      "prediction": {
+        "request_id": "bb115456-54e3-49e1-b046-d45ee1c89118",
+        "input": {
+          "modality": "text",
+          "raw_text": "السلام عليكم",
+          "transcript": null,
+          "language": "darija_ar"
+        },
+        "intent": {
+          "label": "greeting_smalltalk",
+          "confidence": 0.65
+        },
+        "entities": [],
+        "relations": [],
+        "contains_out_of_scope_request": false,
+        "pharmacy_query": {
+          "needs_pharmacy_info": false,
+          "info_type": null,
+          "location_text": null
+        },
+        "needs_clarification": false,
+        "clarification_question": {
+          "fr": null,
+          "ar": null
+        },
+        "disclaimer": "Cet assistant ne fournit pas de conseil médical.",
+        "latency_ms": 1
+      }
+    },
+    {
+      "id": "check_availability.darija_latn.01",
+      "text": "wach kayn Doliprane?",
+      "expected_intent": "check_availability",
+      "passed": true,
+      "prediction": {
+        "request_id": "7ff49409-d5f5-4ca1-9e30-f8a98036834d",
+        "input": {
+          "modality": "text",
+          "raw_text": "wach kayn Doliprane?",
+          "transcript": null,
+          "language": "darija_latn"
+        },
+        "intent": {
+          "label": "check_availability",
+          "confidence": 0.65
+        },
+        "entities": [
+          {
+            "text": "Doliprane",
+            "start": 10,
+            "end": 19,
+            "entity_id": "medication1",
+            "assertion": "affirmed",
+            "confidence": null,
+            "type": "MEDICATION",
+            "normalized": null,
+            "dci": null,
+            "matched_id": null
+          }
+        ],
+        "relations": [],
+        "contains_out_of_scope_request": false,
+        "pharmacy_query": {
+          "needs_pharmacy_info": false,
+          "info_type": null,
+          "location_text": null
+        },
+        "needs_clarification": true,
+        "clarification_question": {
+          "fr": "Pouvez-vous préciser le produit ou la demande ?",
+          "ar": null
+        },
+        "disclaimer": "Cet assistant ne fournit pas de conseil médical.",
+        "latency_ms": 118
+      }
+    },
+    {
+      "id": "request_medication.darija_latn.01",
+      "text": "bghit 2 boites dyal Doliprane",
+      "expected_intent": "request_medication",
+      "passed": true,
+      "prediction": {
+        "request_id": "397fa911-9958-4ef8-a996-36bf006a5669",
+        "input": {
+          "modality": "text",
+          "raw_text": "bghit 2 boites dyal Doliprane",
+          "transcript": null,
+          "language": "darija_latn"
+        },
+        "intent": {
+          "label": "request_medication",
+          "confidence": 0.65
+        },
+        "entities": [
+          {
+            "text": "2 boites",
+            "start": 6,
+            "end": 14,
+            "entity_id": "quantity1",
+            "assertion": "affirmed",
+            "confidence": null,
+            "medication_ref": "medication1",
+            "type": "QUANTITY",
+            "value": 2,
+            "unit": "box"
+          },
+          {
+            "text": "Doliprane",
+            "start": 20,
+            "end": 29,
+            "entity_id": "medication1",
+            "assertion": "affirmed",
+            "confidence": null,
+            "type": "MEDICATION",
+            "normalized": null,
+            "dci": null,
+            "matched_id": null
+          }
+        ],
+        "relations": [
+          {
+            "type": "QUANTITY_OF",
+            "from": "quantity1",
+            "to": "medication1"
+          }
+        ],
+        "contains_out_of_scope_request": false,
+        "pharmacy_query": {
+          "needs_pharmacy_info": false,
+          "info_type": null,
+          "location_text": null
+        },
+        "needs_clarification": true,
+        "clarification_question": {
+          "fr": "Pouvez-vous préciser le produit ou la demande ?",
+          "ar": null
+        },
+        "disclaimer": "Cet assistant ne fournit pas de conseil médical.",
+        "latency_ms": 153
+      }
+    },
+    {
+      "id": "pharmacy_info_phone.darija_latn.01",
+      "text": "chno nemra dyal pharmacie?",
+      "expected_intent": "pharmacy_info_phone",
+      "passed": false,
+      "prediction": {
+        "request_id": "4773cbcf-7b17-4319-9601-3b3d5353c5ef",
+        "input": {
+          "modality": "text",
+          "raw_text": "chno nemra dyal pharmacie?",
+          "transcript": null,
+          "language": "darija_latn"
+        },
+        "intent": {
+          "label": "out_of_scope",
+          "confidence": 0.3
+        },
+        "entities": [],
+        "relations": [],
+        "contains_out_of_scope_request": false,
+        "pharmacy_query": {
+          "needs_pharmacy_info": false,
+          "info_type": null,
+          "location_text": null
+        },
+        "needs_clarification": false,
+        "clarification_question": {
+          "fr": null,
+          "ar": null
+        },
+        "disclaimer": "Cet assistant ne fournit pas de conseil médical.",
+        "latency_ms": 0
+      }
+    },
+    {
+      "id": "pharmacy_info_location.darija_latn.01",
+      "text": "fin kayna pharmacie?",
+      "expected_intent": "pharmacy_info_location",
+      "passed": false,
+      "prediction": {
+        "request_id": "7e33e6ce-d3c5-47e9-99c1-871179dc35db",
+        "input": {
+          "modality": "text",
+          "raw_text": "fin kayna pharmacie?",
+          "transcript": null,
+          "language": "darija_latn"
+        },
+        "intent": {
+          "label": "check_availability",
+          "confidence": 0.65
+        },
+        "entities": [],
+        "relations": [],
+        "contains_out_of_scope_request": false,
+        "pharmacy_query": {
+          "needs_pharmacy_info": false,
+          "info_type": null,
+          "location_text": null
+        },
+        "needs_clarification": true,
+        "clarification_question": {
+          "fr": "Pouvez-vous préciser le produit ou la demande ?",
+          "ar": null
+        },
+        "disclaimer": "Cet assistant ne fournit pas de conseil médical.",
+        "latency_ms": 0
+      }
+    },
+    {
+      "id": "pharmacy_info_hours.darija_latn.01",
+      "text": "pharmacie me7loula daba?",
+      "expected_intent": "pharmacy_info_hours",
+      "passed": false,
+      "prediction": {
+        "request_id": "45ed150e-e441-4c93-aabf-2f645104ee1f",
+        "input": {
+          "modality": "text",
+          "raw_text": "pharmacie me7loula daba?",
+          "transcript": null,
+          "language": "darija_latn"
+        },
+        "intent": {
+          "label": "out_of_scope",
+          "confidence": 0.3
+        },
+        "entities": [
+          {
+            "text": "me7loula daba",
+            "start": 10,
+            "end": 23,
+            "entity_id": "pharmacy_name1",
+            "assertion": "affirmed",
+            "confidence": null,
+            "type": "PHARMACY_NAME",
+            "normalized": null
+          }
+        ],
+        "relations": [],
+        "contains_out_of_scope_request": false,
+        "pharmacy_query": {
+          "needs_pharmacy_info": false,
+          "info_type": null,
+          "location_text": null
+        },
+        "needs_clarification": false,
+        "clarification_question": {
+          "fr": null,
+          "ar": null
+        },
+        "disclaimer": "Cet assistant ne fournit pas de conseil médical.",
+        "latency_ms": 0
+      }
+    },
+    {
+      "id": "out_of_scope.darija_latn.01",
+      "text": "chno nakhod l sda3?",
+      "expected_intent": "out_of_scope",
+      "passed": true,
+      "prediction": {
+        "request_id": "aee060e9-a404-4394-839f-86fee72eb8d6",
+        "input": {
+          "modality": "text",
+          "raw_text": "chno nakhod l sda3?",
+          "transcript": null,
+          "language": "darija_latn"
+        },
+        "intent": {
+          "label": "out_of_scope",
+          "confidence": 0.3
+        },
+        "entities": [],
+        "relations": [],
+        "contains_out_of_scope_request": false,
+        "pharmacy_query": {
+          "needs_pharmacy_info": false,
+          "info_type": null,
+          "location_text": null
+        },
+        "needs_clarification": false,
+        "clarification_question": {
+          "fr": null,
+          "ar": null
+        },
+        "disclaimer": "Cet assistant ne fournit pas de conseil médical.",
+        "latency_ms": 0
+      }
+    },
+    {
+      "id": "price_inquiry.darija_latn.01",
+      "text": "bch7al Doliprane?",
+      "expected_intent": "price_inquiry",
+      "passed": true,
+      "prediction": {
+        "request_id": "1eae9d1a-ad12-4662-b2f0-5d5b82a44a2d",
+        "input": {
+          "modality": "text",
+          "raw_text": "bch7al Doliprane?",
+          "transcript": null,
+          "language": "darija_latn"
+        },
+        "intent": {
+          "label": "price_inquiry",
+          "confidence": 0.65
+        },
+        "entities": [
+          {
+            "text": "Doliprane",
+            "start": 7,
+            "end": 16,
+            "entity_id": "medication1",
+            "assertion": "affirmed",
+            "confidence": null,
+            "type": "MEDICATION",
+            "normalized": null,
+            "dci": null,
+            "matched_id": null
+          }
+        ],
+        "relations": [],
+        "contains_out_of_scope_request": false,
+        "pharmacy_query": {
+          "needs_pharmacy_info": false,
+          "info_type": null,
+          "location_text": null
+        },
+        "needs_clarification": true,
+        "clarification_question": {
+          "fr": "Pouvez-vous préciser le produit ou la demande ?",
+          "ar": null
+        },
+        "disclaimer": "Cet assistant ne fournit pas de conseil médical.",
+        "latency_ms": 112
+      }
+    },
+    {
+      "id": "greeting_smalltalk.darija_latn.01",
+      "text": "salam 3likom",
+      "expected_intent": "greeting_smalltalk",
+      "passed": true,
+      "prediction": {
+        "request_id": "3d4b0dc2-1416-4b3b-ae48-00655102e065",
+        "input": {
+          "modality": "text",
+          "raw_text": "salam 3likom",
+          "transcript": null,
+          "language": "darija_latn"
+        },
+        "intent": {
+          "label": "greeting_smalltalk",
+          "confidence": 0.65
+        },
+        "entities": [],
+        "relations": [],
+        "contains_out_of_scope_request": false,
+        "pharmacy_query": {
+          "needs_pharmacy_info": false,
+          "info_type": null,
+          "location_text": null
+        },
+        "needs_clarification": false,
+        "clarification_question": {
+          "fr": null,
+          "ar": null
+        },
+        "disclaimer": "Cet assistant ne fournit pas de conseil médical.",
+        "latency_ms": 0
+      }
+    },
+    {
+      "id": "check_availability.ar.01",
+      "text": "هل يتوفر دوليبران؟",
+      "expected_intent": "check_availability",
+      "passed": true,
+      "prediction": {
+        "request_id": "f478ead0-c765-4213-bb74-69fbf2eed14b",
+        "input": {
+          "modality": "text",
+          "raw_text": "هل يتوفر دوليبران؟",
+          "transcript": null,
+          "language": "ar"
+        },
+        "intent": {
+          "label": "check_availability",
+          "confidence": 0.65
+        },
+        "entities": [
+          {
+            "text": "دوليبران",
+            "start": 9,
+            "end": 17,
+            "entity_id": "medication1",
+            "assertion": "affirmed",
+            "confidence": null,
+            "type": "MEDICATION",
+            "normalized": null,
+            "dci": null,
+            "matched_id": null
+          }
+        ],
+        "relations": [],
+        "contains_out_of_scope_request": false,
+        "pharmacy_query": {
+          "needs_pharmacy_info": false,
+          "info_type": null,
+          "location_text": null
+        },
+        "needs_clarification": true,
+        "clarification_question": {
+          "fr": "Pouvez-vous préciser le produit ou la demande ?",
+          "ar": null
+        },
+        "disclaimer": "Cet assistant ne fournit pas de conseil médical.",
+        "latency_ms": 113
+      }
+    },
+    {
+      "id": "request_medication.ar.01",
+      "text": "أريد علبتين من دوليبران",
+      "expected_intent": "request_medication",
+      "passed": true,
+      "prediction": {
+        "request_id": "b98f61d3-af26-4d31-9087-193d8f11addb",
+        "input": {
+          "modality": "text",
+          "raw_text": "أريد علبتين من دوليبران",
+          "transcript": null,
+          "language": "ar"
+        },
+        "intent": {
+          "label": "request_medication",
+          "confidence": 0.65
+        },
+        "entities": [
+          {
+            "text": "علبتين",
+            "start": 5,
+            "end": 11,
+            "entity_id": "quantity1",
+            "assertion": "affirmed",
+            "confidence": null,
+            "medication_ref": "medication1",
+            "type": "QUANTITY",
+            "value": 2,
+            "unit": "box"
+          },
+          {
+            "text": "دوليبران",
+            "start": 15,
+            "end": 23,
+            "entity_id": "medication1",
+            "assertion": "affirmed",
+            "confidence": null,
+            "type": "MEDICATION",
+            "normalized": null,
+            "dci": null,
+            "matched_id": null
+          }
+        ],
+        "relations": [
+          {
+            "type": "QUANTITY_OF",
+            "from": "quantity1",
+            "to": "medication1"
+          }
+        ],
+        "contains_out_of_scope_request": false,
+        "pharmacy_query": {
+          "needs_pharmacy_info": false,
+          "info_type": null,
+          "location_text": null
+        },
+        "needs_clarification": true,
+        "clarification_question": {
+          "fr": "Pouvez-vous préciser le produit ou la demande ?",
+          "ar": null
+        },
+        "disclaimer": "Cet assistant ne fournit pas de conseil médical.",
+        "latency_ms": 116
+      }
+    },
+    {
+      "id": "pharmacy_info_phone.ar.01",
+      "text": "ما رقم هاتف الصيدلية؟",
+      "expected_intent": "pharmacy_info_phone",
+      "passed": true,
+      "prediction": {
+        "request_id": "aa14dcfc-0d7d-439a-9c42-352989357ae1",
+        "input": {
+          "modality": "text",
+          "raw_text": "ما رقم هاتف الصيدلية؟",
+          "transcript": null,
+          "language": "ar"
+        },
+        "intent": {
+          "label": "pharmacy_info_phone",
+          "confidence": 0.65
+        },
+        "entities": [],
+        "relations": [],
+        "contains_out_of_scope_request": false,
+        "pharmacy_query": {
+          "needs_pharmacy_info": true,
+          "info_type": "phone",
+          "location_text": null
+        },
+        "needs_clarification": true,
+        "clarification_question": {
+          "fr": "Pouvez-vous préciser le produit ou la demande ?",
+          "ar": null
+        },
+        "disclaimer": "Cet assistant ne fournit pas de conseil médical.",
+        "latency_ms": 0
+      }
+    },
+    {
+      "id": "pharmacy_info_location.ar.01",
+      "text": "أين تقع الصيدلية؟",
+      "expected_intent": "pharmacy_info_location",
+      "passed": true,
+      "prediction": {
+        "request_id": "64c185c8-5c38-48c1-8ce0-28703f76c15d",
+        "input": {
+          "modality": "text",
+          "raw_text": "أين تقع الصيدلية؟",
+          "transcript": null,
+          "language": "ar"
+        },
+        "intent": {
+          "label": "pharmacy_info_location",
+          "confidence": 0.65
+        },
+        "entities": [],
+        "relations": [],
+        "contains_out_of_scope_request": false,
+        "pharmacy_query": {
+          "needs_pharmacy_info": true,
+          "info_type": "location",
+          "location_text": null
+        },
+        "needs_clarification": true,
+        "clarification_question": {
+          "fr": "Pouvez-vous préciser le produit ou la demande ?",
+          "ar": null
+        },
+        "disclaimer": "Cet assistant ne fournit pas de conseil médical.",
+        "latency_ms": 0
+      }
+    },
+    {
+      "id": "pharmacy_info_hours.ar.01",
+      "text": "هل الصيدلية مفتوحة الآن؟",
+      "expected_intent": "pharmacy_info_hours",
+      "passed": true,
+      "prediction": {
+        "request_id": "381b9467-8291-4d42-997f-ad170e339664",
+        "input": {
+          "modality": "text",
+          "raw_text": "هل الصيدلية مفتوحة الآن؟",
+          "transcript": null,
+          "language": "ar"
+        },
+        "intent": {
+          "label": "pharmacy_info_hours",
+          "confidence": 0.65
+        },
+        "entities": [
+          {
+            "text": "مفتوحة الآن",
+            "start": 12,
+            "end": 23,
+            "entity_id": "pharmacy_name1",
+            "assertion": "affirmed",
+            "confidence": null,
+            "type": "PHARMACY_NAME",
+            "normalized": null
+          }
+        ],
+        "relations": [],
+        "contains_out_of_scope_request": false,
+        "pharmacy_query": {
+          "needs_pharmacy_info": true,
+          "info_type": "hours",
+          "location_text": null
+        },
+        "needs_clarification": false,
+        "clarification_question": {
+          "fr": null,
+          "ar": null
+        },
+        "disclaimer": "Cet assistant ne fournit pas de conseil médical.",
+        "latency_ms": 0
+      }
+    },
+    {
+      "id": "out_of_scope.ar.01",
+      "text": "ماذا أتناول لعلاج الصداع؟",
+      "expected_intent": "out_of_scope",
+      "passed": true,
+      "prediction": {
+        "request_id": "d76c9128-eada-439a-be4b-edb7781c27f3",
+        "input": {
+          "modality": "text",
+          "raw_text": "ماذا أتناول لعلاج الصداع؟",
+          "transcript": null,
+          "language": "ar"
+        },
+        "intent": {
+          "label": "out_of_scope",
+          "confidence": 0.3
+        },
+        "entities": [],
+        "relations": [],
+        "contains_out_of_scope_request": false,
+        "pharmacy_query": {
+          "needs_pharmacy_info": false,
+          "info_type": null,
+          "location_text": null
+        },
+        "needs_clarification": false,
+        "clarification_question": {
+          "fr": null,
+          "ar": null
+        },
+        "disclaimer": "Cet assistant ne fournit pas de conseil médical.",
+        "latency_ms": 0
+      }
+    },
+    {
+      "id": "price_inquiry.ar.01",
+      "text": "ما سعر دوليبران؟",
+      "expected_intent": "price_inquiry",
+      "passed": true,
+      "prediction": {
+        "request_id": "47da166d-99c8-471e-b059-b446236e9043",
+        "input": {
+          "modality": "text",
+          "raw_text": "ما سعر دوليبران؟",
+          "transcript": null,
+          "language": "ar"
+        },
+        "intent": {
+          "label": "price_inquiry",
+          "confidence": 0.65
+        },
+        "entities": [
+          {
+            "text": "دوليبران",
+            "start": 7,
+            "end": 15,
+            "entity_id": "medication1",
+            "assertion": "affirmed",
+            "confidence": null,
+            "type": "MEDICATION",
+            "normalized": null,
+            "dci": null,
+            "matched_id": null
+          }
+        ],
+        "relations": [],
+        "contains_out_of_scope_request": false,
+        "pharmacy_query": {
+          "needs_pharmacy_info": false,
+          "info_type": null,
+          "location_text": null
+        },
+        "needs_clarification": true,
+        "clarification_question": {
+          "fr": "Pouvez-vous préciser le produit ou la demande ?",
+          "ar": null
+        },
+        "disclaimer": "Cet assistant ne fournit pas de conseil médical.",
+        "latency_ms": 122
+      }
+    },
+    {
+      "id": "greeting_smalltalk.ar.01",
+      "text": "السلام عليكم ورحمة الله",
+      "expected_intent": "greeting_smalltalk",
+      "passed": true,
+      "prediction": {
+        "request_id": "c99ca3d6-fdae-4f20-9a54-2f50e7f49e86",
+        "input": {
+          "modality": "text",
+          "raw_text": "السلام عليكم ورحمة الله",
+          "transcript": null,
+          "language": "ar"
+        },
+        "intent": {
+          "label": "greeting_smalltalk",
+          "confidence": 0.65
+        },
+        "entities": [],
+        "relations": [],
+        "contains_out_of_scope_request": false,
+        "pharmacy_query": {
+          "needs_pharmacy_info": false,
+          "info_type": null,
+          "location_text": null
+        },
+        "needs_clarification": false,
+        "clarification_question": {
+          "fr": null,
+          "ar": null
+        },
+        "disclaimer": "Cet assistant ne fournit pas de conseil médical.",
+        "latency_ms": 1
+      }
+    },
+    {
+      "id": "check_availability.fr.01",
+      "text": "Avez-vous Doliprane ?",
+      "expected_intent": "check_availability",
+      "passed": true,
+      "prediction": {
+        "request_id": "46430b48-aa14-4bda-8eb6-83336cdfe1cd",
+        "input": {
+          "modality": "text",
+          "raw_text": "Avez-vous Doliprane ?",
+          "transcript": null,
+          "language": "fr"
+        },
+        "intent": {
+          "label": "check_availability",
+          "confidence": 0.65
+        },
+        "entities": [
+          {
+            "text": "Doliprane",
+            "start": 10,
+            "end": 19,
+            "entity_id": "medication1",
+            "assertion": "affirmed",
+            "confidence": null,
+            "type": "MEDICATION",
+            "normalized": null,
+            "dci": null,
+            "matched_id": null
+          }
+        ],
+        "relations": [],
+        "contains_out_of_scope_request": false,
+        "pharmacy_query": {
+          "needs_pharmacy_info": false,
+          "info_type": null,
+          "location_text": null
+        },
+        "needs_clarification": true,
+        "clarification_question": {
+          "fr": "Pouvez-vous préciser le produit ou la demande ?",
+          "ar": null
+        },
+        "disclaimer": "Cet assistant ne fournit pas de conseil médical.",
+        "latency_ms": 113
+      }
+    },
+    {
+      "id": "request_medication.fr.01",
+      "text": "Je voudrais 2 boîtes de Doliprane",
+      "expected_intent": "request_medication",
+      "passed": true,
+      "prediction": {
+        "request_id": "c60a29e2-b045-48ca-a8e7-c90dff5af21b",
+        "input": {
+          "modality": "text",
+          "raw_text": "Je voudrais 2 boîtes de Doliprane",
+          "transcript": null,
+          "language": "fr"
+        },
+        "intent": {
+          "label": "request_medication",
+          "confidence": 0.65
+        },
+        "entities": [
+          {
+            "text": "2 boîtes",
+            "start": 12,
+            "end": 20,
+            "entity_id": "quantity1",
+            "assertion": "affirmed",
+            "confidence": null,
+            "medication_ref": "medication1",
+            "type": "QUANTITY",
+            "value": 2,
+            "unit": "box"
+          },
+          {
+            "text": "Doliprane",
+            "start": 24,
+            "end": 33,
+            "entity_id": "medication1",
+            "assertion": "affirmed",
+            "confidence": null,
+            "type": "MEDICATION",
+            "normalized": null,
+            "dci": null,
+            "matched_id": null
+          }
+        ],
+        "relations": [
+          {
+            "type": "QUANTITY_OF",
+            "from": "quantity1",
+            "to": "medication1"
+          }
+        ],
+        "contains_out_of_scope_request": false,
+        "pharmacy_query": {
+          "needs_pharmacy_info": false,
+          "info_type": null,
+          "location_text": null
+        },
+        "needs_clarification": true,
+        "clarification_question": {
+          "fr": "Pouvez-vous préciser le produit ou la demande ?",
+          "ar": null
+        },
+        "disclaimer": "Cet assistant ne fournit pas de conseil médical.",
+        "latency_ms": 117
+      }
+    },
+    {
+      "id": "pharmacy_info_phone.fr.01",
+      "text": "Quel est le numéro de la pharmacie ?",
+      "expected_intent": "pharmacy_info_phone",
+      "passed": true,
+      "prediction": {
+        "request_id": "78324bbb-21df-4bf3-be73-5f0a9ac1ea67",
+        "input": {
+          "modality": "text",
+          "raw_text": "Quel est le numéro de la pharmacie ?",
+          "transcript": null,
+          "language": "fr"
+        },
+        "intent": {
+          "label": "pharmacy_info_phone",
+          "confidence": 0.65
+        },
+        "entities": [],
+        "relations": [],
+        "contains_out_of_scope_request": false,
+        "pharmacy_query": {
+          "needs_pharmacy_info": true,
+          "info_type": "phone",
+          "location_text": null
+        },
+        "needs_clarification": true,
+        "clarification_question": {
+          "fr": "Pouvez-vous préciser le produit ou la demande ?",
+          "ar": null
+        },
+        "disclaimer": "Cet assistant ne fournit pas de conseil médical.",
+        "latency_ms": 0
+      }
+    },
+    {
+      "id": "pharmacy_info_location.fr.01",
+      "text": "Où se trouve la pharmacie ?",
+      "expected_intent": "pharmacy_info_location",
+      "passed": false,
+      "prediction": {
+        "request_id": "b6a3b444-a9c3-4d07-ad4f-b30f959c9f88",
+        "input": {
+          "modality": "text",
+          "raw_text": "Où se trouve la pharmacie ?",
+          "transcript": null,
+          "language": "fr"
+        },
+        "intent": {
+          "label": "out_of_scope",
+          "confidence": 0.3
+        },
+        "entities": [],
+        "relations": [],
+        "contains_out_of_scope_request": false,
+        "pharmacy_query": {
+          "needs_pharmacy_info": false,
+          "info_type": null,
+          "location_text": null
+        },
+        "needs_clarification": false,
+        "clarification_question": {
+          "fr": null,
+          "ar": null
+        },
+        "disclaimer": "Cet assistant ne fournit pas de conseil médical.",
+        "latency_ms": 0
+      }
+    },
+    {
+      "id": "pharmacy_info_hours.fr.01",
+      "text": "La pharmacie est-elle ouverte maintenant ?",
+      "expected_intent": "pharmacy_info_hours",
+      "passed": true,
+      "prediction": {
+        "request_id": "9d3f151a-922b-43ab-b02f-37abb3757404",
+        "input": {
+          "modality": "text",
+          "raw_text": "La pharmacie est-elle ouverte maintenant ?",
+          "transcript": null,
+          "language": "fr"
+        },
+        "intent": {
+          "label": "pharmacy_info_hours",
+          "confidence": 0.65
+        },
+        "entities": [
+          {
+            "text": "est-elle",
+            "start": 13,
+            "end": 21,
+            "entity_id": "pharmacy_name1",
+            "assertion": "affirmed",
+            "confidence": null,
+            "type": "PHARMACY_NAME",
+            "normalized": null
+          }
+        ],
+        "relations": [],
+        "contains_out_of_scope_request": false,
+        "pharmacy_query": {
+          "needs_pharmacy_info": true,
+          "info_type": "hours",
+          "location_text": null
+        },
+        "needs_clarification": false,
+        "clarification_question": {
+          "fr": null,
+          "ar": null
+        },
+        "disclaimer": "Cet assistant ne fournit pas de conseil médical.",
+        "latency_ms": 0
+      }
+    },
+    {
+      "id": "out_of_scope.fr.01",
+      "text": "Quel médicament prendre contre le mal de tête ?",
+      "expected_intent": "out_of_scope",
+      "passed": true,
+      "prediction": {
+        "request_id": "0cfc22a8-abb5-46ef-a016-efd487512b3c",
+        "input": {
+          "modality": "text",
+          "raw_text": "Quel médicament prendre contre le mal de tête ?",
+          "transcript": null,
+          "language": "fr"
+        },
+        "intent": {
+          "label": "out_of_scope",
+          "confidence": 0.3
+        },
+        "entities": [],
+        "relations": [],
+        "contains_out_of_scope_request": false,
+        "pharmacy_query": {
+          "needs_pharmacy_info": false,
+          "info_type": null,
+          "location_text": null
+        },
+        "needs_clarification": false,
+        "clarification_question": {
+          "fr": null,
+          "ar": null
+        },
+        "disclaimer": "Cet assistant ne fournit pas de conseil médical.",
+        "latency_ms": 0
+      }
+    },
+    {
+      "id": "price_inquiry.fr.01",
+      "text": "Quel est le prix de Doliprane ?",
+      "expected_intent": "price_inquiry",
+      "passed": true,
+      "prediction": {
+        "request_id": "e711bf5c-0b4e-43fe-bb7c-007ae57bd490",
+        "input": {
+          "modality": "text",
+          "raw_text": "Quel est le prix de Doliprane ?",
+          "transcript": null,
+          "language": "fr"
+        },
+        "intent": {
+          "label": "price_inquiry",
+          "confidence": 0.65
+        },
+        "entities": [
+          {
+            "text": "Doliprane",
+            "start": 20,
+            "end": 29,
+            "entity_id": "medication1",
+            "assertion": "affirmed",
+            "confidence": null,
+            "type": "MEDICATION",
+            "normalized": null,
+            "dci": null,
+            "matched_id": null
+          }
+        ],
+        "relations": [],
+        "contains_out_of_scope_request": false,
+        "pharmacy_query": {
+          "needs_pharmacy_info": false,
+          "info_type": null,
+          "location_text": null
+        },
+        "needs_clarification": true,
+        "clarification_question": {
+          "fr": "Pouvez-vous préciser le produit ou la demande ?",
+          "ar": null
+        },
+        "disclaimer": "Cet assistant ne fournit pas de conseil médical.",
+        "latency_ms": 122
+      }
+    },
+    {
+      "id": "greeting_smalltalk.fr.01",
+      "text": "Bonjour",
+      "expected_intent": "greeting_smalltalk",
+      "passed": true,
+      "prediction": {
+        "request_id": "0fa7b943-2a00-40ac-9f31-987d811520ad",
+        "input": {
+          "modality": "text",
+          "raw_text": "Bonjour",
+          "transcript": null,
+          "language": "fr"
+        },
+        "intent": {
+          "label": "greeting_smalltalk",
+          "confidence": 0.65
+        },
+        "entities": [],
+        "relations": [],
+        "contains_out_of_scope_request": false,
+        "pharmacy_query": {
+          "needs_pharmacy_info": false,
+          "info_type": null,
+          "location_text": null
+        },
+        "needs_clarification": false,
+        "clarification_question": {
+          "fr": null,
+          "ar": null
+        },
+        "disclaimer": "Cet assistant ne fournit pas de conseil médical.",
+        "latency_ms": 0
+      }
+    },
+    {
+      "id": "check_availability.mixed.01",
+      "text": "wach kayn Doliprane en stock ?",
+      "expected_intent": "check_availability",
+      "passed": true,
+      "prediction": {
+        "request_id": "2b7f951a-6a8c-4d62-8a98-512c1cd07007",
+        "input": {
+          "modality": "text",
+          "raw_text": "wach kayn Doliprane en stock ?",
+          "transcript": null,
+          "language": "mixed"
+        },
+        "intent": {
+          "label": "check_availability",
+          "confidence": 0.65
+        },
+        "entities": [
+          {
+            "text": "Doliprane",
+            "start": 10,
+            "end": 19,
+            "entity_id": "medication1",
+            "assertion": "affirmed",
+            "confidence": null,
+            "type": "MEDICATION",
+            "normalized": null,
+            "dci": null,
+            "matched_id": null
+          }
+        ],
+        "relations": [],
+        "contains_out_of_scope_request": false,
+        "pharmacy_query": {
+          "needs_pharmacy_info": false,
+          "info_type": null,
+          "location_text": null
+        },
+        "needs_clarification": true,
+        "clarification_question": {
+          "fr": "Pouvez-vous préciser le produit ou la demande ?",
+          "ar": null
+        },
+        "disclaimer": "Cet assistant ne fournit pas de conseil médical.",
+        "latency_ms": 120
+      }
+    },
+    {
+      "id": "request_medication.mixed.01",
+      "text": "bghit 2 boîtes de Doliprane",
+      "expected_intent": "request_medication",
+      "passed": true,
+      "prediction": {
+        "request_id": "715fb253-7ecd-4f06-aa36-4fa1ced7abdc",
+        "input": {
+          "modality": "text",
+          "raw_text": "bghit 2 boîtes de Doliprane",
+          "transcript": null,
+          "language": "mixed"
+        },
+        "intent": {
+          "label": "request_medication",
+          "confidence": 0.65
+        },
+        "entities": [
+          {
+            "text": "2 boîtes",
+            "start": 6,
+            "end": 14,
+            "entity_id": "quantity1",
+            "assertion": "affirmed",
+            "confidence": null,
+            "medication_ref": "medication1",
+            "type": "QUANTITY",
+            "value": 2,
+            "unit": "box"
+          },
+          {
+            "text": "Doliprane",
+            "start": 18,
+            "end": 27,
+            "entity_id": "medication1",
+            "assertion": "affirmed",
+            "confidence": null,
+            "type": "MEDICATION",
+            "normalized": null,
+            "dci": null,
+            "matched_id": null
+          }
+        ],
+        "relations": [
+          {
+            "type": "QUANTITY_OF",
+            "from": "quantity1",
+            "to": "medication1"
+          }
+        ],
+        "contains_out_of_scope_request": false,
+        "pharmacy_query": {
+          "needs_pharmacy_info": false,
+          "info_type": null,
+          "location_text": null
+        },
+        "needs_clarification": true,
+        "clarification_question": {
+          "fr": "Pouvez-vous préciser le produit ou la demande ?",
+          "ar": null
+        },
+        "disclaimer": "Cet assistant ne fournit pas de conseil médical.",
+        "latency_ms": 118
+      }
+    },
+    {
+      "id": "pharmacy_info_phone.mixed.01",
+      "text": "chno le numéro de la pharmacie ?",
+      "expected_intent": "pharmacy_info_phone",
+      "passed": true,
+      "prediction": {
+        "request_id": "7e04509e-9c75-493a-b7c4-7f7c82cc3644",
+        "input": {
+          "modality": "text",
+          "raw_text": "chno le numéro de la pharmacie ?",
+          "transcript": null,
+          "language": "mixed"
+        },
+        "intent": {
+          "label": "pharmacy_info_phone",
+          "confidence": 0.65
+        },
+        "entities": [],
+        "relations": [],
+        "contains_out_of_scope_request": false,
+        "pharmacy_query": {
+          "needs_pharmacy_info": true,
+          "info_type": "phone",
+          "location_text": null
+        },
+        "needs_clarification": true,
+        "clarification_question": {
+          "fr": "Pouvez-vous préciser le produit ou la demande ?",
+          "ar": null
+        },
+        "disclaimer": "Cet assistant ne fournit pas de conseil médical.",
+        "latency_ms": 0
+      }
+    },
+    {
+      "id": "pharmacy_info_location.mixed.01",
+      "text": "fin kayna la pharmacie ?",
+      "expected_intent": "pharmacy_info_location",
+      "passed": false,
+      "prediction": {
+        "request_id": "475335c3-2a31-4623-aa5a-cbb2a79609c1",
+        "input": {
+          "modality": "text",
+          "raw_text": "fin kayna la pharmacie ?",
+          "transcript": null,
+          "language": "mixed"
+        },
+        "intent": {
+          "label": "check_availability",
+          "confidence": 0.65
+        },
+        "entities": [],
+        "relations": [],
+        "contains_out_of_scope_request": false,
+        "pharmacy_query": {
+          "needs_pharmacy_info": false,
+          "info_type": null,
+          "location_text": null
+        },
+        "needs_clarification": true,
+        "clarification_question": {
+          "fr": "Pouvez-vous préciser le produit ou la demande ?",
+          "ar": null
+        },
+        "disclaimer": "Cet assistant ne fournit pas de conseil médical.",
+        "latency_ms": 0
+      }
+    },
+    {
+      "id": "pharmacy_info_hours.mixed.01",
+      "text": "wach la pharmacie ouverte daba ?",
+      "expected_intent": "pharmacy_info_hours",
+      "passed": true,
+      "prediction": {
+        "request_id": "412c21fe-4b11-4668-ad8f-bc87bfe316bf",
+        "input": {
+          "modality": "text",
+          "raw_text": "wach la pharmacie ouverte daba ?",
+          "transcript": null,
+          "language": "mixed"
+        },
+        "intent": {
+          "label": "pharmacy_info_hours",
+          "confidence": 0.65
+        },
+        "entities": [
+          {
+            "text": "daba",
+            "start": 26,
+            "end": 30,
+            "entity_id": "time_ref1",
+            "assertion": "affirmed",
+            "confidence": null,
+            "type": "TIME_REF",
+            "normalized": "now"
+          }
+        ],
+        "relations": [],
+        "contains_out_of_scope_request": false,
+        "pharmacy_query": {
+          "needs_pharmacy_info": true,
+          "info_type": "hours",
+          "location_text": null
+        },
+        "needs_clarification": true,
+        "clarification_question": {
+          "fr": "Pouvez-vous préciser le produit ou la demande ?",
+          "ar": null
+        },
+        "disclaimer": "Cet assistant ne fournit pas de conseil médical.",
+        "latency_ms": 1
+      }
+    },
+    {
+      "id": "out_of_scope.mixed.01",
+      "text": "chno prendre pour le mal de tête ?",
+      "expected_intent": "out_of_scope",
+      "passed": true,
+      "prediction": {
+        "request_id": "40af3a65-66c1-4c70-b890-70c2a4ebd02d",
+        "input": {
+          "modality": "text",
+          "raw_text": "chno prendre pour le mal de tête ?",
+          "transcript": null,
+          "language": "mixed"
+        },
+        "intent": {
+          "label": "out_of_scope",
+          "confidence": 0.3
+        },
+        "entities": [],
+        "relations": [],
+        "contains_out_of_scope_request": false,
+        "pharmacy_query": {
+          "needs_pharmacy_info": false,
+          "info_type": null,
+          "location_text": null
+        },
+        "needs_clarification": false,
+        "clarification_question": {
+          "fr": null,
+          "ar": null
+        },
+        "disclaimer": "Cet assistant ne fournit pas de conseil médical.",
+        "latency_ms": 0
+      }
+    },
+    {
+      "id": "price_inquiry.mixed.01",
+      "text": "bch7al le Doliprane ?",
+      "expected_intent": "price_inquiry",
+      "passed": true,
+      "prediction": {
+        "request_id": "46c2befd-2565-49c5-8e87-829be2759464",
+        "input": {
+          "modality": "text",
+          "raw_text": "bch7al le Doliprane ?",
+          "transcript": null,
+          "language": "mixed"
+        },
+        "intent": {
+          "label": "price_inquiry",
+          "confidence": 0.65
+        },
+        "entities": [
+          {
+            "text": "Doliprane",
+            "start": 10,
+            "end": 19,
+            "entity_id": "medication1",
+            "assertion": "affirmed",
+            "confidence": null,
+            "type": "MEDICATION",
+            "normalized": null,
+            "dci": null,
+            "matched_id": null
+          }
+        ],
+        "relations": [],
+        "contains_out_of_scope_request": false,
+        "pharmacy_query": {
+          "needs_pharmacy_info": false,
+          "info_type": null,
+          "location_text": null
+        },
+        "needs_clarification": true,
+        "clarification_question": {
+          "fr": "Pouvez-vous préciser le produit ou la demande ?",
+          "ar": null
+        },
+        "disclaimer": "Cet assistant ne fournit pas de conseil médical.",
+        "latency_ms": 117
+      }
+    },
+    {
+      "id": "greeting_smalltalk.mixed.01",
+      "text": "salam, bonjour",
+      "expected_intent": "greeting_smalltalk",
+      "passed": true,
+      "prediction": {
+        "request_id": "ca49c2f0-203e-421b-aafc-da4def172078",
+        "input": {
+          "modality": "text",
+          "raw_text": "salam, bonjour",
+          "transcript": null,
+          "language": "mixed"
+        },
+        "intent": {
+          "label": "greeting_smalltalk",
+          "confidence": 0.65
+        },
+        "entities": [],
+        "relations": [],
+        "contains_out_of_scope_request": false,
+        "pharmacy_query": {
+          "needs_pharmacy_info": false,
+          "info_type": null,
+          "location_text": null
+        },
+        "needs_clarification": false,
+        "clarification_question": {
+          "fr": null,
+          "ar": null
+        },
+        "disclaimer": "Cet assistant ne fournit pas de conseil médical.",
+        "latency_ms": 0
+      }
+    }
+  ]
+}
