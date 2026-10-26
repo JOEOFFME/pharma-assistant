@@ -23,7 +23,11 @@ jobs:
           echo "/tmp/pharma-task5-bootstrap/bin" >> "$GITHUB_PATH"
           /tmp/pharma-task5-bootstrap/bin/uv python install 3.11.17
       - name: Install audio decoding tools
-        run: sudo apt-get update && sudo apt-get install -y ffmpeg
+        run: |
+          if ! command -v ffmpeg >/dev/null || ! command -v ffprobe >/dev/null; then
+            sudo apt-get -o Acquire::Retries=1 -o Acquire::http::Timeout=20 update
+            sudo apt-get install -y ffmpeg
+          fi
       - name: Install frozen project dependencies
         run: make install
       - name: Rebuild dataset and verify read-only project checks
