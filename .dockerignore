@@ -1,0 +1,14 @@
+.git
+.venv
+.env
+.env.*
+!.env.example
+tmp
+models
+reports
+__pycache__
+.pytest_cache
+.ruff_cache
+data/medications/*.sqlite3
+data/pharmacies/*.sqlite3
+data/audio/recordings/

@@ -19,7 +19,7 @@ test:
 	$(UV) run --frozen pytest
 
 run:
-	$(UV) run --frozen uvicorn pharma_assistant.api.app:app --host $(HOST) --port $(PORT) --log-level $(LOG_LEVEL)
+	$(UV) run --frozen uvicorn pharma_assistant.api.app:app --host $(HOST) --port $(PORT) --log-level $(LOG_LEVEL) --no-access-log
 
 format:
 	$(UV) run --frozen ruff check --fix .
@@ -49,3 +49,19 @@ fetch-medications:
 .PHONY: dataset
 dataset:
 	$(UV) run --frozen python scripts/dataset_stats.py
+
+.PHONY: baseline-eval train-nlu scenarios speech-install demo
+baseline-eval:
+	$(UV) run --frozen python scripts/evaluate_baseline.py --reviewed-draft
+
+train-nlu:
+	$(UV) run --frozen python scripts/train_nlu.py
+
+scenarios:
+	$(UV) run --frozen python scripts/run_scenarios.py
+
+speech-install:
+	$(UV) sync --frozen --extra speech
+
+demo:
+	$(UV) run --frozen python scripts/start_service.py

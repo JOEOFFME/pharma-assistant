@@ -1,0 +1,12 @@
+services:
+  pharma:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    ports: ["127.0.0.1:8000:8000"]
+    environment:
+      API_KEY: ${API_KEY:-}
+      CORS_ORIGINS: ${CORS_ORIGINS:-}
+      RATE_LIMIT_PER_MINUTE: ${RATE_LIMIT_PER_MINUTE:-120}
+    volumes:
+      - ./models:/app/models:ro

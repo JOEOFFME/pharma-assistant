@@ -1,145 +1,127 @@
-# Pharma Assistant - Challenge 1
+# Pharma Assistant
 
-Arabic, Moroccan Darija (Arabic/Latin script), French, and code-mixed
-patient-pharmacy assistance prototype.
+Arabic, Moroccan Darija, French and mixed-language pharmacy-request prototype.
+It structures requests and searches attributed reference data. It provides **no
+medical advice, dosage recommendations, diagnosis, substitutions or live stock**.
 
-## Current scope: TASK 0-5 preparation
+## Run the demo
 
-Repository scaffolding and an operational FastAPI health endpoint, plus the
-[TASK 1 problem study](docs/01_problem_study.md) and
-[TASK 1 validation report](docs/01_validation.md), the
-[TASK 2 NLU specification](docs/02_nlu_spec.md), typed response models and
-[200 annotation examples](docs/examples/nlu_annotation_examples.md).
-The examples are authored and unreviewed, not a gold dataset. TASK 3 adds a real
-[OSM pharmacy directory](data/pharmacies/README.md), SQLite queries and a generated
-[coverage report](docs/data_pharmacies.md). TASK 4 adds a
-[French BDPM reference fallback](data/medications/README.md), medication matching
-and a 50-query review mini-set. NLU inference, speech and learned-model
-evaluation are later tasks and are not implemented.
-No medical diagnosis, dosage recommendations or substitution advice is provided.
-
-## Prerequisites
-
-- Python 3.11 (the project excludes other minor versions).
-- `uv` package manager, GNU Make and Git on PATH.
-- Internet access for the first interpreter/dependency installation.
-- On Windows, use WSL2 (Ubuntu) for the Make commands below.
-
-The tested uv version is recorded in `docs/00_validation.md`. `uv.lock` pins
-transitive dependencies as well as the exact direct versions in `pyproject.toml`.
-If Python 3.11 is missing, `uv python install 3.11` can provision it.
-
-## Setup and run
+Python 3.11, pinned `uv==0.13.4`, and ffmpeg/ffprobe are required.
 
 ```bash
-cd pharma-assistant
 make install
 make lint
 make test
-make run
+make demo
 ```
 
-`make install` creates `.venv`, installs the frozen lockfile and creates `.env`
-from `.env.example` if absent. Activation is unnecessary. Edit `.env` to change
-HOST, PORT or LOG_LEVEL. These are Make-compatible environment assignments, not
-shell commands. The server runs in the foreground; stop it with Ctrl+C.
-
-In a second terminal:
+Open **http://127.0.0.1:8000/** for the text/audio demo and
+**http://127.0.0.1:8000/docs** for OpenAPI. `make demo` builds missing SQLite
+files from committed public snapshots. It does not scrape or download weights.
+`GET /health` returns exactly `{"status":"ok"}` and a disclaimer header.
 
 ```bash
-curl --fail http://127.0.0.1:8000/health
+curl -X POST http://127.0.0.1:8000/v1/analyze/text \
+  -H 'Content-Type: application/json' \
+  -d '{"text":"wach kayn Doliprane 500 mg?"}'
+curl 'http://127.0.0.1:8000/v1/medications/search?q=dolipran&k=3'
+curl 'http://127.0.0.1:8000/v1/pharmacies/nearby?lat=34.0209&lon=-6.8416&k=3'
 ```
 
-Expected body: `{"status":"ok"}` (HTTP 200). Interactive API docs:
-<http://127.0.0.1:8000/docs>.
+Copy `.env.example` to `.env` (make install does this). Set `API_KEY` to protect
+analysis/search endpoints and send `X-API-Key`. Set `CORS_ORIGINS` to allowed
+browser origins; it is empty by default. `RATE_LIMIT_PER_MINUTE` defaults to 120.
+`user_location` is validated on text requests; nearby searches use explicit
+coordinates in the directory endpoint. Analysis does not invent a geocoded
+LOCATION entity or confirm a directory answer from the hint.
 
-The health response preserves the exact acceptance contract. Its medical
-disclaimer is in the `X-Medical-Disclaimer` header; future analysis responses
-will carry the required JSON `disclaimer` field. Health means process liveness,
-not readiness of a database, model or external service.
-
-## Developer checks
+## Text tracks and evaluation
 
 ```bash
-make format                 # apply formatting and safe lint fixes
-make lint                   # Ruff + Black, read-only
-make test                   # pytest
-make hooks                  # opt-in installation of local pre-commit hooks
-uv run --frozen pre-commit run --all-files
+make medications       # attributed BDPM database + saved 50-query mini-test
+make pharmacies        # attributed OSM directory + coverage report
+make dataset           # reproducible family splits and quality inventory
+make baseline-eval     # explicitly user-reviewed draft, not independent human gold
+make train-nlu          # word/character TF-IDF intent + learned BIO token classifier
+uv run --frozen python scripts/compare_tracks.py
+make scenarios         # 40 multilingual scenarios; failures are retained
+uv run --frozen python scripts/run_ablations.py
 ```
 
-Hooks use the same locked tools as Make. No dependencies or model weights are
-downloaded during app import. The reproducibility seed is `PYTHONHASHSEED=42`
-in `.env.example`; no stochastic model is used in TASK 0.
+Default `NLU_TRACK=baseline`. After `make train-nlu`, `NLU_TRACK=hybrid` uses
+`models/char_wb/model.pkl` (override with `NLU_MODEL_PATH`). Load only trusted
+locally trained pickle files, never uploaded or downloaded arbitrary files.
+The hybrid keeps baseline extraction and safety routing.
 
-## Structure
+`NLU_TRACK=llm` requires an operator-configured `LLM_ENDPOINT` (HTTPS) and
+`LLM_API_KEY`. Adapter contract: POST `{text,schema}`, return a complete v1 JSON
+response. This is provider-neutral, not a drop-in OpenAI chat-completions client.
+Invalid JSON, timeout, unsupported evidence or clinical routing conflict falls
+back to the baseline. `FakeLLM` is test-only; no real-provider scores are claimed.
 
-- `configs/`: model and pipeline YAML configuration in later tasks.
-- `data/{raw,processed,medications,pharmacies,nlu,audio}/`: empty data directories.
-- `src/pharma_assistant/api/`: application factory and health route.
-- `src/pharma_assistant/{asr,nlp,matching,pipeline,data_tools,eval}/`: package skeletons.
-- `tests/`: HTTP and OpenAPI contract tests.
-- `docs/`: validation reports and, later, study/architecture/evaluation.
-- `notebooks/`, `docker/`: reserved for later tasks.
-
-Versioned public source snapshots and annotated development data are included.
-Do not commit personal health data, credentials, models or `.env` files.
-Follow `AGENTS.md`: execute tasks in order, with user validation between them.
-
-## NLU response contract (TASK 2)
+A separate optional local encoder fine-tuning path is available:
 
 ```bash
+uv sync --frozen --extra encoder
+uv run --frozen --extra encoder python scripts/fine_tune_encoder.py \
+  --model-path <licensed-local-encoder-snapshot> --output models/encoder --steps 40
+```
+
+No encoder snapshots were supplied or encoder training results claimed. Two
+lightweight supervised variants were actually trained; their poor intent dev
+scores are preserved. See [evaluation](docs/10_evaluation.md),
+[architecture](docs/architecture.md), and [acceptance checklist](docs/11_checklist.md).
+
+## Voice
+
+```bash
+make speech-install
+uv run --frozen --extra speech python scripts/cache_asr.py
+uv run --frozen --extra speech python scripts/start_service.py
+curl -X POST http://127.0.0.1:8000/v1/analyze/voice -F 'file=@your-recording.wav'
+```
+
+ASR uses CPU/int8 faster-whisper and a pinned multilingual tiny checkpoint.
+The explicit cache step downloads weights; inference uses local files only.
+[Model source/license](https://huggingface.co/Systran/faster-whisper-tiny/tree/d90ca5f).
+The Docker image is text-capable by default; install the speech extra and mount
+complete cached model files/configure a local model directory to enable voice.
+The browser microphone requires localhost or HTTPS and user permission.
+
+Actual model inference was smoke-tested on synthetic flite speech. Its poor
+transcript is retained in [asr_smoke.json](docs/asr_smoke.json); this is not a
+user-recorded benchmark. No WER/CER is claimed without user recordings.
+[Recording protocol and 40 prompts](data/audio/README.md) and
+`scripts/evaluate_speech.py` provide the reproducible evaluation path.
+
+## Data and gold status
+
+The latest user correction/attestation applies to 84 draft messages/intent labels.
+The file `gold_human.jsonl` remains empty. Review annotations retain assistant
+creation provenance and are not silently relabelled human. Entity scores against
+automatic proposals are **provisional agreement**, not verified-gold entity F1.
+Two duplicate greetings are explicitly quarantined in the review queue.
+See [review attestation](docs/draft_review_attestation.json),
+[review table](docs/gold_draft_review.md), [annotation spec](docs/02_nlu_spec.md),
+and [human collection instructions](docs/gold_annotation_howto.md).
+
+BDPM source is France and has no Moroccan PPV/availability. OSM coverage is
+incomplete and live duty status is unknown. No missing facts are manufactured.
+Sources/licenses and coverage: [medications](data/medications/README.md),
+[pharmacies](data/pharmacies/README.md), [problem study](docs/01_problem_study.md).
+
+## Docker and verification
+
+```bash
+docker compose up --build
 make schema
-uv run --frozen pytest tests/test_schemas.py -v
+make lint
+make test
 ```
 
-The JSON Schema is generated from `AnalysisResponse` in
-`src/pharma_assistant/api/schemas.py`. Pydantic also enforces cross-field rules
-that JSON Schema alone does not express. See
-[the specification](docs/02_nlu_spec.md) and
-[TASK 2 validation report](docs/02_validation.md). These define output contracts;
-analysis endpoints are not implemented yet.
-
-## Pharmacy directory (TASK 3)
-
-```bash
-make pharmacies             # build CSV, SQLite, report from committed OSM bytes
-```
-
-The directory is a snapshot from OpenStreetMap, not a live stock or garde feed.
-© OpenStreetMap contributors; source and derived data are under
-[ODbL 1.0](https://opendatacommons.org/licenses/odbl/1-0/). See
-[data instructions](data/pharmacies/README.md),
-[coverage](docs/data_pharmacies.md) and
-[TASK 3 validation report](docs/03_validation.md).
-
-## Medication reference (TASK 4)
-
-```bash
-make medications            # offline catalogue build and 50-query evaluation
-```
-
-France BDPM is used as an explicitly labelled open fallback because the Moroccan
-portal could not be downloaded. It provides no Moroccan availability or PPV.
-Generated Arabic/typo aliases and the query mini-set require review. See
-[the reference report](docs/data_medications.md) and
-[TASK 4 validation](docs/04_validation.md).
-
-## NLU dataset preparation (TASK 5)
-
-```bash
-make dataset
-```
-
-Inputs include 200 assistant-authored build seeds and 100 development-only
-assistant seeds. Augmentation is synthetic and training-only; related template
-families stay together. No development seed is eligible for final evaluation.
-`data/nlu/gold_human.jsonl` is an empty template for separately collected human
-annotations. The previous candidate-to-gold promotion mechanism is removed.
-See [dataset instructions](data/nlu/README.md),
-[human annotation guide](docs/gold_annotation_howto.md), and
-[TASK 5 correction validation](docs/05_validation.md).
-
-Draft span proposals: [review table](docs/gold_draft_review.md) and
-[import/correction instructions](docs/gold_draft_import.md). These unverified
-assistant rows remain separate from human gold and all train/evaluation inputs.
+Docker binds localhost:8000. CI runs frozen installation, schema/data
+reproducibility, lint, tests and an image build. Local Docker verification is
+reported separately from CI because this workspace has no Docker executable.
+No secrets, real patient data, model weights or generated user recordings belong
+in git. See [final Validation Report](docs/11_validation.md) for actual checks,
+remaining externally dependent validations and exact measured results.
