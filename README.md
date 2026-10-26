@@ -3,9 +3,11 @@
 Arabic, Moroccan Darija (Arabic/Latin script), French, and code-mixed
 patient-pharmacy assistance prototype.
 
-## Current scope: TASK 0
+## Current scope: TASK 0 implementation and TASK 1 study
 
-Repository scaffolding and an operational FastAPI health endpoint. NLU, speech,
+Repository scaffolding and an operational FastAPI health endpoint, plus the
+[TASK 1 problem study](docs/01_problem_study.md) and
+[validation report](docs/01_validation.md). NLU, speech,
 medication data, pharmacy data and evaluation are later tasks and are not implemented.
 No medical diagnosis, dosage recommendations or substitution advice is provided.
 
