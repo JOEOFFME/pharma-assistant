@@ -1,0 +1,268 @@
+{
+  "baseline": {
+    "rows": 50,
+    "intent_accuracy": 0.74,
+    "intent_macro_f1": 0.7507763975155279,
+    "intent_confusion": {
+      "check_availability": {
+        "check_availability": 10,
+        "request_medication": 0,
+        "pharmacy_info_phone": 0,
+        "pharmacy_info_location": 0,
+        "pharmacy_info_hours": 0,
+        "price_inquiry": 0,
+        "greeting_smalltalk": 0,
+        "out_of_scope": 0
+      },
+      "request_medication": {
+        "check_availability": 0,
+        "request_medication": 4,
+        "pharmacy_info_phone": 0,
+        "pharmacy_info_location": 0,
+        "pharmacy_info_hours": 0,
+        "price_inquiry": 0,
+        "greeting_smalltalk": 0,
+        "out_of_scope": 1
+      },
+      "pharmacy_info_phone": {
+        "check_availability": 0,
+        "request_medication": 0,
+        "pharmacy_info_phone": 4,
+        "pharmacy_info_location": 0,
+        "pharmacy_info_hours": 0,
+        "price_inquiry": 0,
+        "greeting_smalltalk": 0,
+        "out_of_scope": 1
+      },
+      "pharmacy_info_location": {
+        "check_availability": 0,
+        "request_medication": 0,
+        "pharmacy_info_phone": 0,
+        "pharmacy_info_location": 4,
+        "pharmacy_info_hours": 0,
+        "price_inquiry": 0,
+        "greeting_smalltalk": 0,
+        "out_of_scope": 1
+      },
+      "pharmacy_info_hours": {
+        "check_availability": 0,
+        "request_medication": 0,
+        "pharmacy_info_phone": 0,
+        "pharmacy_info_location": 0,
+        "pharmacy_info_hours": 1,
+        "price_inquiry": 0,
+        "greeting_smalltalk": 0,
+        "out_of_scope": 4
+      },
+      "price_inquiry": {
+        "check_availability": 0,
+        "request_medication": 0,
+        "pharmacy_info_phone": 0,
+        "pharmacy_info_location": 0,
+        "pharmacy_info_hours": 0,
+        "price_inquiry": 4,
+        "greeting_smalltalk": 0,
+        "out_of_scope": 6
+      },
+      "greeting_smalltalk": {
+        "check_availability": 0,
+        "request_medication": 0,
+        "pharmacy_info_phone": 0,
+        "pharmacy_info_location": 0,
+        "pharmacy_info_hours": 0,
+        "price_inquiry": 0,
+        "greeting_smalltalk": 5,
+        "out_of_scope": 0
+      },
+      "out_of_scope": {
+        "check_availability": 0,
+        "request_medication": 0,
+        "pharmacy_info_phone": 0,
+        "pharmacy_info_location": 0,
+        "pharmacy_info_hours": 0,
+        "price_inquiry": 0,
+        "greeting_smalltalk": 0,
+        "out_of_scope": 5
+      }
+    },
+    "entity_exact_micro": {
+      "tp": 40,
+      "fp": 2,
+      "fn": 0,
+      "precision": 0.9523809523809523,
+      "recall": 1.0,
+      "f1": 0.975609756097561
+    },
+    "entity_by_type": {
+      "DOSAGE": {
+        "tp": 5,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "FORM": {
+        "tp": 0,
+        "fp": 2,
+        "fn": 0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "LOCATION": {
+        "tp": 5,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "MEDICATION": {
+        "tp": 30,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      }
+    }
+  },
+  "hybrid": {
+    "rows": 50,
+    "intent_accuracy": 0.74,
+    "intent_macro_f1": 0.7507763975155279,
+    "intent_confusion": {
+      "check_availability": {
+        "check_availability": 10,
+        "request_medication": 0,
+        "pharmacy_info_phone": 0,
+        "pharmacy_info_location": 0,
+        "pharmacy_info_hours": 0,
+        "price_inquiry": 0,
+        "greeting_smalltalk": 0,
+        "out_of_scope": 0
+      },
+      "request_medication": {
+        "check_availability": 0,
+        "request_medication": 4,
+        "pharmacy_info_phone": 0,
+        "pharmacy_info_location": 0,
+        "pharmacy_info_hours": 0,
+        "price_inquiry": 0,
+        "greeting_smalltalk": 0,
+        "out_of_scope": 1
+      },
+      "pharmacy_info_phone": {
+        "check_availability": 0,
+        "request_medication": 0,
+        "pharmacy_info_phone": 4,
+        "pharmacy_info_location": 0,
+        "pharmacy_info_hours": 0,
+        "price_inquiry": 0,
+        "greeting_smalltalk": 0,
+        "out_of_scope": 1
+      },
+      "pharmacy_info_location": {
+        "check_availability": 0,
+        "request_medication": 0,
+        "pharmacy_info_phone": 0,
+        "pharmacy_info_location": 4,
+        "pharmacy_info_hours": 0,
+        "price_inquiry": 0,
+        "greeting_smalltalk": 0,
+        "out_of_scope": 1
+      },
+      "pharmacy_info_hours": {
+        "check_availability": 0,
+        "request_medication": 0,
+        "pharmacy_info_phone": 0,
+        "pharmacy_info_location": 0,
+        "pharmacy_info_hours": 1,
+        "price_inquiry": 0,
+        "greeting_smalltalk": 0,
+        "out_of_scope": 4
+      },
+      "price_inquiry": {
+        "check_availability": 0,
+        "request_medication": 0,
+        "pharmacy_info_phone": 0,
+        "pharmacy_info_location": 0,
+        "pharmacy_info_hours": 0,
+        "price_inquiry": 4,
+        "greeting_smalltalk": 0,
+        "out_of_scope": 6
+      },
+      "greeting_smalltalk": {
+        "check_availability": 0,
+        "request_medication": 0,
+        "pharmacy_info_phone": 0,
+        "pharmacy_info_location": 0,
+        "pharmacy_info_hours": 0,
+        "price_inquiry": 0,
+        "greeting_smalltalk": 5,
+        "out_of_scope": 0
+      },
+      "out_of_scope": {
+        "check_availability": 0,
+        "request_medication": 0,
+        "pharmacy_info_phone": 0,
+        "pharmacy_info_location": 0,
+        "pharmacy_info_hours": 0,
+        "price_inquiry": 0,
+        "greeting_smalltalk": 0,
+        "out_of_scope": 5
+      }
+    },
+    "entity_exact_micro": {
+      "tp": 40,
+      "fp": 2,
+      "fn": 0,
+      "precision": 0.9523809523809523,
+      "recall": 1.0,
+      "f1": 0.975609756097561
+    },
+    "entity_by_type": {
+      "DOSAGE": {
+        "tp": 5,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "FORM": {
+        "tp": 0,
+        "fp": 2,
+        "fn": 0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "LOCATION": {
+        "tp": 5,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "MEDICATION": {
+        "tp": 30,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      }
+    }
+  },
+  "llm": {
+    "status": "not_run",
+    "reason": "No real provider credentials configured; FakeLLM is tests only"
+  },
+  "encoder": {
+    "status": "not_run",
+    "reason": "No local pretrained encoder snapshots supplied; optional fine-tuning command provided"
+  }
+}

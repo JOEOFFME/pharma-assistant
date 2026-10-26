@@ -1,0 +1,2244 @@
+{
+  "word": {
+    "rows": 50,
+    "intent_accuracy": 0.24,
+    "intent_macro_f1": 0.1938034188034188,
+    "intent_confusion": {
+      "check_availability": {
+        "check_availability": 5,
+        "request_medication": 0,
+        "pharmacy_info_phone": 0,
+        "pharmacy_info_location": 0,
+        "pharmacy_info_hours": 0,
+        "price_inquiry": 5,
+        "greeting_smalltalk": 0,
+        "out_of_scope": 0
+      },
+      "request_medication": {
+        "check_availability": 2,
+        "request_medication": 3,
+        "pharmacy_info_phone": 0,
+        "pharmacy_info_location": 0,
+        "pharmacy_info_hours": 0,
+        "price_inquiry": 0,
+        "greeting_smalltalk": 0,
+        "out_of_scope": 0
+      },
+      "pharmacy_info_phone": {
+        "check_availability": 1,
+        "request_medication": 0,
+        "pharmacy_info_phone": 2,
+        "pharmacy_info_location": 0,
+        "pharmacy_info_hours": 0,
+        "price_inquiry": 2,
+        "greeting_smalltalk": 0,
+        "out_of_scope": 0
+      },
+      "pharmacy_info_location": {
+        "check_availability": 3,
+        "request_medication": 0,
+        "pharmacy_info_phone": 1,
+        "pharmacy_info_location": 1,
+        "pharmacy_info_hours": 0,
+        "price_inquiry": 0,
+        "greeting_smalltalk": 0,
+        "out_of_scope": 0
+      },
+      "pharmacy_info_hours": {
+        "check_availability": 1,
+        "request_medication": 0,
+        "pharmacy_info_phone": 0,
+        "pharmacy_info_location": 4,
+        "pharmacy_info_hours": 0,
+        "price_inquiry": 0,
+        "greeting_smalltalk": 0,
+        "out_of_scope": 0
+      },
+      "price_inquiry": {
+        "check_availability": 9,
+        "request_medication": 0,
+        "pharmacy_info_phone": 0,
+        "pharmacy_info_location": 0,
+        "pharmacy_info_hours": 0,
+        "price_inquiry": 1,
+        "greeting_smalltalk": 0,
+        "out_of_scope": 0
+      },
+      "greeting_smalltalk": {
+        "check_availability": 5,
+        "request_medication": 0,
+        "pharmacy_info_phone": 0,
+        "pharmacy_info_location": 0,
+        "pharmacy_info_hours": 0,
+        "price_inquiry": 0,
+        "greeting_smalltalk": 0,
+        "out_of_scope": 0
+      },
+      "out_of_scope": {
+        "check_availability": 0,
+        "request_medication": 5,
+        "pharmacy_info_phone": 0,
+        "pharmacy_info_location": 0,
+        "pharmacy_info_hours": 0,
+        "price_inquiry": 0,
+        "greeting_smalltalk": 0,
+        "out_of_scope": 0
+      }
+    },
+    "entity_exact_micro": {
+      "tp": 36,
+      "fp": 0,
+      "fn": 4,
+      "precision": 1.0,
+      "recall": 0.9,
+      "f1": 0.9473684210526315
+    },
+    "entity_by_type": {
+      "DOSAGE": {
+        "tp": 5,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "LOCATION": {
+        "tp": 5,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "MEDICATION": {
+        "tp": 26,
+        "fp": 0,
+        "fn": 4,
+        "precision": 1.0,
+        "recall": 0.8666666666666667,
+        "f1": 0.9285714285714286
+      }
+    },
+    "examples": [
+      {
+        "id": "check_availability.ar.01",
+        "text": "هل يتوفر دوليبران؟",
+        "expected_intent": "check_availability",
+        "prediction": {
+          "input": {
+            "raw_text": "هل يتوفر دوليبران؟"
+          },
+          "intent": {
+            "label": "check_availability",
+            "confidence": 0.5790695897818886
+          },
+          "entities": [
+            {
+              "type": "MEDICATION",
+              "text": "دوليبران",
+              "start": 9,
+              "end": 17
+            }
+          ]
+        }
+      },
+      {
+        "id": "check_availability.ar.04",
+        "text": "هل يتوفر دوليبران 500 mg؟",
+        "expected_intent": "check_availability",
+        "prediction": {
+          "input": {
+            "raw_text": "هل يتوفر دوليبران 500 mg؟"
+          },
+          "intent": {
+            "label": "price_inquiry",
+            "confidence": 0.5723592254914217
+          },
+          "entities": [
+            {
+              "type": "MEDICATION",
+              "text": "دوليبران",
+              "start": 9,
+              "end": 17
+            },
+            {
+              "type": "DOSAGE",
+              "text": "500 mg",
+              "start": 18,
+              "end": 24
+            }
+          ]
+        }
+      },
+      {
+        "id": "check_availability.darija_ar.01",
+        "text": "واش عندكم دوليبران؟",
+        "expected_intent": "check_availability",
+        "prediction": {
+          "input": {
+            "raw_text": "واش عندكم دوليبران؟"
+          },
+          "intent": {
+            "label": "check_availability",
+            "confidence": 0.4877550726150135
+          },
+          "entities": [
+            {
+              "type": "MEDICATION",
+              "text": "دوليبران",
+              "start": 10,
+              "end": 18
+            }
+          ]
+        }
+      },
+      {
+        "id": "check_availability.darija_ar.04",
+        "text": "باقي عندكم دوليبران 500 mg؟",
+        "expected_intent": "check_availability",
+        "prediction": {
+          "input": {
+            "raw_text": "باقي عندكم دوليبران 500 mg؟"
+          },
+          "intent": {
+            "label": "price_inquiry",
+            "confidence": 0.4855139842745966
+          },
+          "entities": [
+            {
+              "type": "MEDICATION",
+              "text": "دوليبران",
+              "start": 11,
+              "end": 19
+            },
+            {
+              "type": "DOSAGE",
+              "text": "500 mg",
+              "start": 20,
+              "end": 26
+            }
+          ]
+        }
+      },
+      {
+        "id": "check_availability.darija_latn.01",
+        "text": "wach kayn Doliprane?",
+        "expected_intent": "check_availability",
+        "prediction": {
+          "input": {
+            "raw_text": "wach kayn Doliprane?"
+          },
+          "intent": {
+            "label": "check_availability",
+            "confidence": 0.4363765022995267
+          },
+          "entities": [
+            {
+              "type": "MEDICATION",
+              "text": "Doliprane",
+              "start": 10,
+              "end": 19
+            }
+          ]
+        }
+      },
+      {
+        "id": "check_availability.darija_latn.04",
+        "text": "ba9i kayn Doliprane 500 mg?",
+        "expected_intent": "check_availability",
+        "prediction": {
+          "input": {
+            "raw_text": "ba9i kayn Doliprane 500 mg?"
+          },
+          "intent": {
+            "label": "price_inquiry",
+            "confidence": 0.5710818943305457
+          },
+          "entities": [
+            {
+              "type": "MEDICATION",
+              "text": "Doliprane",
+              "start": 10,
+              "end": 19
+            },
+            {
+              "type": "DOSAGE",
+              "text": "500 mg",
+              "start": 20,
+              "end": 26
+            }
+          ]
+        }
+      },
+      {
+        "id": "check_availability.fr.01",
+        "text": "Avez-vous Doliprane ?",
+        "expected_intent": "check_availability",
+        "prediction": {
+          "input": {
+            "raw_text": "Avez-vous Doliprane ?"
+          },
+          "intent": {
+            "label": "check_availability",
+            "confidence": 0.2737689623335351
+          },
+          "entities": [
+            {
+              "type": "MEDICATION",
+              "text": "Doliprane",
+              "start": 10,
+              "end": 19
+            }
+          ]
+        }
+      },
+      {
+        "id": "check_availability.fr.04",
+        "text": "Avez-vous Doliprane 500 mg ?",
+        "expected_intent": "check_availability",
+        "prediction": {
+          "input": {
+            "raw_text": "Avez-vous Doliprane 500 mg ?"
+          },
+          "intent": {
+            "label": "price_inquiry",
+            "confidence": 0.6805207813393478
+          },
+          "entities": [
+            {
+              "type": "MEDICATION",
+              "text": "Doliprane",
+              "start": 10,
+              "end": 19
+            },
+            {
+              "type": "DOSAGE",
+              "text": "500 mg",
+              "start": 20,
+              "end": 26
+            }
+          ]
+        }
+      },
+      {
+        "id": "check_availability.mixed.01",
+        "text": "wach kayn Doliprane en stock ?",
+        "expected_intent": "check_availability",
+        "prediction": {
+          "input": {
+            "raw_text": "wach kayn Doliprane en stock ?"
+          },
+          "intent": {
+            "label": "check_availability",
+            "confidence": 0.6441790287638479
+          },
+          "entities": [
+            {
+              "type": "MEDICATION",
+              "text": "Doliprane",
+              "start": 10,
+              "end": 19
+            }
+          ]
+        }
+      },
+      {
+        "id": "check_availability.mixed.04",
+        "text": "واش Doliprane 500 mg disponible ?",
+        "expected_intent": "check_availability",
+        "prediction": {
+          "input": {
+            "raw_text": "واش Doliprane 500 mg disponible ?"
+          },
+          "intent": {
+            "label": "price_inquiry",
+            "confidence": 0.49115689354388997
+          },
+          "entities": [
+            {
+              "type": "MEDICATION",
+              "text": "Doliprane",
+              "start": 4,
+              "end": 13
+            },
+            {
+              "type": "DOSAGE",
+              "text": "500 mg",
+              "start": 14,
+              "end": 20
+            }
+          ]
+        }
+      },
+      {
+        "id": "greeting_smalltalk.ar.01",
+        "text": "السلام عليكم ورحمة الله",
+        "expected_intent": "greeting_smalltalk",
+        "prediction": {
+          "input": {
+            "raw_text": "السلام عليكم ورحمة الله"
+          },
+          "intent": {
+            "label": "check_availability",
+            "confidence": 0.27143867068421057
+          },
+          "entities": []
+        }
+      },
+      {
+        "id": "greeting_smalltalk.darija_ar.01",
+        "text": "السلام عليكم",
+        "expected_intent": "greeting_smalltalk",
+        "prediction": {
+          "input": {
+            "raw_text": "السلام عليكم"
+          },
+          "intent": {
+            "label": "check_availability",
+            "confidence": 0.27143867068421057
+          },
+          "entities": []
+        }
+      },
+      {
+        "id": "greeting_smalltalk.darija_latn.01",
+        "text": "salam 3likom",
+        "expected_intent": "greeting_smalltalk",
+        "prediction": {
+          "input": {
+            "raw_text": "salam 3likom"
+          },
+          "intent": {
+            "label": "check_availability",
+            "confidence": 0.22793482201335621
+          },
+          "entities": []
+        }
+      },
+      {
+        "id": "greeting_smalltalk.fr.01",
+        "text": "Bonjour",
+        "expected_intent": "greeting_smalltalk",
+        "prediction": {
+          "input": {
+            "raw_text": "Bonjour"
+          },
+          "intent": {
+            "label": "check_availability",
+            "confidence": 0.2570696318209951
+          },
+          "entities": []
+        }
+      },
+      {
+        "id": "greeting_smalltalk.mixed.01",
+        "text": "salam, bonjour",
+        "expected_intent": "greeting_smalltalk",
+        "prediction": {
+          "input": {
+            "raw_text": "salam, bonjour"
+          },
+          "intent": {
+            "label": "check_availability",
+            "confidence": 0.2291319043169807
+          },
+          "entities": []
+        }
+      },
+      {
+        "id": "out_of_scope.ar.02",
+        "text": "كم حبة من دوليبران يجب أن أتناول؟",
+        "expected_intent": "out_of_scope",
+        "prediction": {
+          "input": {
+            "raw_text": "كم حبة من دوليبران يجب أن أتناول؟"
+          },
+          "intent": {
+            "label": "request_medication",
+            "confidence": 0.4031565917356664
+          },
+          "entities": [
+            {
+              "type": "MEDICATION",
+              "text": "دوليبران",
+              "start": 10,
+              "end": 18
+            }
+          ]
+        }
+      },
+      {
+        "id": "out_of_scope.darija_ar.02",
+        "text": "شحال من حبة ناخد ديال دوليبران؟",
+        "expected_intent": "out_of_scope",
+        "prediction": {
+          "input": {
+            "raw_text": "شحال من حبة ناخد ديال دوليبران؟"
+          },
+          "intent": {
+            "label": "request_medication",
+            "confidence": 0.49420869556911234
+          },
+          "entities": [
+            {
+              "type": "MEDICATION",
+              "text": "دوليبران",
+              "start": 22,
+              "end": 30
+            }
+          ]
+        }
+      },
+      {
+        "id": "out_of_scope.darija_latn.02",
+        "text": "ch7al men 7ebba nakhod dyal Doliprane?",
+        "expected_intent": "out_of_scope",
+        "prediction": {
+          "input": {
+            "raw_text": "ch7al men 7ebba nakhod dyal Doliprane?"
+          },
+          "intent": {
+            "label": "request_medication",
+            "confidence": 0.354251571305216
+          },
+          "entities": [
+            {
+              "type": "MEDICATION",
+              "text": "Doliprane",
+              "start": 28,
+              "end": 37
+            }
+          ]
+        }
+      },
+      {
+        "id": "out_of_scope.fr.02",
+        "text": "Combien de comprimés de Doliprane dois-je prendre ?",
+        "expected_intent": "out_of_scope",
+        "prediction": {
+          "input": {
+            "raw_text": "Combien de comprimés de Doliprane dois-je prendre ?"
+          },
+          "intent": {
+            "label": "request_medication",
+            "confidence": 0.5031277067619934
+          },
+          "entities": [
+            {
+              "type": "MEDICATION",
+              "text": "Doliprane",
+              "start": 24,
+              "end": 33
+            }
+          ]
+        }
+      },
+      {
+        "id": "out_of_scope.mixed.02",
+        "text": "شحال de comprimés de Doliprane ناخد؟",
+        "expected_intent": "out_of_scope",
+        "prediction": {
+          "input": {
+            "raw_text": "شحال de comprimés de Doliprane ناخد؟"
+          },
+          "intent": {
+            "label": "request_medication",
+            "confidence": 0.3517726200171562
+          },
+          "entities": [
+            {
+              "type": "MEDICATION",
+              "text": "Doliprane",
+              "start": 21,
+              "end": 30
+            }
+          ]
+        }
+      },
+      {
+        "id": "pharmacy_info_hours.ar.02",
+        "text": "متى تغلق الصيدلية؟",
+        "expected_intent": "pharmacy_info_hours",
+        "prediction": {
+          "input": {
+            "raw_text": "متى تغلق الصيدلية؟"
+          },
+          "intent": {
+            "label": "check_availability",
+            "confidence": 0.2047526247296956
+          },
+          "entities": []
+        }
+      },
+      {
+        "id": "pharmacy_info_hours.darija_ar.02",
+        "text": "فوقاش كتسد الصيدلية؟",
+        "expected_intent": "pharmacy_info_hours",
+        "prediction": {
+          "input": {
+            "raw_text": "فوقاش كتسد الصيدلية؟"
+          },
+          "intent": {
+            "label": "pharmacy_info_location",
+            "confidence": 0.18146440786794218
+          },
+          "entities": []
+        }
+      },
+      {
+        "id": "pharmacy_info_hours.darija_latn.02",
+        "text": "fo9ach katsed pharmacie?",
+        "expected_intent": "pharmacy_info_hours",
+        "prediction": {
+          "input": {
+            "raw_text": "fo9ach katsed pharmacie?"
+          },
+          "intent": {
+            "label": "pharmacy_info_location",
+            "confidence": 0.2294852981372718
+          },
+          "entities": []
+        }
+      },
+      {
+        "id": "pharmacy_info_hours.fr.02",
+        "text": "À quelle heure ferme la pharmacie ?",
+        "expected_intent": "pharmacy_info_hours",
+        "prediction": {
+          "input": {
+            "raw_text": "À quelle heure ferme la pharmacie ?"
+          },
+          "intent": {
+            "label": "pharmacy_info_location",
+            "confidence": 0.19825211265785497
+          },
+          "entities": []
+        }
+      },
+      {
+        "id": "pharmacy_info_hours.mixed.02",
+        "text": "فوقاش ferme la pharmacie ?",
+        "expected_intent": "pharmacy_info_hours",
+        "prediction": {
+          "input": {
+            "raw_text": "فوقاش ferme la pharmacie ?"
+          },
+          "intent": {
+            "label": "pharmacy_info_location",
+            "confidence": 0.2616185420158532
+          },
+          "entities": []
+        }
+      },
+      {
+        "id": "pharmacy_info_location.ar.03",
+        "text": "أين أقرب صيدلية في الرباط؟",
+        "expected_intent": "pharmacy_info_location",
+        "prediction": {
+          "input": {
+            "raw_text": "أين أقرب صيدلية في الرباط؟"
+          },
+          "intent": {
+            "label": "check_availability",
+            "confidence": 0.20602566842726727
+          },
+          "entities": [
+            {
+              "type": "LOCATION",
+              "text": "الرباط",
+              "start": 19,
+              "end": 25
+            }
+          ]
+        }
+      },
+      {
+        "id": "pharmacy_info_location.darija_ar.03",
+        "text": "فين أقرب صيدلية ف الرباط؟",
+        "expected_intent": "pharmacy_info_location",
+        "prediction": {
+          "input": {
+            "raw_text": "فين أقرب صيدلية ف الرباط؟"
+          },
+          "intent": {
+            "label": "check_availability",
+            "confidence": 0.21218938536032345
+          },
+          "entities": [
+            {
+              "type": "LOCATION",
+              "text": "الرباط",
+              "start": 18,
+              "end": 24
+            }
+          ]
+        }
+      },
+      {
+        "id": "pharmacy_info_location.darija_latn.03",
+        "text": "fin a9rab pharmacie f Rabat?",
+        "expected_intent": "pharmacy_info_location",
+        "prediction": {
+          "input": {
+            "raw_text": "fin a9rab pharmacie f Rabat?"
+          },
+          "intent": {
+            "label": "pharmacy_info_phone",
+            "confidence": 0.2425472637853234
+          },
+          "entities": [
+            {
+              "type": "LOCATION",
+              "text": "Rabat",
+              "start": 22,
+              "end": 27
+            }
+          ]
+        }
+      },
+      {
+        "id": "pharmacy_info_location.fr.03",
+        "text": "Où est la pharmacie la plus proche à Rabat ?",
+        "expected_intent": "pharmacy_info_location",
+        "prediction": {
+          "input": {
+            "raw_text": "Où est la pharmacie la plus proche à Rabat ?"
+          },
+          "intent": {
+            "label": "pharmacy_info_location",
+            "confidence": 0.1961692873235547
+          },
+          "entities": [
+            {
+              "type": "LOCATION",
+              "text": "Rabat",
+              "start": 37,
+              "end": 42
+            }
+          ]
+        }
+      },
+      {
+        "id": "pharmacy_info_location.mixed.03",
+        "text": "Où est a9rab pharmacie f Rabat ?",
+        "expected_intent": "pharmacy_info_location",
+        "prediction": {
+          "input": {
+            "raw_text": "Où est a9rab pharmacie f Rabat ?"
+          },
+          "intent": {
+            "label": "check_availability",
+            "confidence": 0.2350537053383153
+          },
+          "entities": [
+            {
+              "type": "LOCATION",
+              "text": "Rabat",
+              "start": 25,
+              "end": 30
+            }
+          ]
+        }
+      },
+      {
+        "id": "pharmacy_info_phone.ar.01",
+        "text": "ما رقم هاتف الصيدلية؟",
+        "expected_intent": "pharmacy_info_phone",
+        "prediction": {
+          "input": {
+            "raw_text": "ما رقم هاتف الصيدلية؟"
+          },
+          "intent": {
+            "label": "price_inquiry",
+            "confidence": 0.26217189127982676
+          },
+          "entities": []
+        }
+      },
+      {
+        "id": "pharmacy_info_phone.darija_ar.01",
+        "text": "شنو نمرة الصيدلية؟",
+        "expected_intent": "pharmacy_info_phone",
+        "prediction": {
+          "input": {
+            "raw_text": "شنو نمرة الصيدلية؟"
+          },
+          "intent": {
+            "label": "check_availability",
+            "confidence": 0.20380720165978947
+          },
+          "entities": []
+        }
+      },
+      {
+        "id": "pharmacy_info_phone.darija_latn.01",
+        "text": "chno nemra dyal pharmacie?",
+        "expected_intent": "pharmacy_info_phone",
+        "prediction": {
+          "input": {
+            "raw_text": "chno nemra dyal pharmacie?"
+          },
+          "intent": {
+            "label": "pharmacy_info_phone",
+            "confidence": 0.22705585607792786
+          },
+          "entities": []
+        }
+      },
+      {
+        "id": "pharmacy_info_phone.fr.01",
+        "text": "Quel est le numéro de la pharmacie ?",
+        "expected_intent": "pharmacy_info_phone",
+        "prediction": {
+          "input": {
+            "raw_text": "Quel est le numéro de la pharmacie ?"
+          },
+          "intent": {
+            "label": "price_inquiry",
+            "confidence": 0.33454408889798704
+          },
+          "entities": []
+        }
+      },
+      {
+        "id": "pharmacy_info_phone.mixed.01",
+        "text": "chno le numéro de la pharmacie ?",
+        "expected_intent": "pharmacy_info_phone",
+        "prediction": {
+          "input": {
+            "raw_text": "chno le numéro de la pharmacie ?"
+          },
+          "intent": {
+            "label": "pharmacy_info_phone",
+            "confidence": 0.2537560552165078
+          },
+          "entities": []
+        }
+      },
+      {
+        "id": "price_inquiry.ar.02",
+        "text": "كم ثمن بانادول؟",
+        "expected_intent": "price_inquiry",
+        "prediction": {
+          "input": {
+            "raw_text": "كم ثمن بانادول؟"
+          },
+          "intent": {
+            "label": "check_availability",
+            "confidence": 0.34163818651732236
+          },
+          "entities": []
+        }
+      },
+      {
+        "id": "price_inquiry.ar.05",
+        "text": "كم يكلف أوغمنتين؟",
+        "expected_intent": "price_inquiry",
+        "prediction": {
+          "input": {
+            "raw_text": "كم يكلف أوغمنتين؟"
+          },
+          "intent": {
+            "label": "check_availability",
+            "confidence": 0.3280360749068829
+          },
+          "entities": []
+        }
+      },
+      {
+        "id": "price_inquiry.darija_ar.02",
+        "text": "شحال ثمن بانادول؟",
+        "expected_intent": "price_inquiry",
+        "prediction": {
+          "input": {
+            "raw_text": "شحال ثمن بانادول؟"
+          },
+          "intent": {
+            "label": "check_availability",
+            "confidence": 0.30794491150908476
+          },
+          "entities": []
+        }
+      },
+      {
+        "id": "price_inquiry.darija_ar.05",
+        "text": "شحال كيدير أوغمنتين؟",
+        "expected_intent": "price_inquiry",
+        "prediction": {
+          "input": {
+            "raw_text": "شحال كيدير أوغمنتين؟"
+          },
+          "intent": {
+            "label": "check_availability",
+            "confidence": 0.2991405920739857
+          },
+          "entities": []
+        }
+      },
+      {
+        "id": "price_inquiry.darija_latn.02",
+        "text": "ch7al taman Panadol?",
+        "expected_intent": "price_inquiry",
+        "prediction": {
+          "input": {
+            "raw_text": "ch7al taman Panadol?"
+          },
+          "intent": {
+            "label": "check_availability",
+            "confidence": 0.3208865973122304
+          },
+          "entities": [
+            {
+              "type": "MEDICATION",
+              "text": "Panadol",
+              "start": 12,
+              "end": 19
+            }
+          ]
+        }
+      },
+      {
+        "id": "price_inquiry.darija_latn.05",
+        "text": "ch7al kaydir Augmentin?",
+        "expected_intent": "price_inquiry",
+        "prediction": {
+          "input": {
+            "raw_text": "ch7al kaydir Augmentin?"
+          },
+          "intent": {
+            "label": "check_availability",
+            "confidence": 0.3020282342366592
+          },
+          "entities": [
+            {
+              "type": "MEDICATION",
+              "text": "Augmentin",
+              "start": 13,
+              "end": 22
+            }
+          ]
+        }
+      },
+      {
+        "id": "price_inquiry.fr.02",
+        "text": "Combien coûte Panadol ?",
+        "expected_intent": "price_inquiry",
+        "prediction": {
+          "input": {
+            "raw_text": "Combien coûte Panadol ?"
+          },
+          "intent": {
+            "label": "check_availability",
+            "confidence": 0.36412372879657934
+          },
+          "entities": [
+            {
+              "type": "MEDICATION",
+              "text": "Panadol",
+              "start": 14,
+              "end": 21
+            }
+          ]
+        }
+      },
+      {
+        "id": "price_inquiry.fr.05",
+        "text": "Combien coûte Augmentin ?",
+        "expected_intent": "price_inquiry",
+        "prediction": {
+          "input": {
+            "raw_text": "Combien coûte Augmentin ?"
+          },
+          "intent": {
+            "label": "check_availability",
+            "confidence": 0.33406254038236255
+          },
+          "entities": [
+            {
+              "type": "MEDICATION",
+              "text": "Augmentin",
+              "start": 14,
+              "end": 23
+            }
+          ]
+        }
+      },
+      {
+        "id": "price_inquiry.mixed.02",
+        "text": "شحال le prix de Panadol ?",
+        "expected_intent": "price_inquiry",
+        "prediction": {
+          "input": {
+            "raw_text": "شحال le prix de Panadol ?"
+          },
+          "intent": {
+            "label": "price_inquiry",
+            "confidence": 0.6032098226731545
+          },
+          "entities": [
+            {
+              "type": "MEDICATION",
+              "text": "Panadol",
+              "start": 16,
+              "end": 23
+            }
+          ]
+        }
+      },
+      {
+        "id": "price_inquiry.mixed.05",
+        "text": "ch7al coûte Augmentin ?",
+        "expected_intent": "price_inquiry",
+        "prediction": {
+          "input": {
+            "raw_text": "ch7al coûte Augmentin ?"
+          },
+          "intent": {
+            "label": "check_availability",
+            "confidence": 0.3020282342366592
+          },
+          "entities": [
+            {
+              "type": "MEDICATION",
+              "text": "Augmentin",
+              "start": 12,
+              "end": 21
+            }
+          ]
+        }
+      },
+      {
+        "id": "request_medication.ar.02",
+        "text": "أود طلب بانادول",
+        "expected_intent": "request_medication",
+        "prediction": {
+          "input": {
+            "raw_text": "أود طلب بانادول"
+          },
+          "intent": {
+            "label": "check_availability",
+            "confidence": 0.34163818651732236
+          },
+          "entities": [
+            {
+              "type": "MEDICATION",
+              "text": "بانادول",
+              "start": 8,
+              "end": 15
+            }
+          ]
+        }
+      },
+      {
+        "id": "request_medication.darija_ar.02",
+        "text": "عافاك بغيت بانادول",
+        "expected_intent": "request_medication",
+        "prediction": {
+          "input": {
+            "raw_text": "عافاك بغيت بانادول"
+          },
+          "intent": {
+            "label": "request_medication",
+            "confidence": 0.32006851083234544
+          },
+          "entities": [
+            {
+              "type": "MEDICATION",
+              "text": "بانادول",
+              "start": 11,
+              "end": 18
+            }
+          ]
+        }
+      },
+      {
+        "id": "request_medication.darija_latn.02",
+        "text": "3afak bghit Panadol",
+        "expected_intent": "request_medication",
+        "prediction": {
+          "input": {
+            "raw_text": "3afak bghit Panadol"
+          },
+          "intent": {
+            "label": "request_medication",
+            "confidence": 0.353031850047414
+          },
+          "entities": [
+            {
+              "type": "MEDICATION",
+              "text": "Panadol",
+              "start": 12,
+              "end": 19
+            }
+          ]
+        }
+      },
+      {
+        "id": "request_medication.fr.02",
+        "text": "Je souhaite commander Panadol",
+        "expected_intent": "request_medication",
+        "prediction": {
+          "input": {
+            "raw_text": "Je souhaite commander Panadol"
+          },
+          "intent": {
+            "label": "request_medication",
+            "confidence": 0.3260535432741439
+          },
+          "entities": [
+            {
+              "type": "MEDICATION",
+              "text": "Panadol",
+              "start": 22,
+              "end": 29
+            }
+          ]
+        }
+      },
+      {
+        "id": "request_medication.mixed.02",
+        "text": "بغيت Panadol s’il vous plaît",
+        "expected_intent": "request_medication",
+        "prediction": {
+          "input": {
+            "raw_text": "بغيت Panadol s’il vous plaît"
+          },
+          "intent": {
+            "label": "check_availability",
+            "confidence": 0.4002263293967691
+          },
+          "entities": [
+            {
+              "type": "MEDICATION",
+              "text": "Panadol",
+              "start": 5,
+              "end": 12
+            }
+          ]
+        }
+      }
+    ],
+    "model_sha256": "8530107ebc2a81f38dd7b619dc9a5913d2821e5da6766ba40df01da7509e1d7a"
+  },
+  "char_wb": {
+    "rows": 50,
+    "intent_accuracy": 0.4,
+    "intent_macro_f1": 0.2847222222222222,
+    "intent_confusion": {
+      "check_availability": {
+        "check_availability": 6,
+        "request_medication": 0,
+        "pharmacy_info_phone": 0,
+        "pharmacy_info_location": 0,
+        "pharmacy_info_hours": 0,
+        "price_inquiry": 4,
+        "greeting_smalltalk": 0,
+        "out_of_scope": 0
+      },
+      "request_medication": {
+        "check_availability": 2,
+        "request_medication": 3,
+        "pharmacy_info_phone": 0,
+        "pharmacy_info_location": 0,
+        "pharmacy_info_hours": 0,
+        "price_inquiry": 0,
+        "greeting_smalltalk": 0,
+        "out_of_scope": 0
+      },
+      "pharmacy_info_phone": {
+        "check_availability": 0,
+        "request_medication": 0,
+        "pharmacy_info_phone": 5,
+        "pharmacy_info_location": 0,
+        "pharmacy_info_hours": 0,
+        "price_inquiry": 0,
+        "greeting_smalltalk": 0,
+        "out_of_scope": 0
+      },
+      "pharmacy_info_location": {
+        "check_availability": 0,
+        "request_medication": 0,
+        "pharmacy_info_phone": 5,
+        "pharmacy_info_location": 0,
+        "pharmacy_info_hours": 0,
+        "price_inquiry": 0,
+        "greeting_smalltalk": 0,
+        "out_of_scope": 0
+      },
+      "pharmacy_info_hours": {
+        "check_availability": 0,
+        "request_medication": 0,
+        "pharmacy_info_phone": 0,
+        "pharmacy_info_location": 5,
+        "pharmacy_info_hours": 0,
+        "price_inquiry": 0,
+        "greeting_smalltalk": 0,
+        "out_of_scope": 0
+      },
+      "price_inquiry": {
+        "check_availability": 4,
+        "request_medication": 0,
+        "pharmacy_info_phone": 0,
+        "pharmacy_info_location": 0,
+        "pharmacy_info_hours": 0,
+        "price_inquiry": 6,
+        "greeting_smalltalk": 0,
+        "out_of_scope": 0
+      },
+      "greeting_smalltalk": {
+        "check_availability": 5,
+        "request_medication": 0,
+        "pharmacy_info_phone": 0,
+        "pharmacy_info_location": 0,
+        "pharmacy_info_hours": 0,
+        "price_inquiry": 0,
+        "greeting_smalltalk": 0,
+        "out_of_scope": 0
+      },
+      "out_of_scope": {
+        "check_availability": 0,
+        "request_medication": 1,
+        "pharmacy_info_phone": 0,
+        "pharmacy_info_location": 0,
+        "pharmacy_info_hours": 0,
+        "price_inquiry": 4,
+        "greeting_smalltalk": 0,
+        "out_of_scope": 0
+      }
+    },
+    "entity_exact_micro": {
+      "tp": 36,
+      "fp": 0,
+      "fn": 4,
+      "precision": 1.0,
+      "recall": 0.9,
+      "f1": 0.9473684210526315
+    },
+    "entity_by_type": {
+      "DOSAGE": {
+        "tp": 5,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "LOCATION": {
+        "tp": 5,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "MEDICATION": {
+        "tp": 26,
+        "fp": 0,
+        "fn": 4,
+        "precision": 1.0,
+        "recall": 0.8666666666666667,
+        "f1": 0.9285714285714286
+      }
+    },
+    "examples": [
+      {
+        "id": "check_availability.ar.01",
+        "text": "هل يتوفر دوليبران؟",
+        "expected_intent": "check_availability",
+        "prediction": {
+          "input": {
+            "raw_text": "هل يتوفر دوليبران؟"
+          },
+          "intent": {
+            "label": "check_availability",
+            "confidence": 0.39149372189180454
+          },
+          "entities": [
+            {
+              "type": "MEDICATION",
+              "text": "دوليبران",
+              "start": 9,
+              "end": 17
+            }
+          ]
+        }
+      },
+      {
+        "id": "check_availability.ar.04",
+        "text": "هل يتوفر دوليبران 500 mg؟",
+        "expected_intent": "check_availability",
+        "prediction": {
+          "input": {
+            "raw_text": "هل يتوفر دوليبران 500 mg؟"
+          },
+          "intent": {
+            "label": "price_inquiry",
+            "confidence": 0.47200330217509806
+          },
+          "entities": [
+            {
+              "type": "MEDICATION",
+              "text": "دوليبران",
+              "start": 9,
+              "end": 17
+            },
+            {
+              "type": "DOSAGE",
+              "text": "500 mg",
+              "start": 18,
+              "end": 24
+            }
+          ]
+        }
+      },
+      {
+        "id": "check_availability.darija_ar.01",
+        "text": "واش عندكم دوليبران؟",
+        "expected_intent": "check_availability",
+        "prediction": {
+          "input": {
+            "raw_text": "واش عندكم دوليبران؟"
+          },
+          "intent": {
+            "label": "check_availability",
+            "confidence": 0.42735768426511694
+          },
+          "entities": [
+            {
+              "type": "MEDICATION",
+              "text": "دوليبران",
+              "start": 10,
+              "end": 18
+            }
+          ]
+        }
+      },
+      {
+        "id": "check_availability.darija_ar.04",
+        "text": "باقي عندكم دوليبران 500 mg؟",
+        "expected_intent": "check_availability",
+        "prediction": {
+          "input": {
+            "raw_text": "باقي عندكم دوليبران 500 mg؟"
+          },
+          "intent": {
+            "label": "price_inquiry",
+            "confidence": 0.4119800749137402
+          },
+          "entities": [
+            {
+              "type": "MEDICATION",
+              "text": "دوليبران",
+              "start": 11,
+              "end": 19
+            },
+            {
+              "type": "DOSAGE",
+              "text": "500 mg",
+              "start": 20,
+              "end": 26
+            }
+          ]
+        }
+      },
+      {
+        "id": "check_availability.darija_latn.01",
+        "text": "wach kayn Doliprane?",
+        "expected_intent": "check_availability",
+        "prediction": {
+          "input": {
+            "raw_text": "wach kayn Doliprane?"
+          },
+          "intent": {
+            "label": "check_availability",
+            "confidence": 0.382785935991532
+          },
+          "entities": [
+            {
+              "type": "MEDICATION",
+              "text": "Doliprane",
+              "start": 10,
+              "end": 19
+            }
+          ]
+        }
+      },
+      {
+        "id": "check_availability.darija_latn.04",
+        "text": "ba9i kayn Doliprane 500 mg?",
+        "expected_intent": "check_availability",
+        "prediction": {
+          "input": {
+            "raw_text": "ba9i kayn Doliprane 500 mg?"
+          },
+          "intent": {
+            "label": "check_availability",
+            "confidence": 0.3663255298257788
+          },
+          "entities": [
+            {
+              "type": "MEDICATION",
+              "text": "Doliprane",
+              "start": 10,
+              "end": 19
+            },
+            {
+              "type": "DOSAGE",
+              "text": "500 mg",
+              "start": 20,
+              "end": 26
+            }
+          ]
+        }
+      },
+      {
+        "id": "check_availability.fr.01",
+        "text": "Avez-vous Doliprane ?",
+        "expected_intent": "check_availability",
+        "prediction": {
+          "input": {
+            "raw_text": "Avez-vous Doliprane ?"
+          },
+          "intent": {
+            "label": "price_inquiry",
+            "confidence": 0.3179778843470587
+          },
+          "entities": [
+            {
+              "type": "MEDICATION",
+              "text": "Doliprane",
+              "start": 10,
+              "end": 19
+            }
+          ]
+        }
+      },
+      {
+        "id": "check_availability.fr.04",
+        "text": "Avez-vous Doliprane 500 mg ?",
+        "expected_intent": "check_availability",
+        "prediction": {
+          "input": {
+            "raw_text": "Avez-vous Doliprane 500 mg ?"
+          },
+          "intent": {
+            "label": "price_inquiry",
+            "confidence": 0.6089098312638699
+          },
+          "entities": [
+            {
+              "type": "MEDICATION",
+              "text": "Doliprane",
+              "start": 10,
+              "end": 19
+            },
+            {
+              "type": "DOSAGE",
+              "text": "500 mg",
+              "start": 20,
+              "end": 26
+            }
+          ]
+        }
+      },
+      {
+        "id": "check_availability.mixed.01",
+        "text": "wach kayn Doliprane en stock ?",
+        "expected_intent": "check_availability",
+        "prediction": {
+          "input": {
+            "raw_text": "wach kayn Doliprane en stock ?"
+          },
+          "intent": {
+            "label": "check_availability",
+            "confidence": 0.6343002706038552
+          },
+          "entities": [
+            {
+              "type": "MEDICATION",
+              "text": "Doliprane",
+              "start": 10,
+              "end": 19
+            }
+          ]
+        }
+      },
+      {
+        "id": "check_availability.mixed.04",
+        "text": "واش Doliprane 500 mg disponible ?",
+        "expected_intent": "check_availability",
+        "prediction": {
+          "input": {
+            "raw_text": "واش Doliprane 500 mg disponible ?"
+          },
+          "intent": {
+            "label": "check_availability",
+            "confidence": 0.5090837956220521
+          },
+          "entities": [
+            {
+              "type": "MEDICATION",
+              "text": "Doliprane",
+              "start": 4,
+              "end": 13
+            },
+            {
+              "type": "DOSAGE",
+              "text": "500 mg",
+              "start": 14,
+              "end": 20
+            }
+          ]
+        }
+      },
+      {
+        "id": "greeting_smalltalk.ar.01",
+        "text": "السلام عليكم ورحمة الله",
+        "expected_intent": "greeting_smalltalk",
+        "prediction": {
+          "input": {
+            "raw_text": "السلام عليكم ورحمة الله"
+          },
+          "intent": {
+            "label": "check_availability",
+            "confidence": 0.2423130142576907
+          },
+          "entities": []
+        }
+      },
+      {
+        "id": "greeting_smalltalk.darija_ar.01",
+        "text": "السلام عليكم",
+        "expected_intent": "greeting_smalltalk",
+        "prediction": {
+          "input": {
+            "raw_text": "السلام عليكم"
+          },
+          "intent": {
+            "label": "check_availability",
+            "confidence": 0.24203535043018187
+          },
+          "entities": []
+        }
+      },
+      {
+        "id": "greeting_smalltalk.darija_latn.01",
+        "text": "salam 3likom",
+        "expected_intent": "greeting_smalltalk",
+        "prediction": {
+          "input": {
+            "raw_text": "salam 3likom"
+          },
+          "intent": {
+            "label": "check_availability",
+            "confidence": 0.38503705712992825
+          },
+          "entities": []
+        }
+      },
+      {
+        "id": "greeting_smalltalk.fr.01",
+        "text": "Bonjour",
+        "expected_intent": "greeting_smalltalk",
+        "prediction": {
+          "input": {
+            "raw_text": "Bonjour"
+          },
+          "intent": {
+            "label": "check_availability",
+            "confidence": 0.21406597890112009
+          },
+          "entities": []
+        }
+      },
+      {
+        "id": "greeting_smalltalk.mixed.01",
+        "text": "salam, bonjour",
+        "expected_intent": "greeting_smalltalk",
+        "prediction": {
+          "input": {
+            "raw_text": "salam, bonjour"
+          },
+          "intent": {
+            "label": "check_availability",
+            "confidence": 0.26368998802192023
+          },
+          "entities": []
+        }
+      },
+      {
+        "id": "out_of_scope.ar.02",
+        "text": "كم حبة من دوليبران يجب أن أتناول؟",
+        "expected_intent": "out_of_scope",
+        "prediction": {
+          "input": {
+            "raw_text": "كم حبة من دوليبران يجب أن أتناول؟"
+          },
+          "intent": {
+            "label": "request_medication",
+            "confidence": 0.2756856530490259
+          },
+          "entities": [
+            {
+              "type": "MEDICATION",
+              "text": "دوليبران",
+              "start": 10,
+              "end": 18
+            }
+          ]
+        }
+      },
+      {
+        "id": "out_of_scope.darija_ar.02",
+        "text": "شحال من حبة ناخد ديال دوليبران؟",
+        "expected_intent": "out_of_scope",
+        "prediction": {
+          "input": {
+            "raw_text": "شحال من حبة ناخد ديال دوليبران؟"
+          },
+          "intent": {
+            "label": "price_inquiry",
+            "confidence": 0.35395885681564426
+          },
+          "entities": [
+            {
+              "type": "MEDICATION",
+              "text": "دوليبران",
+              "start": 22,
+              "end": 30
+            }
+          ]
+        }
+      },
+      {
+        "id": "out_of_scope.darija_latn.02",
+        "text": "ch7al men 7ebba nakhod dyal Doliprane?",
+        "expected_intent": "out_of_scope",
+        "prediction": {
+          "input": {
+            "raw_text": "ch7al men 7ebba nakhod dyal Doliprane?"
+          },
+          "intent": {
+            "label": "price_inquiry",
+            "confidence": 0.3784270754780805
+          },
+          "entities": [
+            {
+              "type": "MEDICATION",
+              "text": "Doliprane",
+              "start": 28,
+              "end": 37
+            }
+          ]
+        }
+      },
+      {
+        "id": "out_of_scope.fr.02",
+        "text": "Combien de comprimés de Doliprane dois-je prendre ?",
+        "expected_intent": "out_of_scope",
+        "prediction": {
+          "input": {
+            "raw_text": "Combien de comprimés de Doliprane dois-je prendre ?"
+          },
+          "intent": {
+            "label": "price_inquiry",
+            "confidence": 0.26904845128556715
+          },
+          "entities": [
+            {
+              "type": "MEDICATION",
+              "text": "Doliprane",
+              "start": 24,
+              "end": 33
+            }
+          ]
+        }
+      },
+      {
+        "id": "out_of_scope.mixed.02",
+        "text": "شحال de comprimés de Doliprane ناخد؟",
+        "expected_intent": "out_of_scope",
+        "prediction": {
+          "input": {
+            "raw_text": "شحال de comprimés de Doliprane ناخد؟"
+          },
+          "intent": {
+            "label": "price_inquiry",
+            "confidence": 0.4094432966662637
+          },
+          "entities": [
+            {
+              "type": "MEDICATION",
+              "text": "Doliprane",
+              "start": 21,
+              "end": 30
+            }
+          ]
+        }
+      },
+      {
+        "id": "pharmacy_info_hours.ar.02",
+        "text": "متى تغلق الصيدلية؟",
+        "expected_intent": "pharmacy_info_hours",
+        "prediction": {
+          "input": {
+            "raw_text": "متى تغلق الصيدلية؟"
+          },
+          "intent": {
+            "label": "pharmacy_info_location",
+            "confidence": 0.20087602580313546
+          },
+          "entities": []
+        }
+      },
+      {
+        "id": "pharmacy_info_hours.darija_ar.02",
+        "text": "فوقاش كتسد الصيدلية؟",
+        "expected_intent": "pharmacy_info_hours",
+        "prediction": {
+          "input": {
+            "raw_text": "فوقاش كتسد الصيدلية؟"
+          },
+          "intent": {
+            "label": "pharmacy_info_location",
+            "confidence": 0.23218725271045743
+          },
+          "entities": []
+        }
+      },
+      {
+        "id": "pharmacy_info_hours.darija_latn.02",
+        "text": "fo9ach katsed pharmacie?",
+        "expected_intent": "pharmacy_info_hours",
+        "prediction": {
+          "input": {
+            "raw_text": "fo9ach katsed pharmacie?"
+          },
+          "intent": {
+            "label": "pharmacy_info_location",
+            "confidence": 0.22620279530929827
+          },
+          "entities": []
+        }
+      },
+      {
+        "id": "pharmacy_info_hours.fr.02",
+        "text": "À quelle heure ferme la pharmacie ?",
+        "expected_intent": "pharmacy_info_hours",
+        "prediction": {
+          "input": {
+            "raw_text": "À quelle heure ferme la pharmacie ?"
+          },
+          "intent": {
+            "label": "pharmacy_info_location",
+            "confidence": 0.20745718714578035
+          },
+          "entities": []
+        }
+      },
+      {
+        "id": "pharmacy_info_hours.mixed.02",
+        "text": "فوقاش ferme la pharmacie ?",
+        "expected_intent": "pharmacy_info_hours",
+        "prediction": {
+          "input": {
+            "raw_text": "فوقاش ferme la pharmacie ?"
+          },
+          "intent": {
+            "label": "pharmacy_info_location",
+            "confidence": 0.3071830637382722
+          },
+          "entities": []
+        }
+      },
+      {
+        "id": "pharmacy_info_location.ar.03",
+        "text": "أين أقرب صيدلية في الرباط؟",
+        "expected_intent": "pharmacy_info_location",
+        "prediction": {
+          "input": {
+            "raw_text": "أين أقرب صيدلية في الرباط؟"
+          },
+          "intent": {
+            "label": "pharmacy_info_phone",
+            "confidence": 0.24808266560977235
+          },
+          "entities": [
+            {
+              "type": "LOCATION",
+              "text": "الرباط",
+              "start": 19,
+              "end": 25
+            }
+          ]
+        }
+      },
+      {
+        "id": "pharmacy_info_location.darija_ar.03",
+        "text": "فين أقرب صيدلية ف الرباط؟",
+        "expected_intent": "pharmacy_info_location",
+        "prediction": {
+          "input": {
+            "raw_text": "فين أقرب صيدلية ف الرباط؟"
+          },
+          "intent": {
+            "label": "pharmacy_info_phone",
+            "confidence": 0.24780003970888623
+          },
+          "entities": [
+            {
+              "type": "LOCATION",
+              "text": "الرباط",
+              "start": 18,
+              "end": 24
+            }
+          ]
+        }
+      },
+      {
+        "id": "pharmacy_info_location.darija_latn.03",
+        "text": "fin a9rab pharmacie f Rabat?",
+        "expected_intent": "pharmacy_info_location",
+        "prediction": {
+          "input": {
+            "raw_text": "fin a9rab pharmacie f Rabat?"
+          },
+          "intent": {
+            "label": "pharmacy_info_phone",
+            "confidence": 0.2882455995001598
+          },
+          "entities": [
+            {
+              "type": "LOCATION",
+              "text": "Rabat",
+              "start": 22,
+              "end": 27
+            }
+          ]
+        }
+      },
+      {
+        "id": "pharmacy_info_location.fr.03",
+        "text": "Où est la pharmacie la plus proche à Rabat ?",
+        "expected_intent": "pharmacy_info_location",
+        "prediction": {
+          "input": {
+            "raw_text": "Où est la pharmacie la plus proche à Rabat ?"
+          },
+          "intent": {
+            "label": "pharmacy_info_phone",
+            "confidence": 0.2688743062511522
+          },
+          "entities": [
+            {
+              "type": "LOCATION",
+              "text": "Rabat",
+              "start": 37,
+              "end": 42
+            }
+          ]
+        }
+      },
+      {
+        "id": "pharmacy_info_location.mixed.03",
+        "text": "Où est a9rab pharmacie f Rabat ?",
+        "expected_intent": "pharmacy_info_location",
+        "prediction": {
+          "input": {
+            "raw_text": "Où est a9rab pharmacie f Rabat ?"
+          },
+          "intent": {
+            "label": "pharmacy_info_phone",
+            "confidence": 0.2803717133654833
+          },
+          "entities": [
+            {
+              "type": "LOCATION",
+              "text": "Rabat",
+              "start": 25,
+              "end": 30
+            }
+          ]
+        }
+      },
+      {
+        "id": "pharmacy_info_phone.ar.01",
+        "text": "ما رقم هاتف الصيدلية؟",
+        "expected_intent": "pharmacy_info_phone",
+        "prediction": {
+          "input": {
+            "raw_text": "ما رقم هاتف الصيدلية؟"
+          },
+          "intent": {
+            "label": "pharmacy_info_phone",
+            "confidence": 0.24927592943542454
+          },
+          "entities": []
+        }
+      },
+      {
+        "id": "pharmacy_info_phone.darija_ar.01",
+        "text": "شنو نمرة الصيدلية؟",
+        "expected_intent": "pharmacy_info_phone",
+        "prediction": {
+          "input": {
+            "raw_text": "شنو نمرة الصيدلية؟"
+          },
+          "intent": {
+            "label": "pharmacy_info_phone",
+            "confidence": 0.19671208108281177
+          },
+          "entities": []
+        }
+      },
+      {
+        "id": "pharmacy_info_phone.darija_latn.01",
+        "text": "chno nemra dyal pharmacie?",
+        "expected_intent": "pharmacy_info_phone",
+        "prediction": {
+          "input": {
+            "raw_text": "chno nemra dyal pharmacie?"
+          },
+          "intent": {
+            "label": "pharmacy_info_phone",
+            "confidence": 0.23522419350100787
+          },
+          "entities": []
+        }
+      },
+      {
+        "id": "pharmacy_info_phone.fr.01",
+        "text": "Quel est le numéro de la pharmacie ?",
+        "expected_intent": "pharmacy_info_phone",
+        "prediction": {
+          "input": {
+            "raw_text": "Quel est le numéro de la pharmacie ?"
+          },
+          "intent": {
+            "label": "pharmacy_info_phone",
+            "confidence": 0.2652977121880159
+          },
+          "entities": []
+        }
+      },
+      {
+        "id": "pharmacy_info_phone.mixed.01",
+        "text": "chno le numéro de la pharmacie ?",
+        "expected_intent": "pharmacy_info_phone",
+        "prediction": {
+          "input": {
+            "raw_text": "chno le numéro de la pharmacie ?"
+          },
+          "intent": {
+            "label": "pharmacy_info_phone",
+            "confidence": 0.2875905302836031
+          },
+          "entities": []
+        }
+      },
+      {
+        "id": "price_inquiry.ar.02",
+        "text": "كم ثمن بانادول؟",
+        "expected_intent": "price_inquiry",
+        "prediction": {
+          "input": {
+            "raw_text": "كم ثمن بانادول؟"
+          },
+          "intent": {
+            "label": "check_availability",
+            "confidence": 0.3383696095622878
+          },
+          "entities": []
+        }
+      },
+      {
+        "id": "price_inquiry.ar.05",
+        "text": "كم يكلف أوغمنتين؟",
+        "expected_intent": "price_inquiry",
+        "prediction": {
+          "input": {
+            "raw_text": "كم يكلف أوغمنتين؟"
+          },
+          "intent": {
+            "label": "check_availability",
+            "confidence": 0.3479332549955362
+          },
+          "entities": []
+        }
+      },
+      {
+        "id": "price_inquiry.darija_ar.02",
+        "text": "شحال ثمن بانادول؟",
+        "expected_intent": "price_inquiry",
+        "prediction": {
+          "input": {
+            "raw_text": "شحال ثمن بانادول؟"
+          },
+          "intent": {
+            "label": "price_inquiry",
+            "confidence": 0.3105746923060359
+          },
+          "entities": []
+        }
+      },
+      {
+        "id": "price_inquiry.darija_ar.05",
+        "text": "شحال كيدير أوغمنتين؟",
+        "expected_intent": "price_inquiry",
+        "prediction": {
+          "input": {
+            "raw_text": "شحال كيدير أوغمنتين؟"
+          },
+          "intent": {
+            "label": "price_inquiry",
+            "confidence": 0.29918463159139275
+          },
+          "entities": []
+        }
+      },
+      {
+        "id": "price_inquiry.darija_latn.02",
+        "text": "ch7al taman Panadol?",
+        "expected_intent": "price_inquiry",
+        "prediction": {
+          "input": {
+            "raw_text": "ch7al taman Panadol?"
+          },
+          "intent": {
+            "label": "price_inquiry",
+            "confidence": 0.4364049668640164
+          },
+          "entities": [
+            {
+              "type": "MEDICATION",
+              "text": "Panadol",
+              "start": 12,
+              "end": 19
+            }
+          ]
+        }
+      },
+      {
+        "id": "price_inquiry.darija_latn.05",
+        "text": "ch7al kaydir Augmentin?",
+        "expected_intent": "price_inquiry",
+        "prediction": {
+          "input": {
+            "raw_text": "ch7al kaydir Augmentin?"
+          },
+          "intent": {
+            "label": "price_inquiry",
+            "confidence": 0.3371891638936509
+          },
+          "entities": [
+            {
+              "type": "MEDICATION",
+              "text": "Augmentin",
+              "start": 13,
+              "end": 22
+            }
+          ]
+        }
+      },
+      {
+        "id": "price_inquiry.fr.02",
+        "text": "Combien coûte Panadol ?",
+        "expected_intent": "price_inquiry",
+        "prediction": {
+          "input": {
+            "raw_text": "Combien coûte Panadol ?"
+          },
+          "intent": {
+            "label": "check_availability",
+            "confidence": 0.33243881768592976
+          },
+          "entities": [
+            {
+              "type": "MEDICATION",
+              "text": "Panadol",
+              "start": 14,
+              "end": 21
+            }
+          ]
+        }
+      },
+      {
+        "id": "price_inquiry.fr.05",
+        "text": "Combien coûte Augmentin ?",
+        "expected_intent": "price_inquiry",
+        "prediction": {
+          "input": {
+            "raw_text": "Combien coûte Augmentin ?"
+          },
+          "intent": {
+            "label": "check_availability",
+            "confidence": 0.36107160055116455
+          },
+          "entities": [
+            {
+              "type": "MEDICATION",
+              "text": "Augmentin",
+              "start": 14,
+              "end": 23
+            }
+          ]
+        }
+      },
+      {
+        "id": "price_inquiry.mixed.02",
+        "text": "شحال le prix de Panadol ?",
+        "expected_intent": "price_inquiry",
+        "prediction": {
+          "input": {
+            "raw_text": "شحال le prix de Panadol ?"
+          },
+          "intent": {
+            "label": "price_inquiry",
+            "confidence": 0.5519897016781938
+          },
+          "entities": [
+            {
+              "type": "MEDICATION",
+              "text": "Panadol",
+              "start": 16,
+              "end": 23
+            }
+          ]
+        }
+      },
+      {
+        "id": "price_inquiry.mixed.05",
+        "text": "ch7al coûte Augmentin ?",
+        "expected_intent": "price_inquiry",
+        "prediction": {
+          "input": {
+            "raw_text": "ch7al coûte Augmentin ?"
+          },
+          "intent": {
+            "label": "price_inquiry",
+            "confidence": 0.34558940917770015
+          },
+          "entities": [
+            {
+              "type": "MEDICATION",
+              "text": "Augmentin",
+              "start": 12,
+              "end": 21
+            }
+          ]
+        }
+      },
+      {
+        "id": "request_medication.ar.02",
+        "text": "أود طلب بانادول",
+        "expected_intent": "request_medication",
+        "prediction": {
+          "input": {
+            "raw_text": "أود طلب بانادول"
+          },
+          "intent": {
+            "label": "check_availability",
+            "confidence": 0.35809732906557956
+          },
+          "entities": [
+            {
+              "type": "MEDICATION",
+              "text": "بانادول",
+              "start": 8,
+              "end": 15
+            }
+          ]
+        }
+      },
+      {
+        "id": "request_medication.darija_ar.02",
+        "text": "عافاك بغيت بانادول",
+        "expected_intent": "request_medication",
+        "prediction": {
+          "input": {
+            "raw_text": "عافاك بغيت بانادول"
+          },
+          "intent": {
+            "label": "request_medication",
+            "confidence": 0.2843737582165289
+          },
+          "entities": [
+            {
+              "type": "MEDICATION",
+              "text": "بانادول",
+              "start": 11,
+              "end": 18
+            }
+          ]
+        }
+      },
+      {
+        "id": "request_medication.darija_latn.02",
+        "text": "3afak bghit Panadol",
+        "expected_intent": "request_medication",
+        "prediction": {
+          "input": {
+            "raw_text": "3afak bghit Panadol"
+          },
+          "intent": {
+            "label": "request_medication",
+            "confidence": 0.3435927992331083
+          },
+          "entities": [
+            {
+              "type": "MEDICATION",
+              "text": "Panadol",
+              "start": 12,
+              "end": 19
+            }
+          ]
+        }
+      },
+      {
+        "id": "request_medication.fr.02",
+        "text": "Je souhaite commander Panadol",
+        "expected_intent": "request_medication",
+        "prediction": {
+          "input": {
+            "raw_text": "Je souhaite commander Panadol"
+          },
+          "intent": {
+            "label": "check_availability",
+            "confidence": 0.3103106957932338
+          },
+          "entities": [
+            {
+              "type": "MEDICATION",
+              "text": "Panadol",
+              "start": 22,
+              "end": 29
+            }
+          ]
+        }
+      },
+      {
+        "id": "request_medication.mixed.02",
+        "text": "بغيت Panadol s’il vous plaît",
+        "expected_intent": "request_medication",
+        "prediction": {
+          "input": {
+            "raw_text": "بغيت Panadol s’il vous plaît"
+          },
+          "intent": {
+            "label": "request_medication",
+            "confidence": 0.3604794184222935
+          },
+          "entities": [
+            {
+              "type": "MEDICATION",
+              "text": "Panadol",
+              "start": 5,
+              "end": 12
+            }
+          ]
+        }
+      }
+    ],
+    "model_sha256": "04ba6761fb6e05576ef3df501d7a14b792943c66224a700733d9abe0ee3a170e"
+  }
+}
