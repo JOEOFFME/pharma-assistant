@@ -860,6 +860,37 @@
       "title": "QuantityEntity",
       "type": "object"
     },
+    "Relation": {
+      "additionalProperties": false,
+      "description": "Directed mention association; IDs refer to spans, never catalogue IDs.",
+      "properties": {
+        "type": {
+          "enum": [
+            "QUANTITY_OF",
+            "DOSAGE_OF"
+          ],
+          "title": "Type",
+          "type": "string"
+        },
+        "from": {
+          "pattern": "\\S",
+          "title": "From",
+          "type": "string"
+        },
+        "to": {
+          "pattern": "\\S",
+          "title": "To",
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "from",
+        "to"
+      ],
+      "title": "Relation",
+      "type": "object"
+    },
     "TimeRefEntity": {
       "additionalProperties": false,
       "description": "Relative/absolute time text; resolution requires request-time context.",
@@ -1120,6 +1151,18 @@
       },
       "title": "Entities",
       "type": "array"
+    },
+    "relations": {
+      "items": {
+        "$ref": "#/$defs/Relation"
+      },
+      "title": "Relations",
+      "type": "array"
+    },
+    "contains_out_of_scope_request": {
+      "default": false,
+      "title": "Contains Out Of Scope Request",
+      "type": "boolean"
     },
     "pharmacy_query": {
       "$ref": "#/$defs/PharmacyQuery"

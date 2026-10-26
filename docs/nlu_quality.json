@@ -1,0 +1,147 @@
+{
+  "files": {
+    "data/nlu/dev_seed.jsonl": {
+      "rows": 100,
+      "rows_per_intent": {
+        "check_availability": 20,
+        "greeting_smalltalk": 10,
+        "out_of_scope": 10,
+        "pharmacy_info_hours": 10,
+        "pharmacy_info_location": 10,
+        "pharmacy_info_phone": 10,
+        "price_inquiry": 15,
+        "request_medication": 15
+      },
+      "rows_per_variety": {
+        "ar": 20,
+        "darija_ar": 20,
+        "darija_latn": 20,
+        "fr": 20,
+        "mixed": 20
+      },
+      "distinct_texts": 100,
+      "distinct_medications": 4,
+      "medication_count_basis": "case/accent-normalized surface forms; aliases/noise may inflate identities",
+      "rows_without_medication": 55,
+      "warnings": [
+        "Fewer than 8 distinct medications"
+      ]
+    },
+    "data/nlu/generated/dev.jsonl": {
+      "rows": 50,
+      "rows_per_intent": {
+        "check_availability": 10,
+        "greeting_smalltalk": 5,
+        "out_of_scope": 5,
+        "pharmacy_info_hours": 5,
+        "pharmacy_info_location": 5,
+        "pharmacy_info_phone": 5,
+        "price_inquiry": 10,
+        "request_medication": 5
+      },
+      "rows_per_variety": {
+        "ar": 10,
+        "darija_ar": 10,
+        "darija_latn": 10,
+        "fr": 10,
+        "mixed": 10
+      },
+      "distinct_texts": 50,
+      "distinct_medications": 6,
+      "medication_count_basis": "case/accent-normalized surface forms; aliases/noise may inflate identities",
+      "rows_without_medication": 20,
+      "warnings": [
+        "Fewer than 8 distinct medications"
+      ]
+    },
+    "data/nlu/generated/test.jsonl": {
+      "rows": 50,
+      "rows_per_intent": {
+        "check_availability": 5,
+        "greeting_smalltalk": 5,
+        "out_of_scope": 5,
+        "pharmacy_info_hours": 10,
+        "pharmacy_info_location": 5,
+        "pharmacy_info_phone": 5,
+        "price_inquiry": 5,
+        "request_medication": 10
+      },
+      "rows_per_variety": {
+        "ar": 10,
+        "darija_ar": 10,
+        "darija_latn": 10,
+        "fr": 10,
+        "mixed": 10
+      },
+      "distinct_texts": 50,
+      "distinct_medications": 6,
+      "medication_count_basis": "case/accent-normalized surface forms; aliases/noise may inflate identities",
+      "rows_without_medication": 30,
+      "warnings": [
+        "Fewer than 8 distinct medications"
+      ]
+    },
+    "data/nlu/generated/train.jsonl": {
+      "rows": 520,
+      "rows_per_intent": {
+        "check_availability": 110,
+        "greeting_smalltalk": 15,
+        "out_of_scope": 15,
+        "pharmacy_info_hours": 10,
+        "pharmacy_info_location": 15,
+        "pharmacy_info_phone": 15,
+        "price_inquiry": 155,
+        "request_medication": 185
+      },
+      "rows_per_variety": {
+        "ar": 98,
+        "darija_ar": 98,
+        "darija_latn": 98,
+        "fr": 98,
+        "mixed": 128
+      },
+      "distinct_texts": 520,
+      "distinct_medications": 31,
+      "medication_count_basis": "case/accent-normalized surface forms; aliases/noise may inflate identities",
+      "rows_without_medication": 70,
+      "warnings": []
+    },
+    "data/nlu/gold_human.jsonl": {
+      "rows": 0,
+      "rows_per_intent": {},
+      "rows_per_variety": {},
+      "distinct_texts": 0,
+      "distinct_medications": 0,
+      "medication_count_basis": "case/accent-normalized surface forms; aliases/noise may inflate identities",
+      "rows_without_medication": 0,
+      "warnings": [
+        "Fewer than 8 distinct medications"
+      ]
+    }
+  },
+  "all_files": {
+    "rows": 720,
+    "rows_per_intent": {
+      "check_availability": 145,
+      "greeting_smalltalk": 35,
+      "out_of_scope": 35,
+      "pharmacy_info_hours": 35,
+      "pharmacy_info_location": 35,
+      "pharmacy_info_phone": 35,
+      "price_inquiry": 185,
+      "request_medication": 215
+    },
+    "rows_per_variety": {
+      "ar": 138,
+      "darija_ar": 138,
+      "darija_latn": 138,
+      "fr": 138,
+      "mixed": 168
+    },
+    "distinct_texts": 720,
+    "distinct_medications": 31,
+    "medication_count_basis": "case/accent-normalized surface forms; aliases/noise may inflate identities",
+    "rows_without_medication": 175,
+    "warnings": []
+  }
+}

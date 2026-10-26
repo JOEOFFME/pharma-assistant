@@ -3,6 +3,7 @@ data/raw/** -text
 # Preserve the producer's original whitespace in the archived download page.
 data/raw/bdpm_snapshot/download_page.html whitespace=-blank-at-eol
 
-# Preserve locked-gold and generated-split hashes across platforms.
+# Preserve annotation and generated-split hashes across platforms.
 data/nlu/*.jsonl -text
 data/nlu/generated/*.jsonl -text
+docs/examples/nlu_build_seed.jsonl -text

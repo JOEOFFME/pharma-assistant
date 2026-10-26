@@ -1,9 +1,7 @@
 seed: 42
-seed_path: data/nlu/seed.jsonl
-gold_candidates_path: data/nlu/gold_candidates.jsonl
-gold_review_path: data/nlu/gold_review.json
-gold_test_path: data/nlu/gold_test.jsonl
-gold_lock_path: data/nlu/gold.lock.json
+seed_path: docs/examples/nlu_build_seed.jsonl
+dev_seed_path: data/nlu/dev_seed.jsonl
+gold_human_path: data/nlu/gold_human.jsonl
 medication_roster_path: data/nlu/medication_roster.json
 output_dir: data/nlu/generated
 stats_path: docs/nlu_stats.json

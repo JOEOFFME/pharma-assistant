@@ -222,6 +222,16 @@ class ClarificationQuestion(ContractModel):
     ar: NonBlank | None = None
 
 
+class Relation(ContractModel):
+    """Directed mention association; IDs refer to spans, never catalogue IDs."""
+
+    model_config = ConfigDict(extra="forbid", populate_by_name=True)
+
+    type: Literal["QUANTITY_OF", "DOSAGE_OF"]
+    from_id: NonBlank = Field(alias="from")
+    to: NonBlank
+
+
 class AnalysisResponse(ContractModel):
     """Structured interpretation v1 with cross-field consistency checks."""
 
@@ -229,6 +239,8 @@ class AnalysisResponse(ContractModel):
     input: InputInfo
     intent: Intent
     entities: list[Entity]
+    relations: list[Relation] = Field(default_factory=list)
+    contains_out_of_scope_request: Annotated[bool, Field(strict=True)] = False
     pharmacy_query: PharmacyQuery
     needs_clarification: Annotated[bool, Field(strict=True)]
     clarification_question: ClarificationQuestion
@@ -272,6 +284,46 @@ class AnalysisResponse(ContractModel):
             for entity in self.entities
             if isinstance(entity, MedicationEntity) and entity.assertion == "affirmed"
         ]
+        located = sorted(
+            (entity for entity in self.entities if entity.start is not None),
+            key=lambda entity: entity.start,
+        )
+        if any(
+            left.end > right.start
+            for left, right in zip(located, located[1:], strict=False)
+        ):
+            raise ValueError("Overlapping entity spans")
+        by_id = {
+            entity.entity_id: entity for entity in self.entities if entity.entity_id
+        }
+        seen_relations = set()
+        for relation in self.relations:
+            key = (relation.type, relation.from_id, relation.to)
+            if key in seen_relations:
+                raise ValueError("Duplicate relation")
+            seen_relations.add(key)
+            attribute = by_id.get(relation.from_id)
+            target = by_id.get(relation.to)
+            expected_type = {"QUANTITY_OF": "QUANTITY", "DOSAGE_OF": "DOSAGE"}[
+                relation.type
+            ]
+            if (
+                attribute is None
+                or attribute.type != expected_type
+                or not isinstance(target, MedicationEntity)
+            ):
+                raise ValueError(
+                    "Relation endpoints must have the correct entity types"
+                )
+            if (
+                attribute.medication_ref is not None
+                and attribute.medication_ref != relation.to
+            ):
+                raise ValueError("Relation conflicts with medication_ref")
+            if attribute.assertion == "affirmed" and target.assertion != "affirmed":
+                raise ValueError(
+                    "Affirmed relation cannot target a rejected medication"
+                )
         location_text = self.pharmacy_query.location_text
         if location_text is not None and not any(
             isinstance(entity, LocationEntity)
@@ -326,6 +378,7 @@ class AnalysisResponse(ContractModel):
                     and self.intent.label != "out_of_scope"
                     and len(affirmed_meds) > 1
                     and ref is None
+                    and not any(r.from_id == entity.entity_id for r in self.relations)
                     and not self.needs_clarification
                 ):
                     raise ValueError(
@@ -348,4 +401,66 @@ class AnalysisResponse(ContractModel):
             raise ValueError(
                 "Medication intent without an affirmed medication must clarify"
             )
+        return self
+
+
+class NLUAnnotation(ContractModel):
+    """Versioned annotation record; creation provenance never implies verification."""
+
+    id: NonBlank
+    text: Annotated[NonBlank, Field(max_length=10000)]
+    language: Language
+    intent: IntentLabel
+    entities: list[Entity]
+    relations: list[Relation]
+    needs_clarification: Annotated[bool, Field(strict=True)]
+    contains_out_of_scope_request: Annotated[bool, Field(strict=True)]
+    source: Literal["assistant_seed", "synthetic", "llm", "human"]
+    verified: Annotated[bool, Field(strict=True)]
+    family_id: NonBlank
+    split: NonBlank
+    authoring_method: str | None = None
+    expected_action: str | None = None
+    review_status: str | None = None
+    source_example_id: str | None = None
+    parent_id: str | None = None
+    augmentation: dict | None = None
+
+    @model_validator(mode="after")
+    def validate_annotation(self) -> Self:
+        """Apply the response evidence rules without inventing predicted scores."""
+        if self.verified and self.source != "human":
+            raise ValueError("Only human annotations may be verified")
+        if self.source == "synthetic" and not self.parent_id:
+            raise ValueError("Synthetic examples require a parent")
+        if any(e.start is None or e.entity_id is None for e in self.entities):
+            raise ValueError("Annotations require offsets and unique span IDs")
+        info = {
+            "pharmacy_info_phone": "phone",
+            "pharmacy_info_location": "location",
+            "pharmacy_info_hours": "hours",
+        }.get(self.intent)
+        AnalysisResponse.model_validate(
+            {
+                "request_id": "00000000-0000-4000-8000-000000000001",
+                "input": {
+                    "modality": "text",
+                    "raw_text": self.text,
+                    "language": self.language,
+                },
+                "intent": {"label": self.intent, "confidence": 0.5},
+                "entities": [e.model_dump(exclude_none=True) for e in self.entities],
+                "relations": [r.model_dump(by_alias=True) for r in self.relations],
+                "contains_out_of_scope_request": self.contains_out_of_scope_request,
+                "pharmacy_query": {
+                    "needs_pharmacy_info": info is not None,
+                    "info_type": info,
+                },
+                "needs_clarification": self.needs_clarification,
+                "clarification_question": {
+                    "fr": "Pouvez-vous préciser ?" if self.needs_clarification else None
+                },
+                "latency_ms": 0,
+            }
+        )
         return self

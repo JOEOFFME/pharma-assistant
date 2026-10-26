@@ -1,246 +1,272 @@
-"""Dataset/review controls; simulated test approvals never modify production gold."""
+"""Validate all committed annotations and enforce separation from human gold."""
 
 import copy
-import json
+import importlib.util
 from pathlib import Path
 
 import pytest
 
+from pharma_assistant.api.schemas import NLUAnnotation
 from pharma_assistant.data_tools.fetch_pharmacies import load_config
-from pharma_assistant.data_tools.gold_review import load_locked_gold, lock_gold
 from pharma_assistant.data_tools.nlu_dataset import (
-    assign_families,
-    augment,
     build_dataset,
-    digest,
     leakage_check,
     read_jsonl,
     validate_rows,
 )
 
 ROOT = Path(__file__).resolve().parents[1]
+FILES = sorted((ROOT / "data/nlu").rglob("*.jsonl"))
 
 
-@pytest.fixture(scope="module")
-def prepared(tmp_path_factory: pytest.TempPathFactory) -> tuple:
-    """Build from committed inputs in a temporary directory without network access."""
-    config = load_config(ROOT / "configs/nlu.yaml")
-    target = tmp_path_factory.mktemp("nlu")
-    for key in (
-        "seed_path",
-        "gold_candidates_path",
-        "gold_review_path",
-        "medication_roster_path",
-    ):
-        config[key] = str(ROOT / config[key])
-    config.update(
-        output_dir=str(target / "generated"),
-        stats_path=str(target / "stats.json"),
-        stats_report_path=str(target / "report.md"),
-        gold_test_path=str(target / "gold.jsonl"),
-        gold_lock_path=str(target / "gold.lock.json"),
-    )
-    stats = build_dataset(config)
-    splits = {
-        split: read_jsonl(Path(config["output_dir"]) / f"{split}.jsonl")
-        for split in ("train", "dev", "test")
-    }
-    return config, stats, splits, target
+def script_module(name: str):
+    """Import a CLI helper without executing its entry point."""
+    spec = importlib.util.spec_from_file_location(name, ROOT / f"scripts/{name}.py")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
 
 
-def test_seed_and_candidate_coverage() -> None:
-    """Seed/candidate counts, varieties and creation provenance remain explicit."""
-    seeds = read_jsonl(ROOT / "data/nlu/seed.jsonl")
-    gold = read_jsonl(ROOT / "data/nlu/gold_candidates.jsonl")
-    assert len(seeds) == 200 and len(gold) == 100
-    validate_rows(seeds)
-    validate_rows(gold)
-    assert len({row["intent"] for row in seeds}) == 8
-    assert len({row["language"] for row in seeds}) == 5
-    assert len({row["intent"] for row in gold}) == 8
-    assert all(row["source"] == "authored_unreviewed" for row in seeds + gold)
-    assert all(row["review_status"] == "pending_native_speaker_review" for row in gold)
-
-
-def test_review_template_hashes_match_all_annotations() -> None:
-    """Reviews cannot apply to an older text or differently annotated record."""
-    rows = read_jsonl(ROOT / "data/nlu/gold_candidates.jsonl")
-    review = json.loads((ROOT / "data/nlu/gold_review.json").read_text())
-    by_id = {item["id"]: item for item in review["rows"]}
-    assert len(by_id) == 100
+@pytest.mark.parametrize("path", FILES, ids=lambda p: p.name)
+def test_every_jsonl_row(path: Path) -> None:
+    """Check every span, label, overlap, clarification and exact duplicate text."""
+    rows = read_jsonl(path)
+    validate_rows(rows)
     for row in rows:
-        assert by_id[row["id"]]["example_sha256"] == digest(row)
-        assert isinstance(by_id[row["id"]]["approved"], bool)
-
-
-def test_training_only_augmentation_and_family_separation(prepared: tuple) -> None:
-    """Descendants stay in their training parent's family and split."""
-    _, stats, splits, _ = prepared
-    parents = {
-        row["id"]: row for row in splits["train"] if row["source"] != "synthetic"
-    }
-    generated = [row for row in splits["train"] if row["source"] == "synthetic"]
-    assert generated
-    for row in generated:
-        assert row["parent_id"] in parents
-        assert row["family_id"] == parents[row["parent_id"]]["family_id"]
-        assert row["augmentation"]["reference_country"] == "FR"
-    assert all(
-        row["source"] != "synthetic"
-        for split in ("dev", "test")
-        for row in splits[split]
-    )
-    assert stats["leakage"] == {
-        "shared_families": 0,
-        "shared_normalized_texts": 0,
-        "shared_template_signatures": 0,
-    }
-    for rows in splits.values():
-        assert len({row["intent"] for row in rows}) == 8
-        assert len({row["language"] for row in rows}) == 5
-
-
-@pytest.mark.parametrize("change_family", [False, True])
-def test_leakage_is_not_silently_dropped(prepared: tuple, change_family: bool) -> None:
-    """Shared text cannot be hidden by renaming its family or record ID."""
-    source = copy.deepcopy(prepared[2]["train"][0])
-    other = copy.deepcopy(source)
-    other["id"] += "_other"
-    if change_family:
-        other["family_id"] += "_other"
-    with pytest.raises(ValueError, match="Leakage"):
-        leakage_check({"train": [source], "test": [other]})
-
-
-def test_optional_attribute_template_collisions_are_grouped() -> None:
-    """Adding strength text must not split one basic phrase across train/test."""
-    rows = read_jsonl(ROOT / "data/nlu/seed.jsonl")
-    splits = assign_families(rows, 42)
-    assert leakage_check(splits)["shared_template_signatures"] == 0
-    placement = {
-        row["source_example_id"]: (split, row["family_id"])
-        for split, examples in splits.items()
-        for row in examples
-    }
-    assert (
-        placement["check_availability.fr.01"] == placement["check_availability.fr.04"]
-    )
-    assert placement["price_inquiry.fr.01"] == placement["price_inquiry.fr.04"]
-
-
-def test_unicode_spans_recomputed_after_augmentation() -> None:
-    """Emoji/code-point prefixes must not shift offsets as UTF-16 bytes would."""
-    text = "🙂 بغيت Doliprane 500 mg"
-    med = text.index("Doliprane")
-    strength = text.index("500 mg")
-    row = {
-        "id": "fixture",
-        "text": text,
-        "intent": "request_medication",
-        "language": "mixed",
-        "family_id": "fixture",
-        "split": "train",
-        "source": "authored_unreviewed",
-        "needs_clarification": False,
-        "entities": [
-            {"type": "MEDICATION", "text": "Doliprane", "start": med, "end": med + 9},
-            {
-                "type": "DOSAGE",
-                "text": "500 mg",
-                "start": strength,
-                "end": strength + 6,
-                "value": 500,
-                "unit": "mg",
-            },
-        ],
-    }
-    roster = json.loads((ROOT / "data/nlu/medication_roster.json").read_text())
-    changed = augment(row, roster[0], 3, "noise", 1)
-    validate_rows([changed])
-    assert changed["text"].startswith("🙂")
-    assert changed["source"] == "synthetic"
-
-
-def test_build_is_deterministic(prepared: tuple) -> None:
-    """Rebuilding uses no random APIs, provider calls or review mutation."""
-    config, stats, _, _ = prepared
-    before = {
-        split: (Path(config["output_dir"]) / f"{split}.jsonl").read_bytes()
-        for split in ("train", "dev", "test")
-    }
-    assert build_dataset(config) == stats
-    assert all(
-        (Path(config["output_dir"]) / f"{split}.jsonl").read_bytes() == content
-        for split, content in before.items()
-    )
-
-
-def test_pending_review_cannot_be_locked(tmp_path: Path) -> None:
-    """No production example is labelled human-verified by a build command."""
-    output, seal = tmp_path / "gold.jsonl", tmp_path / "gold.lock.json"
-    document = json.loads((ROOT / "data/nlu/gold_review.json").read_text())
-    document["rows"][0]["approved"] = False
-    review_path = tmp_path / "pending_review.json"
-    review_path.write_text(json.dumps(document))
-    with pytest.raises(ValueError, match="Human review missing"):
-        lock_gold(
-            ROOT / "data/nlu/gold_candidates.jsonl",
-            review_path,
-            output,
-            seal,
+        NLUAnnotation.model_validate(row)
+        for entity in row["entities"]:
+            assert row["text"][entity["start"] : entity["end"]] == entity["text"]
+        ordered = sorted(row["entities"], key=lambda e: e["start"])
+        assert all(
+            a["end"] <= b["start"] for a, b in zip(ordered, ordered[1:], strict=False)
         )
-    assert not output.exists() and not seal.exists()
+        if row["intent"] in {
+            "check_availability",
+            "request_medication",
+            "price_inquiry",
+        }:
+            if not any(e["type"] == "MEDICATION" for e in row["entities"]):
+                assert row["needs_clarification"] is True
 
 
-def simulated_reviews() -> dict:
-    """Use conspicuous test-only review metadata, never actual human approval."""
-    document = json.loads((ROOT / "data/nlu/gold_review.json").read_text())
-    for review in document["rows"]:
-        review.update(
-            approved=True,
-            reviewed_by="UNIT_TEST_SIMULATED_REVIEW",
-            reviewed_at="2000-01-01T00:00:00+00:00",
-        )
-    return document
+def test_exact_text_duplicates_across_all_files() -> None:
+    """Even cross-file exact copies are rejected; build inputs live outside data/nlu."""
+    rows = [row for path in FILES for row in read_jsonl(path)]
+    assert len(rows) == len({row["text"] for row in rows})
 
 
-def test_stale_review_is_rejected(tmp_path: Path) -> None:
-    """A prior review cannot silently approve a changed record."""
-    review = simulated_reviews()
-    review["rows"][0]["example_sha256"] = "0" * 64
-    path = tmp_path / "review.json"
-    path.write_text(json.dumps(review))
-    with pytest.raises(ValueError, match="Review hash mismatch"):
-        lock_gold(
-            ROOT / "data/nlu/gold_candidates.jsonl",
-            path,
-            tmp_path / "gold.jsonl",
-            tmp_path / "gold.lock.json",
-        )
+def test_gold_provenance() -> None:
+    """Any non-human or unverified gold row fails, including assistant seeds."""
+    path = ROOT / "data/nlu/gold_human.jsonl"
+    assert path.exists()
+    for row in read_jsonl(path):
+        assert row["source"] == "human"
+        assert row["verified"] is True
 
 
-def test_lock_integrity_and_no_overwrite(tmp_path: Path) -> None:
-    """Exercise sealing with simulated test approvals, then reject tampering."""
-    review_path = tmp_path / "review.json"
-    review_path.write_text(json.dumps(simulated_reviews()))
-    output, seal = tmp_path / "gold.jsonl", tmp_path / "gold.lock.json"
-    candidates = ROOT / "data/nlu/gold_candidates.jsonl"
-    lock_gold(candidates, review_path, output, seal)
-    assert len(load_locked_gold(output, seal)) == 100
-    with pytest.raises(ValueError, match="immutable"):
-        lock_gold(candidates, review_path, output, seal)
-    output.write_bytes(output.read_bytes() + b" ")
-    with pytest.raises(ValueError, match="Gold hash mismatch"):
-        load_locked_gold(output, seal)
+def test_dev_seed_regressions() -> None:
+    """Preserve all 100 rows with the requested mixed/missing/relations fixes."""
+    rows = read_jsonl(ROOT / "data/nlu/dev_seed.jsonl")
+    assert len(rows) == 100
+    assert all(r["source"] == "assistant_seed" and r["verified"] is False for r in rows)
+    for n in [84, 88, 92, 96, 100]:
+        row = rows[n - 1]
+        assert row["intent"] == "check_availability"
+        assert row["contains_out_of_scope_request"] is True
+        assert row["expected_action"] == "answer_in_scope_and_refuse_medical_advice"
+    for n in [82, 83, 86, 87, 90, 91, 94, 95, 98, 99]:
+        assert rows[n - 1]["needs_clarification"] is True
+    for n in [81, 85, 89, 93, 97]:
+        assert len(rows[n - 1]["relations"]) == 2
+        assert all(r["type"] == "QUANTITY_OF" for r in rows[n - 1]["relations"])
 
 
-def test_invalid_source_or_offsets_are_rejected() -> None:
-    """Annotation validation checks source provenance and verbatim spans."""
-    row = read_jsonl(ROOT / "data/nlu/seed.jsonl")[0]
-    row["source"] = "invented_human_gold"
+@pytest.mark.parametrize(
+    "patch",
+    [
+        {"language": "en"},
+        {"intent": "diagnosis"},
+        {"verified": True},
+        {"source": "authored_unreviewed"},
+        {"needs_clarification": "true"},
+        {"contains_out_of_scope_request": "false"},
+    ],
+)
+def test_invalid_contract_fields(patch: dict) -> None:
+    """Strict enum/boolean/provenance fields cannot be silently coerced."""
+    row = copy.deepcopy(read_jsonl(ROOT / "data/nlu/dev_seed.jsonl")[0])
+    row.update(patch)
     with pytest.raises(ValueError):
         validate_rows([row])
-    row["source"] = "authored_unreviewed"
-    row["entities"][0]["start"] += 1
-    with pytest.raises(ValueError, match="offset"):
+
+
+def test_offsets_overlap_missing_and_duplicate_negative_cases() -> None:
+    """The dataset validator rejects corrupt evidence and incomplete intent routing."""
+    base = read_jsonl(ROOT / "data/nlu/dev_seed.jsonl")[0]
+    bad = copy.deepcopy(base)
+    bad["entities"][0]["start"] += 1
+    with pytest.raises(ValueError):
+        validate_rows([bad])
+    bad = copy.deepcopy(base)
+    duplicate = copy.deepcopy(bad["entities"][0])
+    duplicate["entity_id"] = "overlap"
+    bad["entities"].append(duplicate)
+    with pytest.raises(ValueError, match="Overlapping"):
+        validate_rows([bad])
+    bad = copy.deepcopy(base)
+    bad.update(entities=[], relations=[], needs_clarification=False)
+    with pytest.raises(ValueError):
+        validate_rows([bad])
+    duplicate = copy.deepcopy(base)
+    duplicate["id"] += "copy"
+    with pytest.raises(ValueError, match="Duplicate exact"):
+        validate_rows([base, duplicate])
+
+
+@pytest.mark.parametrize(
+    "relation",
+    [
+        {"type": "QUANTITY_OF", "from": "missing", "to": "med1"},
+        {"type": "DOSAGE_OF", "from": "med1", "to": "med1"},
+        {"type": "QUANTITY_OF", "from": "span1", "to": "missing"},
+    ],
+)
+def test_invalid_relation_endpoints(relation: dict) -> None:
+    """Links must point from the declared attribute type to a medication span."""
+    row = read_jsonl(ROOT / "data/nlu/dev_seed.jsonl")[80]
+    row["relations"] = [relation]
+    with pytest.raises(ValueError):
         validate_rows([row])
+
+
+def test_reproducible_family_split_and_training_augmentation(tmp_path: Path) -> None:
+    """Rebuild without network; synthetic variants stay with training parents."""
+    config = load_config(ROOT / "configs/nlu.yaml")
+    for key in [
+        "seed_path",
+        "dev_seed_path",
+        "gold_human_path",
+        "medication_roster_path",
+    ]:
+        config[key] = str(ROOT / config[key])
+    config.update(
+        output_dir=str(tmp_path / "generated"),
+        stats_path=str(tmp_path / "stats.json"),
+        stats_report_path=str(tmp_path / "stats.md"),
+    )
+    stats = build_dataset(config)
+    before = {p.name: p.read_bytes() for p in (tmp_path / "generated").glob("*.jsonl")}
+    assert build_dataset(config) == stats
+    assert before == {
+        p.name: p.read_bytes() for p in (tmp_path / "generated").glob("*.jsonl")
+    }
+    splits = {
+        s: read_jsonl(tmp_path / "generated" / f"{s}.jsonl")
+        for s in ["train", "dev", "test"]
+    }
+    assert leakage_check(splits)["shared_families"] == 0
+    parents = {r["id"]: r for r in splits["train"] if r["source"] != "synthetic"}
+    for row in splits["train"]:
+        if row["source"] == "synthetic":
+            assert row["family_id"] == parents[row["parent_id"]]["family_id"]
+    assert all(r["source"] != "synthetic" for s in ["dev", "test"] for r in splits[s])
+    assert stats["development_only"]["final_evaluation_eligible"] is False
+
+
+def test_human_helper_unicode_repeated_substrings_and_duplicate_guard(
+    tmp_path: Path,
+) -> None:
+    """Helper calculates code points and never copies development text into gold."""
+    helper = script_module("add_gold")
+    text = "🙂 é Doliprane puis Doliprane"
+    span = {"type": "MEDICATION", "entity_id": "m1", "text": "Doliprane"}
+    with pytest.raises(ValueError, match="Repeated substring"):
+        helper.annotation_from_substrings(text, "fr", "request_medication", [span], [])
+    row = helper.annotation_from_substrings(
+        text, "fr", "request_medication", [{**span, "occurrence": 2}], []
+    )
+    entity = row["entities"][0]
+    assert entity["start"] == text.rindex("Doliprane")
+    assert text[entity["start"] : entity["end"]] == "Doliprane"
+    path = tmp_path / "gold.jsonl"
+    helper.append_human(row, path, tmp_path / "absent")
+    with pytest.raises(ValueError):
+        helper.append_human(row, path, tmp_path / "absent")
+    development = tmp_path / "development"
+    development.mkdir()
+    (development / "dev_seed.jsonl").write_bytes(path.read_bytes())
+    with pytest.raises(ValueError, match="never promote"):
+        helper.append_human(row, tmp_path / "other.jsonl", development)
+    missing = helper.annotation_from_substrings(
+        "Le produit dont on parlait est disponible ?",
+        "fr",
+        "check_availability",
+        [],
+        [],
+    )
+    assert missing["needs_clarification"]
+
+
+def test_quality_report_and_low_medication_warning() -> None:
+    """Small inventory emits a warning; diversity counts use documented surfaces."""
+    stats = script_module("dataset_stats").quality_statistics
+    rows = read_jsonl(ROOT / "data/nlu/dev_seed.jsonl")
+    report = stats(rows)
+    assert report["rows"] == report["distinct_texts"] == 100
+    assert sum(report["rows_per_intent"].values()) == 100
+    assert sum(report["rows_per_variety"].values()) == 100
+    assert report["rows_without_medication"] > 0
+    assert stats(rows[:1])["warnings"] == ["Fewer than 8 distinct medications"]
+
+
+def test_boundary_conventions_and_full_time_expressions() -> None:
+    """Observed development spans exclude generic prefixes and retain full times."""
+    rows = read_jsonl(ROOT / "data/nlu/dev_seed.jsonl")
+    for row in rows:
+        for entity in row["entities"]:
+            if entity["type"] == "PHARMACY_NAME":
+                assert not entity["text"].startswith(("Pharmacie ", "صيدلية "))
+    assert any(
+        e["text"] == "had lila"
+        for r in rows
+        for e in r["entities"]
+        if e["type"] == "TIME_REF"
+    )
+    assert any(
+        e["text"] == "هذه الليلة"
+        for r in rows
+        for e in r["entities"]
+        if e["type"] == "TIME_REF"
+    )
+
+
+def test_relations_roundtrip_and_response_mixed_flag() -> None:
+    """JSON relation aliases survive Pydantic export; mixed requests keep routing."""
+    from pharma_assistant.api.schemas import Relation
+
+    link = Relation.model_validate({"type": "DOSAGE_OF", "from": "d1", "to": "m1"})
+    assert link.model_dump(by_alias=True) == {
+        "type": "DOSAGE_OF",
+        "from": "d1",
+        "to": "m1",
+    }
+    assert Relation.model_validate_json(link.model_dump_json()) == link
+
+
+def test_annotation_schema_export_matches_model() -> None:
+    """The JSONL contract artifact includes mandatory provenance and booleans."""
+    import json
+
+    expected = NLUAnnotation.model_json_schema()
+    assert (
+        json.loads((ROOT / "docs/nlu_annotation.schema.json").read_text()) == expected
+    )
+    assert set(
+        [
+            "relations",
+            "source",
+            "verified",
+            "needs_clarification",
+            "contains_out_of_scope_request",
+        ]
+    ) <= set(expected["required"])

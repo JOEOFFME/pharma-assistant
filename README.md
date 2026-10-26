@@ -82,8 +82,8 @@ in `.env.example`; no stochastic model is used in TASK 0.
 - `docs/`: validation reports and, later, study/architecture/evaluation.
 - `notebooks/`, `docker/`: reserved for later tasks.
 
-Data directories are intentionally empty. Do not commit personal health data,
-credentials, local datasets, generated reports, models or `.env` files.
+Versioned public source snapshots and annotated development data are included.
+Do not commit personal health data, credentials, models or `.env` files.
 Follow `AGENTS.md`: execute tasks in order, with user validation between them.
 
 ## NLU response contract (TASK 2)
@@ -131,10 +131,11 @@ Generated Arabic/typo aliases and the query mini-set require review. See
 make dataset
 ```
 
-Inputs include 200 assistant-authored hand-style seed examples and 100 held-out
-gold candidates. Augmentation is synthetic and training-only; related template
-families stay together. The candidates are **not human-verified gold**.
+Inputs include 200 assistant-authored build seeds and 100 development-only
+assistant seeds. Augmentation is synthetic and training-only; related template
+families stay together. No development seed is eligible for final evaluation.
+`data/nlu/gold_human.jsonl` is an empty template for separately collected human
+annotations. The previous candidate-to-gold promotion mechanism is removed.
 See [dataset instructions](data/nlu/README.md),
-[gold review table](docs/gold_candidates_review.md) and
-[TASK 5 validation](docs/05_validation.md). `make gold-lock` refuses admission
-until every candidate has explicit, hash-bound human review.
+[human annotation guide](docs/gold_annotation_howto.md), and
+[TASK 5 correction validation](docs/05_validation.md).

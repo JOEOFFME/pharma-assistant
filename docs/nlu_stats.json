@@ -21,7 +21,7 @@
         "mixed": 128
       },
       "sources": {
-        "authored_unreviewed": 100,
+        "assistant_seed": 100,
         "synthetic": 420
       },
       "length_codepoints": {
@@ -30,7 +30,7 @@
         "p95": 44,
         "max": 52
       },
-      "sha256": "e54d02aaea7a213dfdd12e73bc846e1fa27d760a8bb32ff4ebd3243a7beeaaf4"
+      "sha256": "b090aa2bae121f7c96f7459cec8d66b2f3843f9bedb1fb5ed800db24d0d0ad74"
     },
     "dev": {
       "rows": 50,
@@ -53,7 +53,7 @@
         "mixed": 10
       },
       "sources": {
-        "authored_unreviewed": 50
+        "assistant_seed": 50
       },
       "length_codepoints": {
         "min": 7,
@@ -61,7 +61,7 @@
         "p95": 36,
         "max": 51
       },
-      "sha256": "83b707bd13f2c762409e44c642df9345f2e459d6ac178af617ac908351dcaf6c"
+      "sha256": "01e55d95b29283c4bd186518a213f7faeb47702af14b32b997f3018ab7dc0c24"
     },
     "test": {
       "rows": 50,
@@ -84,7 +84,7 @@
         "mixed": 10
       },
       "sources": {
-        "authored_unreviewed": 50
+        "assistant_seed": 50
       },
       "length_codepoints": {
         "min": 10,
@@ -92,7 +92,7 @@
         "p95": 40,
         "max": 45
       },
-      "sha256": "87a726c69ce827acb0316b5a613d2c0b93ffea714d84c2c097d6b12a6a8b8bb1"
+      "sha256": "628acebddf8cc61252e7858c1080c19d33380806eec596fad7f32b9a3b620548"
     }
   },
   "leakage": {
@@ -100,26 +100,9 @@
     "shared_normalized_texts": 0,
     "shared_template_signatures": 0
   },
-  "gold": {
-    "candidate_rows": 100,
-    "verified_rows": 0,
-    "status": "pending_human_review_not_locked",
-    "intents": {
-      "check_availability": 15,
-      "greeting_smalltalk": 10,
-      "out_of_scope": 15,
-      "pharmacy_info_hours": 10,
-      "pharmacy_info_location": 10,
-      "pharmacy_info_phone": 10,
-      "price_inquiry": 15,
-      "request_medication": 15
-    },
-    "languages": {
-      "ar": 20,
-      "darija_ar": 20,
-      "darija_latn": 20,
-      "fr": 20,
-      "mixed": 20
-    }
-  }
+  "development_only": {
+    "rows": 100,
+    "final_evaluation_eligible": false
+  },
+  "human_gold_rows": 0
 }

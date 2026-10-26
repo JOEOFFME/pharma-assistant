@@ -1,0 +1,1146 @@
+{
+  "$defs": {
+    "DosageEntity": {
+      "additionalProperties": false,
+      "description": "Extract stated product strength; never recommend a dose or regimen.",
+      "properties": {
+        "text": {
+          "pattern": "\\S",
+          "title": "Text",
+          "type": "string"
+        },
+        "start": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Start"
+        },
+        "end": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "End"
+        },
+        "entity_id": {
+          "anyOf": [
+            {
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Entity Id"
+        },
+        "assertion": {
+          "default": "affirmed",
+          "enum": [
+            "affirmed",
+            "negated",
+            "uncertain"
+          ],
+          "title": "Assertion",
+          "type": "string"
+        },
+        "confidence": {
+          "anyOf": [
+            {
+              "maximum": 1.0,
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Confidence"
+        },
+        "medication_ref": {
+          "anyOf": [
+            {
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Medication Ref"
+        },
+        "type": {
+          "const": "DOSAGE",
+          "title": "Type",
+          "type": "string"
+        },
+        "value": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Value"
+        },
+        "unit": {
+          "anyOf": [
+            {
+              "enum": [
+                "mg",
+                "g",
+                "mcg",
+                "mg/mL",
+                "g/L",
+                "%",
+                "IU"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Unit"
+        }
+      },
+      "required": [
+        "text",
+        "type"
+      ],
+      "title": "DosageEntity",
+      "type": "object"
+    },
+    "FormEntity": {
+      "additionalProperties": false,
+      "description": "Product form as stated, with an optional controlled normalization.",
+      "properties": {
+        "text": {
+          "pattern": "\\S",
+          "title": "Text",
+          "type": "string"
+        },
+        "start": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Start"
+        },
+        "end": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "End"
+        },
+        "entity_id": {
+          "anyOf": [
+            {
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Entity Id"
+        },
+        "assertion": {
+          "default": "affirmed",
+          "enum": [
+            "affirmed",
+            "negated",
+            "uncertain"
+          ],
+          "title": "Assertion",
+          "type": "string"
+        },
+        "confidence": {
+          "anyOf": [
+            {
+              "maximum": 1.0,
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Confidence"
+        },
+        "medication_ref": {
+          "anyOf": [
+            {
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Medication Ref"
+        },
+        "type": {
+          "const": "FORM",
+          "title": "Type",
+          "type": "string"
+        },
+        "normalized": {
+          "anyOf": [
+            {
+              "enum": [
+                "tablet",
+                "capsule",
+                "syrup",
+                "suspension",
+                "injection",
+                "cream",
+                "ointment",
+                "drops",
+                "spray",
+                "suppository",
+                "sachet",
+                "powder",
+                "other"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Normalized"
+        }
+      },
+      "required": [
+        "text",
+        "type"
+      ],
+      "title": "FormEntity",
+      "type": "object"
+    },
+    "LocationEntity": {
+      "additionalProperties": false,
+      "description": "Location text; does not pretend to be geocoded coordinates.",
+      "properties": {
+        "text": {
+          "pattern": "\\S",
+          "title": "Text",
+          "type": "string"
+        },
+        "start": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Start"
+        },
+        "end": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "End"
+        },
+        "entity_id": {
+          "anyOf": [
+            {
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Entity Id"
+        },
+        "assertion": {
+          "default": "affirmed",
+          "enum": [
+            "affirmed",
+            "negated",
+            "uncertain"
+          ],
+          "title": "Assertion",
+          "type": "string"
+        },
+        "confidence": {
+          "anyOf": [
+            {
+              "maximum": 1.0,
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Confidence"
+        },
+        "type": {
+          "const": "LOCATION",
+          "title": "Type",
+          "type": "string"
+        },
+        "normalized": {
+          "anyOf": [
+            {
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Normalized"
+        }
+      },
+      "required": [
+        "text",
+        "type"
+      ],
+      "title": "LocationEntity",
+      "type": "object"
+    },
+    "MedicationEntity": {
+      "additionalProperties": false,
+      "description": "Only catalogue-grounded matches may carry normalized identity fields.",
+      "properties": {
+        "text": {
+          "pattern": "\\S",
+          "title": "Text",
+          "type": "string"
+        },
+        "start": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Start"
+        },
+        "end": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "End"
+        },
+        "entity_id": {
+          "anyOf": [
+            {
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Entity Id"
+        },
+        "assertion": {
+          "default": "affirmed",
+          "enum": [
+            "affirmed",
+            "negated",
+            "uncertain"
+          ],
+          "title": "Assertion",
+          "type": "string"
+        },
+        "confidence": {
+          "anyOf": [
+            {
+              "maximum": 1.0,
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Confidence"
+        },
+        "type": {
+          "const": "MEDICATION",
+          "title": "Type",
+          "type": "string"
+        },
+        "normalized": {
+          "anyOf": [
+            {
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Normalized"
+        },
+        "dci": {
+          "anyOf": [
+            {
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Dci"
+        },
+        "matched_id": {
+          "anyOf": [
+            {
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Matched Id"
+        }
+      },
+      "required": [
+        "text",
+        "type"
+      ],
+      "title": "MedicationEntity",
+      "type": "object"
+    },
+    "PharmacyNameEntity": {
+      "additionalProperties": false,
+      "description": "Pharmacy name as mentioned; no implied directory match.",
+      "properties": {
+        "text": {
+          "pattern": "\\S",
+          "title": "Text",
+          "type": "string"
+        },
+        "start": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Start"
+        },
+        "end": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "End"
+        },
+        "entity_id": {
+          "anyOf": [
+            {
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Entity Id"
+        },
+        "assertion": {
+          "default": "affirmed",
+          "enum": [
+            "affirmed",
+            "negated",
+            "uncertain"
+          ],
+          "title": "Assertion",
+          "type": "string"
+        },
+        "confidence": {
+          "anyOf": [
+            {
+              "maximum": 1.0,
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Confidence"
+        },
+        "type": {
+          "const": "PHARMACY_NAME",
+          "title": "Type",
+          "type": "string"
+        },
+        "normalized": {
+          "anyOf": [
+            {
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Normalized"
+        }
+      },
+      "required": [
+        "text",
+        "type"
+      ],
+      "title": "PharmacyNameEntity",
+      "type": "object"
+    },
+    "QuantityEntity": {
+      "additionalProperties": false,
+      "description": "Explicit positive count of requested packages or discrete units.",
+      "properties": {
+        "text": {
+          "pattern": "\\S",
+          "title": "Text",
+          "type": "string"
+        },
+        "start": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Start"
+        },
+        "end": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "End"
+        },
+        "entity_id": {
+          "anyOf": [
+            {
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Entity Id"
+        },
+        "assertion": {
+          "default": "affirmed",
+          "enum": [
+            "affirmed",
+            "negated",
+            "uncertain"
+          ],
+          "title": "Assertion",
+          "type": "string"
+        },
+        "confidence": {
+          "anyOf": [
+            {
+              "maximum": 1.0,
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Confidence"
+        },
+        "medication_ref": {
+          "anyOf": [
+            {
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Medication Ref"
+        },
+        "type": {
+          "const": "QUANTITY",
+          "title": "Type",
+          "type": "string"
+        },
+        "value": {
+          "exclusiveMinimum": 0,
+          "title": "Value",
+          "type": "integer"
+        },
+        "unit": {
+          "enum": [
+            "box",
+            "blister",
+            "bottle",
+            "tablet",
+            "tube",
+            "sachet",
+            "ampoule",
+            "vial",
+            "pack",
+            "unit"
+          ],
+          "title": "Unit",
+          "type": "string"
+        }
+      },
+      "required": [
+        "text",
+        "type",
+        "value",
+        "unit"
+      ],
+      "title": "QuantityEntity",
+      "type": "object"
+    },
+    "Relation": {
+      "additionalProperties": false,
+      "description": "Directed mention association; IDs refer to spans, never catalogue IDs.",
+      "properties": {
+        "type": {
+          "enum": [
+            "QUANTITY_OF",
+            "DOSAGE_OF"
+          ],
+          "title": "Type",
+          "type": "string"
+        },
+        "from": {
+          "pattern": "\\S",
+          "title": "From",
+          "type": "string"
+        },
+        "to": {
+          "pattern": "\\S",
+          "title": "To",
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "from",
+        "to"
+      ],
+      "title": "Relation",
+      "type": "object"
+    },
+    "TimeRefEntity": {
+      "additionalProperties": false,
+      "description": "Relative/absolute time text; resolution requires request-time context.",
+      "properties": {
+        "text": {
+          "pattern": "\\S",
+          "title": "Text",
+          "type": "string"
+        },
+        "start": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Start"
+        },
+        "end": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "End"
+        },
+        "entity_id": {
+          "anyOf": [
+            {
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Entity Id"
+        },
+        "assertion": {
+          "default": "affirmed",
+          "enum": [
+            "affirmed",
+            "negated",
+            "uncertain"
+          ],
+          "title": "Assertion",
+          "type": "string"
+        },
+        "confidence": {
+          "anyOf": [
+            {
+              "maximum": 1.0,
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Confidence"
+        },
+        "type": {
+          "const": "TIME_REF",
+          "title": "Type",
+          "type": "string"
+        },
+        "normalized": {
+          "anyOf": [
+            {
+              "enum": [
+                "today",
+                "tonight",
+                "now",
+                "tomorrow"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Normalized"
+        }
+      },
+      "required": [
+        "text",
+        "type"
+      ],
+      "title": "TimeRefEntity",
+      "type": "object"
+    },
+    "UrgencyEntity": {
+      "additionalProperties": false,
+      "description": "Explicit request urgency, without inferring clinical severity.",
+      "properties": {
+        "text": {
+          "pattern": "\\S",
+          "title": "Text",
+          "type": "string"
+        },
+        "start": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Start"
+        },
+        "end": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "End"
+        },
+        "entity_id": {
+          "anyOf": [
+            {
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Entity Id"
+        },
+        "assertion": {
+          "default": "affirmed",
+          "enum": [
+            "affirmed",
+            "negated",
+            "uncertain"
+          ],
+          "title": "Assertion",
+          "type": "string"
+        },
+        "confidence": {
+          "anyOf": [
+            {
+              "maximum": 1.0,
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Confidence"
+        },
+        "type": {
+          "const": "URGENCY",
+          "title": "Type",
+          "type": "string"
+        },
+        "normalized": {
+          "anyOf": [
+            {
+              "const": "urgent",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Normalized"
+        }
+      },
+      "required": [
+        "text",
+        "type"
+      ],
+      "title": "UrgencyEntity",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Versioned annotation record; creation provenance never implies verification.",
+  "properties": {
+    "id": {
+      "pattern": "\\S",
+      "title": "Id",
+      "type": "string"
+    },
+    "text": {
+      "maxLength": 10000,
+      "pattern": "\\S",
+      "title": "Text",
+      "type": "string"
+    },
+    "language": {
+      "enum": [
+        "darija_ar",
+        "darija_latn",
+        "ar",
+        "fr",
+        "mixed"
+      ],
+      "title": "Language",
+      "type": "string"
+    },
+    "intent": {
+      "enum": [
+        "check_availability",
+        "request_medication",
+        "pharmacy_info_phone",
+        "pharmacy_info_location",
+        "pharmacy_info_hours",
+        "price_inquiry",
+        "greeting_smalltalk",
+        "out_of_scope"
+      ],
+      "title": "Intent",
+      "type": "string"
+    },
+    "entities": {
+      "items": {
+        "discriminator": {
+          "mapping": {
+            "DOSAGE": "#/$defs/DosageEntity",
+            "FORM": "#/$defs/FormEntity",
+            "LOCATION": "#/$defs/LocationEntity",
+            "MEDICATION": "#/$defs/MedicationEntity",
+            "PHARMACY_NAME": "#/$defs/PharmacyNameEntity",
+            "QUANTITY": "#/$defs/QuantityEntity",
+            "TIME_REF": "#/$defs/TimeRefEntity",
+            "URGENCY": "#/$defs/UrgencyEntity"
+          },
+          "propertyName": "type"
+        },
+        "oneOf": [
+          {
+            "$ref": "#/$defs/MedicationEntity"
+          },
+          {
+            "$ref": "#/$defs/DosageEntity"
+          },
+          {
+            "$ref": "#/$defs/FormEntity"
+          },
+          {
+            "$ref": "#/$defs/QuantityEntity"
+          },
+          {
+            "$ref": "#/$defs/PharmacyNameEntity"
+          },
+          {
+            "$ref": "#/$defs/LocationEntity"
+          },
+          {
+            "$ref": "#/$defs/TimeRefEntity"
+          },
+          {
+            "$ref": "#/$defs/UrgencyEntity"
+          }
+        ]
+      },
+      "title": "Entities",
+      "type": "array"
+    },
+    "relations": {
+      "items": {
+        "$ref": "#/$defs/Relation"
+      },
+      "title": "Relations",
+      "type": "array"
+    },
+    "needs_clarification": {
+      "title": "Needs Clarification",
+      "type": "boolean"
+    },
+    "contains_out_of_scope_request": {
+      "title": "Contains Out Of Scope Request",
+      "type": "boolean"
+    },
+    "source": {
+      "enum": [
+        "assistant_seed",
+        "synthetic",
+        "llm",
+        "human"
+      ],
+      "title": "Source",
+      "type": "string"
+    },
+    "verified": {
+      "title": "Verified",
+      "type": "boolean"
+    },
+    "family_id": {
+      "pattern": "\\S",
+      "title": "Family Id",
+      "type": "string"
+    },
+    "split": {
+      "pattern": "\\S",
+      "title": "Split",
+      "type": "string"
+    },
+    "authoring_method": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Authoring Method"
+    },
+    "expected_action": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Expected Action"
+    },
+    "review_status": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Review Status"
+    },
+    "source_example_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Source Example Id"
+    },
+    "parent_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Parent Id"
+    },
+    "augmentation": {
+      "anyOf": [
+        {
+          "type": "object"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Augmentation"
+    }
+  },
+  "required": [
+    "id",
+    "text",
+    "language",
+    "intent",
+    "entities",
+    "relations",
+    "needs_clarification",
+    "contains_out_of_scope_request",
+    "source",
+    "verified",
+    "family_id",
+    "split"
+  ],
+  "title": "NLUAnnotation",
+  "type": "object"
+}

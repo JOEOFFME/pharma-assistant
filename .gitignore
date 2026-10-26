@@ -29,12 +29,9 @@ data/**/*
 tmp/
 
 # Dataset inputs are versioned; generated splits are reproducible build outputs.
-!data/nlu/seed.jsonl
-!data/nlu/gold_candidates.jsonl
-!data/nlu/gold_review.json
+!data/nlu/dev_seed.jsonl
+!data/nlu/gold_human.jsonl
 !data/nlu/medication_roster.json
-!data/nlu/gold_test.jsonl
-!data/nlu/gold.lock.json
 
 !data/nlu/generated/train.jsonl
 !data/nlu/generated/dev.jsonl

@@ -1,6 +1,6 @@
 # NLU specification and annotation guidelines - v1
 
-TASK 2 status: implementation tested; **user review pending**. Version: v1.
+TASK 2 specification, amended during TASK 5 at the user’s request. Version: v1.
 This defines a request interpretation contract, not medication facts or medical
 advice. The pipeline and analysis endpoints are later tasks.
 
@@ -24,10 +24,13 @@ stock, prescription validity, fulfillment or authorization to dispense.
 
 ### Primary-intent decision procedure
 
-1. If any clause asks for diagnosis, treatment selection, dose/regimen advice or
-   substitution advice, use `out_of_scope` for the whole message. A mixed unsafe
-   advice plus stock inquiry is refused as a whole in v1. Preserve quoted spans
-   as evidence only; never supply a clinical answer.
+1. When an in-scope request and an out-of-scope request occur together, retain
+   the **in-scope primary intent** and set `contains_out_of_scope_request=true`.
+   For `Doliprane kayn? o golo lia ch7al men 7ebba nakhod`, use
+   `check_availability`. Answer the in-scope part within available evidence
+   (never invent live stock); politely refuse the medical-advice part. Only
+   messages with no supported request use `out_of_scope`. This flag records an
+   additional unsupported request; it does not authorize advice.
 2. Otherwise identify the actual requested action, not isolated keywords.
    `Je voudrais savoir si X est disponible` is availability; `bghit n3ref prix X`
    is price; `Je voudrais X` is a medication request.
@@ -56,7 +59,9 @@ future pipeline. Annotation records must include start/end; the public response
 also accepts both omitted for compatibility with the original AGENTS example.
 
 Use minimal contiguous spans covering the actual entity. Exclude surrounding
-prepositions, question marks and unrelated words. Include the number and unit
+prepositions, question marks and unrelated words. Exclude attached clitic
+prefixes `ف`, `ل`, `ب`, `و`, `l'`, `d'` when they function as prefixes,
+not when a letter belongs to the real entity name. Include the number and unit
 for quantities/strengths. One mention per occurrence, with offsets mandatory
 when the same surface repeats. Do not create an entity from an inferred word.
 
@@ -66,9 +71,9 @@ when the same surface repeats. Do not create an entity from an inferred word.
 | `DOSAGE` | User-stated **product strength**, e.g. `500 mg`; the legacy field name does not permit dosage advice. | Positive finite value and unit together, or both null for ambiguous/compound expressions. Units: mg, g, mcg, mg/mL, g/L, %, IU. Preserve original unit text, use canonical case. Do not convert units in v1. |
 | `FORM` | Stated physical form, e.g. `sirop`, `comprimés`; exclude packaging. | Optional normalized: tablet, capsule, syrup, suspension, injection, cream, ointment, drops, spray, suppository, sachet, powder, other. `other` means known but outside this vocabulary; null means unresolved. |
 | `QUANTITY` | Explicit count plus package/discrete-unit phrase, e.g. `2 boîtes`, `علبتين`. | Positive integer value; units: box, blister, bottle, tablet, tube, sachet, ampoule, vial, pack, unit. `unit` is an explicit count lacking a more specific unit, not an inferred box. No zero, fractional, negative or string count. |
-| `PHARMACY_NAME` | Proper pharmacy name, preserving its mentioned prefix if part of the name. Generic `la pharmacie` alone is not a name. | Optional normalized directory name, no invented contact information. |
+| `PHARMACY_NAME` | Proper pharmacy name only. Exclude generic `صيدلية` / `Pharmacie` unless evidence establishes that the word is part of the real name. Generic `la pharmacie` alone is not a name. | Optional normalized directory name, no invented contact information. |
 | `LOCATION` | Explicit city/neighborhood/street/address mention; `près de moi` is relative, not a fabricated coordinate. | Optional normalized label. Geocoding is separate. |
-| `TIME_REF` | Explicit time phrase, e.g. `daba`, `ce soir`, `demain`. | Optional now/today/tonight/tomorrow; other expressions stay raw. Exact dates require request timestamp/timezone in a later component. |
+| `TIME_REF` | Full explicit time expression, e.g. `daba`, `ce soir`, `had lila`, `الليلة`, `هذه الليلة`; never annotate only `lila` inside `had lila`. | Optional now/today/tonight/tomorrow; other expressions stay raw. Exact dates require request timestamp/timezone in a later component. |
 | `URGENCY` | Explicit urgency phrase, e.g. `urgent`, `ضروري دابا`. | Optional normalized urgent. Never infer clinical severity or emergency diagnosis. |
 
 All entities include `text`, optional paired offsets, optional `entity_id`,
@@ -77,6 +82,16 @@ confidence. Normalized values are not allowed to replace the verbatim text.
 Arbitrary explanatory fields are rejected (`extra=forbid`).
 
 ### Association and repetition
+
+JSONL annotations include a `relations` list. Each entity has a unique
+`entity_id`; links use those mention IDs:
+`{"type":"QUANTITY_OF","from":"q1","to":"med1"}` and
+`{"type":"DOSAGE_OF","from":"d1","to":"med1"}`.
+Quantity/strength relations must start at the corresponding entity type and end
+at a MEDICATION. Duplicate, dangling, mistyped and contradictory links are
+rejected. If `medication_ref` is also supplied, it must agree with the relation.
+Do not infer a relationship when genuinely ambiguous; clarify instead.
+
 
 For multiple medications, give each MEDICATION occurrence a unique `entity_id`
 (e.g. med1, med2). DOSAGE, FORM and QUANTITY may point to the corresponding
@@ -141,7 +156,7 @@ held-out evaluation set. Never promote them to gold solely because they validate
 | `Je voudrais 2 boîtes de Doliprane 500 mg en comprimés` | Separate quantity, medication, strength and FORM; `comprimés` is form here, not a second quantity. |
 | `Je voudrais 2 comprimés de Doliprane` | QUANTITY is `2 comprimés`, unit tablet; avoid an overlapping duplicate FORM on the same head noun. |
 | `Je voudrais zéro boîte finalement` | Cancelled request; no positive quantity entity. Keep recognizable request intent, clarify cancellation/desired action. Never turn zero into one. |
-| `Avez-vous Doliprane et combien dois-je en prendre ?` | out_of_scope for entire message, no medical recommendation; a mention is evidence only. |
+| `Avez-vous Doliprane et combien dois-je en prendre ?` | check_availability with contains_out_of_scope_request=true; handle availability and politely refuse the dosing-advice clause. |
 | `Numéro de la pharmacie ?` | pharmacy_info_phone; context-free directory target missing, clarify pharmacy name or city. |
 | `Pharmacie de garde ce soir ?` | pharmacy_info_hours, TIME_REF; clarify location if absent; no invented duty roster. |
 | `Adresse et téléphone de la pharmacie à Rabat ?` | Primary pharmacy_info_location, clarify which action first; do not put phone in the single primary query. |
@@ -166,11 +181,50 @@ clarification flag and action. A subset of short strings can legitimately occur
 in more than one intended variety; the annotation context is explicit and all
 labels require review.
 
-All examples are `source=authored_unreviewed`,
+The original specification examples are `source=authored_unreviewed`,
 `review_status=pending_native_speaker_review`. They are not patient data,
 pharmacy facts, a training split, the hand-verified gold set or ASR transcripts.
 Advice-request examples demonstrate refusal triggers; no advice answers are
 included. Brand strings are illustrative mentions with no normalized identity.
+
+### Additional annotation examples and span conventions
+
+These are illustrative development annotations, **not gold rows**. They make no
+claim about real pharmacy identity, stock, medication facts or correct treatment.
+
+| Message | Entity substrings / association |
+| --- | --- |
+| `Je cherche Doliprane 500 mg en sirop, urgent` | MEDICATION `Doliprane`; DOSAGE `500 mg` with DOSAGE_OF → medication; FORM `sirop`; URGENCY `urgent`. |
+| `رقم صيدلية المثال؟` | PHARMACY_NAME `المثال`; generic `صيدلية` excluded. Example name is fictional. |
+| `Téléphone de Pharmacie Exemple ?` | PHARMACY_NAME `Exemple`; generic `Pharmacie` excluded without evidence of the real registered name. |
+| `بغيت لدوليبران` | MEDICATION `دوليبران`; attached `ل` excluded. |
+| `واش فمراكش كاينة صيدلية؟` | LOCATION `مراكش`; attached `ف` excluded. |
+| `عندكم وبانادول؟` | MEDICATION `بانادول`; attached `و` excluded. |
+| `الثمن ديال ببانادول؟` | MEDICATION `بانادول`; attached `ب` excluded. |
+| `Le prix d’Augmentin et de l'amoxicilline ?` | MEDICATION `Augmentin`, `amoxicilline`; exclude `d’` and `l'`. |
+| `الحراسة الليلة / had lila / ce soir` | TIME_REF is the entire expression for each occurrence. |
+| `Je veux 2 boîtes de Doliprane` | QUANTITY `2 boîtes`, MEDICATION `Doliprane`, QUANTITY_OF → medication. |
+
+For check_availability, request_medication and price_inquiry, absence of an
+**affirmed** named MEDICATION requires `needs_clarification=true`. Do not annotate
+`ce médicament` or `هاد الدوا` as a fabricated medication name. Annotation spans
+must not overlap, including FORM versus a QUANTITY mentioning tablets.
+
+### Dataset provenance and final evaluation
+
+Dataset model: `NLUAnnotation`; exported contract:
+[nlu_annotation.schema.json](nlu_annotation.schema.json).
+Creation provenance and verification belong to annotation records, not inferred
+patient request facts in the public response.
+
+Every JSONL row has `relations`, `needs_clarification`,
+`contains_out_of_scope_request`, `source`, and `verified`. Creation sources are
+`assistant_seed`, `synthetic`, `llm`, or `human`. Assistant/synthetic/LLM rows have
+`verified=false`. Validation checks structure, not human authorship or truth.
+`data/nlu/dev_seed.jsonl` is development only and must **never** become the final
+evaluation set. `gold_human.jsonl` is initially empty and accepts only separately
+human-authored/collected, checked rows with `source="human", verified=true`.
+See [human annotation instructions](gold_annotation_howto.md).
 
 ## 6. Public output models
 
@@ -186,6 +240,8 @@ Examples: [response_v1_samples.json](examples/response_v1_samples.json).
 | input.transcript | Null for text; nonblank string, at most 10,000 code points, for voice. A supplied voice raw_text does not override transcript offset basis. |
 | intent | One canonical label and explicit finite numeric confidence in [0,1]. No automatic confidence default. |
 | entities | List of the eight discriminated entity types with verbatim surface text. No hallucinated source spans. |
+| relations | Directed QUANTITY_OF / DOSAGE_OF mention links; serialized keys type, from, to. Default empty list for response compatibility; required in JSONL. |
+| contains_out_of_scope_request | Strict boolean, true for an additional unsupported clause. Default false in responses; required in JSONL. |
 | pharmacy_query | needs_pharmacy_info with info_type phone/location/hours iff the primary intent is the matching pharmacy-info intent. Optional location_text is a raw affirmed LOCATION mention. For all other intents the flag is false and other fields null. |
 | needs_clarification | Strict boolean, consistent with question presence. Missing affirmed medication for request/availability/price requires true. |
 | clarification_question | French/Arabic question fields, at least one populated iff clarification is true. |
@@ -233,4 +289,4 @@ multi-medication association, and the 8×5×5 annotation coverage matrix.
 Review checklist for the user: confirm the primary-intent priority, terminology,
 entity boundaries, clarification policy, intended Darija/French phrasing and
 additive association fields. Native-speaker validation is still required.
-TASK 3 must wait for VALIDATED TASK 2; no data fetcher is implemented here.
+This amendment is limited to annotation/schema/data validation; TASK 6 has not started.

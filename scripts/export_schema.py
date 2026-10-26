@@ -5,7 +5,7 @@ import json
 import logging
 from pathlib import Path
 
-from pharma_assistant.api.schemas import AnalysisResponse
+from pharma_assistant.api.schemas import AnalysisResponse, NLUAnnotation
 
 logger = logging.getLogger(__name__)
 
@@ -16,6 +16,11 @@ def main() -> None:
     parser.add_argument(
         "--output", type=Path, default=Path("docs/response_v1.schema.json")
     )
+    parser.add_argument(
+        "--annotation-output",
+        type=Path,
+        default=Path("docs/nlu_annotation.schema.json"),
+    )
     args = parser.parse_args()
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(
@@ -23,7 +28,13 @@ def main() -> None:
         + "\n",
         encoding="utf-8",
     )
-    logger.info("Exported response schema to %s", args.output)
+    args.annotation_output.parent.mkdir(parents=True, exist_ok=True)
+    args.annotation_output.write_text(
+        json.dumps(NLUAnnotation.model_json_schema(), ensure_ascii=False, indent=2)
+        + "\n",
+        encoding="utf-8",
+    )
+    logger.info("Exported response and annotation schemas")
 
 
 if __name__ == "__main__":
