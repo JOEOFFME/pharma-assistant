@@ -1,0 +1,9 @@
+model: tiny
+device: cpu
+compute_type: int8
+local_files_only: true
+max_duration_s: 60
+max_bytes: 10485760
+beam_size: 5
+vad_filter: true
+revision: d90ca5f

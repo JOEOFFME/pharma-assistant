@@ -1,0 +1,11 @@
+{
+  "status": "actual faster-whisper inference completed",
+  "audio_source": "temporary ffmpeg flite synthetic speech; NOT a user recording",
+  "synthesis_text": "Bonjour je voudrais du Doliprane",
+  "language_hint": "fr",
+  "transcript": "Ben-Jourgi, vrai d'où d'où le train.",
+  "duration_s": 1.975,
+  "wer_cer": "not reported: no user-recorded audio evaluation set",
+  "model": "Systran/faster-whisper-tiny",
+  "revision": "d90ca5f"
+}
