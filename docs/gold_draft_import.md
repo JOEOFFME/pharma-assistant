@@ -1,9 +1,11 @@
 # Draft span proposals for human correction
 
-The supplied `data/nlu/gold_human_draft.txt` is copied byte-for-byte from the
-attached draft. Its header identifies the messages as assistant-written and
-unverified. These are **not human gold**. No message text was corrected,
-normalized, deduplicated, translated or replaced.
+The original `data/nlu/gold_human_draft.txt` was imported from the supplied
+assistant-written draft. The user subsequently corrected messages/labels in the
+repository and attested review. [The attestation](draft_review_attestation.json)
+records the latest source hashes and review scope. Original creation provenance
+is retained; these are **not independently collected human gold**. The importer
+does not correct, normalize, deduplicate, translate or replace source messages.
 
 Run from the repository root after `make install`:
 
@@ -21,8 +23,8 @@ active ingredient, availability, price or medical recommendation is inferred.
 
 The config file `configs/gold_draft.yaml` holds relative paths and a small
 lexicon of **mention spellings in this draft**. These are extraction hints, not
-verified catalogue entries. This is a batch annotation aid for TASK 5; no API,
-text pipeline or TASK 6 baseline has been implemented.
+verified catalogue entries. This remains a batch annotation aid and does not
+call the implemented API or baseline; see [architecture](architecture.md).
 
 ## Correcting the proposals
 
@@ -69,9 +71,10 @@ of a message. The original file itself is unchanged.
 - Mixed in-scope/advice messages retain the supported intent and set the
   unsupported-request flag. Medical mentions in the advice clause are evidence
   only, not additional purchase/stock requests.
-- The known label typo `price_inquiy` proposes `price_inquiry` while retaining
-  the original label in metadata. The greeting followed by a medication-finding
-  request proposes availability and flags that choice for review. No text edit.
+- Known label aliases such as `price_inquiy` can propose `price_inquiry` while
+  retaining the supplied label in metadata. The latest user corrections already
+  fixed that label and the greeting/medication-finding intent. Future greeting
+  clauses remain subordinate to substantive requests. No importer text edit.
 
 ## Review queue versus datasets
 

@@ -40,3 +40,35 @@ jobs:
         run: git diff --exit-code
       - name: Build runtime container
         run: docker build -f docker/Dockerfile -t pharma-assistant:ci .
+      - name: Start container and verify fresh-data runtime
+        run: |
+          docker run --detach --name pharma-smoke -p 127.0.0.1:8000:8000 pharma-assistant:ci
+          trap 'docker logs pharma-smoke; docker rm --force pharma-smoke' EXIT
+          for attempt in $(seq 1 90); do
+            if curl --silent --fail http://127.0.0.1:8000/health > "$RUNNER_TEMP/pharma_health.json"; then
+              break
+            fi
+            sleep 1
+          done
+          curl --fail --silent --show-error --max-time 60 \
+            -H 'Content-Type: application/json' \
+            -d '{"text":"wach kayn Doliprane 500 mg?"}' \
+            http://127.0.0.1:8000/v1/analyze/text > "$RUNNER_TEMP/pharma_text.json"
+          curl --fail --silent --show-error --max-time 30 \
+            'http://127.0.0.1:8000/v1/medications/search?q=dolipran&k=1' > "$RUNNER_TEMP/pharma_medications.json"
+          curl --fail --silent --show-error --max-time 30 \
+            'http://127.0.0.1:8000/v1/pharmacies/nearby?lat=34.0209&lon=-6.8416&k=3' > "$RUNNER_TEMP/pharma_pharmacies.json"
+          python3 - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+          root = Path(os.environ["RUNNER_TEMP"])
+          assert json.loads((root / "pharma_health.json").read_text()) == {"status": "ok"}
+          result = json.loads((root / "pharma_text.json").read_text())
+          assert result["input"]["raw_text"] == "wach kayn Doliprane 500 mg?"
+          assert result["intent"]["label"] == "check_availability"
+          assert result["disclaimer"]
+          assert json.loads((root / "pharma_medications.json").read_text())["candidates"]
+          assert len(json.loads((root / "pharma_pharmacies.json").read_text())["pharmacies"]) == 3
+          print("Container health, text, medication search and nearby-directory smoke passed")
+          PY

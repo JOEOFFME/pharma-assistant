@@ -2,7 +2,8 @@
 
 TASK 2 specification, amended during TASK 5 at the user’s request. Version: v1.
 This defines a request interpretation contract, not medication facts or medical
-advice. The pipeline and analysis endpoints are later tasks.
+advice. The implemented runtime is in `pipeline/text_pipeline.py` and
+`api/service.py`; see the current [validation report](11_validation.md).
 
 ## 1. Scope and taxonomy
 
@@ -296,4 +297,5 @@ multi-medication association, and the 8×5×5 annotation coverage matrix.
 Review checklist for the user: confirm the primary-intent priority, terminology,
 entity boundaries, clarification policy, intended Darija/French phrasing and
 additive association fields. Native-speaker validation is still required.
-This amendment is limited to annotation/schema/data validation; TASK 6 has not started.
+This contract is implemented by the text/voice runtime. Current execution and
+scientific-validation limits are recorded in [the final report](11_validation.md).

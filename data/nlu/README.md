@@ -41,6 +41,8 @@ Follow [human gold instructions](../../docs/gold_annotation_howto.md) to add you
 own independently collected and checked messages. `scripts/add_gold.py` derives
 span offsets from substrings you supply. It requires explicit verification and
 refuses exact copies of development data. There is no candidate promotion or
-`make gold-lock` command. No evaluation metrics are claimed, and TASK 6 is not
-started. The original TASK 5 requirement of at least 100 verified locked gold
+`make gold-lock` command. Baseline/development measurements now appear in
+[the evaluation report](../../docs/10_evaluation.md), with provisional entity
+reference status explicitly stated. The original TASK 5 requirement of at least
+100 verified locked gold
 rows remains unfulfilled until you provide that separate human set.
