@@ -17,3 +17,6 @@ data/**/*
 !data/**/
 !data/**/.gitkeep
 !data/**/README.md
+# One attributed, immutable public OSM snapshot enables offline reconstruction.
+!data/raw/osm_snapshot/manifest.json
+!data/raw/osm_snapshot/pharmacies_morocco_raw.json

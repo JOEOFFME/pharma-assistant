@@ -1,0 +1,63 @@
+# Run sequentially; do not make the public endpoint a production backend.
+endpoint: https://overpass-api.de/api/interpreter
+query_timeout_s: 120
+http_timeout_s: 150
+attempts: 3
+backoff_s: 30
+request_pause_s: 5
+max_response_bytes: 67108864
+output_dir: data/raw/osm_snapshot
+csv_path: data/pharmacies/pharmacies_morocco.csv
+database_path: data/pharmacies/pharmacies.sqlite3
+report_path: docs/data_pharmacies.md
+metrics_path: docs/pharmacy_coverage.json
+dedupe_distance_m: 10
+# Query regions only; never assigned to addr:city as if observed.
+city_bboxes:
+  Rabat: [33.90, -6.95, 34.10, -6.70]
+  Casablanca: [33.40, -7.85, 33.75, -7.35]
+  Marrakech: [31.45, -8.20, 31.80, -7.75]
+city_aliases:
+  rabat: Rabat
+  الرباط: Rabat
+  casablanca: Casablanca
+  casa: Casablanca
+  الدار البيضاء: Casablanca
+  marrakech: Marrakech
+  marrakesh: Marrakech
+  مراكش: Marrakech
+  fes: Fès
+  فاس: Fès
+  agadir: Agadir
+  أكادير: Agadir
+  اكادير: Agadir
+  أگادير: Agadir
+  oujda: Oujda
+  وجدة: Oujda
+  kenitra: Kénitra
+  القنيطرة: Kénitra
+  tanger: Tanger
+  tangier: Tanger
+  طنجة: Tanger
+  meknes: Meknès
+  مكناس: Meknès
+  temara: Témara
+  تمارة: Témara
+  tetouan: Tétouan
+  تطوان: Tétouan
+  safi: Safi
+  آسفي: Safi
+  el jadida: El Jadida
+  الجديدة: El Jadida
+  mohammedia: Mohammedia
+  المحمدية: Mohammedia
+  nador: Nador
+  الناظور: Nador
+  beni mellal: Beni Mellal
+  بني ملال: Beni Mellal
+  ait melloul: Aït Melloul
+  أيت ملول: Aït Melloul
+  dcheira el jihadia: Dcheira El Jihadia
+  الدشيرة الجهادية: Dcheira El Jihadia
+  khenifra: Khénifra
+  خنيفرة: Khénifra

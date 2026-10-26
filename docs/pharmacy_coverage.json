@@ -1,0 +1,7102 @@
+{
+  "cleaning": {
+    "input_elements": 6952,
+    "dropped_invalid": 0,
+    "duplicate_source_ids": 0,
+    "merged_map_objects": 7,
+    "retained": 6945
+  },
+  "overall": {
+    "rows": 6945,
+    "counts": {
+      "name": 6732,
+      "city": 5886,
+      "phone": 658,
+      "hours": 48,
+      "duty_known": 0
+    },
+    "percent": {
+      "name": 96.93,
+      "city": 84.75,
+      "phone": 9.47,
+      "hours": 0.69,
+      "duty_known": 0.0
+    }
+  },
+  "by_city": {
+    "AL HOCEIMA": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Agadir": {
+      "rows": 224,
+      "counts": {
+        "name": 224,
+        "city": 224,
+        "phone": 1,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.45,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Agdz ⴰⴳⴷⵣ أكدز": {
+      "rows": 3,
+      "counts": {
+        "name": 3,
+        "city": 3,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Ahfir": {
+      "rows": 5,
+      "counts": {
+        "name": 5,
+        "city": 5,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Ahfir أحفير": {
+      "rows": 4,
+      "counts": {
+        "name": 4,
+        "city": 4,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Ahfir ⴰⵃⴼⵉⵔ أحفير": {
+      "rows": 2,
+      "counts": {
+        "name": 2,
+        "city": 2,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Ain Bni Mathar": {
+      "rows": 5,
+      "counts": {
+        "name": 5,
+        "city": 5,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Ain Bni Mathar ⵄⵉⵏ ⴱⵏⵉ ⵎⵟⵀⵕ عين بني مطهر": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Ain El Aouda": {
+      "rows": 13,
+      "counts": {
+        "name": 13,
+        "city": 13,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Ain El Aouda ⵄⵉⵏ ⵄⵡⴷⴰ عين العودة": {
+      "rows": 16,
+      "counts": {
+        "name": 16,
+        "city": 16,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Ain Harrouda": {
+      "rows": 10,
+      "counts": {
+        "name": 10,
+        "city": 10,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Ain Harrouda عين حرودة": {
+      "rows": 8,
+      "counts": {
+        "name": 8,
+        "city": 8,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Ain Harrouda ⵄⵉⵏ ⵃⴰⵔⵓⴷⴰ عين حرودة": {
+      "rows": 3,
+      "counts": {
+        "name": 3,
+        "city": 3,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Ain Taoujdate": {
+      "rows": 2,
+      "counts": {
+        "name": 2,
+        "city": 2,
+        "phone": 0,
+        "hours": 1,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 50.0,
+        "duty_known": 0.0
+      }
+    },
+    "Ain Taoujdate ⵄⵉⵏ ⵜⴰⵡⵊⵟⴰⵜ عين تاوجدات": {
+      "rows": 11,
+      "counts": {
+        "name": 11,
+        "city": 11,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Aioun Sidi Mellouk": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Ait Amira": {
+      "rows": 6,
+      "counts": {
+        "name": 6,
+        "city": 6,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Ait Amira آيت اعميرة": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Ait Baha ⴰⵉⵜ ⴱⴰⵀⴰ ايت باها": {
+      "rows": 2,
+      "counts": {
+        "name": 2,
+        "city": 2,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Ait Iaaza": {
+      "rows": 4,
+      "counts": {
+        "name": 4,
+        "city": 4,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Ait Iaaza ⴰⵢⵜ ⵉⵄⵣⴰ آيت ايعزة": {
+      "rows": 2,
+      "counts": {
+        "name": 2,
+        "city": 2,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Ait Ourir ⴰⵢⵜ ⵓⵔⵉⵔ آيت ورير": {
+      "rows": 10,
+      "counts": {
+        "name": 10,
+        "city": 10,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Al Aaroui ⵍⵄⴰⵔⵡⵉ العروي": {
+      "rows": 2,
+      "counts": {
+        "name": 2,
+        "city": 2,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Al Aioun Sidi Mellouk": {
+      "rows": 2,
+      "counts": {
+        "name": 2,
+        "city": 2,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Al Aioun ⵍⵄⵢⵓⵏ العيون": {
+      "rows": 3,
+      "counts": {
+        "name": 3,
+        "city": 3,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Al Aroui": {
+      "rows": 3,
+      "counts": {
+        "name": 3,
+        "city": 3,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Al Aroui ⵍⵄⴰⵔⵡⵉ العروي": {
+      "rows": 20,
+      "counts": {
+        "name": 20,
+        "city": 20,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Al Hoceima الحسيمة": {
+      "rows": 12,
+      "counts": {
+        "name": 12,
+        "city": 12,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Al Hoceïma ⵍⵃⵓⵙⵉⵎⴰ الحسيمة": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 1,
+        "hours": 1,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 100.0,
+        "hours": 100.0,
+        "duty_known": 0.0
+      }
+    },
+    "Al-hoceima": {
+      "rows": 2,
+      "counts": {
+        "name": 2,
+        "city": 2,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Aoulouz": {
+      "rows": 2,
+      "counts": {
+        "name": 2,
+        "city": 2,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Aoulouz ⴰⵡⵍⵓⵣ اولوز": {
+      "rows": 2,
+      "counts": {
+        "name": 2,
+        "city": 2,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Arfoud أرفود": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Assa": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Assa آسا": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Assilah": {
+      "rows": 6,
+      "counts": {
+        "name": 6,
+        "city": 6,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Assilah أصيلة": {
+      "rows": 3,
+      "counts": {
+        "name": 3,
+        "city": 3,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Avenue Al Mokhtar Soussi": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Azemmour": {
+      "rows": 3,
+      "counts": {
+        "name": 3,
+        "city": 3,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Azemmour أزمور": {
+      "rows": 13,
+      "counts": {
+        "name": 13,
+        "city": 13,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Azemmour ⴰⵣⵎⵎⵓⵔ أزمور": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Azilal": {
+      "rows": 3,
+      "counts": {
+        "name": 3,
+        "city": 3,
+        "phone": 1,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 33.33,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Azilal ⴰⵣⵉⵍⴰⵍ أزيلال": {
+      "rows": 7,
+      "counts": {
+        "name": 7,
+        "city": 7,
+        "phone": 3,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 42.86,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Azrou أزرو": {
+      "rows": 8,
+      "counts": {
+        "name": 8,
+        "city": 8,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Azrou ⴰⵣⵔⵓ أزرو": {
+      "rows": 20,
+      "counts": {
+        "name": 20,
+        "city": 20,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Aït Amira": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Aït Amira ⴰⵢⵜ ⵄⵎⵉⵔⴰ آيت اعميرة": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Aït Melloul": {
+      "rows": 52,
+      "counts": {
+        "name": 52,
+        "city": 52,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "BV MOHAMED 5": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Bejaad": {
+      "rows": 9,
+      "counts": {
+        "name": 9,
+        "city": 9,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Bejaad ابي الجعد": {
+      "rows": 5,
+      "counts": {
+        "name": 5,
+        "city": 5,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Bejaad ⴱⵊⵊⵄⴷ بجعد": {
+      "rows": 5,
+      "counts": {
+        "name": 5,
+        "city": 5,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Ben Ahmed": {
+      "rows": 7,
+      "counts": {
+        "name": 7,
+        "city": 7,
+        "phone": 1,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 14.29,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Ben Ahmed بن أحمد": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Ben Ahmed ⴱⵏ ⵃⵎⴷ بن أحمد": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Ben Guerir ابن جرير": {
+      "rows": 17,
+      "counts": {
+        "name": 17,
+        "city": 17,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Ben Guerir ⴱⴰⵏⴳⵔⵉⵔ ابن جرير": {
+      "rows": 11,
+      "counts": {
+        "name": 11,
+        "city": 11,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Ben Taib": {
+      "rows": 4,
+      "counts": {
+        "name": 4,
+        "city": 4,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Ben Taieb": {
+      "rows": 2,
+      "counts": {
+        "name": 2,
+        "city": 2,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Ben Taïeb ⴱⵏ ⵟⵢⵢⴱ بن الطيب": {
+      "rows": 6,
+      "counts": {
+        "name": 6,
+        "city": 6,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Benguerir": {
+      "rows": 3,
+      "counts": {
+        "name": 3,
+        "city": 3,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Benguerir ⴱⴰⵏⴳⵔⵉⵔ بن گرير": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Beni Ansar": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Beni Ensar": {
+      "rows": 4,
+      "counts": {
+        "name": 4,
+        "city": 4,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Beni Ensar ⴱⵏⵉ ⵏⵚⴰⵔ بني انصار": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Beni Enzar بني انصار": {
+      "rows": 3,
+      "counts": {
+        "name": 3,
+        "city": 3,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Beni Mellal": {
+      "rows": 79,
+      "counts": {
+        "name": 79,
+        "city": 79,
+        "phone": 7,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 8.86,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Benslimane": {
+      "rows": 17,
+      "counts": {
+        "name": 17,
+        "city": 17,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Benslimane ابن سليمان": {
+      "rows": 10,
+      "counts": {
+        "name": 10,
+        "city": 10,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Benslimane بن سليمان": {
+      "rows": 2,
+      "counts": {
+        "name": 2,
+        "city": 2,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Benslimane ⴱⴰⵏⵙⵍⵉⵎⴰⵏ ابن سليمان": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Benslimane ⴱⴰⵏⵙⵍⵉⵎⴰⵏ بن سليمان": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Berkane": {
+      "rows": 45,
+      "counts": {
+        "name": 45,
+        "city": 45,
+        "phone": 1,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 2.22,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Berkane بركان": {
+      "rows": 13,
+      "counts": {
+        "name": 13,
+        "city": 13,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Berrechid": {
+      "rows": 72,
+      "counts": {
+        "name": 72,
+        "city": 72,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Berrechid برشيد": {
+      "rows": 7,
+      "counts": {
+        "name": 7,
+        "city": 7,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Berrechid ⴱⵔⵔⵛⵉⴷ برشيد": {
+      "rows": 2,
+      "counts": {
+        "name": 2,
+        "city": 2,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Biougra": {
+      "rows": 10,
+      "counts": {
+        "name": 10,
+        "city": 10,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Biougra بيوكرى": {
+      "rows": 5,
+      "counts": {
+        "name": 5,
+        "city": 5,
+        "phone": 0,
+        "hours": 1,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 20.0,
+        "duty_known": 0.0
+      }
+    },
+    "Biougra ⴱⵢⵓⴳⵔⴰ بيوكرى": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Biougra ⴱⵢⵓⴳⵔⴰ بيوگرى": {
+      "rows": 4,
+      "counts": {
+        "name": 4,
+        "city": 4,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Bir Jdid": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Bir Jdid ⴱⵉⵔ ⵊⴷⵉⴷ البير الجديد": {
+      "rows": 8,
+      "counts": {
+        "name": 8,
+        "city": 8,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Bni Ansar بني انصار": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Bni Drar": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Bni Drar ⴱⵏⵉ ⴷⵔⴰⵔ بني درار": {
+      "rows": 2,
+      "counts": {
+        "name": 2,
+        "city": 2,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Bouarfa": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Bouarfa بوعرفة": {
+      "rows": 2,
+      "counts": {
+        "name": 2,
+        "city": 2,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Bouarfa ⴱⵓⵄⴰⵔⴼⴰ بوعرفة": {
+      "rows": 5,
+      "counts": {
+        "name": 5,
+        "city": 5,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Bouizakarne ⴱⵓⵢⵣⴰⴽⴰⵔⵏ بويزكارن": {
+      "rows": 4,
+      "counts": {
+        "name": 4,
+        "city": 4,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Boujdour": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Boujdour ⴱⵓⵊⴷⵓⵔ بوجدور": {
+      "rows": 2,
+      "counts": {
+        "name": 2,
+        "city": 2,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Boujniba ⴱⵓⵊⵏⵉⴱⴰ بو جنيبة": {
+      "rows": 5,
+      "counts": {
+        "name": 5,
+        "city": 5,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Boulemane بولمان": {
+      "rows": 2,
+      "counts": {
+        "name": 2,
+        "city": 2,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Boumalne Dadès": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Boumalne Dadès ⴱⵓⵎⴰⵍⵏ ⴷⴰⴷⵙ بومالن دادس": {
+      "rows": 3,
+      "counts": {
+        "name": 3,
+        "city": 3,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Bouskoura": {
+      "rows": 43,
+      "counts": {
+        "name": 43,
+        "city": 43,
+        "phone": 0,
+        "hours": 1,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 2.33,
+        "duty_known": 0.0
+      }
+    },
+    "Bouskoura بوسكورة": {
+      "rows": 5,
+      "counts": {
+        "name": 5,
+        "city": 5,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Bouskoura ⴱⵓⵙⴽⵓⵔⴰ بوسكورة": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Bouznika": {
+      "rows": 13,
+      "counts": {
+        "name": 13,
+        "city": 13,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Bouznika ⴱⵓⵣⵏⵉⵇⴰ بوزنيقة": {
+      "rows": 21,
+      "counts": {
+        "name": 21,
+        "city": 21,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Buarfa بوعرفة": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Casablanca": {
+      "rows": 7,
+      "counts": {
+        "name": 7,
+        "city": 7,
+        "phone": 0,
+        "hours": 1,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 14.29,
+        "duty_known": 0.0
+      }
+    },
+    "Chefchaouen": {
+      "rows": 6,
+      "counts": {
+        "name": 6,
+        "city": 6,
+        "phone": 1,
+        "hours": 4,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 16.67,
+        "hours": 66.67,
+        "duty_known": 0.0
+      }
+    },
+    "Chefchaouen شفشاون": {
+      "rows": 5,
+      "counts": {
+        "name": 5,
+        "city": 5,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Chefchaouen ⵛⴼⵛⴰⵡⵏ شفشاون": {
+      "rows": 5,
+      "counts": {
+        "name": 5,
+        "city": 5,
+        "phone": 1,
+        "hours": 1,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 20.0,
+        "hours": 20.0,
+        "duty_known": 0.0
+      }
+    },
+    "Chefchaouen ⵜⵛⴻⴼⵜⵛⴰⵡⴻⵏ شفشاون": {
+      "rows": 3,
+      "counts": {
+        "name": 3,
+        "city": 3,
+        "phone": 1,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 33.33,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Chemaia": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Chichaoua": {
+      "rows": 6,
+      "counts": {
+        "name": 6,
+        "city": 6,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Chichaoua ⵛⵉⵛⴰⵡⴰ شيشاوة": {
+      "rows": 5,
+      "counts": {
+        "name": 5,
+        "city": 5,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Dakhla": {
+      "rows": 8,
+      "counts": {
+        "name": 8,
+        "city": 8,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Dakhla ⴷⴰⵅⵍⴰ الداخلة": {
+      "rows": 16,
+      "counts": {
+        "name": 16,
+        "city": 16,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Dcheira El Jihadia": {
+      "rows": 33,
+      "counts": {
+        "name": 33,
+        "city": 33,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Demnate": {
+      "rows": 3,
+      "counts": {
+        "name": 3,
+        "city": 3,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Demnate ⴷⵎⵏⴰⵜ دمنات": {
+      "rows": 6,
+      "counts": {
+        "name": 6,
+        "city": 6,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Drarga": {
+      "rows": 10,
+      "counts": {
+        "name": 10,
+        "city": 10,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Drargua ⴷⵔⴰⵔⴳⴰ الدراركة": {
+      "rows": 3,
+      "counts": {
+        "name": 3,
+        "city": 3,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Driouch": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Driouch ⴷⵔⵉⵡⴻⵛ الدريوش": {
+      "rows": 3,
+      "counts": {
+        "name": 3,
+        "city": 3,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Driouch ⴷⵔⵉⵡⵛ ادريوش": {
+      "rows": 3,
+      "counts": {
+        "name": 3,
+        "city": 3,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "EL HAJEB": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "EL KELAA DES SRAGHNA": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "EL Kelaat Es-Sraghna": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "EL MARSA": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 1,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 100.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Echemmaia": {
+      "rows": 4,
+      "counts": {
+        "name": 4,
+        "city": 4,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Echemmaia الشماعية": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Echemmaia ⵛⵎⴰⵄⵉⵢⴰ الشماعية": {
+      "rows": 3,
+      "counts": {
+        "name": 3,
+        "city": 3,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "El Aaiún العيون": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 1,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 100.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "El Aaiún العيون‎": {
+      "rows": 3,
+      "counts": {
+        "name": 3,
+        "city": 3,
+        "phone": 1,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 33.33,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "El Attaouia": {
+      "rows": 2,
+      "counts": {
+        "name": 2,
+        "city": 2,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "El Attaouia ⵍⵄⵟⵟⴰⵡⵢⵢⴰ العطاوية": {
+      "rows": 2,
+      "counts": {
+        "name": 2,
+        "city": 2,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "El Borouj": {
+      "rows": 2,
+      "counts": {
+        "name": 2,
+        "city": 2,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "El Borouj ⵍⴱⵕⵓⵊ البروج": {
+      "rows": 6,
+      "counts": {
+        "name": 6,
+        "city": 6,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "El Gara ⵍⴳⴰⵕⴰ الكارة": {
+      "rows": 2,
+      "counts": {
+        "name": 2,
+        "city": 2,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "El Hajeb الحاجب": {
+      "rows": 14,
+      "counts": {
+        "name": 14,
+        "city": 14,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "El Hajeb ⵍⵃⴰⵊⴱ الحاجب": {
+      "rows": 2,
+      "counts": {
+        "name": 2,
+        "city": 2,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "El Jadida": {
+      "rows": 117,
+      "counts": {
+        "name": 117,
+        "city": 117,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "El Kalaat Es-Sraghna": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "El Kelaat Es-Sraghna": {
+      "rows": 15,
+      "counts": {
+        "name": 15,
+        "city": 15,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "El Kelâat Es-Sraghna ⵍⵇⵍⵄⴰ ⵏ ⵙⵕⴰⵖⵏⴰ قلعة السراغنة": {
+      "rows": 8,
+      "counts": {
+        "name": 8,
+        "city": 8,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "El Marsa": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 1,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 100.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "El Marsa المرسى": {
+      "rows": 4,
+      "counts": {
+        "name": 4,
+        "city": 4,
+        "phone": 3,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 75.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "El Ouatia ⵍⵡⵟⵢⴰ الوطية": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Er-Rich الريش": {
+      "rows": 7,
+      "counts": {
+        "name": 7,
+        "city": 7,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Erfoud أرفود": {
+      "rows": 6,
+      "counts": {
+        "name": 6,
+        "city": 6,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Errachidia": {
+      "rows": 15,
+      "counts": {
+        "name": 15,
+        "city": 15,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Errachidia ⵉⵎⵜⵖⴻⵔⵏ الرشيدية": {
+      "rows": 20,
+      "counts": {
+        "name": 20,
+        "city": 20,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Essaouira": {
+      "rows": 17,
+      "counts": {
+        "name": 17,
+        "city": 17,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Essaouira الصويرة": {
+      "rows": 8,
+      "counts": {
+        "name": 8,
+        "city": 8,
+        "phone": 1,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 12.5,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Essaouira ⵚⵚⵡⵉⵕⴰ الصويرة": {
+      "rows": 6,
+      "counts": {
+        "name": 6,
+        "city": 6,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Figuig": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Figuig ⵉⴼⵉⵢⵢⵉⵢ فكيك": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Figuig ⵉⴼⵉⵢⵢⵉⵢ فگيگ": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Fkeh Ben Salah": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Fkih Ben Salah": {
+      "rows": 37,
+      "counts": {
+        "name": 37,
+        "city": 37,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Fkih Ben Salah ⴼⵇⵉⵀ ⴱⵏ ⵚⴰⵍⵃ الفقيه بن صالح": {
+      "rows": 7,
+      "counts": {
+        "name": 7,
+        "city": 7,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Fnideq": {
+      "rows": 4,
+      "counts": {
+        "name": 4,
+        "city": 4,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Fnideq ⴼⵏⵉⴷⴰⵇ الفنيدق": {
+      "rows": 15,
+      "counts": {
+        "name": 15,
+        "city": 15,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Fs": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Fès": {
+      "rows": 394,
+      "counts": {
+        "name": 394,
+        "city": 394,
+        "phone": 213,
+        "hours": 1,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 54.06,
+        "hours": 0.25,
+        "duty_known": 0.0
+      }
+    },
+    "GUERCIF": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Goulmima كلميمة": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Goulmima ⴳⵓⵍⵎⵉⵎⴰ گلميمة": {
+      "rows": 3,
+      "counts": {
+        "name": 3,
+        "city": 3,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Guelmim": {
+      "rows": 24,
+      "counts": {
+        "name": 24,
+        "city": 24,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Guelmim ⴳⵍⵎⵉⵎ كلميم": {
+      "rows": 5,
+      "counts": {
+        "name": 5,
+        "city": 5,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Guercif": {
+      "rows": 9,
+      "counts": {
+        "name": 9,
+        "city": 9,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Guercif جرسيف": {
+      "rows": 12,
+      "counts": {
+        "name": 12,
+        "city": 12,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Guerdane ⵍⴳⵔⴷⴰⵏ الكردان": {
+      "rows": 2,
+      "counts": {
+        "name": 2,
+        "city": 2,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Guersif جرسيف": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Gueznaia كزناية": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Had Soualem": {
+      "rows": 16,
+      "counts": {
+        "name": 16,
+        "city": 16,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Had Soualem حـد الـسـوالـم": {
+      "rows": 11,
+      "counts": {
+        "name": 11,
+        "city": 11,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Had Soualem ⵃⴰⴷ ⵙⵡⴰⵍⵎ حد السوالم": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Harhoura هرهورة": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "IFRANE": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Ifrane": {
+      "rows": 5,
+      "counts": {
+        "name": 5,
+        "city": 5,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Ifrane إفران": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Ifrane ⵉⴼⵔⴰⵏ إفران": {
+      "rows": 2,
+      "counts": {
+        "name": 2,
+        "city": 2,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Igherm ⵉⵖⵔⵎ إغرم": {
+      "rows": 2,
+      "counts": {
+        "name": 2,
+        "city": 2,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Imintanoute": {
+      "rows": 3,
+      "counts": {
+        "name": 3,
+        "city": 3,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Imintanoute ⵉⵎⵉ ⵏ ⵜⴰⵏⵓⵜ إيمنتانوت": {
+      "rows": 3,
+      "counts": {
+        "name": 3,
+        "city": 3,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Imouzzer Kandar ⵉⵎⵓⵣⵣⴰⵔ ⴽⵏⴷⵕ إيموزار كندر": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Imouzzer Marmoucha إموزار مرموشة": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 1,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 100.0,
+        "duty_known": 0.0
+      }
+    },
+    "Imzouren": {
+      "rows": 6,
+      "counts": {
+        "name": 6,
+        "city": 6,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Imzouren إمزورن": {
+      "rows": 2,
+      "counts": {
+        "name": 2,
+        "city": 2,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Imzouren ⵉⵎⵣⵓⵔⵏ إمزورن": {
+      "rows": 2,
+      "counts": {
+        "name": 2,
+        "city": 2,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Inezgane": {
+      "rows": 15,
+      "counts": {
+        "name": 15,
+        "city": 15,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Inezgane إنزكان": {
+      "rows": 2,
+      "counts": {
+        "name": 2,
+        "city": 2,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Inezgane ⵉⵏⴻⵣⴳⴰⵏ إنزگان": {
+      "rows": 24,
+      "counts": {
+        "name": 24,
+        "city": 24,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Jerada": {
+      "rows": 3,
+      "counts": {
+        "name": 3,
+        "city": 3,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Jerada جرادة": {
+      "rows": 2,
+      "counts": {
+        "name": 2,
+        "city": 2,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Jerada ⵊⵔⴰⴷⴰ جرادة": {
+      "rows": 3,
+      "counts": {
+        "name": 3,
+        "city": 3,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "KHEMISSET": {
+      "rows": 7,
+      "counts": {
+        "name": 7,
+        "city": 7,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "KHOURIBGA": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Kalaat Es-Sraghna": {
+      "rows": 6,
+      "counts": {
+        "name": 6,
+        "city": 6,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Kalaat M'Gouna": {
+      "rows": 3,
+      "counts": {
+        "name": 3,
+        "city": 3,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Kalaat M'Gouna ⵜⵉⵖⵔⵎⵜ ⵏ ⵉⵎⴳⵓⵏⵏ قلعة مغونة": {
+      "rows": 6,
+      "counts": {
+        "name": 6,
+        "city": 6,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Kasba Tadla": {
+      "rows": 11,
+      "counts": {
+        "name": 11,
+        "city": 11,
+        "phone": 0,
+        "hours": 1,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 9.09,
+        "duty_known": 0.0
+      }
+    },
+    "Kasba Tadla ⵇⵚⴱⵜ ⵜⴰⴷⵍⴰ قصبة تادلة": {
+      "rows": 2,
+      "counts": {
+        "name": 2,
+        "city": 2,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Khemis Zmamra ⵣⵎⴰⵎⵔⴰ زمامرة": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Khemisset": {
+      "rows": 9,
+      "counts": {
+        "name": 9,
+        "city": 9,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Khouribga": {
+      "rows": 62,
+      "counts": {
+        "name": 62,
+        "city": 62,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Khouribga ⵅⵡⵔⵉⴱⴳⴰ خريبكة": {
+      "rows": 22,
+      "counts": {
+        "name": 22,
+        "city": 22,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Khémisset": {
+      "rows": 44,
+      "counts": {
+        "name": 44,
+        "city": 44,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Khémisset ⵅⴻⵎⵉⵙⵙⴻⵜ الخميسات": {
+      "rows": 3,
+      "counts": {
+        "name": 3,
+        "city": 3,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Khénifra": {
+      "rows": 36,
+      "counts": {
+        "name": 36,
+        "city": 36,
+        "phone": 1,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 2.78,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Ksar-el-Kebir": {
+      "rows": 16,
+      "counts": {
+        "name": 16,
+        "city": 16,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Ksar-el-Kebir القصر الكبير": {
+      "rows": 5,
+      "counts": {
+        "name": 5,
+        "city": 5,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Ksar-el-Kebir ⵍⵇⵚⵔ ⵍⴽⴱⵉⵔ القصر الكبير": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Kser-el-Kebir": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Kénitra": {
+      "rows": 228,
+      "counts": {
+        "name": 228,
+        "city": 228,
+        "phone": 45,
+        "hours": 2,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 19.74,
+        "hours": 0.88,
+        "duty_known": 0.0
+      }
+    },
+    "LAAYOUNE": {
+      "rows": 10,
+      "counts": {
+        "name": 10,
+        "city": 10,
+        "phone": 10,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 100.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Laarache": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Laattaouia ⵍⵄⵟⵟⴰⵡⵢⵢⴰ العطاوية": {
+      "rows": 2,
+      "counts": {
+        "name": 2,
+        "city": 2,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Laayoune": {
+      "rows": 56,
+      "counts": {
+        "name": 56,
+        "city": 56,
+        "phone": 20,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 35.71,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Lakhsas ⵍⴰⵅⵚⴰⵚ الأخصاص": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Larache": {
+      "rows": 28,
+      "counts": {
+        "name": 28,
+        "city": 28,
+        "phone": 0,
+        "hours": 1,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 3.57,
+        "duty_known": 0.0
+      }
+    },
+    "Larache العرائش": {
+      "rows": 6,
+      "counts": {
+        "name": 6,
+        "city": 6,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Larache ⵍⵄⵔⴰⵢⵛ العرائش": {
+      "rows": 7,
+      "counts": {
+        "name": 7,
+        "city": 7,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Laâyoune": {
+      "rows": 23,
+      "counts": {
+        "name": 23,
+        "city": 23,
+        "phone": 3,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 13.04,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Loualidia ⵍⵡⴰⵍⵉⴷⵢⵢⴰ الوليدية": {
+      "rows": 4,
+      "counts": {
+        "name": 4,
+        "city": 4,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Lqliaa": {
+      "rows": 23,
+      "counts": {
+        "name": 23,
+        "city": 23,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Lqliaa القليعة": {
+      "rows": 3,
+      "counts": {
+        "name": 3,
+        "city": 3,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Lqliaa ⴰⵍⵇⵍⵉⵄⴰ القليعة": {
+      "rows": 6,
+      "counts": {
+        "name": 6,
+        "city": 6,
+        "phone": 2,
+        "hours": 1,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 33.33,
+        "hours": 16.67,
+        "duty_known": 0.0
+      }
+    },
+    "M'Diq": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "M'Diq ⵎⴹⵢⴰⵇ المضيق": {
+      "rows": 10,
+      "counts": {
+        "name": 10,
+        "city": 10,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "M'rirt": {
+      "rows": 2,
+      "counts": {
+        "name": 2,
+        "city": 2,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "M'rirt ⵎⵔⵉⵔⵜ مريرت": {
+      "rows": 7,
+      "counts": {
+        "name": 7,
+        "city": 7,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "MRIRT": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Marrakech": {
+      "rows": 463,
+      "counts": {
+        "name": 463,
+        "city": 463,
+        "phone": 0,
+        "hours": 1,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.22,
+        "duty_known": 0.0
+      }
+    },
+    "Martil": {
+      "rows": 12,
+      "counts": {
+        "name": 12,
+        "city": 12,
+        "phone": 0,
+        "hours": 1,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 8.33,
+        "duty_known": 0.0
+      }
+    },
+    "Martil ⵎⴰⵔⵜⵉⵍ مرتيل": {
+      "rows": 13,
+      "counts": {
+        "name": 13,
+        "city": 13,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Mechra Bel Ksiri": {
+      "rows": 11,
+      "counts": {
+        "name": 11,
+        "city": 11,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Mechra Bel Ksiri ⵎⵛⵕⵄ ⴱⵍⵍⵇⵚⵉⵕⵉ مشرع بلقصيري": {
+      "rows": 4,
+      "counts": {
+        "name": 4,
+        "city": 4,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Mediouna": {
+      "rows": 2,
+      "counts": {
+        "name": 2,
+        "city": 2,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Mehdia": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Meknès": {
+      "rows": 274,
+      "counts": {
+        "name": 274,
+        "city": 274,
+        "phone": 5,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 1.82,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Mers El Kheir": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Mers El Kheir ⵄⵉⵏ ⵄⵜⵉⵇ مرس الخير": {
+      "rows": 2,
+      "counts": {
+        "name": 2,
+        "city": 2,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Mers El Kheir ⵎⵔⵙ ⵍⵅⵉⵔ مرس الخير": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Midelt": {
+      "rows": 3,
+      "counts": {
+        "name": 3,
+        "city": 3,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Midelt ميدلت": {
+      "rows": 8,
+      "counts": {
+        "name": 8,
+        "city": 8,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Midelt ⴰⵡⵟⴰⵟ ميدلت": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Missour": {
+      "rows": 2,
+      "counts": {
+        "name": 2,
+        "city": 2,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Missour ⵎⵉⵙⵓⵔ ميسور": {
+      "rows": 3,
+      "counts": {
+        "name": 3,
+        "city": 3,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Mohammed": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Mohammedia": {
+      "rows": 111,
+      "counts": {
+        "name": 111,
+        "city": 111,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Médiouna مديونة": {
+      "rows": 5,
+      "counts": {
+        "name": 5,
+        "city": 5,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Nador": {
+      "rows": 95,
+      "counts": {
+        "name": 95,
+        "city": 95,
+        "phone": 1,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 1.05,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Nouaceur": {
+      "rows": 21,
+      "counts": {
+        "name": 21,
+        "city": 21,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Nouaceur ⵏⵡⴰⵚⵕ النواصر": {
+      "rows": 21,
+      "counts": {
+        "name": 21,
+        "city": 21,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "OUARZAZATE": {
+      "rows": 3,
+      "counts": {
+        "name": 3,
+        "city": 3,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "OUED ZEM": {
+      "rows": 2,
+      "counts": {
+        "name": 2,
+        "city": 2,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "OULAD TEIMA": {
+      "rows": 3,
+      "counts": {
+        "name": 3,
+        "city": 3,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Oualidia": {
+      "rows": 3,
+      "counts": {
+        "name": 3,
+        "city": 3,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Oualidia ⵍⵡⴰⵍⵉⴷⵢⵢⴰ الوليدية": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Ouarzazate": {
+      "rows": 13,
+      "counts": {
+        "name": 13,
+        "city": 13,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Ouarzazate ورزازات": {
+      "rows": 14,
+      "counts": {
+        "name": 14,
+        "city": 14,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Ouarzazate ⵡⴰⵔⵣⴰⵣⴰⵜ ورزازات": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Ouazzane": {
+      "rows": 5,
+      "counts": {
+        "name": 5,
+        "city": 5,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Ouazzane وزان": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Ouazzane ⵡⴰⵣⴰⵏ وزان": {
+      "rows": 13,
+      "counts": {
+        "name": 13,
+        "city": 13,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Oued Zem": {
+      "rows": 14,
+      "counts": {
+        "name": 14,
+        "city": 14,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Oued Zem ⵡⴰⴷ ⵣⴰⵎ وادي زم": {
+      "rows": 12,
+      "counts": {
+        "name": 12,
+        "city": 12,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Oujda": {
+      "rows": 293,
+      "counts": {
+        "name": 293,
+        "city": 293,
+        "phone": 229,
+        "hours": 2,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 78.16,
+        "hours": 0.68,
+        "duty_known": 0.0
+      }
+    },
+    "Oulad Berhil": {
+      "rows": 3,
+      "counts": {
+        "name": 3,
+        "city": 3,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Oulad Berhil ⵡⵍⴰⴷ ⴱⴰⵔⵃⵉⵍ اولاد برحيل": {
+      "rows": 2,
+      "counts": {
+        "name": 2,
+        "city": 2,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Oulad-Teima": {
+      "rows": 15,
+      "counts": {
+        "name": 15,
+        "city": 15,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Ouled Teima ⴰⵡⵍⴰⴷ ⵜⴰⵢⵎⴰ أولاد تايمة": {
+      "rows": 8,
+      "counts": {
+        "name": 8,
+        "city": 8,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Ouled-Teima ⴰⵡⵍⴰⴷ ⵜⴰⵢⵎⴰ أولاد تايمة": {
+      "rows": 3,
+      "counts": {
+        "name": 3,
+        "city": 3,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Oulmès": {
+      "rows": 2,
+      "counts": {
+        "name": 2,
+        "city": 2,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Oulmès ⵡⴰⵍⵎⴰⵙ ولماس": {
+      "rows": 3,
+      "counts": {
+        "name": 3,
+        "city": 3,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Outat El Haj": {
+      "rows": 2,
+      "counts": {
+        "name": 2,
+        "city": 2,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Outat El Haj أوطاط الحاج": {
+      "rows": 2,
+      "counts": {
+        "name": 2,
+        "city": 2,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Outat El Haj ⵓⵟⴰⵟ ⵍⵃⴰⵊⵊ أوطاط الحاج": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Ph PAA": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Ph PB": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Ph PM": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Ph PNH": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Rabat": {
+      "rows": 155,
+      "counts": {
+        "name": 155,
+        "city": 155,
+        "phone": 3,
+        "hours": 2,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 1.94,
+        "hours": 1.29,
+        "duty_known": 0.0
+      }
+    },
+    "Rissani": {
+      "rows": 3,
+      "counts": {
+        "name": 3,
+        "city": 3,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Rissani ⵔⵉⵙⵙⴰⵏⵉ الريصاني": {
+      "rows": 3,
+      "counts": {
+        "name": 3,
+        "city": 3,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Rommani ⵕⵡⵎⵎⴰⵏⵉ الرماني": {
+      "rows": 3,
+      "counts": {
+        "name": 3,
+        "city": 3,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "SETTAT": {
+      "rows": 7,
+      "counts": {
+        "name": 7,
+        "city": 7,
+        "phone": 2,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 28.57,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "SIDI-KACEM": {
+      "rows": 2,
+      "counts": {
+        "name": 2,
+        "city": 2,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Sabaa Aiyoun": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Sabaa Aiyoun ⵙⴱⵄ ⵄⵢⵓⵏ سبع عيون": {
+      "rows": 2,
+      "counts": {
+        "name": 2,
+        "city": 2,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Safi": {
+      "rows": 122,
+      "counts": {
+        "name": 122,
+        "city": 122,
+        "phone": 0,
+        "hours": 1,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.82,
+        "duty_known": 0.0
+      }
+    },
+    "Saidia": {
+      "rows": 4,
+      "counts": {
+        "name": 4,
+        "city": 4,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Saidia ⵙⵄⵉⴷⵢⵢⴰ السعيدية": {
+      "rows": 5,
+      "counts": {
+        "name": 5,
+        "city": 5,
+        "phone": 1,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 20.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Sala El Jadida": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Salé": {
+      "rows": 3,
+      "counts": {
+        "name": 3,
+        "city": 3,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Salé Al Jadida": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Salé El Jadida": {
+      "rows": 33,
+      "counts": {
+        "name": 33,
+        "city": 33,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Sebt Guerdane": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Sebt Guerdane ⵙⴱⵜ ⵍⴳⵔⴷⴰⵏ سبت الكردان": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Sebt Gzoula": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Sebt Gzoula ⵙⴰⴱⵜ ⴳⴰⵣⵓⵍⴰ سبت جزولة": {
+      "rows": 2,
+      "counts": {
+        "name": 2,
+        "city": 2,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Sebt Gzoula ⵙⴰⴱⵜ ⴳⴰⵣⵓⵍⴰ سبت گزولة": {
+      "rows": 2,
+      "counts": {
+        "name": 2,
+        "city": 2,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Sefrou": {
+      "rows": 13,
+      "counts": {
+        "name": 13,
+        "city": 13,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Sefrou ⵚⴼⵕⵓ صفرو": {
+      "rows": 16,
+      "counts": {
+        "name": 16,
+        "city": 16,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Selouane": {
+      "rows": 11,
+      "counts": {
+        "name": 11,
+        "city": 11,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Selouane ⵙⵍⵡⴰⵏ سلوان": {
+      "rows": 4,
+      "counts": {
+        "name": 4,
+        "city": 4,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Settat": {
+      "rows": 80,
+      "counts": {
+        "name": 80,
+        "city": 80,
+        "phone": 11,
+        "hours": 1,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 13.75,
+        "hours": 1.25,
+        "duty_known": 0.0
+      }
+    },
+    "Settat ⵥⵟⵟⴰⵟ سطات": {
+      "rows": 7,
+      "counts": {
+        "name": 7,
+        "city": 7,
+        "phone": 1,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 14.29,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Sidi Allal Behraoui": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Sidi Allal El Bahraoui ⵙⵉⴷⵉ ⵄⵍⵍⴰⵍ ⴰⴱⵃⵔⴰⵡⵉ سيدي علال البحراوي": {
+      "rows": 14,
+      "counts": {
+        "name": 14,
+        "city": 14,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Sidi Bennour": {
+      "rows": 12,
+      "counts": {
+        "name": 12,
+        "city": 12,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Sidi Bennour ⵙⵉⴷⵉ ⴱⵏⵏⵓⵕ سيدي بنور": {
+      "rows": 14,
+      "counts": {
+        "name": 14,
+        "city": 14,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Sidi Bibi": {
+      "rows": 2,
+      "counts": {
+        "name": 2,
+        "city": 2,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Sidi Bibi ⵙⵉⴷⵉ ⴱⵉⴱⵉ سيدي بيبي": {
+      "rows": 2,
+      "counts": {
+        "name": 2,
+        "city": 2,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Sidi Bouzid": {
+      "rows": 3,
+      "counts": {
+        "name": 3,
+        "city": 3,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Sidi Bouzid ⵙⵉⴷⵉ ⴱⵓⵣⵉⴷ سيدي بوزيد": {
+      "rows": 2,
+      "counts": {
+        "name": 2,
+        "city": 2,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Sidi Ifni": {
+      "rows": 4,
+      "counts": {
+        "name": 4,
+        "city": 4,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Sidi Ifni ⵙⵉⴷⵉ ⵉⴼⵏⵉ سيدي إفني": {
+      "rows": 3,
+      "counts": {
+        "name": 3,
+        "city": 3,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Sidi Kacem": {
+      "rows": 6,
+      "counts": {
+        "name": 6,
+        "city": 6,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Sidi Kacem ⵙⵉⴷⵉ ⵇⴰⵙⴰⵎ سيدي قاسم": {
+      "rows": 17,
+      "counts": {
+        "name": 17,
+        "city": 17,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Sidi Rahal Chatai": {
+      "rows": 4,
+      "counts": {
+        "name": 4,
+        "city": 4,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Sidi Rahal Chatai ⵙⵉⴷⵉ ⵕⵃⵃⴰⵍ سيدي رحال": {
+      "rows": 6,
+      "counts": {
+        "name": 6,
+        "city": 6,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Sidi Rahhal سيدي رحال": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Sidi Rahhal ⵙⵉⴷⵉ ⵕⵃⵃⴰⵍ سيدي رحال": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Sidi Slimane": {
+      "rows": 17,
+      "counts": {
+        "name": 17,
+        "city": 17,
+        "phone": 1,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 5.88,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Sidi Slimane Echcharaa": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Sidi Slimane Echcharaa سيدي سليمان الشراعة": {
+      "rows": 9,
+      "counts": {
+        "name": 9,
+        "city": 9,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Sidi Slimane ⵙⵉⴷⵉ ⵙⵍⵉⵎⴰⵏ سيدي سليمان": {
+      "rows": 14,
+      "counts": {
+        "name": 14,
+        "city": 14,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Sidi Yahya du Gharb": {
+      "rows": 2,
+      "counts": {
+        "name": 2,
+        "city": 2,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Sidi Yahya du Gharb ⵙⵉⴷⵉ ⵉⵃⵢⴰ ⵏ ⵍⵖⴰⵔⴱ سيدي يحيى الغرب": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Sidi Yahya du Rharb": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Skhirat": {
+      "rows": 17,
+      "counts": {
+        "name": 17,
+        "city": 17,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Skhirat ⵚⵅⵉⵔⴰⵜ الصخيرات": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Skhirate": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Skhirate الصخيرات": {
+      "rows": 9,
+      "counts": {
+        "name": 9,
+        "city": 9,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Skhour Rhamna": {
+      "rows": 2,
+      "counts": {
+        "name": 2,
+        "city": 2,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Smara السمارة": {
+      "rows": 2,
+      "counts": {
+        "name": 2,
+        "city": 2,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Souk Al Arbaa Du Gharb": {
+      "rows": 5,
+      "counts": {
+        "name": 5,
+        "city": 5,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Souk El Arba Du Gharb ⵙⵓⵇ ⵍⴰⵔⴱⵄⴰ ⵏ ⵍⵖⴰⵔⴱ سوق الأربعاء الغرب": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Souk El Arbaa ⵙⵓⵇ ⵍⴰⵔⴱⵄⴰ سوق الأربعاء": {
+      "rows": 14,
+      "counts": {
+        "name": 14,
+        "city": 14,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Souk Sebt Oulad Nemma": {
+      "rows": 3,
+      "counts": {
+        "name": 3,
+        "city": 3,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Souk Sebt Oulad Nemma ⵙⵓⵇ ⵙⴱⵜ ⵡⵍⴰⴷ ⵏⵎⴰ سوق السبت أولاد النمة": {
+      "rows": 11,
+      "counts": {
+        "name": 11,
+        "city": 11,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "TAOURIRT": {
+      "rows": 5,
+      "counts": {
+        "name": 5,
+        "city": 5,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "TAZA": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Tabounte": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Taddart ⵜⴰⴷⴰⵔⵜ تدارت": {
+      "rows": 3,
+      "counts": {
+        "name": 3,
+        "city": 3,
+        "phone": 2,
+        "hours": 2,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 66.67,
+        "hours": 66.67,
+        "duty_known": 0.0
+      }
+    },
+    "Tafraout": {
+      "rows": 2,
+      "counts": {
+        "name": 2,
+        "city": 2,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Tafraout ⵜⴰⴼⵔⴰⵡⵜ تافراوت": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Taliouine": {
+      "rows": 2,
+      "counts": {
+        "name": 2,
+        "city": 2,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Taliouine ⵜⴰⵍⵉⵡⵉⵏ تالوين": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Tamansourt": {
+      "rows": 12,
+      "counts": {
+        "name": 12,
+        "city": 12,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Tamensourt": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 1,
+        "hours": 1,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 100.0,
+        "hours": 100.0,
+        "duty_known": 0.0
+      }
+    },
+    "Tamesna": {
+      "rows": 26,
+      "counts": {
+        "name": 26,
+        "city": 26,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Tan-Tan": {
+      "rows": 11,
+      "counts": {
+        "name": 11,
+        "city": 11,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Tan-Tan طانطان": {
+      "rows": 7,
+      "counts": {
+        "name": 7,
+        "city": 7,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Tan-Tan ⵟⴰⵏⵟⴰⵏ طانطان": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Tanger": {
+      "rows": 350,
+      "counts": {
+        "name": 350,
+        "city": 350,
+        "phone": 16,
+        "hours": 1,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 4.57,
+        "hours": 0.29,
+        "duty_known": 0.0
+      }
+    },
+    "Taounate": {
+      "rows": 3,
+      "counts": {
+        "name": 3,
+        "city": 3,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Taourirt": {
+      "rows": 16,
+      "counts": {
+        "name": 16,
+        "city": 16,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Taourirt تاوريرت": {
+      "rows": 12,
+      "counts": {
+        "name": 12,
+        "city": 12,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Taourirt ⵜⴰⵡⵔⵉⵔⵜ تاوريرت": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Tarfaya ⵟⴰⵔⴼⴰⵢⴰ طرفاية": {
+      "rows": 3,
+      "counts": {
+        "name": 3,
+        "city": 3,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Targuist ⵜⴰⵔⴳⵉⵙⵜ تارجيست": {
+      "rows": 4,
+      "counts": {
+        "name": 4,
+        "city": 4,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Taroudant": {
+      "rows": 33,
+      "counts": {
+        "name": 33,
+        "city": 33,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Taroudant ⵜⴰⵔⵓⴷⴰⵏⵜ تارودانت": {
+      "rows": 2,
+      "counts": {
+        "name": 2,
+        "city": 2,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Tata ⵟⴰⵟⴰ طاطا": {
+      "rows": 2,
+      "counts": {
+        "name": 2,
+        "city": 2,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Taza": {
+      "rows": 28,
+      "counts": {
+        "name": 28,
+        "city": 28,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Taza تازة": {
+      "rows": 25,
+      "counts": {
+        "name": 25,
+        "city": 25,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Temsia": {
+      "rows": 4,
+      "counts": {
+        "name": 4,
+        "city": 4,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Temsia ⵜⴻⵎⵙⵉⵢⴰ التمسية": {
+      "rows": 3,
+      "counts": {
+        "name": 3,
+        "city": 3,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Temsna": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Tifelt": {
+      "rows": 4,
+      "counts": {
+        "name": 4,
+        "city": 4,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Tiflet": {
+      "rows": 15,
+      "counts": {
+        "name": 15,
+        "city": 15,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Tiflet ⵜⵉⴼⴼⵍⵜ تيفلت": {
+      "rows": 17,
+      "counts": {
+        "name": 17,
+        "city": 17,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Tighir": {
+      "rows": 2,
+      "counts": {
+        "name": 2,
+        "city": 2,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Tin 'Amara": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Tinejdad تنجداد": {
+      "rows": 2,
+      "counts": {
+        "name": 2,
+        "city": 2,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Tinejdad ⵜⵉⵏⵊⴷⴰⴷ تنجداد": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Tinghir": {
+      "rows": 9,
+      "counts": {
+        "name": 9,
+        "city": 9,
+        "phone": 1,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 11.11,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Tinghir ⵜⵉⵏⵖⵉⵔ تنغير": {
+      "rows": 5,
+      "counts": {
+        "name": 5,
+        "city": 5,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Tissint ⵜⵉⵙⵉⵏⵜ تسينت": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Tit Mellil": {
+      "rows": 2,
+      "counts": {
+        "name": 2,
+        "city": 2,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Tit Mellil تيط مليل": {
+      "rows": 12,
+      "counts": {
+        "name": 12,
+        "city": 12,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Tit Mellil ⵜⵉⵟ ⵎⵍⵉⵍ تيط مليل": {
+      "rows": 2,
+      "counts": {
+        "name": 2,
+        "city": 2,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Tiznit": {
+      "rows": 28,
+      "counts": {
+        "name": 28,
+        "city": 28,
+        "phone": 0,
+        "hours": 1,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 3.57,
+        "duty_known": 0.0
+      }
+    },
+    "Tiznit ⵜⵉⵣⵏⵉⵜ تزنيت": {
+      "rows": 10,
+      "counts": {
+        "name": 10,
+        "city": 10,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Témara": {
+      "rows": 172,
+      "counts": {
+        "name": 172,
+        "city": 172,
+        "phone": 3,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 1.74,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Tétouan": {
+      "rows": 105,
+      "counts": {
+        "name": 105,
+        "city": 105,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Unknown (addr:city absent)": {
+      "rows": 1059,
+      "counts": {
+        "name": 851,
+        "city": 0,
+        "phone": 46,
+        "hours": 15,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 80.36,
+        "city": 0.0,
+        "phone": 4.34,
+        "hours": 1.42,
+        "duty_known": 0.0
+      }
+    },
+    "YOUSSOUFIA": {
+      "rows": 3,
+      "counts": {
+        "name": 3,
+        "city": 3,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Youssoufia": {
+      "rows": 11,
+      "counts": {
+        "name": 11,
+        "city": 11,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Youssoufia ⵢⵓⵙⴼⵉⵢⴰ اليوسفية": {
+      "rows": 9,
+      "counts": {
+        "name": 9,
+        "city": 9,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Zagora": {
+      "rows": 4,
+      "counts": {
+        "name": 4,
+        "city": 4,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Zagora ⵣⴰⴳⵓⵔⴰ زاكورة": {
+      "rows": 3,
+      "counts": {
+        "name": 3,
+        "city": 3,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Zaio": {
+      "rows": 9,
+      "counts": {
+        "name": 9,
+        "city": 9,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Zaïo ⵣⴰⵢⵢⵓ زايو": {
+      "rows": 8,
+      "counts": {
+        "name": 8,
+        "city": 8,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Zeghanghane ⴰⵣⵖⴰⵏⵖⴰⵏ أزغنغان": {
+      "rows": 12,
+      "counts": {
+        "name": 12,
+        "city": 12,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "Zemamra زمامرة": {
+      "rows": 10,
+      "counts": {
+        "name": 10,
+        "city": 10,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "alhoceima": {
+      "rows": 2,
+      "counts": {
+        "name": 2,
+        "city": 2,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "kasba tadla": {
+      "rows": 4,
+      "counts": {
+        "name": 1,
+        "city": 4,
+        "phone": 0,
+        "hours": 3,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 25.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 75.0,
+        "duty_known": 0.0
+      }
+    },
+    "laayoune": {
+      "rows": 5,
+      "counts": {
+        "name": 5,
+        "city": 5,
+        "phone": 5,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 100.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "laayoyne": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 1,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 100.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "midar": {
+      "rows": 4,
+      "counts": {
+        "name": 4,
+        "city": 4,
+        "phone": 4,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 100.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "ouarzazate": {
+      "rows": 2,
+      "counts": {
+        "name": 2,
+        "city": 2,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "taza تازة": {
+      "rows": 4,
+      "counts": {
+        "name": 4,
+        "city": 4,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "ابن جرير": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "الحسيمة": {
+      "rows": 5,
+      "counts": {
+        "name": 5,
+        "city": 5,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "العيون": {
+      "rows": 4,
+      "counts": {
+        "name": 4,
+        "city": 4,
+        "phone": 3,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 75.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "العيون Laâyoune": {
+      "rows": 4,
+      "counts": {
+        "name": 4,
+        "city": 4,
+        "phone": 1,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 25.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "النواصر": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "قصر ملعب": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "كلميم": {
+      "rows": 4,
+      "counts": {
+        "name": 4,
+        "city": 4,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "كلميمة": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "نزالة العظم": {
+      "rows": 1,
+      "counts": {
+        "name": 1,
+        "city": 1,
+        "phone": 1,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 100.0,
+        "city": 100.0,
+        "phone": 100.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    },
+    "وادي لو": {
+      "rows": 2,
+      "counts": {
+        "name": 0,
+        "city": 2,
+        "phone": 0,
+        "hours": 0,
+        "duty_known": 0
+      },
+      "percent": {
+        "name": 0.0,
+        "city": 100.0,
+        "phone": 0.0,
+        "hours": 0.0,
+        "duty_known": 0.0
+      }
+    }
+  },
+  "rows_with_rejected_phones": 4,
+  "mean_completeness": 0.5837,
+  "source": {
+    "source": "OpenStreetMap via Overpass",
+    "endpoint": "https://overpass-api.de/api/interpreter",
+    "attribution": "© OpenStreetMap contributors",
+    "license": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "requested_regions": [
+      "Morocco"
+    ],
+    "scope": "national_area",
+    "responses": [
+      {
+        "region": "Morocco",
+        "bbox": null,
+        "file": "pharmacies_morocco_raw.json",
+        "query": "[out:json][timeout:120];area[\"ISO3166-1\"=\"MA\"][\"admin_level\"=\"2\"]->.ma;nwr[\"amenity\"=\"pharmacy\"](area.ma);out center tags;",
+        "fetched_at": "2026-10-26T19:11:41.986949+00:00",
+        "osm_timestamp": "2026-10-26T19:10:31Z",
+        "sha256": "54add4786d5447e40763998396a4dc65b4ff28b7d2f35a2377c2bf9bc6648a90",
+        "bytes": 2383815,
+        "elements": 6952
+      }
+    ]
+  },
+  "disclaimer": "Directory completeness only; no stock or live duty information.",
+  "nearest_smoke": {
+    "Rabat": [
+      {
+        "id": "node/8191100944",
+        "distance_km": 0.145007
+      },
+      {
+        "id": "node/8202050744",
+        "distance_km": 0.180121
+      },
+      {
+        "id": "node/3413975983",
+        "distance_km": 0.4035
+      }
+    ],
+    "Casablanca": [
+      {
+        "id": "node/5593149218",
+        "distance_km": 0.220225
+      },
+      {
+        "id": "node/5589601460",
+        "distance_km": 0.344638
+      },
+      {
+        "id": "node/5593149772",
+        "distance_km": 0.396305
+      }
+    ],
+    "Marrakech": [
+      {
+        "id": "node/8483710823",
+        "distance_km": 0.189168
+      },
+      {
+        "id": "node/5455209898",
+        "distance_km": 0.225439
+      },
+      {
+        "id": "node/8483407230",
+        "distance_km": 0.267127
+      }
+    ]
+  }
+}

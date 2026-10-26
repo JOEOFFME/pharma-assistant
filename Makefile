@@ -30,3 +30,10 @@ hooks:
 
 schema:
 	$(UV) run --frozen python scripts/export_schema.py
+
+.PHONY: pharmacies fetch-pharmacies
+pharmacies:
+	$(UV) run --frozen python -m pharma_assistant.data_tools.clean_pharmacies
+
+fetch-pharmacies:
+	$(UV) run --frozen python -m pharma_assistant.data_tools.fetch_pharmacies

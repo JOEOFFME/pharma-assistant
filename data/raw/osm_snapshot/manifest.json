@@ -1,0 +1,23 @@
+{
+  "source": "OpenStreetMap via Overpass",
+  "endpoint": "https://overpass-api.de/api/interpreter",
+  "attribution": "© OpenStreetMap contributors",
+  "license": "https://opendatacommons.org/licenses/odbl/1-0/",
+  "requested_regions": [
+    "Morocco"
+  ],
+  "scope": "national_area",
+  "responses": [
+    {
+      "region": "Morocco",
+      "bbox": null,
+      "file": "pharmacies_morocco_raw.json",
+      "query": "[out:json][timeout:120];area[\"ISO3166-1\"=\"MA\"][\"admin_level\"=\"2\"]->.ma;nwr[\"amenity\"=\"pharmacy\"](area.ma);out center tags;",
+      "fetched_at": "2026-10-26T19:11:41.986949+00:00",
+      "osm_timestamp": "2026-10-26T19:10:31Z",
+      "sha256": "54add4786d5447e40763998396a4dc65b4ff28b7d2f35a2377c2bf9bc6648a90",
+      "bytes": 2383815,
+      "elements": 6952
+    }
+  ]
+}

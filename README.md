@@ -3,15 +3,17 @@
 Arabic, Moroccan Darija (Arabic/Latin script), French, and code-mixed
 patient-pharmacy assistance prototype.
 
-## Current scope: TASK 0 scaffold, TASK 1 study and TASK 2 NLU contract
+## Current scope: TASK 0-3
 
 Repository scaffolding and an operational FastAPI health endpoint, plus the
 [TASK 1 problem study](docs/01_problem_study.md) and
 [TASK 1 validation report](docs/01_validation.md), the
 [TASK 2 NLU specification](docs/02_nlu_spec.md), typed response models and
 [200 annotation examples](docs/examples/nlu_annotation_examples.md).
-The examples are authored and unreviewed, not a gold dataset. NLU inference, speech,
-medication data, pharmacy data and evaluation are later tasks and are not implemented.
+The examples are authored and unreviewed, not a gold dataset. TASK 3 adds a real
+[OSM pharmacy directory](data/pharmacies/README.md), SQLite queries and a generated
+[coverage report](docs/data_pharmacies.md). NLU inference, speech, medication data
+and model evaluation are later tasks and are not implemented.
 No medical diagnosis, dosage recommendations or substitution advice is provided.
 
 ## Prerequisites
@@ -95,3 +97,16 @@ that JSON Schema alone does not express. See
 [the specification](docs/02_nlu_spec.md) and
 [TASK 2 validation report](docs/02_validation.md). These define output contracts;
 analysis endpoints are not implemented yet.
+
+## Pharmacy directory (TASK 3)
+
+```bash
+make pharmacies             # build CSV, SQLite, report from committed OSM bytes
+```
+
+The directory is a snapshot from OpenStreetMap, not a live stock or garde feed.
+© OpenStreetMap contributors; source and derived data are under
+[ODbL 1.0](https://opendatacommons.org/licenses/odbl/1-0/). See
+[data instructions](data/pharmacies/README.md),
+[coverage](docs/data_pharmacies.md) and
+[TASK 3 validation report](docs/03_validation.md).
