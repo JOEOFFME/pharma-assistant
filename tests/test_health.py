@@ -37,5 +37,5 @@ def test_openapi_exposes_health_response() -> None:
 def test_unknown_endpoint_is_not_success() -> None:
     """Unimplemented analysis routes must not pretend to work."""
     with TestClient(create_app()) as client:
-        response = client.post("/v1/analyze/text", json={"text": "salam"})
+        response = client.post("/v1/does-not-exist", json={"text": "salam"})
     assert response.status_code == 404

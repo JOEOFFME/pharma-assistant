@@ -1,0 +1,108 @@
+{
+  "health": 200,
+  "endpoints": {
+    "text": {
+      "status": 200,
+      "response": {
+        "request_id": "e4c4e7d3-caf7-4b80-a2eb-75a0e91f91ca",
+        "input": {
+          "modality": "text",
+          "raw_text": "wach kayn Doliprane 500 mg?",
+          "transcript": null,
+          "language": "darija_latn"
+        },
+        "intent": {
+          "label": "check_availability",
+          "confidence": 0.65
+        },
+        "entities": [
+          {
+            "text": "Doliprane",
+            "start": 10,
+            "end": 19,
+            "entity_id": "medication1",
+            "assertion": "affirmed",
+            "confidence": null,
+            "type": "MEDICATION",
+            "normalized": null,
+            "dci": null,
+            "matched_id": null
+          },
+          {
+            "text": "500 mg",
+            "start": 20,
+            "end": 26,
+            "entity_id": "dosage1",
+            "assertion": "affirmed",
+            "confidence": null,
+            "medication_ref": "medication1",
+            "type": "DOSAGE",
+            "value": 500.0,
+            "unit": "mg"
+          }
+        ],
+        "relations": [
+          {
+            "type": "DOSAGE_OF",
+            "from": "dosage1",
+            "to": "medication1"
+          }
+        ],
+        "contains_out_of_scope_request": false,
+        "pharmacy_query": {
+          "needs_pharmacy_info": false,
+          "info_type": null,
+          "location_text": null
+        },
+        "needs_clarification": true,
+        "clarification_question": {
+          "fr": "Pouvez-vous préciser le produit ou la demande ?",
+          "ar": null
+        },
+        "disclaimer": "Cet assistant ne fournit pas de conseil médical.",
+        "latency_ms": 120
+      }
+    },
+    "medications": {
+      "status": 200
+    },
+    "pharmacies": {
+      "status": 200
+    },
+    "demo": {
+      "status": 200
+    },
+    "voice_synthetic": {
+      "status": 200,
+      "response": {
+        "request_id": "057ee742-2f15-4d39-9351-5b983595b43c",
+        "input": {
+          "modality": "voice",
+          "raw_text": "",
+          "transcript": "Benjardt, you've ready to do all the pain.",
+          "language": "fr"
+        },
+        "intent": {
+          "label": "out_of_scope",
+          "confidence": 0.3
+        },
+        "entities": [],
+        "relations": [],
+        "contains_out_of_scope_request": false,
+        "pharmacy_query": {
+          "needs_pharmacy_info": false,
+          "info_type": null,
+          "location_text": null
+        },
+        "needs_clarification": false,
+        "clarification_question": {
+          "fr": null,
+          "ar": null
+        },
+        "disclaimer": "Cet assistant ne fournit pas de conseil médical.",
+        "latency_ms": 2
+      },
+      "source": "synthetic flite audio, not recorded-audio evaluation"
+    }
+  }
+}
