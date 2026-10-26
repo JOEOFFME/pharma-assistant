@@ -20,3 +20,10 @@ data/**/*
 # One attributed, immutable public OSM snapshot enables offline reconstruction.
 !data/raw/osm_snapshot/manifest.json
 !data/raw/osm_snapshot/pharmacies_morocco_raw.json
+# Attributed, compressed original BDPM bytes; derived SQLite stays ignored.
+!data/raw/bdpm_snapshot/manifest.json
+!data/raw/bdpm_snapshot/download_page.html
+!data/raw/bdpm_snapshot/CIS_bdpm.txt.gz
+!data/raw/bdpm_snapshot/CIS_COMPO_bdpm.txt.gz
+!data/raw/bdpm_snapshot/CIS_CIP_bdpm.txt.gz
+tmp/

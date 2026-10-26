@@ -1,0 +1,786 @@
+[
+  {
+    "id": "med_query_01",
+    "query": "Doliprane",
+    "expected_ids": [
+      "bdpm_fr_60234100",
+      "bdpm_fr_60310861",
+      "bdpm_fr_61681702",
+      "bdpm_fr_63368332",
+      "bdpm_fr_64361369",
+      "bdpm_fr_64793681",
+      "bdpm_fr_65103838",
+      "bdpm_fr_65196753",
+      "bdpm_fr_66057393",
+      "bdpm_fr_66477582",
+      "bdpm_fr_66567738",
+      "bdpm_fr_66731536",
+      "bdpm_fr_67119691",
+      "bdpm_fr_67210479",
+      "bdpm_fr_68794211",
+      "bdpm_fr_69002078",
+      "bdpm_fr_69309629"
+    ],
+    "expected_family": "DOLIPRANE",
+    "label_rule": "Source family plus explicit strength/form/flavor/container where supplied",
+    "source": "authored_unreviewed",
+    "review_status": "pending_user_review",
+    "underspecified": true
+  },
+  {
+    "id": "med_query_02",
+    "query": "dolipran",
+    "expected_ids": [
+      "bdpm_fr_60234100",
+      "bdpm_fr_60310861",
+      "bdpm_fr_61681702",
+      "bdpm_fr_63368332",
+      "bdpm_fr_64361369",
+      "bdpm_fr_64793681",
+      "bdpm_fr_65103838",
+      "bdpm_fr_65196753",
+      "bdpm_fr_66057393",
+      "bdpm_fr_66477582",
+      "bdpm_fr_66567738",
+      "bdpm_fr_66731536",
+      "bdpm_fr_67119691",
+      "bdpm_fr_67210479",
+      "bdpm_fr_68794211",
+      "bdpm_fr_69002078",
+      "bdpm_fr_69309629"
+    ],
+    "expected_family": "DOLIPRANE",
+    "label_rule": "Source family plus explicit strength/form/flavor/container where supplied",
+    "source": "authored_unreviewed",
+    "review_status": "pending_user_review",
+    "underspecified": true
+  },
+  {
+    "id": "med_query_03",
+    "query": "دوليبران",
+    "expected_ids": [
+      "bdpm_fr_60234100",
+      "bdpm_fr_60310861",
+      "bdpm_fr_61681702",
+      "bdpm_fr_63368332",
+      "bdpm_fr_64361369",
+      "bdpm_fr_64793681",
+      "bdpm_fr_65103838",
+      "bdpm_fr_65196753",
+      "bdpm_fr_66057393",
+      "bdpm_fr_66477582",
+      "bdpm_fr_66567738",
+      "bdpm_fr_66731536",
+      "bdpm_fr_67119691",
+      "bdpm_fr_67210479",
+      "bdpm_fr_68794211",
+      "bdpm_fr_69002078",
+      "bdpm_fr_69309629"
+    ],
+    "expected_family": "DOLIPRANE",
+    "label_rule": "Source family plus explicit strength/form/flavor/container where supplied",
+    "source": "authored_unreviewed",
+    "review_status": "pending_user_review",
+    "underspecified": true
+  },
+  {
+    "id": "med_query_04",
+    "query": "doliprane 1000",
+    "expected_ids": [
+      "bdpm_fr_60234100",
+      "bdpm_fr_61681702",
+      "bdpm_fr_66567738",
+      "bdpm_fr_69309629"
+    ],
+    "expected_family": "DOLIPRANE",
+    "label_rule": "Source family plus explicit strength/form/flavor/container where supplied",
+    "source": "authored_unreviewed",
+    "review_status": "pending_user_review",
+    "underspecified": true
+  },
+  {
+    "id": "med_query_05",
+    "query": "Doliprane 500 mg comprimé",
+    "expected_ids": [
+      "bdpm_fr_63368332",
+      "bdpm_fr_65196753"
+    ],
+    "expected_family": "DOLIPRANE",
+    "label_rule": "Source family plus explicit strength/form/flavor/container where supplied",
+    "source": "authored_unreviewed",
+    "review_status": "pending_user_review",
+    "underspecified": true
+  },
+  {
+    "id": "med_query_06",
+    "query": "Dafalgan",
+    "expected_ids": [
+      "bdpm_fr_62815944",
+      "bdpm_fr_62887947",
+      "bdpm_fr_63264636",
+      "bdpm_fr_65609611",
+      "bdpm_fr_67154532",
+      "bdpm_fr_67721153"
+    ],
+    "expected_family": "DAFALGAN",
+    "label_rule": "Source family plus explicit strength/form/flavor/container where supplied",
+    "source": "authored_unreviewed",
+    "review_status": "pending_user_review",
+    "underspecified": true
+  },
+  {
+    "id": "med_query_07",
+    "query": "dafalgn",
+    "expected_ids": [
+      "bdpm_fr_62815944",
+      "bdpm_fr_62887947",
+      "bdpm_fr_63264636",
+      "bdpm_fr_65609611",
+      "bdpm_fr_67154532",
+      "bdpm_fr_67721153"
+    ],
+    "expected_family": "DAFALGAN",
+    "label_rule": "Source family plus explicit strength/form/flavor/container where supplied",
+    "source": "authored_unreviewed",
+    "review_status": "pending_user_review",
+    "underspecified": true
+  },
+  {
+    "id": "med_query_08",
+    "query": "دافالغان",
+    "expected_ids": [
+      "bdpm_fr_62815944",
+      "bdpm_fr_62887947",
+      "bdpm_fr_63264636",
+      "bdpm_fr_65609611",
+      "bdpm_fr_67154532",
+      "bdpm_fr_67721153"
+    ],
+    "expected_family": "DAFALGAN",
+    "label_rule": "Source family plus explicit strength/form/flavor/container where supplied",
+    "source": "authored_unreviewed",
+    "review_status": "pending_user_review",
+    "underspecified": true
+  },
+  {
+    "id": "med_query_09",
+    "query": "Dafalgan 1000 mg",
+    "expected_ids": [
+      "bdpm_fr_62887947",
+      "bdpm_fr_63264636",
+      "bdpm_fr_67154532"
+    ],
+    "expected_family": "DAFALGAN",
+    "label_rule": "Source family plus explicit strength/form/flavor/container where supplied",
+    "source": "authored_unreviewed",
+    "review_status": "pending_user_review",
+    "underspecified": true
+  },
+  {
+    "id": "med_query_10",
+    "query": "Dafalgan 500 mg comprimé",
+    "expected_ids": [
+      "bdpm_fr_62815944",
+      "bdpm_fr_67721153"
+    ],
+    "expected_family": "DAFALGAN",
+    "label_rule": "Source family plus explicit strength/form/flavor/container where supplied",
+    "source": "authored_unreviewed",
+    "review_status": "pending_user_review",
+    "underspecified": true
+  },
+  {
+    "id": "med_query_11",
+    "query": "Efferalgan",
+    "expected_ids": [
+      "bdpm_fr_60025403",
+      "bdpm_fr_60298455",
+      "bdpm_fr_61128406",
+      "bdpm_fr_64675665",
+      "bdpm_fr_64796108",
+      "bdpm_fr_66093336",
+      "bdpm_fr_66826710",
+      "bdpm_fr_67058605",
+      "bdpm_fr_67326925",
+      "bdpm_fr_67617578",
+      "bdpm_fr_68605422"
+    ],
+    "expected_family": "EFFERALGAN",
+    "label_rule": "Source family plus explicit strength/form/flavor/container where supplied",
+    "source": "authored_unreviewed",
+    "review_status": "pending_user_review",
+    "underspecified": true
+  },
+  {
+    "id": "med_query_12",
+    "query": "eferalgan",
+    "expected_ids": [
+      "bdpm_fr_60025403",
+      "bdpm_fr_60298455",
+      "bdpm_fr_61128406",
+      "bdpm_fr_64675665",
+      "bdpm_fr_64796108",
+      "bdpm_fr_66093336",
+      "bdpm_fr_66826710",
+      "bdpm_fr_67058605",
+      "bdpm_fr_67326925",
+      "bdpm_fr_67617578",
+      "bdpm_fr_68605422"
+    ],
+    "expected_family": "EFFERALGAN",
+    "label_rule": "Source family plus explicit strength/form/flavor/container where supplied",
+    "source": "authored_unreviewed",
+    "review_status": "pending_user_review",
+    "underspecified": true
+  },
+  {
+    "id": "med_query_13",
+    "query": "إفيرالغان",
+    "expected_ids": [
+      "bdpm_fr_60025403",
+      "bdpm_fr_60298455",
+      "bdpm_fr_61128406",
+      "bdpm_fr_64675665",
+      "bdpm_fr_64796108",
+      "bdpm_fr_66093336",
+      "bdpm_fr_66826710",
+      "bdpm_fr_67058605",
+      "bdpm_fr_67326925",
+      "bdpm_fr_67617578",
+      "bdpm_fr_68605422"
+    ],
+    "expected_family": "EFFERALGAN",
+    "label_rule": "Source family plus explicit strength/form/flavor/container where supplied",
+    "source": "authored_unreviewed",
+    "review_status": "pending_user_review",
+    "underspecified": true
+  },
+  {
+    "id": "med_query_14",
+    "query": "Efferalgan 1000 mg",
+    "expected_ids": [
+      "bdpm_fr_60025403",
+      "bdpm_fr_67058605"
+    ],
+    "expected_family": "EFFERALGAN",
+    "label_rule": "Source family plus explicit strength/form/flavor/container where supplied",
+    "source": "authored_unreviewed",
+    "review_status": "pending_user_review",
+    "underspecified": true
+  },
+  {
+    "id": "med_query_15",
+    "query": "Efferalgan 80 mg suppositoire",
+    "expected_ids": [
+      "bdpm_fr_60298455"
+    ],
+    "expected_family": "EFFERALGAN",
+    "label_rule": "Source family plus explicit strength/form/flavor/container where supplied",
+    "source": "authored_unreviewed",
+    "review_status": "pending_user_review",
+    "underspecified": false
+  },
+  {
+    "id": "med_query_16",
+    "query": "Augmentin",
+    "expected_ids": [
+      "bdpm_fr_63565244",
+      "bdpm_fr_66053338",
+      "bdpm_fr_66853013",
+      "bdpm_fr_69978246"
+    ],
+    "expected_family": "AUGMENTIN",
+    "label_rule": "Source family plus explicit strength/form/flavor/container where supplied",
+    "source": "authored_unreviewed",
+    "review_status": "pending_user_review",
+    "underspecified": true
+  },
+  {
+    "id": "med_query_17",
+    "query": "augmentn",
+    "expected_ids": [
+      "bdpm_fr_63565244",
+      "bdpm_fr_66053338",
+      "bdpm_fr_66853013",
+      "bdpm_fr_69978246"
+    ],
+    "expected_family": "AUGMENTIN",
+    "label_rule": "Source family plus explicit strength/form/flavor/container where supplied",
+    "source": "authored_unreviewed",
+    "review_status": "pending_user_review",
+    "underspecified": true
+  },
+  {
+    "id": "med_query_18",
+    "query": "أوغمنتين",
+    "expected_ids": [
+      "bdpm_fr_63565244",
+      "bdpm_fr_66053338",
+      "bdpm_fr_66853013",
+      "bdpm_fr_69978246"
+    ],
+    "expected_family": "AUGMENTIN",
+    "label_rule": "Source family plus explicit strength/form/flavor/container where supplied",
+    "source": "authored_unreviewed",
+    "review_status": "pending_user_review",
+    "underspecified": true
+  },
+  {
+    "id": "med_query_19",
+    "query": "Augmentin 1 g",
+    "expected_ids": [
+      "bdpm_fr_66053338"
+    ],
+    "expected_family": "AUGMENTIN",
+    "label_rule": "Source family plus explicit strength/form/flavor/container where supplied",
+    "source": "authored_unreviewed",
+    "review_status": "pending_user_review",
+    "underspecified": false
+  },
+  {
+    "id": "med_query_20",
+    "query": "Augmentin 500 mg comprimé",
+    "expected_ids": [
+      "bdpm_fr_63565244"
+    ],
+    "expected_family": "AUGMENTIN",
+    "label_rule": "Source family plus explicit strength/form/flavor/container where supplied",
+    "source": "authored_unreviewed",
+    "review_status": "pending_user_review",
+    "underspecified": false
+  },
+  {
+    "id": "med_query_21",
+    "query": "Amoxicilline Biogaran",
+    "expected_ids": [
+      "bdpm_fr_60366319",
+      "bdpm_fr_60375058",
+      "bdpm_fr_60453197",
+      "bdpm_fr_69118175"
+    ],
+    "expected_family": "AMOXICILLINE BIOGARAN",
+    "label_rule": "Source family plus explicit strength/form/flavor/container where supplied",
+    "source": "authored_unreviewed",
+    "review_status": "pending_user_review",
+    "underspecified": true
+  },
+  {
+    "id": "med_query_22",
+    "query": "amoxiciline biogaran",
+    "expected_ids": [
+      "bdpm_fr_60366319",
+      "bdpm_fr_60375058",
+      "bdpm_fr_60453197",
+      "bdpm_fr_69118175"
+    ],
+    "expected_family": "AMOXICILLINE BIOGARAN",
+    "label_rule": "Source family plus explicit strength/form/flavor/container where supplied",
+    "source": "authored_unreviewed",
+    "review_status": "pending_user_review",
+    "underspecified": true
+  },
+  {
+    "id": "med_query_23",
+    "query": "amoxicilline biogarn",
+    "expected_ids": [
+      "bdpm_fr_60366319",
+      "bdpm_fr_60375058",
+      "bdpm_fr_60453197",
+      "bdpm_fr_69118175"
+    ],
+    "expected_family": "AMOXICILLINE BIOGARAN",
+    "label_rule": "Source family plus explicit strength/form/flavor/container where supplied",
+    "source": "authored_unreviewed",
+    "review_status": "pending_user_review",
+    "underspecified": true
+  },
+  {
+    "id": "med_query_24",
+    "query": "Amoxicilline Biogaran 500 mg",
+    "expected_ids": [
+      "bdpm_fr_69118175"
+    ],
+    "expected_family": "AMOXICILLINE BIOGARAN",
+    "label_rule": "Source family plus explicit strength/form/flavor/container where supplied",
+    "source": "authored_unreviewed",
+    "review_status": "pending_user_review",
+    "underspecified": false
+  },
+  {
+    "id": "med_query_25",
+    "query": "Amoxicilline Biogaran 125 mg/5 ml",
+    "expected_ids": [
+      "bdpm_fr_60366319"
+    ],
+    "expected_family": "AMOXICILLINE BIOGARAN",
+    "label_rule": "Source family plus explicit strength/form/flavor/container where supplied",
+    "source": "authored_unreviewed",
+    "review_status": "pending_user_review",
+    "underspecified": false
+  },
+  {
+    "id": "med_query_26",
+    "query": "Ibuprofène Biogaran",
+    "expected_ids": [
+      "bdpm_fr_61000075",
+      "bdpm_fr_68337369"
+    ],
+    "expected_family": "IBUPROFENE BIOGARAN",
+    "label_rule": "Source family plus explicit strength/form/flavor/container where supplied",
+    "source": "authored_unreviewed",
+    "review_status": "pending_user_review",
+    "underspecified": true
+  },
+  {
+    "id": "med_query_27",
+    "query": "ibuprofene biogarn",
+    "expected_ids": [
+      "bdpm_fr_61000075",
+      "bdpm_fr_68337369"
+    ],
+    "expected_family": "IBUPROFENE BIOGARAN",
+    "label_rule": "Source family plus explicit strength/form/flavor/container where supplied",
+    "source": "authored_unreviewed",
+    "review_status": "pending_user_review",
+    "underspecified": true
+  },
+  {
+    "id": "med_query_28",
+    "query": "ibuprofène biogaran 200 mg",
+    "expected_ids": [
+      "bdpm_fr_68337369"
+    ],
+    "expected_family": "IBUPROFENE BIOGARAN",
+    "label_rule": "Source family plus explicit strength/form/flavor/container where supplied",
+    "source": "authored_unreviewed",
+    "review_status": "pending_user_review",
+    "underspecified": false
+  },
+  {
+    "id": "med_query_29",
+    "query": "Ibuprofene Biogaran 400 mg",
+    "expected_ids": [
+      "bdpm_fr_61000075"
+    ],
+    "expected_family": "IBUPROFENE BIOGARAN",
+    "label_rule": "Source family plus explicit strength/form/flavor/container where supplied",
+    "source": "authored_unreviewed",
+    "review_status": "pending_user_review",
+    "underspecified": false
+  },
+  {
+    "id": "med_query_30",
+    "query": "IBUPROFENE BIOGARAN 400 mg comprimé",
+    "expected_ids": [
+      "bdpm_fr_61000075"
+    ],
+    "expected_family": "IBUPROFENE BIOGARAN",
+    "label_rule": "Source family plus explicit strength/form/flavor/container where supplied",
+    "source": "authored_unreviewed",
+    "review_status": "pending_user_review",
+    "underspecified": false
+  },
+  {
+    "id": "med_query_31",
+    "query": "Spasfon",
+    "expected_ids": [
+      "bdpm_fr_62998997",
+      "bdpm_fr_65923640",
+      "bdpm_fr_68081368"
+    ],
+    "expected_family": "SPASFON",
+    "label_rule": "Source family plus explicit strength/form/flavor/container where supplied",
+    "source": "authored_unreviewed",
+    "review_status": "pending_user_review",
+    "underspecified": true
+  },
+  {
+    "id": "med_query_32",
+    "query": "spasfn",
+    "expected_ids": [
+      "bdpm_fr_62998997",
+      "bdpm_fr_65923640",
+      "bdpm_fr_68081368"
+    ],
+    "expected_family": "SPASFON",
+    "label_rule": "Source family plus explicit strength/form/flavor/container where supplied",
+    "source": "authored_unreviewed",
+    "review_status": "pending_user_review",
+    "underspecified": true
+  },
+  {
+    "id": "med_query_33",
+    "query": "سباسفون",
+    "expected_ids": [
+      "bdpm_fr_62998997",
+      "bdpm_fr_65923640",
+      "bdpm_fr_68081368"
+    ],
+    "expected_family": "SPASFON",
+    "label_rule": "Source family plus explicit strength/form/flavor/container where supplied",
+    "source": "authored_unreviewed",
+    "review_status": "pending_user_review",
+    "underspecified": true
+  },
+  {
+    "id": "med_query_34",
+    "query": "Spasfon suppositoire",
+    "expected_ids": [
+      "bdpm_fr_65923640"
+    ],
+    "expected_family": "SPASFON",
+    "label_rule": "Source family plus explicit strength/form/flavor/container where supplied",
+    "source": "authored_unreviewed",
+    "review_status": "pending_user_review",
+    "underspecified": false
+  },
+  {
+    "id": "med_query_35",
+    "query": "Spasfon comprimé",
+    "expected_ids": [
+      "bdpm_fr_68081368"
+    ],
+    "expected_family": "SPASFON",
+    "label_rule": "Source family plus explicit strength/form/flavor/container where supplied",
+    "source": "authored_unreviewed",
+    "review_status": "pending_user_review",
+    "underspecified": false
+  },
+  {
+    "id": "med_query_36",
+    "query": "Gaviscon",
+    "expected_ids": [
+      "bdpm_fr_63636264",
+      "bdpm_fr_66116589"
+    ],
+    "expected_family": "GAVISCON",
+    "label_rule": "Source family plus explicit strength/form/flavor/container where supplied",
+    "source": "authored_unreviewed",
+    "review_status": "pending_user_review",
+    "underspecified": true
+  },
+  {
+    "id": "med_query_37",
+    "query": "gaviscn",
+    "expected_ids": [
+      "bdpm_fr_63636264",
+      "bdpm_fr_66116589"
+    ],
+    "expected_family": "GAVISCON",
+    "label_rule": "Source family plus explicit strength/form/flavor/container where supplied",
+    "source": "authored_unreviewed",
+    "review_status": "pending_user_review",
+    "underspecified": true
+  },
+  {
+    "id": "med_query_38",
+    "query": "غافيسكون",
+    "expected_ids": [
+      "bdpm_fr_63636264",
+      "bdpm_fr_66116589"
+    ],
+    "expected_family": "GAVISCON",
+    "label_rule": "Source family plus explicit strength/form/flavor/container where supplied",
+    "source": "authored_unreviewed",
+    "review_status": "pending_user_review",
+    "underspecified": true
+  },
+  {
+    "id": "med_query_39",
+    "query": "Gaviscon suspension",
+    "expected_ids": [
+      "bdpm_fr_63636264",
+      "bdpm_fr_66116589"
+    ],
+    "expected_family": "GAVISCON",
+    "label_rule": "Source family plus explicit strength/form/flavor/container where supplied",
+    "source": "authored_unreviewed",
+    "review_status": "pending_user_review",
+    "underspecified": true
+  },
+  {
+    "id": "med_query_40",
+    "query": "gaviscon en flacon",
+    "expected_ids": [
+      "bdpm_fr_63636264"
+    ],
+    "expected_family": "GAVISCON",
+    "label_rule": "Source family plus explicit strength/form/flavor/container where supplied",
+    "source": "authored_unreviewed",
+    "review_status": "pending_user_review",
+    "underspecified": false
+  },
+  {
+    "id": "med_query_41",
+    "query": "Ventoline",
+    "expected_ids": [
+      "bdpm_fr_60928110",
+      "bdpm_fr_61187493",
+      "bdpm_fr_61754100",
+      "bdpm_fr_64245247",
+      "bdpm_fr_64532012",
+      "bdpm_fr_64720167",
+      "bdpm_fr_65195719",
+      "bdpm_fr_65376705",
+      "bdpm_fr_65740201",
+      "bdpm_fr_66179486",
+      "bdpm_fr_67359188",
+      "bdpm_fr_67458236",
+      "bdpm_fr_68365226",
+      "bdpm_fr_69077942"
+    ],
+    "expected_family": "VENTOLINE",
+    "label_rule": "Source family plus explicit strength/form/flavor/container where supplied",
+    "source": "authored_unreviewed",
+    "review_status": "pending_user_review",
+    "underspecified": true
+  },
+  {
+    "id": "med_query_42",
+    "query": "ventolin",
+    "expected_ids": [
+      "bdpm_fr_60928110",
+      "bdpm_fr_61187493",
+      "bdpm_fr_61754100",
+      "bdpm_fr_64245247",
+      "bdpm_fr_64532012",
+      "bdpm_fr_64720167",
+      "bdpm_fr_65195719",
+      "bdpm_fr_65376705",
+      "bdpm_fr_65740201",
+      "bdpm_fr_66179486",
+      "bdpm_fr_67359188",
+      "bdpm_fr_67458236",
+      "bdpm_fr_68365226",
+      "bdpm_fr_69077942"
+    ],
+    "expected_family": "VENTOLINE",
+    "label_rule": "Source family plus explicit strength/form/flavor/container where supplied",
+    "source": "authored_unreviewed",
+    "review_status": "pending_user_review",
+    "underspecified": true
+  },
+  {
+    "id": "med_query_43",
+    "query": "فانتولين",
+    "expected_ids": [
+      "bdpm_fr_60928110",
+      "bdpm_fr_61187493",
+      "bdpm_fr_61754100",
+      "bdpm_fr_64245247",
+      "bdpm_fr_64532012",
+      "bdpm_fr_64720167",
+      "bdpm_fr_65195719",
+      "bdpm_fr_65376705",
+      "bdpm_fr_65740201",
+      "bdpm_fr_66179486",
+      "bdpm_fr_67359188",
+      "bdpm_fr_67458236",
+      "bdpm_fr_68365226",
+      "bdpm_fr_69077942"
+    ],
+    "expected_family": "VENTOLINE",
+    "label_rule": "Source family plus explicit strength/form/flavor/container where supplied",
+    "source": "authored_unreviewed",
+    "review_status": "pending_user_review",
+    "underspecified": true
+  },
+  {
+    "id": "med_query_44",
+    "query": "Ventoline 100 microgrammes",
+    "expected_ids": [
+      "bdpm_fr_60928110",
+      "bdpm_fr_61187493",
+      "bdpm_fr_61754100",
+      "bdpm_fr_64532012",
+      "bdpm_fr_64720167",
+      "bdpm_fr_65195719",
+      "bdpm_fr_65740201",
+      "bdpm_fr_66179486",
+      "bdpm_fr_67359188",
+      "bdpm_fr_67458236",
+      "bdpm_fr_68365226"
+    ],
+    "expected_family": "VENTOLINE",
+    "label_rule": "Source family plus explicit strength/form/flavor/container where supplied",
+    "source": "authored_unreviewed",
+    "review_status": "pending_user_review",
+    "underspecified": true
+  },
+  {
+    "id": "med_query_45",
+    "query": "Ventoline 5 mg/2,5 ml",
+    "expected_ids": [
+      "bdpm_fr_64245247"
+    ],
+    "expected_family": "VENTOLINE",
+    "label_rule": "Source family plus explicit strength/form/flavor/container where supplied",
+    "source": "authored_unreviewed",
+    "review_status": "pending_user_review",
+    "underspecified": false
+  },
+  {
+    "id": "med_query_46",
+    "query": "Smecta",
+    "expected_ids": [
+      "bdpm_fr_64450063",
+      "bdpm_fr_69584073"
+    ],
+    "expected_family": "SMECTA",
+    "label_rule": "Source family plus explicit strength/form/flavor/container where supplied",
+    "source": "authored_unreviewed",
+    "review_status": "pending_user_review",
+    "underspecified": true
+  },
+  {
+    "id": "med_query_47",
+    "query": "smect",
+    "expected_ids": [
+      "bdpm_fr_64450063",
+      "bdpm_fr_69584073"
+    ],
+    "expected_family": "SMECTA",
+    "label_rule": "Source family plus explicit strength/form/flavor/container where supplied",
+    "source": "authored_unreviewed",
+    "review_status": "pending_user_review",
+    "underspecified": true
+  },
+  {
+    "id": "med_query_48",
+    "query": "سميكتا",
+    "expected_ids": [
+      "bdpm_fr_64450063",
+      "bdpm_fr_69584073"
+    ],
+    "expected_family": "SMECTA",
+    "label_rule": "Source family plus explicit strength/form/flavor/container where supplied",
+    "source": "authored_unreviewed",
+    "review_status": "pending_user_review",
+    "underspecified": true
+  },
+  {
+    "id": "med_query_49",
+    "query": "Smecta 3 g",
+    "expected_ids": [
+      "bdpm_fr_64450063",
+      "bdpm_fr_69584073"
+    ],
+    "expected_family": "SMECTA",
+    "label_rule": "Source family plus explicit strength/form/flavor/container where supplied",
+    "source": "authored_unreviewed",
+    "review_status": "pending_user_review",
+    "underspecified": true
+  },
+  {
+    "id": "med_query_50",
+    "query": "smecta fraise",
+    "expected_ids": [
+      "bdpm_fr_64450063"
+    ],
+    "expected_family": "SMECTA",
+    "label_rule": "Source family plus explicit strength/form/flavor/container where supplied",
+    "source": "authored_unreviewed",
+    "review_status": "pending_user_review",
+    "underspecified": false
+  }
+]

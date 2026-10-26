@@ -1,0 +1,1676 @@
+{
+  "summary": {
+    "queries": 50,
+    "top1_correct": 50,
+    "top3_correct": 50,
+    "underspecified_queries": 37,
+    "review_status": "authored_unreviewed_not_gold",
+    "top1_accuracy": 1.0,
+    "top3_accuracy": 1.0
+  },
+  "queries_sha256": "09b10cdc25dacb0e7283b548f020f0a728ca3260f4d2693830632360dc8738c7",
+  "matching_config": {
+    "char_ngram_min": 2,
+    "char_ngram_max": 4,
+    "retrieval_aliases": 200,
+    "fuzzy_weight": 0.65,
+    "tfidf_weight": 0.35,
+    "min_name_score": 0.75,
+    "ambiguity_margin": 0.06
+  },
+  "source_hashes": {
+    "CIS_bdpm.txt": "332b95926f76f1a2ab3d70cdf64205397fc13e74b7cc9afad9b625fbb6961640",
+    "CIS_COMPO_bdpm.txt": "90a6e8ee286b6245c3938dd417ac75d1135a61b15ba50cfad70ee6b3bd181b7a",
+    "CIS_CIP_bdpm.txt": "276207db57839385d2d6e6ba79feb04af56ac78f288bb5bb0f2cbb1cda901164"
+  },
+  "predictions": [
+    {
+      "id": "med_query_01",
+      "query": "Doliprane",
+      "expected_ids": [
+        "bdpm_fr_60234100",
+        "bdpm_fr_60310861",
+        "bdpm_fr_61681702",
+        "bdpm_fr_63368332",
+        "bdpm_fr_64361369",
+        "bdpm_fr_64793681",
+        "bdpm_fr_65103838",
+        "bdpm_fr_65196753",
+        "bdpm_fr_66057393",
+        "bdpm_fr_66477582",
+        "bdpm_fr_66567738",
+        "bdpm_fr_66731536",
+        "bdpm_fr_67119691",
+        "bdpm_fr_67210479",
+        "bdpm_fr_68794211",
+        "bdpm_fr_69002078",
+        "bdpm_fr_69309629"
+      ],
+      "underspecified": true,
+      "top1_correct": true,
+      "top3_correct": true,
+      "candidates": [
+        {
+          "id": "bdpm_fr_60234100",
+          "full_name": "DOLIPRANE 1000 mg, comprimé",
+          "score": 1.0,
+          "needs_clarification": true
+        },
+        {
+          "id": "bdpm_fr_60310861",
+          "full_name": "DOLIPRANE 150 mg, suppositoire",
+          "score": 1.0,
+          "needs_clarification": true
+        },
+        {
+          "id": "bdpm_fr_61681702",
+          "full_name": "DOLIPRANE 1000 mg, poudre pour solution buvable en sachet-dose",
+          "score": 1.0,
+          "needs_clarification": true
+        }
+      ]
+    },
+    {
+      "id": "med_query_02",
+      "query": "dolipran",
+      "expected_ids": [
+        "bdpm_fr_60234100",
+        "bdpm_fr_60310861",
+        "bdpm_fr_61681702",
+        "bdpm_fr_63368332",
+        "bdpm_fr_64361369",
+        "bdpm_fr_64793681",
+        "bdpm_fr_65103838",
+        "bdpm_fr_65196753",
+        "bdpm_fr_66057393",
+        "bdpm_fr_66477582",
+        "bdpm_fr_66567738",
+        "bdpm_fr_66731536",
+        "bdpm_fr_67119691",
+        "bdpm_fr_67210479",
+        "bdpm_fr_68794211",
+        "bdpm_fr_69002078",
+        "bdpm_fr_69309629"
+      ],
+      "underspecified": true,
+      "top1_correct": true,
+      "top3_correct": true,
+      "candidates": [
+        {
+          "id": "bdpm_fr_60234100",
+          "full_name": "DOLIPRANE 1000 mg, comprimé",
+          "score": 1.0,
+          "needs_clarification": true
+        },
+        {
+          "id": "bdpm_fr_60310861",
+          "full_name": "DOLIPRANE 150 mg, suppositoire",
+          "score": 1.0,
+          "needs_clarification": true
+        },
+        {
+          "id": "bdpm_fr_61681702",
+          "full_name": "DOLIPRANE 1000 mg, poudre pour solution buvable en sachet-dose",
+          "score": 1.0,
+          "needs_clarification": true
+        }
+      ]
+    },
+    {
+      "id": "med_query_03",
+      "query": "دوليبران",
+      "expected_ids": [
+        "bdpm_fr_60234100",
+        "bdpm_fr_60310861",
+        "bdpm_fr_61681702",
+        "bdpm_fr_63368332",
+        "bdpm_fr_64361369",
+        "bdpm_fr_64793681",
+        "bdpm_fr_65103838",
+        "bdpm_fr_65196753",
+        "bdpm_fr_66057393",
+        "bdpm_fr_66477582",
+        "bdpm_fr_66567738",
+        "bdpm_fr_66731536",
+        "bdpm_fr_67119691",
+        "bdpm_fr_67210479",
+        "bdpm_fr_68794211",
+        "bdpm_fr_69002078",
+        "bdpm_fr_69309629"
+      ],
+      "underspecified": true,
+      "top1_correct": true,
+      "top3_correct": true,
+      "candidates": [
+        {
+          "id": "bdpm_fr_60234100",
+          "full_name": "DOLIPRANE 1000 mg, comprimé",
+          "score": 1.0,
+          "needs_clarification": true
+        },
+        {
+          "id": "bdpm_fr_60310861",
+          "full_name": "DOLIPRANE 150 mg, suppositoire",
+          "score": 1.0,
+          "needs_clarification": true
+        },
+        {
+          "id": "bdpm_fr_61681702",
+          "full_name": "DOLIPRANE 1000 mg, poudre pour solution buvable en sachet-dose",
+          "score": 1.0,
+          "needs_clarification": true
+        }
+      ]
+    },
+    {
+      "id": "med_query_04",
+      "query": "doliprane 1000",
+      "expected_ids": [
+        "bdpm_fr_60234100",
+        "bdpm_fr_61681702",
+        "bdpm_fr_66567738",
+        "bdpm_fr_69309629"
+      ],
+      "underspecified": true,
+      "top1_correct": true,
+      "top3_correct": true,
+      "candidates": [
+        {
+          "id": "bdpm_fr_60234100",
+          "full_name": "DOLIPRANE 1000 mg, comprimé",
+          "score": 1.0,
+          "needs_clarification": true
+        },
+        {
+          "id": "bdpm_fr_61681702",
+          "full_name": "DOLIPRANE 1000 mg, poudre pour solution buvable en sachet-dose",
+          "score": 1.0,
+          "needs_clarification": true
+        },
+        {
+          "id": "bdpm_fr_66567738",
+          "full_name": "DOLIPRANE 1000 mg, comprimé effervescent sécable",
+          "score": 1.0,
+          "needs_clarification": true
+        }
+      ]
+    },
+    {
+      "id": "med_query_05",
+      "query": "Doliprane 500 mg comprimé",
+      "expected_ids": [
+        "bdpm_fr_63368332",
+        "bdpm_fr_65196753"
+      ],
+      "underspecified": true,
+      "top1_correct": true,
+      "top3_correct": true,
+      "candidates": [
+        {
+          "id": "bdpm_fr_63368332",
+          "full_name": "DOLIPRANE 500 mg, comprimé",
+          "score": 0.961978,
+          "needs_clarification": false
+        },
+        {
+          "id": "bdpm_fr_65196753",
+          "full_name": "DOLIPRANE 500 mg, comprimé effervescent",
+          "score": 0.888114,
+          "needs_clarification": false
+        },
+        {
+          "id": "bdpm_fr_66185425",
+          "full_name": "DOLIPRANETABS 500 mg, comprimé pelliculé",
+          "score": 0.773042,
+          "needs_clarification": false
+        }
+      ]
+    },
+    {
+      "id": "med_query_06",
+      "query": "Dafalgan",
+      "expected_ids": [
+        "bdpm_fr_62815944",
+        "bdpm_fr_62887947",
+        "bdpm_fr_63264636",
+        "bdpm_fr_65609611",
+        "bdpm_fr_67154532",
+        "bdpm_fr_67721153"
+      ],
+      "underspecified": true,
+      "top1_correct": true,
+      "top3_correct": true,
+      "candidates": [
+        {
+          "id": "bdpm_fr_62815944",
+          "full_name": "DAFALGAN 500 mg, comprimé effervescent sécable",
+          "score": 1.0,
+          "needs_clarification": true
+        },
+        {
+          "id": "bdpm_fr_62887947",
+          "full_name": "DAFALGAN 1000 mg, comprimé pelliculé",
+          "score": 1.0,
+          "needs_clarification": true
+        },
+        {
+          "id": "bdpm_fr_63264636",
+          "full_name": "DAFALGAN 1000 mg, comprimé effervescent",
+          "score": 1.0,
+          "needs_clarification": true
+        }
+      ]
+    },
+    {
+      "id": "med_query_07",
+      "query": "dafalgn",
+      "expected_ids": [
+        "bdpm_fr_62815944",
+        "bdpm_fr_62887947",
+        "bdpm_fr_63264636",
+        "bdpm_fr_65609611",
+        "bdpm_fr_67154532",
+        "bdpm_fr_67721153"
+      ],
+      "underspecified": true,
+      "top1_correct": true,
+      "top3_correct": true,
+      "candidates": [
+        {
+          "id": "bdpm_fr_62815944",
+          "full_name": "DAFALGAN 500 mg, comprimé effervescent sécable",
+          "score": 0.83421,
+          "needs_clarification": true
+        },
+        {
+          "id": "bdpm_fr_62887947",
+          "full_name": "DAFALGAN 1000 mg, comprimé pelliculé",
+          "score": 0.83421,
+          "needs_clarification": true
+        },
+        {
+          "id": "bdpm_fr_63264636",
+          "full_name": "DAFALGAN 1000 mg, comprimé effervescent",
+          "score": 0.83421,
+          "needs_clarification": true
+        }
+      ]
+    },
+    {
+      "id": "med_query_08",
+      "query": "دافالغان",
+      "expected_ids": [
+        "bdpm_fr_62815944",
+        "bdpm_fr_62887947",
+        "bdpm_fr_63264636",
+        "bdpm_fr_65609611",
+        "bdpm_fr_67154532",
+        "bdpm_fr_67721153"
+      ],
+      "underspecified": true,
+      "top1_correct": true,
+      "top3_correct": true,
+      "candidates": [
+        {
+          "id": "bdpm_fr_62815944",
+          "full_name": "DAFALGAN 500 mg, comprimé effervescent sécable",
+          "score": 1.0,
+          "needs_clarification": true
+        },
+        {
+          "id": "bdpm_fr_62887947",
+          "full_name": "DAFALGAN 1000 mg, comprimé pelliculé",
+          "score": 1.0,
+          "needs_clarification": true
+        },
+        {
+          "id": "bdpm_fr_63264636",
+          "full_name": "DAFALGAN 1000 mg, comprimé effervescent",
+          "score": 1.0,
+          "needs_clarification": true
+        }
+      ]
+    },
+    {
+      "id": "med_query_09",
+      "query": "Dafalgan 1000 mg",
+      "expected_ids": [
+        "bdpm_fr_62887947",
+        "bdpm_fr_63264636",
+        "bdpm_fr_67154532"
+      ],
+      "underspecified": true,
+      "top1_correct": true,
+      "top3_correct": true,
+      "candidates": [
+        {
+          "id": "bdpm_fr_62887947",
+          "full_name": "DAFALGAN 1000 mg, comprimé pelliculé",
+          "score": 1.0,
+          "needs_clarification": true
+        },
+        {
+          "id": "bdpm_fr_63264636",
+          "full_name": "DAFALGAN 1000 mg, comprimé effervescent",
+          "score": 1.0,
+          "needs_clarification": true
+        },
+        {
+          "id": "bdpm_fr_67154532",
+          "full_name": "DAFALGAN 1000 mg, gélule",
+          "score": 1.0,
+          "needs_clarification": true
+        }
+      ]
+    },
+    {
+      "id": "med_query_10",
+      "query": "Dafalgan 500 mg comprimé",
+      "expected_ids": [
+        "bdpm_fr_62815944",
+        "bdpm_fr_67721153"
+      ],
+      "underspecified": true,
+      "top1_correct": true,
+      "top3_correct": true,
+      "candidates": [
+        {
+          "id": "bdpm_fr_67721153",
+          "full_name": "DAFALGAN 500 mg, comprimé",
+          "score": 0.963536,
+          "needs_clarification": false
+        },
+        {
+          "id": "bdpm_fr_62815944",
+          "full_name": "DAFALGAN 500 mg, comprimé effervescent sécable",
+          "score": 0.902262,
+          "needs_clarification": false
+        },
+        {
+          "id": "bdpm_fr_60064527",
+          "full_name": "DAFLON 500 mg, comprimé pelliculé",
+          "score": 0.680969,
+          "needs_clarification": false
+        }
+      ]
+    },
+    {
+      "id": "med_query_11",
+      "query": "Efferalgan",
+      "expected_ids": [
+        "bdpm_fr_60025403",
+        "bdpm_fr_60298455",
+        "bdpm_fr_61128406",
+        "bdpm_fr_64675665",
+        "bdpm_fr_64796108",
+        "bdpm_fr_66093336",
+        "bdpm_fr_66826710",
+        "bdpm_fr_67058605",
+        "bdpm_fr_67326925",
+        "bdpm_fr_67617578",
+        "bdpm_fr_68605422"
+      ],
+      "underspecified": true,
+      "top1_correct": true,
+      "top3_correct": true,
+      "candidates": [
+        {
+          "id": "bdpm_fr_60025403",
+          "full_name": "EFFERALGAN 1000 mg, comprimé pelliculé",
+          "score": 1.0,
+          "needs_clarification": true
+        },
+        {
+          "id": "bdpm_fr_60298455",
+          "full_name": "EFFERALGAN 80 mg, suppositoire",
+          "score": 1.0,
+          "needs_clarification": true
+        },
+        {
+          "id": "bdpm_fr_61128406",
+          "full_name": "EFFERALGAN 300 mg, suppositoire",
+          "score": 1.0,
+          "needs_clarification": true
+        }
+      ]
+    },
+    {
+      "id": "med_query_12",
+      "query": "eferalgan",
+      "expected_ids": [
+        "bdpm_fr_60025403",
+        "bdpm_fr_60298455",
+        "bdpm_fr_61128406",
+        "bdpm_fr_64675665",
+        "bdpm_fr_64796108",
+        "bdpm_fr_66093336",
+        "bdpm_fr_66826710",
+        "bdpm_fr_67058605",
+        "bdpm_fr_67326925",
+        "bdpm_fr_67617578",
+        "bdpm_fr_68605422"
+      ],
+      "underspecified": true,
+      "top1_correct": true,
+      "top3_correct": true,
+      "candidates": [
+        {
+          "id": "bdpm_fr_60025403",
+          "full_name": "EFFERALGAN 1000 mg, comprimé pelliculé",
+          "score": 0.883662,
+          "needs_clarification": true
+        },
+        {
+          "id": "bdpm_fr_60298455",
+          "full_name": "EFFERALGAN 80 mg, suppositoire",
+          "score": 0.883662,
+          "needs_clarification": true
+        },
+        {
+          "id": "bdpm_fr_61128406",
+          "full_name": "EFFERALGAN 300 mg, suppositoire",
+          "score": 0.883662,
+          "needs_clarification": true
+        }
+      ]
+    },
+    {
+      "id": "med_query_13",
+      "query": "إفيرالغان",
+      "expected_ids": [
+        "bdpm_fr_60025403",
+        "bdpm_fr_60298455",
+        "bdpm_fr_61128406",
+        "bdpm_fr_64675665",
+        "bdpm_fr_64796108",
+        "bdpm_fr_66093336",
+        "bdpm_fr_66826710",
+        "bdpm_fr_67058605",
+        "bdpm_fr_67326925",
+        "bdpm_fr_67617578",
+        "bdpm_fr_68605422"
+      ],
+      "underspecified": true,
+      "top1_correct": true,
+      "top3_correct": true,
+      "candidates": [
+        {
+          "id": "bdpm_fr_60025403",
+          "full_name": "EFFERALGAN 1000 mg, comprimé pelliculé",
+          "score": 0.808216,
+          "needs_clarification": true
+        },
+        {
+          "id": "bdpm_fr_60298455",
+          "full_name": "EFFERALGAN 80 mg, suppositoire",
+          "score": 0.808216,
+          "needs_clarification": true
+        },
+        {
+          "id": "bdpm_fr_61128406",
+          "full_name": "EFFERALGAN 300 mg, suppositoire",
+          "score": 0.808216,
+          "needs_clarification": true
+        }
+      ]
+    },
+    {
+      "id": "med_query_14",
+      "query": "Efferalgan 1000 mg",
+      "expected_ids": [
+        "bdpm_fr_60025403",
+        "bdpm_fr_67058605"
+      ],
+      "underspecified": true,
+      "top1_correct": true,
+      "top3_correct": true,
+      "candidates": [
+        {
+          "id": "bdpm_fr_60025403",
+          "full_name": "EFFERALGAN 1000 mg, comprimé pelliculé",
+          "score": 1.0,
+          "needs_clarification": true
+        },
+        {
+          "id": "bdpm_fr_67058605",
+          "full_name": "EFFERALGAN 1000 mg, comprimé effervescent",
+          "score": 1.0,
+          "needs_clarification": true
+        },
+        {
+          "id": "bdpm_fr_61574554",
+          "full_name": "EFFERALGANEFF 1000 mg, comprimé effervescent",
+          "score": 0.861551,
+          "needs_clarification": true
+        }
+      ]
+    },
+    {
+      "id": "med_query_15",
+      "query": "Efferalgan 80 mg suppositoire",
+      "expected_ids": [
+        "bdpm_fr_60298455"
+      ],
+      "underspecified": false,
+      "top1_correct": true,
+      "top3_correct": true,
+      "candidates": [
+        {
+          "id": "bdpm_fr_60298455",
+          "full_name": "EFFERALGAN 80 mg, suppositoire",
+          "score": 0.969575,
+          "needs_clarification": false
+        }
+      ]
+    },
+    {
+      "id": "med_query_16",
+      "query": "Augmentin",
+      "expected_ids": [
+        "bdpm_fr_63565244",
+        "bdpm_fr_66053338",
+        "bdpm_fr_66853013",
+        "bdpm_fr_69978246"
+      ],
+      "underspecified": true,
+      "top1_correct": true,
+      "top3_correct": true,
+      "candidates": [
+        {
+          "id": "bdpm_fr_63565244",
+          "full_name": "AUGMENTIN 500 mg/62,5 mg, comprimé pelliculé (rapport amoxicilline/acide clavulanique : 8/1)",
+          "score": 1.0,
+          "needs_clarification": true
+        },
+        {
+          "id": "bdpm_fr_66053338",
+          "full_name": "AUGMENTIN 1 g/125 mg, poudre pour suspension buvable en sachet-dose (rapport amoxicilline/acide clavulanique : 8/1)",
+          "score": 1.0,
+          "needs_clarification": true
+        },
+        {
+          "id": "bdpm_fr_66853013",
+          "full_name": "AUGMENTIN 100 mg/12,50 mg par ml ENFANTS, poudre pour suspension buvable en flacon (rapport amoxicilline/acide clavulanique : 8/1)",
+          "score": 1.0,
+          "needs_clarification": true
+        }
+      ]
+    },
+    {
+      "id": "med_query_17",
+      "query": "augmentn",
+      "expected_ids": [
+        "bdpm_fr_63565244",
+        "bdpm_fr_66053338",
+        "bdpm_fr_66853013",
+        "bdpm_fr_69978246"
+      ],
+      "underspecified": true,
+      "top1_correct": true,
+      "top3_correct": true,
+      "candidates": [
+        {
+          "id": "bdpm_fr_63565244",
+          "full_name": "AUGMENTIN 500 mg/62,5 mg, comprimé pelliculé (rapport amoxicilline/acide clavulanique : 8/1)",
+          "score": 0.899235,
+          "needs_clarification": true
+        },
+        {
+          "id": "bdpm_fr_66053338",
+          "full_name": "AUGMENTIN 1 g/125 mg, poudre pour suspension buvable en sachet-dose (rapport amoxicilline/acide clavulanique : 8/1)",
+          "score": 0.899235,
+          "needs_clarification": true
+        },
+        {
+          "id": "bdpm_fr_66853013",
+          "full_name": "AUGMENTIN 100 mg/12,50 mg par ml ENFANTS, poudre pour suspension buvable en flacon (rapport amoxicilline/acide clavulanique : 8/1)",
+          "score": 0.899235,
+          "needs_clarification": true
+        }
+      ]
+    },
+    {
+      "id": "med_query_18",
+      "query": "أوغمنتين",
+      "expected_ids": [
+        "bdpm_fr_63565244",
+        "bdpm_fr_66053338",
+        "bdpm_fr_66853013",
+        "bdpm_fr_69978246"
+      ],
+      "underspecified": true,
+      "top1_correct": true,
+      "top3_correct": true,
+      "candidates": [
+        {
+          "id": "bdpm_fr_63565244",
+          "full_name": "AUGMENTIN 500 mg/62,5 mg, comprimé pelliculé (rapport amoxicilline/acide clavulanique : 8/1)",
+          "score": 0.884498,
+          "needs_clarification": true
+        },
+        {
+          "id": "bdpm_fr_66053338",
+          "full_name": "AUGMENTIN 1 g/125 mg, poudre pour suspension buvable en sachet-dose (rapport amoxicilline/acide clavulanique : 8/1)",
+          "score": 0.884498,
+          "needs_clarification": true
+        },
+        {
+          "id": "bdpm_fr_66853013",
+          "full_name": "AUGMENTIN 100 mg/12,50 mg par ml ENFANTS, poudre pour suspension buvable en flacon (rapport amoxicilline/acide clavulanique : 8/1)",
+          "score": 0.884498,
+          "needs_clarification": true
+        }
+      ]
+    },
+    {
+      "id": "med_query_19",
+      "query": "Augmentin 1 g",
+      "expected_ids": [
+        "bdpm_fr_66053338"
+      ],
+      "underspecified": false,
+      "top1_correct": true,
+      "top3_correct": true,
+      "candidates": [
+        {
+          "id": "bdpm_fr_66053338",
+          "full_name": "AUGMENTIN 1 g/125 mg, poudre pour suspension buvable en sachet-dose (rapport amoxicilline/acide clavulanique : 8/1)",
+          "score": 1.0,
+          "needs_clarification": false
+        }
+      ]
+    },
+    {
+      "id": "med_query_20",
+      "query": "Augmentin 500 mg comprimé",
+      "expected_ids": [
+        "bdpm_fr_63565244"
+      ],
+      "underspecified": false,
+      "top1_correct": true,
+      "top3_correct": true,
+      "candidates": [
+        {
+          "id": "bdpm_fr_63565244",
+          "full_name": "AUGMENTIN 500 mg/62,5 mg, comprimé pelliculé (rapport amoxicilline/acide clavulanique : 8/1)",
+          "score": 0.906256,
+          "needs_clarification": false
+        },
+        {
+          "id": "bdpm_fr_66400810",
+          "full_name": "PARACETAMOL ZENTIVA 500 mg, comprimé",
+          "score": 0.630731,
+          "needs_clarification": false
+        },
+        {
+          "id": "bdpm_fr_69022401",
+          "full_name": "METFORMINE ZENTIVA 500 mg, comprimé pelliculé",
+          "score": 0.628595,
+          "needs_clarification": false
+        }
+      ]
+    },
+    {
+      "id": "med_query_21",
+      "query": "Amoxicilline Biogaran",
+      "expected_ids": [
+        "bdpm_fr_60366319",
+        "bdpm_fr_60375058",
+        "bdpm_fr_60453197",
+        "bdpm_fr_69118175"
+      ],
+      "underspecified": true,
+      "top1_correct": true,
+      "top3_correct": true,
+      "candidates": [
+        {
+          "id": "bdpm_fr_60366319",
+          "full_name": "AMOXICILLINE BIOGARAN 125 mg/5 ml, poudre pour suspension buvable",
+          "score": 1.0,
+          "needs_clarification": true
+        },
+        {
+          "id": "bdpm_fr_60375058",
+          "full_name": "AMOXICILLINE BIOGARAN 250 mg/5 ml, poudre pour suspension buvable",
+          "score": 1.0,
+          "needs_clarification": true
+        },
+        {
+          "id": "bdpm_fr_60453197",
+          "full_name": "AMOXICILLINE BIOGARAN 500 mg/5 ml, poudre pour suspension buvable",
+          "score": 1.0,
+          "needs_clarification": true
+        }
+      ]
+    },
+    {
+      "id": "med_query_22",
+      "query": "amoxiciline biogaran",
+      "expected_ids": [
+        "bdpm_fr_60366319",
+        "bdpm_fr_60375058",
+        "bdpm_fr_60453197",
+        "bdpm_fr_69118175"
+      ],
+      "underspecified": true,
+      "top1_correct": true,
+      "top3_correct": true,
+      "candidates": [
+        {
+          "id": "bdpm_fr_60366319",
+          "full_name": "AMOXICILLINE BIOGARAN 125 mg/5 ml, poudre pour suspension buvable",
+          "score": 0.937497,
+          "needs_clarification": true
+        },
+        {
+          "id": "bdpm_fr_60375058",
+          "full_name": "AMOXICILLINE BIOGARAN 250 mg/5 ml, poudre pour suspension buvable",
+          "score": 0.937497,
+          "needs_clarification": true
+        },
+        {
+          "id": "bdpm_fr_60453197",
+          "full_name": "AMOXICILLINE BIOGARAN 500 mg/5 ml, poudre pour suspension buvable",
+          "score": 0.937497,
+          "needs_clarification": true
+        }
+      ]
+    },
+    {
+      "id": "med_query_23",
+      "query": "amoxicilline biogarn",
+      "expected_ids": [
+        "bdpm_fr_60366319",
+        "bdpm_fr_60375058",
+        "bdpm_fr_60453197",
+        "bdpm_fr_69118175"
+      ],
+      "underspecified": true,
+      "top1_correct": true,
+      "top3_correct": true,
+      "candidates": [
+        {
+          "id": "bdpm_fr_60366319",
+          "full_name": "AMOXICILLINE BIOGARAN 125 mg/5 ml, poudre pour suspension buvable",
+          "score": 0.917193,
+          "needs_clarification": true
+        },
+        {
+          "id": "bdpm_fr_60375058",
+          "full_name": "AMOXICILLINE BIOGARAN 250 mg/5 ml, poudre pour suspension buvable",
+          "score": 0.917193,
+          "needs_clarification": true
+        },
+        {
+          "id": "bdpm_fr_60453197",
+          "full_name": "AMOXICILLINE BIOGARAN 500 mg/5 ml, poudre pour suspension buvable",
+          "score": 0.917193,
+          "needs_clarification": true
+        }
+      ]
+    },
+    {
+      "id": "med_query_24",
+      "query": "Amoxicilline Biogaran 500 mg",
+      "expected_ids": [
+        "bdpm_fr_69118175"
+      ],
+      "underspecified": false,
+      "top1_correct": true,
+      "top3_correct": true,
+      "candidates": [
+        {
+          "id": "bdpm_fr_69118175",
+          "full_name": "AMOXICILLINE BIOGARAN 500 mg, gélule",
+          "score": 1.0,
+          "needs_clarification": false
+        },
+        {
+          "id": "bdpm_fr_66046272",
+          "full_name": "AMOXICILLINE SUN 500 mg, gélule",
+          "score": 0.8018,
+          "needs_clarification": false
+        },
+        {
+          "id": "bdpm_fr_60403714",
+          "full_name": "AMOXICILLINE/ACIDE CLAVULANIQUE BIOGARAN 500 mg/62,5 mg, comprimé pelliculé (rapport amoxicilline/acide clavulanique : 8/1)",
+          "score": 0.779387,
+          "needs_clarification": false
+        }
+      ]
+    },
+    {
+      "id": "med_query_25",
+      "query": "Amoxicilline Biogaran 125 mg/5 ml",
+      "expected_ids": [
+        "bdpm_fr_60366319"
+      ],
+      "underspecified": false,
+      "top1_correct": true,
+      "top3_correct": true,
+      "candidates": [
+        {
+          "id": "bdpm_fr_60366319",
+          "full_name": "AMOXICILLINE BIOGARAN 125 mg/5 ml, poudre pour suspension buvable",
+          "score": 1.0,
+          "needs_clarification": false
+        },
+        {
+          "id": "bdpm_fr_64489810",
+          "full_name": "AMOXICILLINE VIATRIS 125 mg/5 ml, poudre pour suspension buvable",
+          "score": 0.766076,
+          "needs_clarification": false
+        },
+        {
+          "id": "bdpm_fr_61771313",
+          "full_name": "AMOXICILLINE ARROW 125 mg/5 mL, poudre pour suspension buvable",
+          "score": 0.765909,
+          "needs_clarification": false
+        }
+      ]
+    },
+    {
+      "id": "med_query_26",
+      "query": "Ibuprofène Biogaran",
+      "expected_ids": [
+        "bdpm_fr_61000075",
+        "bdpm_fr_68337369"
+      ],
+      "underspecified": true,
+      "top1_correct": true,
+      "top3_correct": true,
+      "candidates": [
+        {
+          "id": "bdpm_fr_61000075",
+          "full_name": "IBUPROFENE BIOGARAN 400 mg, comprimé pelliculé",
+          "score": 1.0,
+          "needs_clarification": true
+        },
+        {
+          "id": "bdpm_fr_68337369",
+          "full_name": "IBUPROFENE BIOGARAN 200 mg, comprimé pelliculé",
+          "score": 1.0,
+          "needs_clarification": true
+        },
+        {
+          "id": "bdpm_fr_60073914",
+          "full_name": "IBUPROFENE BIOGARAN CONSEIL 400 mg, comprimé pelliculé",
+          "score": 0.917659,
+          "needs_clarification": true
+        }
+      ]
+    },
+    {
+      "id": "med_query_27",
+      "query": "ibuprofene biogarn",
+      "expected_ids": [
+        "bdpm_fr_61000075",
+        "bdpm_fr_68337369"
+      ],
+      "underspecified": true,
+      "top1_correct": true,
+      "top3_correct": true,
+      "candidates": [
+        {
+          "id": "bdpm_fr_61000075",
+          "full_name": "IBUPROFENE BIOGARAN 400 mg, comprimé pelliculé",
+          "score": 0.915121,
+          "needs_clarification": true
+        },
+        {
+          "id": "bdpm_fr_68337369",
+          "full_name": "IBUPROFENE BIOGARAN 200 mg, comprimé pelliculé",
+          "score": 0.915121,
+          "needs_clarification": true
+        },
+        {
+          "id": "bdpm_fr_60550988",
+          "full_name": "IBUPROFENE EG 400 mg, comprimé pelliculé",
+          "score": 0.847833,
+          "needs_clarification": true
+        }
+      ]
+    },
+    {
+      "id": "med_query_28",
+      "query": "ibuprofène biogaran 200 mg",
+      "expected_ids": [
+        "bdpm_fr_68337369"
+      ],
+      "underspecified": false,
+      "top1_correct": true,
+      "top3_correct": true,
+      "candidates": [
+        {
+          "id": "bdpm_fr_68337369",
+          "full_name": "IBUPROFENE BIOGARAN 200 mg, comprimé pelliculé",
+          "score": 1.0,
+          "needs_clarification": false
+        },
+        {
+          "id": "bdpm_fr_61788736",
+          "full_name": "IBUPROFENE BIOGARAN CONSEIL 200 mg, comprimé pelliculé",
+          "score": 0.917659,
+          "needs_clarification": false
+        },
+        {
+          "id": "bdpm_fr_62840805",
+          "full_name": "IBUPROFENE BIOGARAN CONSEIL 200 mg, suspension buvable en sachet édulcorée au maltitol liquide",
+          "score": 0.917659,
+          "needs_clarification": false
+        }
+      ]
+    },
+    {
+      "id": "med_query_29",
+      "query": "Ibuprofene Biogaran 400 mg",
+      "expected_ids": [
+        "bdpm_fr_61000075"
+      ],
+      "underspecified": false,
+      "top1_correct": true,
+      "top3_correct": true,
+      "candidates": [
+        {
+          "id": "bdpm_fr_61000075",
+          "full_name": "IBUPROFENE BIOGARAN 400 mg, comprimé pelliculé",
+          "score": 1.0,
+          "needs_clarification": false
+        },
+        {
+          "id": "bdpm_fr_60073914",
+          "full_name": "IBUPROFENE BIOGARAN CONSEIL 400 mg, comprimé pelliculé",
+          "score": 0.917659,
+          "needs_clarification": false
+        },
+        {
+          "id": "bdpm_fr_60610595",
+          "full_name": "IBUPROFENE BIOGARAN CONSEIL 400 mg, suspension buvable en sachet édulcorée au maltitol liquide",
+          "score": 0.917659,
+          "needs_clarification": false
+        }
+      ]
+    },
+    {
+      "id": "med_query_30",
+      "query": "IBUPROFENE BIOGARAN 400 mg comprimé",
+      "expected_ids": [
+        "bdpm_fr_61000075"
+      ],
+      "underspecified": false,
+      "top1_correct": true,
+      "top3_correct": true,
+      "candidates": [
+        {
+          "id": "bdpm_fr_61000075",
+          "full_name": "IBUPROFENE BIOGARAN 400 mg, comprimé pelliculé",
+          "score": 0.939948,
+          "needs_clarification": false
+        },
+        {
+          "id": "bdpm_fr_60550988",
+          "full_name": "IBUPROFENE EG 400 mg, comprimé pelliculé",
+          "score": 0.852452,
+          "needs_clarification": false
+        },
+        {
+          "id": "bdpm_fr_60073914",
+          "full_name": "IBUPROFENE BIOGARAN CONSEIL 400 mg, comprimé pelliculé",
+          "score": 0.842597,
+          "needs_clarification": false
+        }
+      ]
+    },
+    {
+      "id": "med_query_31",
+      "query": "Spasfon",
+      "expected_ids": [
+        "bdpm_fr_62998997",
+        "bdpm_fr_65923640",
+        "bdpm_fr_68081368"
+      ],
+      "underspecified": true,
+      "top1_correct": true,
+      "top3_correct": true,
+      "candidates": [
+        {
+          "id": "bdpm_fr_62998997",
+          "full_name": "SPASFON, solution injectable en ampoule",
+          "score": 1.0,
+          "needs_clarification": true
+        },
+        {
+          "id": "bdpm_fr_65923640",
+          "full_name": "SPASFON, suppositoire",
+          "score": 1.0,
+          "needs_clarification": true
+        },
+        {
+          "id": "bdpm_fr_68081368",
+          "full_name": "SPASFON, comprimé enrobé",
+          "score": 1.0,
+          "needs_clarification": true
+        }
+      ]
+    },
+    {
+      "id": "med_query_32",
+      "query": "spasfn",
+      "expected_ids": [
+        "bdpm_fr_62998997",
+        "bdpm_fr_65923640",
+        "bdpm_fr_68081368"
+      ],
+      "underspecified": true,
+      "top1_correct": true,
+      "top3_correct": true,
+      "candidates": [
+        {
+          "id": "bdpm_fr_62998997",
+          "full_name": "SPASFON, solution injectable en ampoule",
+          "score": 0.816483,
+          "needs_clarification": true
+        },
+        {
+          "id": "bdpm_fr_65923640",
+          "full_name": "SPASFON, suppositoire",
+          "score": 0.816483,
+          "needs_clarification": true
+        },
+        {
+          "id": "bdpm_fr_68081368",
+          "full_name": "SPASFON, comprimé enrobé",
+          "score": 0.816483,
+          "needs_clarification": true
+        }
+      ]
+    },
+    {
+      "id": "med_query_33",
+      "query": "سباسفون",
+      "expected_ids": [
+        "bdpm_fr_62998997",
+        "bdpm_fr_65923640",
+        "bdpm_fr_68081368"
+      ],
+      "underspecified": true,
+      "top1_correct": true,
+      "top3_correct": true,
+      "candidates": [
+        {
+          "id": "bdpm_fr_62998997",
+          "full_name": "SPASFON, solution injectable en ampoule",
+          "score": 1.0,
+          "needs_clarification": true
+        },
+        {
+          "id": "bdpm_fr_65923640",
+          "full_name": "SPASFON, suppositoire",
+          "score": 1.0,
+          "needs_clarification": true
+        },
+        {
+          "id": "bdpm_fr_68081368",
+          "full_name": "SPASFON, comprimé enrobé",
+          "score": 1.0,
+          "needs_clarification": true
+        }
+      ]
+    },
+    {
+      "id": "med_query_34",
+      "query": "Spasfon suppositoire",
+      "expected_ids": [
+        "bdpm_fr_65923640"
+      ],
+      "underspecified": false,
+      "top1_correct": true,
+      "top3_correct": true,
+      "candidates": [
+        {
+          "id": "bdpm_fr_65923640",
+          "full_name": "SPASFON, suppositoire",
+          "score": 0.95679,
+          "needs_clarification": false
+        },
+        {
+          "id": "bdpm_fr_66177695",
+          "full_name": "SUPPOSITOIRE A LA GLYCERINE GIFRER ADULTES, suppositoire",
+          "score": 0.75821,
+          "needs_clarification": false
+        },
+        {
+          "id": "bdpm_fr_69605749",
+          "full_name": "SUPPOSITOIRE A LA GLYCERINE GILBERT ENFANTS, suppositoire",
+          "score": 0.756749,
+          "needs_clarification": false
+        }
+      ]
+    },
+    {
+      "id": "med_query_35",
+      "query": "Spasfon comprimé",
+      "expected_ids": [
+        "bdpm_fr_68081368"
+      ],
+      "underspecified": false,
+      "top1_correct": true,
+      "top3_correct": true,
+      "candidates": [
+        {
+          "id": "bdpm_fr_68081368",
+          "full_name": "SPASFON, comprimé enrobé",
+          "score": 0.902233,
+          "needs_clarification": false
+        },
+        {
+          "id": "bdpm_fr_66085371",
+          "full_name": "SPASMINE, comprimé enrobé",
+          "score": 0.683573,
+          "needs_clarification": false
+        },
+        {
+          "id": "bdpm_fr_63383409",
+          "full_name": "URISPAS 200 mg, comprimé pelliculé",
+          "score": 0.669535,
+          "needs_clarification": false
+        }
+      ]
+    },
+    {
+      "id": "med_query_36",
+      "query": "Gaviscon",
+      "expected_ids": [
+        "bdpm_fr_63636264",
+        "bdpm_fr_66116589"
+      ],
+      "underspecified": true,
+      "top1_correct": true,
+      "top3_correct": true,
+      "candidates": [
+        {
+          "id": "bdpm_fr_63636264",
+          "full_name": "GAVISCON, suspension buvable en flacon",
+          "score": 1.0,
+          "needs_clarification": true
+        },
+        {
+          "id": "bdpm_fr_66116589",
+          "full_name": "GAVISCON, suspension buvable en sachet",
+          "score": 1.0,
+          "needs_clarification": true
+        },
+        {
+          "id": "bdpm_fr_67557241",
+          "full_name": "GAVISCON MENTHE, comprimé à croquer",
+          "score": 0.873625,
+          "needs_clarification": true
+        }
+      ]
+    },
+    {
+      "id": "med_query_37",
+      "query": "gaviscn",
+      "expected_ids": [
+        "bdpm_fr_63636264",
+        "bdpm_fr_66116589"
+      ],
+      "underspecified": true,
+      "top1_correct": true,
+      "top3_correct": true,
+      "candidates": [
+        {
+          "id": "bdpm_fr_63636264",
+          "full_name": "GAVISCON, suspension buvable en flacon",
+          "score": 0.855832,
+          "needs_clarification": true
+        },
+        {
+          "id": "bdpm_fr_66116589",
+          "full_name": "GAVISCON, suspension buvable en sachet",
+          "score": 0.855832,
+          "needs_clarification": true
+        },
+        {
+          "id": "bdpm_fr_67557241",
+          "full_name": "GAVISCON MENTHE, comprimé à croquer",
+          "score": 0.745472,
+          "needs_clarification": true
+        }
+      ]
+    },
+    {
+      "id": "med_query_38",
+      "query": "غافيسكون",
+      "expected_ids": [
+        "bdpm_fr_63636264",
+        "bdpm_fr_66116589"
+      ],
+      "underspecified": true,
+      "top1_correct": true,
+      "top3_correct": true,
+      "candidates": [
+        {
+          "id": "bdpm_fr_63636264",
+          "full_name": "GAVISCON, suspension buvable en flacon",
+          "score": 1.0,
+          "needs_clarification": true
+        },
+        {
+          "id": "bdpm_fr_66116589",
+          "full_name": "GAVISCON, suspension buvable en sachet",
+          "score": 1.0,
+          "needs_clarification": true
+        },
+        {
+          "id": "bdpm_fr_67557241",
+          "full_name": "GAVISCON MENTHE, comprimé à croquer",
+          "score": 0.879315,
+          "needs_clarification": true
+        }
+      ]
+    },
+    {
+      "id": "med_query_39",
+      "query": "Gaviscon suspension",
+      "expected_ids": [
+        "bdpm_fr_63636264",
+        "bdpm_fr_66116589"
+      ],
+      "underspecified": true,
+      "top1_correct": true,
+      "top3_correct": true,
+      "candidates": [
+        {
+          "id": "bdpm_fr_63636264",
+          "full_name": "GAVISCON, suspension buvable en flacon",
+          "score": 0.857235,
+          "needs_clarification": true
+        },
+        {
+          "id": "bdpm_fr_66116589",
+          "full_name": "GAVISCON, suspension buvable en sachet",
+          "score": 0.857235,
+          "needs_clarification": true
+        },
+        {
+          "id": "bdpm_fr_66711455",
+          "full_name": "GAVISCON NOURRISSONS, suspension buvable en flacon",
+          "score": 0.800979,
+          "needs_clarification": true
+        }
+      ]
+    },
+    {
+      "id": "med_query_40",
+      "query": "gaviscon en flacon",
+      "expected_ids": [
+        "bdpm_fr_63636264"
+      ],
+      "underspecified": false,
+      "top1_correct": true,
+      "top3_correct": true,
+      "candidates": [
+        {
+          "id": "bdpm_fr_63636264",
+          "full_name": "GAVISCON, suspension buvable en flacon",
+          "score": 0.874214,
+          "needs_clarification": true
+        },
+        {
+          "id": "bdpm_fr_66116589",
+          "full_name": "GAVISCON, suspension buvable en sachet",
+          "score": 0.874214,
+          "needs_clarification": true
+        },
+        {
+          "id": "bdpm_fr_66711455",
+          "full_name": "GAVISCON NOURRISSONS, suspension buvable en flacon",
+          "score": 0.791763,
+          "needs_clarification": true
+        }
+      ]
+    },
+    {
+      "id": "med_query_41",
+      "query": "Ventoline",
+      "expected_ids": [
+        "bdpm_fr_60928110",
+        "bdpm_fr_61187493",
+        "bdpm_fr_61754100",
+        "bdpm_fr_64245247",
+        "bdpm_fr_64532012",
+        "bdpm_fr_64720167",
+        "bdpm_fr_65195719",
+        "bdpm_fr_65376705",
+        "bdpm_fr_65740201",
+        "bdpm_fr_66179486",
+        "bdpm_fr_67359188",
+        "bdpm_fr_67458236",
+        "bdpm_fr_68365226",
+        "bdpm_fr_69077942"
+      ],
+      "underspecified": true,
+      "top1_correct": true,
+      "top3_correct": true,
+      "candidates": [
+        {
+          "id": "bdpm_fr_60928110",
+          "full_name": "VENTOLINE 100 microgrammes/dose, suspension pour inhalation en flacon pressurisé",
+          "score": 1.0,
+          "needs_clarification": true
+        },
+        {
+          "id": "bdpm_fr_61187493",
+          "full_name": "VENTOLINE 100 microgrammes/dose, suspension pour inhalation en flacon pressurisé",
+          "score": 1.0,
+          "needs_clarification": true
+        },
+        {
+          "id": "bdpm_fr_61754100",
+          "full_name": "VENTOLINE 100 microgrammes/dose, suspension pour inhalation en flacon pressurisé",
+          "score": 1.0,
+          "needs_clarification": true
+        }
+      ]
+    },
+    {
+      "id": "med_query_42",
+      "query": "ventolin",
+      "expected_ids": [
+        "bdpm_fr_60928110",
+        "bdpm_fr_61187493",
+        "bdpm_fr_61754100",
+        "bdpm_fr_64245247",
+        "bdpm_fr_64532012",
+        "bdpm_fr_64720167",
+        "bdpm_fr_65195719",
+        "bdpm_fr_65376705",
+        "bdpm_fr_65740201",
+        "bdpm_fr_66179486",
+        "bdpm_fr_67359188",
+        "bdpm_fr_67458236",
+        "bdpm_fr_68365226",
+        "bdpm_fr_69077942"
+      ],
+      "underspecified": true,
+      "top1_correct": true,
+      "top3_correct": true,
+      "candidates": [
+        {
+          "id": "bdpm_fr_60928110",
+          "full_name": "VENTOLINE 100 microgrammes/dose, suspension pour inhalation en flacon pressurisé",
+          "score": 1.0,
+          "needs_clarification": true
+        },
+        {
+          "id": "bdpm_fr_61187493",
+          "full_name": "VENTOLINE 100 microgrammes/dose, suspension pour inhalation en flacon pressurisé",
+          "score": 1.0,
+          "needs_clarification": true
+        },
+        {
+          "id": "bdpm_fr_61754100",
+          "full_name": "VENTOLINE 100 microgrammes/dose, suspension pour inhalation en flacon pressurisé",
+          "score": 1.0,
+          "needs_clarification": true
+        }
+      ]
+    },
+    {
+      "id": "med_query_43",
+      "query": "فانتولين",
+      "expected_ids": [
+        "bdpm_fr_60928110",
+        "bdpm_fr_61187493",
+        "bdpm_fr_61754100",
+        "bdpm_fr_64245247",
+        "bdpm_fr_64532012",
+        "bdpm_fr_64720167",
+        "bdpm_fr_65195719",
+        "bdpm_fr_65376705",
+        "bdpm_fr_65740201",
+        "bdpm_fr_66179486",
+        "bdpm_fr_67359188",
+        "bdpm_fr_67458236",
+        "bdpm_fr_68365226",
+        "bdpm_fr_69077942"
+      ],
+      "underspecified": true,
+      "top1_correct": true,
+      "top3_correct": true,
+      "candidates": [
+        {
+          "id": "bdpm_fr_60928110",
+          "full_name": "VENTOLINE 100 microgrammes/dose, suspension pour inhalation en flacon pressurisé",
+          "score": 0.784034,
+          "needs_clarification": true
+        },
+        {
+          "id": "bdpm_fr_61187493",
+          "full_name": "VENTOLINE 100 microgrammes/dose, suspension pour inhalation en flacon pressurisé",
+          "score": 0.784034,
+          "needs_clarification": true
+        },
+        {
+          "id": "bdpm_fr_61754100",
+          "full_name": "VENTOLINE 100 microgrammes/dose, suspension pour inhalation en flacon pressurisé",
+          "score": 0.784034,
+          "needs_clarification": true
+        }
+      ]
+    },
+    {
+      "id": "med_query_44",
+      "query": "Ventoline 100 microgrammes",
+      "expected_ids": [
+        "bdpm_fr_60928110",
+        "bdpm_fr_61187493",
+        "bdpm_fr_61754100",
+        "bdpm_fr_64532012",
+        "bdpm_fr_64720167",
+        "bdpm_fr_65195719",
+        "bdpm_fr_65740201",
+        "bdpm_fr_66179486",
+        "bdpm_fr_67359188",
+        "bdpm_fr_67458236",
+        "bdpm_fr_68365226"
+      ],
+      "underspecified": true,
+      "top1_correct": true,
+      "top3_correct": true,
+      "candidates": [
+        {
+          "id": "bdpm_fr_60928110",
+          "full_name": "VENTOLINE 100 microgrammes/dose, suspension pour inhalation en flacon pressurisé",
+          "score": 0.889608,
+          "needs_clarification": true
+        },
+        {
+          "id": "bdpm_fr_61187493",
+          "full_name": "VENTOLINE 100 microgrammes/dose, suspension pour inhalation en flacon pressurisé",
+          "score": 0.889608,
+          "needs_clarification": true
+        },
+        {
+          "id": "bdpm_fr_61754100",
+          "full_name": "VENTOLINE 100 microgrammes/dose, suspension pour inhalation en flacon pressurisé",
+          "score": 0.889608,
+          "needs_clarification": true
+        }
+      ]
+    },
+    {
+      "id": "med_query_45",
+      "query": "Ventoline 5 mg/2,5 ml",
+      "expected_ids": [
+        "bdpm_fr_64245247"
+      ],
+      "underspecified": false,
+      "top1_correct": true,
+      "top3_correct": true,
+      "candidates": [
+        {
+          "id": "bdpm_fr_64245247",
+          "full_name": "VENTOLINE 5 mg/2,5 ml, solution pour inhalation par nébuliseur en récipient unidose",
+          "score": 1.0,
+          "needs_clarification": false
+        }
+      ]
+    },
+    {
+      "id": "med_query_46",
+      "query": "Smecta",
+      "expected_ids": [
+        "bdpm_fr_64450063",
+        "bdpm_fr_69584073"
+      ],
+      "underspecified": true,
+      "top1_correct": true,
+      "top3_correct": true,
+      "candidates": [
+        {
+          "id": "bdpm_fr_64450063",
+          "full_name": "SMECTA 3 g FRAISE, poudre pour suspension buvable en sachet",
+          "score": 1.0,
+          "needs_clarification": true
+        },
+        {
+          "id": "bdpm_fr_69584073",
+          "full_name": "SMECTA 3 g ORANGE-VANILLE, poudre pour suspension buvable en sachet",
+          "score": 1.0,
+          "needs_clarification": true
+        },
+        {
+          "id": "bdpm_fr_63732750",
+          "full_name": "SMECTALIA 3 g, poudre pour suspension buvable en sachet",
+          "score": 0.836559,
+          "needs_clarification": true
+        }
+      ]
+    },
+    {
+      "id": "med_query_47",
+      "query": "smect",
+      "expected_ids": [
+        "bdpm_fr_64450063",
+        "bdpm_fr_69584073"
+      ],
+      "underspecified": true,
+      "top1_correct": true,
+      "top3_correct": true,
+      "candidates": [
+        {
+          "id": "bdpm_fr_64450063",
+          "full_name": "SMECTA 3 g FRAISE, poudre pour suspension buvable en sachet",
+          "score": 1.0,
+          "needs_clarification": true
+        },
+        {
+          "id": "bdpm_fr_69584073",
+          "full_name": "SMECTA 3 g ORANGE-VANILLE, poudre pour suspension buvable en sachet",
+          "score": 1.0,
+          "needs_clarification": true
+        },
+        {
+          "id": "bdpm_fr_63732750",
+          "full_name": "SMECTALIA 3 g, poudre pour suspension buvable en sachet",
+          "score": 0.829042,
+          "needs_clarification": true
+        }
+      ]
+    },
+    {
+      "id": "med_query_48",
+      "query": "سميكتا",
+      "expected_ids": [
+        "bdpm_fr_64450063",
+        "bdpm_fr_69584073"
+      ],
+      "underspecified": true,
+      "top1_correct": true,
+      "top3_correct": true,
+      "candidates": [
+        {
+          "id": "bdpm_fr_64450063",
+          "full_name": "SMECTA 3 g FRAISE, poudre pour suspension buvable en sachet",
+          "score": 1.0,
+          "needs_clarification": true
+        },
+        {
+          "id": "bdpm_fr_69584073",
+          "full_name": "SMECTA 3 g ORANGE-VANILLE, poudre pour suspension buvable en sachet",
+          "score": 1.0,
+          "needs_clarification": true
+        },
+        {
+          "id": "bdpm_fr_63732750",
+          "full_name": "SMECTALIA 3 g, poudre pour suspension buvable en sachet",
+          "score": 0.846136,
+          "needs_clarification": true
+        }
+      ]
+    },
+    {
+      "id": "med_query_49",
+      "query": "Smecta 3 g",
+      "expected_ids": [
+        "bdpm_fr_64450063",
+        "bdpm_fr_69584073"
+      ],
+      "underspecified": true,
+      "top1_correct": true,
+      "top3_correct": true,
+      "candidates": [
+        {
+          "id": "bdpm_fr_64450063",
+          "full_name": "SMECTA 3 g FRAISE, poudre pour suspension buvable en sachet",
+          "score": 1.0,
+          "needs_clarification": true
+        },
+        {
+          "id": "bdpm_fr_69584073",
+          "full_name": "SMECTA 3 g ORANGE-VANILLE, poudre pour suspension buvable en sachet",
+          "score": 1.0,
+          "needs_clarification": true
+        },
+        {
+          "id": "bdpm_fr_63732750",
+          "full_name": "SMECTALIA 3 g, poudre pour suspension buvable en sachet",
+          "score": 0.836559,
+          "needs_clarification": true
+        }
+      ]
+    },
+    {
+      "id": "med_query_50",
+      "query": "smecta fraise",
+      "expected_ids": [
+        "bdpm_fr_64450063"
+      ],
+      "underspecified": false,
+      "top1_correct": true,
+      "top3_correct": true,
+      "candidates": [
+        {
+          "id": "bdpm_fr_64450063",
+          "full_name": "SMECTA 3 g FRAISE, poudre pour suspension buvable en sachet",
+          "score": 1.0,
+          "needs_clarification": false
+        },
+        {
+          "id": "bdpm_fr_69584073",
+          "full_name": "SMECTA 3 g ORANGE-VANILLE, poudre pour suspension buvable en sachet",
+          "score": 0.849366,
+          "needs_clarification": false
+        },
+        {
+          "id": "bdpm_fr_63732750",
+          "full_name": "SMECTALIA 3 g, poudre pour suspension buvable en sachet",
+          "score": 0.698252,
+          "needs_clarification": false
+        }
+      ]
+    }
+  ]
+}

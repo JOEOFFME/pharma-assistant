@@ -3,7 +3,7 @@
 Arabic, Moroccan Darija (Arabic/Latin script), French, and code-mixed
 patient-pharmacy assistance prototype.
 
-## Current scope: TASK 0-3
+## Current scope: TASK 0-4
 
 Repository scaffolding and an operational FastAPI health endpoint, plus the
 [TASK 1 problem study](docs/01_problem_study.md) and
@@ -12,8 +12,10 @@ Repository scaffolding and an operational FastAPI health endpoint, plus the
 [200 annotation examples](docs/examples/nlu_annotation_examples.md).
 The examples are authored and unreviewed, not a gold dataset. TASK 3 adds a real
 [OSM pharmacy directory](data/pharmacies/README.md), SQLite queries and a generated
-[coverage report](docs/data_pharmacies.md). NLU inference, speech, medication data
-and model evaluation are later tasks and are not implemented.
+[coverage report](docs/data_pharmacies.md). TASK 4 adds a
+[French BDPM reference fallback](data/medications/README.md), medication matching
+and a 50-query review mini-set. NLU inference, speech and learned-model
+evaluation are later tasks and are not implemented.
 No medical diagnosis, dosage recommendations or substitution advice is provided.
 
 ## Prerequisites
@@ -110,3 +112,15 @@ The directory is a snapshot from OpenStreetMap, not a live stock or garde feed.
 [data instructions](data/pharmacies/README.md),
 [coverage](docs/data_pharmacies.md) and
 [TASK 3 validation report](docs/03_validation.md).
+
+## Medication reference (TASK 4)
+
+```bash
+make medications            # offline catalogue build and 50-query evaluation
+```
+
+France BDPM is used as an explicitly labelled open fallback because the Moroccan
+portal could not be downloaded. It provides no Moroccan availability or PPV.
+Generated Arabic/typo aliases and the query mini-set require review. See
+[the reference report](docs/data_medications.md) and
+[TASK 4 validation](docs/04_validation.md).

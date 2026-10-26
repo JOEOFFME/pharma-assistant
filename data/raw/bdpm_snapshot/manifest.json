@@ -1,0 +1,39 @@
+{
+  "dataset": "France BDPM (official bulk reference; fallback, not Moroccan coverage)",
+  "country": "FR",
+  "page_url": "https://base-donnees-publique.medicaments.gouv.fr/telechargement",
+  "license_url": "https://base-donnees-publique.medicaments.gouv.fr/docs/telechargement/licence_bdpm.pdf",
+  "format_url": "https://base-donnees-publique.medicaments.gouv.fr/download/file/Contenu_et_format_des_fichiers_telechargeables_dans_la_BDM_v5.pdf",
+  "captured_at": "2026-10-26T20:13:31.460082+00:00",
+  "download_page_sha256": "4c23cab2fc2ebebb96ca49447efa6bcfc4d22b22252dc5b36c744eec4dbe2efa",
+  "import_method": "local_copy_of_bulk_downloads",
+  "files": {
+    "CIS_bdpm.txt": {
+      "url": "https://base-donnees-publique.medicaments.gouv.fr/download/file/CIS_bdpm.txt",
+      "encoding": "cp1252",
+      "published_date": "2026-09-29",
+      "archive": "CIS_bdpm.txt.gz",
+      "bytes": 3175357,
+      "sha256": "332b95926f76f1a2ab3d70cdf64205397fc13e74b7cc9afad9b625fbb6961640",
+      "archive_sha256": "4919ce94f5fbeafd0dbf9bc06efffc215d6df7fe47d79abd064c7184c2f70e47"
+    },
+    "CIS_COMPO_bdpm.txt": {
+      "url": "https://base-donnees-publique.medicaments.gouv.fr/download/file/CIS_COMPO_bdpm.txt",
+      "encoding": "cp1252",
+      "published_date": "2026-09-29",
+      "archive": "CIS_COMPO_bdpm.txt.gz",
+      "bytes": 2735840,
+      "sha256": "90a6e8ee286b6245c3938dd417ac75d1135a61b15ba50cfad70ee6b3bd181b7a",
+      "archive_sha256": "34fcc5cf29ecadb3b2ce7f3af01cdadaac6f45997e2035c90da817c156e0bfdc"
+    },
+    "CIS_CIP_bdpm.txt": {
+      "url": "https://base-donnees-publique.medicaments.gouv.fr/download/file/CIS_CIP_bdpm.txt",
+      "encoding": "utf-8-sig",
+      "published_date": "2026-10-26",
+      "archive": "CIS_CIP_bdpm.txt.gz",
+      "bytes": 4148229,
+      "sha256": "276207db57839385d2d6e6ba79feb04af56ac78f288bb5bb0f2cbb1cda901164",
+      "archive_sha256": "8d65cee08eae0b3d10c4b82aa2656c0643ea13f1acfac41ded0ac96d93a39b52"
+    }
+  }
+}

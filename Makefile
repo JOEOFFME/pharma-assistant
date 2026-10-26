@@ -37,3 +37,11 @@ pharmacies:
 
 fetch-pharmacies:
 	$(UV) run --frozen python -m pharma_assistant.data_tools.fetch_pharmacies
+
+.PHONY: medications fetch-medications
+medications:
+	$(UV) run --frozen python -m pharma_assistant.data_tools.ingest_medications
+	$(UV) run --frozen python -m pharma_assistant.eval.medication_resolution
+
+fetch-medications:
+	$(UV) run --frozen python -m pharma_assistant.data_tools.ingest_medications --fetch

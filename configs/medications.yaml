@@ -1,0 +1,23 @@
+source_name: France BDPM (official bulk reference; fallback, not Moroccan coverage)
+country: FR
+page_url: https://base-donnees-publique.medicaments.gouv.fr/telechargement
+license_url: https://base-donnees-publique.medicaments.gouv.fr/docs/telechargement/licence_bdpm.pdf
+format_url: https://base-donnees-publique.medicaments.gouv.fr/download/file/Contenu_et_format_des_fichiers_telechargeables_dans_la_BDM_v5.pdf
+files:
+  CIS_bdpm.txt: cp1252
+  CIS_COMPO_bdpm.txt: cp1252
+  CIS_CIP_bdpm.txt: utf-8-sig
+snapshot_dir: data/raw/bdpm_snapshot
+database_path: data/medications/medications.sqlite3
+report_path: docs/data_medications.md
+metrics_path: docs/medication_metrics.json
+queries_path: docs/examples/medication_queries_50.json
+results_path: docs/medication_query_results.json
+matching:
+  char_ngram_min: 2
+  char_ngram_max: 4
+  retrieval_aliases: 200
+  fuzzy_weight: 0.65
+  tfidf_weight: 0.35
+  min_name_score: 0.75
+  ambiguity_margin: 0.06

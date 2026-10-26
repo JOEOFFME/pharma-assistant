@@ -1,0 +1,4 @@
+# Source hashes require byte-identical checkouts, including on Windows.
+data/raw/** -text
+# Preserve the producer's original whitespace in the archived download page.
+data/raw/bdpm_snapshot/download_page.html whitespace=-blank-at-eol
