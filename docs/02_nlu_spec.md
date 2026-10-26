@@ -226,6 +226,13 @@ evaluation set. `gold_human.jsonl` is initially empty and accepts only separatel
 human-authored/collected, checked rows with `source="human", verified=true`.
 See [human annotation instructions](gold_annotation_howto.md).
 
+Draft proposals may additionally carry `draft` metadata (source line, supplied
+intent/notes, review warnings and exact duplicate references). These records
+remain `source=assistant_seed`, `verified=false`, `split=review_only`. The
+review queue may preserve flagged copies of development messages for correction;
+accepted datasets remain unique. Draft proposals are never train or final
+evaluation inputs. See [the import guide](gold_draft_import.md).
+
 ## 6. Public output models
 
 Implementation: [schemas.py](../src/pharma_assistant/api/schemas.py).

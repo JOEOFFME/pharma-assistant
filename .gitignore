@@ -36,3 +36,7 @@ tmp/
 !data/nlu/generated/train.jsonl
 !data/nlu/generated/dev.jsonl
 !data/nlu/generated/test.jsonl
+
+# Unverified draft and review proposals; never final gold.
+!data/nlu/gold_human_draft.txt
+!data/nlu/gold_review.jsonl

@@ -404,6 +404,16 @@ class AnalysisResponse(ContractModel):
         return self
 
 
+class DraftReviewMetadata(ContractModel):
+    """Keep supplied labels/notes and review warnings separate from span evidence."""
+
+    line_number: Annotated[int, Field(strict=True, ge=1)]
+    proposed_intent: NonBlank
+    notes: str
+    review_notes: list[str]
+    duplicate_of: list[str] = Field(default_factory=list)
+
+
 class NLUAnnotation(ContractModel):
     """Versioned annotation record; creation provenance never implies verification."""
 
@@ -425,10 +435,19 @@ class NLUAnnotation(ContractModel):
     source_example_id: str | None = None
     parent_id: str | None = None
     augmentation: dict | None = None
+    draft: DraftReviewMetadata | None = None
 
     @model_validator(mode="after")
     def validate_annotation(self) -> Self:
         """Apply the response evidence rules without inventing predicted scores."""
+        if self.draft is not None and (
+            self.source != "assistant_seed"
+            or self.verified
+            or self.split != "review_only"
+        ):
+            raise ValueError(
+                "Draft proposals must stay unverified assistant review rows"
+            )
         if self.verified and self.source != "human":
             raise ValueError("Only human annotations may be verified")
         if self.source == "synthetic" and not self.parent_id:

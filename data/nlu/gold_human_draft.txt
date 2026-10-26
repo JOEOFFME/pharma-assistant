@@ -1,0 +1,92 @@
+# DRAFT messages for the gold set - written by an assistant, NOT verified.
+# Format: variety | proposed_intent | notes | text
+# Review every line as a native speaker: fix naturalness, delete what you would never type.
+# Notes: needs_clarification = no medication named; mixed_oos = in-scope request + medical-advice question;
+#        multi_med = several medications; typo = deliberate misspelling; urgent = urgency cue.
+# Medication names are real brands used only as request targets; no line asserts availability or medical facts.
+
+darija_latn | check_availability | dosage | doliprane 1000 kayn?
+darija_latn | check_availability | dosage | 3andkom amoxicilline 500?
+darija_latn | check_availability | dosage | wach kayn Augmentin 1g 3andkom?
+darija_latn | check_availability | greeting+check | salam, kayna Ventoline?
+darija_latn | check_availability | | kayn efferalgan 500 wla la?
+darija_latn | check_availability | typo | 3ndkom dolipran?
+darija_latn | request_medication | quantity | bghit 2 boites dyal Spasfon
+darija_latn | request_medication | quantity,dosage | n9eddou ntleb 3 plaquettes dyal Voltarene 50?
+darija_latn | request_medication | form | 3afak 1 sirop dyal Toplexil
+darija_latn | request_medication | multi_med,quantity | bghit 1 boite dyal Maalox w 2 dyal Nurofen 400
+darija_latn | request_medication | urgent,dosage | urgent bghit Levothyrox 100
+darija_latn | price_inquiry | | bch7al Smecta?
+darija_latn | price_inquiy | | ch7al dyar protex
+darija_latn | price_inquiry | dosage | ch7al taman dyal Glucophage 850?
+darija_latn | pharmacy_info_phone | pharmacy_name,location | chno numero dyal Pharmacie Ibn Sina f Agdal?
+darija_latn | pharmacy_info_location | location | fin kayna a9reb pharmacie l Hay Riad?
+darija_latn | pharmacy_info_hours | location,time | pharmacie de garde f Fes lyoum?
+darija_latn | pharmacy_info_hours | pharmacy_name | wach Pharmacie Al Amal mkhellsa db?
+darija_latn | check_availability | needs_clarification | nsit smiyt dwa, wach kayn?
+darija_latn | out_of_scope | dosage_advice | ch7al men 7ebba dyal doliprane nakhod l tfl?
+darija_latn | check_availability | mixed_oos | Voltarene kayn? w wach nakhdo m3a Aspirine?
+darija_latn | out_of_scope | diagnosis | 3andi skhana w s3al, chno ndir?
+darija_latn | out_of_scope | unrelated | chno l9ass dyal lma lyoum?
+darija_latn | greeting_smalltalk | | salam khoya
+darija_latn | greeting_smalltalk | | chokran bzaf 3la lkhidma
+darija_latn | check_availability | | kayn preservative?
+darija_ar | check_availability | dosage | واش كاين دوليبران 1000؟
+darija_ar | check_availability | dosage | عندكم أموكسيسيلين 500 ولا لا؟
+darija_ar | check_availability | dosage | كاين أوغمنتين 1غ؟
+darija_ar | check_availability | | افيرالجان 500 كاين؟
+darija_ar | request_medication | quantity | بغيت 3 علب ديال سباسفون
+darija_ar | request_medication | quantity,dosage | عافاك سجل ليا فولتارين 50 علبتين
+darija_ar | request_medication | multi_med,dosage | بغيت دوليبران 500 و سمكتا
+darija_ar | request_medication | urgent,dosage | مستعجل بغيت ليفوتيروكس 100
+darija_ar | price_inquiry | dosage | شحال ثمن غلوكوفاج 850؟
+darija_ar | price_inquiry | | بشحال فنتولين؟
+darija_ar | pharmacy_info_phone | pharmacy_name,location | شنو نمرة صيدلية ابن سينا ف أكدال؟
+darija_ar | pharmacy_info_phone | location | عطيني رقم شي صيدلية فكازا
+darija_ar | pharmacy_info_location | location | فين كاينة صيدلية قريبة من المعاريف؟
+darija_ar | pharmacy_info_hours | pharmacy_name | واش صيدلية الأمل مسدودة دابا؟
+darija_ar | pharmacy_info_hours | location,time | شكون الصيدلية ديال الحراسة فطنجة الليلة؟
+darija_ar | check_availability | needs_clarification | نسيت سميت الدواء، واش كاين؟
+darija_ar | check_availability | mixed_oos | كاين ايبوبروفين؟ وشحال نشرب فالنهار؟
+darija_ar | out_of_scope | dosage_advice | شحال من حبة ناخد ديال بانادول؟
+darija_ar | out_of_scope | diagnosis | عندي الحمى، شنو ندير؟
+darija_ar | greeting_smalltalk | | السلام عليكم
+fr | check_availability | dosage | Doliprane 1000 en stock ?
+fr | check_availability | dosage | Vous avez de l'amoxicilline 500 mg ?
+fr | check_availability | typo | dolipran 1000 disponible?
+fr | request_medication | quantity,dosage | Je voudrais 2 boîtes d'Efferalgan 500
+fr | request_medication | multi_med,quantity | 2 boites de Doliprane 500 et 1 de Smecta
+fr | request_medication | urgent,dosage | Urgent : besoin de Levothyrox 75 aujourd'hui
+fr | price_inquiry | | Prix du Spasfon svp
+fr | pharmacy_info_phone | pharmacy_name,location | Numéro de la pharmacie Al Amal à Casablanca ?
+fr | pharmacy_info_location | location | Pharmacie la plus proche du Maarif ?
+fr | pharmacy_info_hours | location,time | Pharmacie de garde à Tanger ce soir ?
+fr | pharmacy_info_hours | pharmacy_name | Jusqu'à quelle heure la pharmacie Ibn Sina est ouverte ?
+fr | check_availability | needs_clarification | Vous avez le sirop pour la toux ? j'ai oublié le nom
+fr | check_availability | mixed_oos | Amoxicilline 500 : dispo ? et combien par jour ?
+fr | out_of_scope | dosage_advice | Quelle dose d'ibuprofène pour un enfant ?
+fr | out_of_scope | substitution | Je peux remplacer Augmentin par autre chose ?
+fr | greeting_smalltalk | | Salut, bonne journée
+fr | greeting_smalltalk | | Salut, ou je peux trouver Amoxline
+ar | check_availability | dosage | هل يتوفر لديكم أوغمنتين 1 غ؟
+ar | request_medication | quantity,dosage | أريد علبتين من دوليبران 500
+ar | price_inquiry | | كم سعر فنتولين؟
+ar | pharmacy_info_phone | pharmacy_name,location | ما هو رقم هاتف صيدلية الأمل في فاس؟
+ar | pharmacy_info_location | location | أين أقرب صيدلية من حي الرياض؟
+ar | pharmacy_info_hours | location,time | ما هي صيدلية الحراسة في مكناس الليلة؟
+ar | out_of_scope | interaction_advice | هل يمكنني تناول الإيبوبروفين مع الأسبرين؟
+ar | greeting_smalltalk | | شكرا لكم
+
+mixed | check_availability | dosage | wach kayn Augmentin 1g, il est dispo ?
+mixed | check_availability | urgent | kayn Ventoline ? urgent
+mixed | check_availability | dosage | سلام, vous avez Glucophage 850 ?
+mixed | check_availability | needs_clarification | ma 3reftch le nom mais bghit sirop dyal la toux
+mixed | request_medication | quantity,form | بغيت 2 boîtes de Spasfon
+mixed | request_medication | urgent,dosage | 3afak n7taj Dafalgan 1g, c'est urgent
+mixed | price_inquiry | dosage | chno prix dyal Voltarène 50 ?
+mixed | pharmacy_info_phone | pharmacy_name,location | numéro dyal pharmacie Ibn Sina f Rabat ?
+mixed | pharmacy_info_location | location | fin kayna pharmacie près de Gauthier ?
+mixed | pharmacy_info_hours | location,time | pharmacie de garde f Agadir had lila ?
+mixed | out_of_scope | dosage_advice | combien de comprimés dyal Doliprane ndir f nhar ?
+mixed | out_of_scope | substitution | wach ymkn nbdel Zyrtec b chi dwa akhor ?
+mixed | greeting_smalltalk | | merci bzaf, bonne journée

@@ -139,3 +139,7 @@ annotations. The previous candidate-to-gold promotion mechanism is removed.
 See [dataset instructions](data/nlu/README.md),
 [human annotation guide](docs/gold_annotation_howto.md), and
 [TASK 5 correction validation](docs/05_validation.md).
+
+Draft span proposals: [review table](docs/gold_draft_review.md) and
+[import/correction instructions](docs/gold_draft_import.md). These unverified
+assistant rows remain separate from human gold and all train/evaluation inputs.

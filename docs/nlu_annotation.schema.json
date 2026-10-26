@@ -132,6 +132,48 @@
       "title": "DosageEntity",
       "type": "object"
     },
+    "DraftReviewMetadata": {
+      "additionalProperties": false,
+      "description": "Keep supplied labels/notes and review warnings separate from span evidence.",
+      "properties": {
+        "line_number": {
+          "minimum": 1,
+          "title": "Line Number",
+          "type": "integer"
+        },
+        "proposed_intent": {
+          "pattern": "\\S",
+          "title": "Proposed Intent",
+          "type": "string"
+        },
+        "notes": {
+          "title": "Notes",
+          "type": "string"
+        },
+        "review_notes": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Review Notes",
+          "type": "array"
+        },
+        "duplicate_of": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Duplicate Of",
+          "type": "array"
+        }
+      },
+      "required": [
+        "line_number",
+        "proposed_intent",
+        "notes",
+        "review_notes"
+      ],
+      "title": "DraftReviewMetadata",
+      "type": "object"
+    },
     "FormEntity": {
       "additionalProperties": false,
       "description": "Product form as stated, with an optional controlled normalization.",
@@ -1125,6 +1167,17 @@
       ],
       "default": null,
       "title": "Augmentation"
+    },
+    "draft": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/DraftReviewMetadata"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
     }
   },
   "required": [

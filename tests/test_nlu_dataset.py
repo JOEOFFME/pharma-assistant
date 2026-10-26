@@ -50,9 +50,26 @@ def test_every_jsonl_row(path: Path) -> None:
 
 
 def test_exact_text_duplicates_across_all_files() -> None:
-    """Even cross-file exact copies are rejected; build inputs live outside data/nlu."""
-    rows = [row for path in FILES for row in read_jsonl(path)]
-    assert len(rows) == len({row["text"] for row in rows})
+    """Accepted data stays unique; review-only duplicate proposals need exact flags."""
+    review_path = ROOT / "data/nlu/gold_review.jsonl"
+    accepted = [
+        (path, row) for path in FILES if path != review_path for row in read_jsonl(path)
+    ]
+    texts = [row["text"] for _, row in accepted]
+    assert len(texts) == len(set(texts))
+    references: dict[str, list[str]] = {}
+    for path, row in accepted:
+        reference = f"{path.relative_to(ROOT).as_posix()}:{row['id']}"
+        references.setdefault(row["text"], []).append(reference)
+    if review_path.exists():
+        rows = read_jsonl(review_path)
+        validate_rows(rows)  # Exact duplicates *within* the review queue still fail.
+        for row in rows:
+            assert row["source"] == "assistant_seed" and row["verified"] is False
+            assert row["split"] == "review_only"
+            assert sorted(row["draft"]["duplicate_of"]) == sorted(
+                references.get(row["text"], [])
+            )
 
 
 def test_gold_provenance() -> None:

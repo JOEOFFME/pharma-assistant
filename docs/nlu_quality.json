@@ -117,31 +117,56 @@
       "warnings": [
         "Fewer than 8 distinct medications"
       ]
+    },
+    "data/nlu/gold_review.jsonl": {
+      "rows": 84,
+      "rows_per_intent": {
+        "check_availability": 26,
+        "greeting_smalltalk": 6,
+        "out_of_scope": 10,
+        "pharmacy_info_hours": 8,
+        "pharmacy_info_location": 5,
+        "pharmacy_info_phone": 6,
+        "price_inquiry": 8,
+        "request_medication": 15
+      },
+      "rows_per_variety": {
+        "ar": 8,
+        "darija_ar": 20,
+        "darija_latn": 26,
+        "fr": 17,
+        "mixed": 13
+      },
+      "distinct_texts": 84,
+      "distinct_medications": 34,
+      "medication_count_basis": "case/accent-normalized surface forms; aliases/noise may inflate identities",
+      "rows_without_medication": 33,
+      "warnings": []
     }
   },
   "all_files": {
-    "rows": 720,
+    "rows": 804,
     "rows_per_intent": {
-      "check_availability": 145,
-      "greeting_smalltalk": 35,
-      "out_of_scope": 35,
-      "pharmacy_info_hours": 35,
-      "pharmacy_info_location": 35,
-      "pharmacy_info_phone": 35,
-      "price_inquiry": 185,
-      "request_medication": 215
+      "check_availability": 171,
+      "greeting_smalltalk": 41,
+      "out_of_scope": 45,
+      "pharmacy_info_hours": 43,
+      "pharmacy_info_location": 40,
+      "pharmacy_info_phone": 41,
+      "price_inquiry": 193,
+      "request_medication": 230
     },
     "rows_per_variety": {
-      "ar": 138,
-      "darija_ar": 138,
-      "darija_latn": 138,
-      "fr": 138,
-      "mixed": 168
+      "ar": 146,
+      "darija_ar": 158,
+      "darija_latn": 164,
+      "fr": 155,
+      "mixed": 181
     },
-    "distinct_texts": 720,
-    "distinct_medications": 31,
+    "distinct_texts": 802,
+    "distinct_medications": 56,
     "medication_count_basis": "case/accent-normalized surface forms; aliases/noise may inflate identities",
-    "rows_without_medication": 175,
+    "rows_without_medication": 208,
     "warnings": []
   }
 }

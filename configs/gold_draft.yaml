@@ -1,0 +1,73 @@
+# Mention spellings for this draft review aid, not catalogue matches or medical facts.
+input_path: data/nlu/gold_human_draft.txt
+output_path: data/nlu/gold_review.jsonl
+report_path: docs/gold_draft_review.md
+protected_gold_path: data/nlu/gold_human.jsonl
+dataset_dir: data/nlu
+intent_aliases:
+  price_inquiy: price_inquiry
+medications:
+  - doliprane
+  - dolipran
+  - amoxicilline
+  - Augmentin
+  - Ventoline
+  - efferalgan
+  - Spasfon
+  - Voltarene
+  - Voltarène
+  - Toplexil
+  - Maalox
+  - Nurofen
+  - Levothyrox
+  - Smecta
+  - protex
+  - Glucophage
+  - Aspirine
+  - ibuprofène
+  - Amoxline
+  - Dafalgan
+  - Zyrtec
+  - دوليبران
+  - أموكسيسيلين
+  - أوغمنتين
+  - افيرالجان
+  - سباسفون
+  - فولتارين
+  - سمكتا
+  - ليفوتيروكس
+  - غلوكوفاج
+  - فنتولين
+  - ايبوبروفين
+  - بانادول
+  - الإيبوبروفين
+  - الأسبرين
+uncertain_mentions: [protex, Amoxline]
+pharmacy_names: [Ibn Sina, Al Amal, ابن سينا, الأمل]
+locations: [Agdal, Hay Riad, Fes, Rabat, Casablanca, Maarif, Tanger, Agadir, Gauthier, أكدال, كازا, المعاريف, طنجة, فاس, حي الرياض, مكناس]
+forms:
+  sirop: syrup
+  comprimés: tablet
+  comprimé: tablet
+  شراب: syrup
+  أقراص: tablet
+packages:
+  boite: box
+  boites: box
+  boîte: box
+  boîtes: box
+  plaquette: blister
+  plaquettes: blister
+  علبة: box
+  علب: box
+times:
+  lyoum: today
+  db: now
+  daba: now
+  دابا: now
+  اليوم: today
+  الليلة: tonight
+  aujourd'hui: today
+  ce soir: tonight
+  had lila: tonight
+urgency: [urgent, مستعجل, ضروري]

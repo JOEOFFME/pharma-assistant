@@ -5,6 +5,9 @@
 - `generated/train.jsonl`: family-grouped seed examples and synthetic variants.
 - `generated/dev.jsonl`, `generated/test.jsonl`: unverified development splits;
   the filename `test` does not make this a final human evaluation set.
+- `gold_human_draft.txt`, `gold_review.jsonl`: supplied assistant-written draft
+  and unverified review proposals. Never train/evaluation inputs. See
+  [import and correction guide](../../docs/gold_draft_import.md).
 - `gold_human.jsonl`: empty human-only final evaluation template. No assistant
   may generate its rows or promote development examples into it.
 - `medication_roster.json`: 12 source-backed French BDPM reference entries for
@@ -28,7 +31,9 @@ Reports: `docs/nlu_stats.json`, `docs/nlu_quality.json`, `docs/data_nlu.md`.
 
 Every JSONL under this directory is tested for schema validity, raw span equality,
 non-overlap, recognized intents/varieties, required clarification and exact-text
-duplicates within and across files. Leakage checks additionally reject shared
+duplicates within and across accepted files. The review queue retains all source
+messages and explicitly flags any duplicate of accepted data; this exception is
+restricted to unverified review-only rows. Leakage checks additionally reject shared
 families, normalized texts and delexicalized signatures across generated splits
 and development seeds. Semantic paraphrase leakage still requires human review.
 
