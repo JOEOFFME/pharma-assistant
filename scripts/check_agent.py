@@ -21,7 +21,12 @@ def main() -> None:
         action="store_true",
         help="Check live Moroccan pharmacy contact research",
     )
+    parser.add_argument(
+        "--cnops", action="store_true", help="Check CNOPS medicine research"
+    )
     args = parser.parse_args()
+    if args.cnops and args.pharmacy:
+        parser.error("Choose --cnops or --pharmacy")
     sys.stdout.reconfigure(encoding="utf-8")
     root = Path(__file__).resolve().parents[1]
     os.chdir(root)
@@ -41,7 +46,11 @@ def main() -> None:
             (
                 "contact de pharmacy Al Irfane à Rabat"
                 if args.pharmacy
-                else "Vérifie sur le web : chnu smiya dyal dwa dyal la migraine ?"
+                else (
+                    "Cherche sur CNOPS les présentations de Panadol et leurs dates."
+                    if args.cnops
+                    else "Vérifie sur le web : chnu smiya dyal dwa dyal la migraine ?"
+                )
             ),
             "darija_latn",
         )
@@ -59,8 +68,14 @@ def main() -> None:
             "Agent check failed. Check network, model tool/JSON support "
             "and search permissions."
         ) from None
-    tool = "search_pharmacy_web" if args.pharmacy else "search_health_web"
-    source_kind = "web_pharmacy" if args.pharmacy else "web"
+    tool = (
+        "search_pharmacy_web"
+        if args.pharmacy
+        else "search_cnops" if args.cnops else "search_health_web"
+    )
+    source_kind = (
+        "web_pharmacy" if args.pharmacy else "cnops_web" if args.cnops else "web"
+    )
     if tool not in result["tools_used"] or not any(
         s["kind"] == source_kind for s in result["sources"]
     ):

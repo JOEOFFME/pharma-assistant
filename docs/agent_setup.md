@@ -1,5 +1,9 @@
 # Pharma-AI research agent and MCP tools
 
+**Current default:** [CNOPS web-first setup](cnops_agent_setup.md). The earlier
+bounded demo behavior below remains available with `ASSISTANT_WEB_FIRST=false`.
+
+
 Normal OpenRouter chat now runs a bounded tool-calling agent. It can interpret a
 question, choose a tool, read its result, then answer with source links. The old
 consumer rule that refused every treatment-topic question no longer blocks this

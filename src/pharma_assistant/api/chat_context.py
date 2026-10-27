@@ -58,7 +58,9 @@ def directory_context(baseline, text, history=None, location=None) -> dict | Non
     location_reply = is_current_place and (
         len(text.split()) <= 10
         and not re.search(
-            r"migraine|traitement|posologie|dose|combien.*prendre", text_lower
+            r"migraine|traitement|posologie|dose|combien.*prendre|[?؟]"
+            r"|\b(?:quel|quelle|comment|pourquoi|quand|what|how|weather)\b",
+            text_lower,
         )
     )
     # A positive response needs a preceding directory offer or pharmacy request.

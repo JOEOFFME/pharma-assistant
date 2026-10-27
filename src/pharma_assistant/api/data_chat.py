@@ -135,7 +135,10 @@ def validate_live_claims(answer: str, allow_general_existence: bool = False) -> 
 def answer_from_data(engine, analysis, text, location=None, history=None) -> dict:
     """OpenRouter writes the main answer; local fallback is explicit on failure."""
     fallback = present_answer(analysis, location)
-    if os.getenv("ASSISTANT_AGENT", "true").lower() == "true":
+    if (
+        os.getenv("ASSISTANT_AGENT", "true").lower() == "true"
+        and os.getenv("ASSISTANT_WEB_FIRST", "true").lower() != "true"
+    ):
         from pharma_assistant.api.reply_policy import short_reply
 
         direct = short_reply(
@@ -160,7 +163,16 @@ def answer_from_data(engine, analysis, text, location=None, history=None) -> dic
                 history=history,
                 location=location,
             )
-            if directory and directory["wanted"] and directory["result"]["pharmacies"]:
+            researched = (
+                os.getenv("ASSISTANT_WEB_FIRST", "true").lower() == "true"
+                and result.get("web_search", {}).get("succeeded") is True
+            )
+            if (
+                directory
+                and directory["wanted"]
+                and directory["result"]["pharmacies"]
+                and not researched
+            ):
                 # Keep available records instead of asking permission to search again.
                 if not result.get("pharmacies") or not any(
                     p["name"] and p["name"] in result["answer"]
@@ -192,7 +204,11 @@ def answer_from_data(engine, analysis, text, location=None, history=None) -> dic
                 reference_for,
             )
 
-            reference = reference_for(text, history)
+            reference = (
+                None
+                if os.getenv("ASSISTANT_WEB_FIRST", "true").lower() == "true"
+                else reference_for(text, history)
+            )
             if reference:
                 return {
                     **fallback,

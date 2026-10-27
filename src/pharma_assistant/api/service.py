@@ -141,7 +141,8 @@ def version() -> dict:
     return {
         "version": "0.2.0",
         "pipeline": "rule_baseline_v1",
-        "consumer_policy": "tool_agent_v4",
+        "consumer_policy": "cnops_web_first_v8",
+        "web_first": os.getenv("ASSISTANT_WEB_FIRST", "true").lower() == "true",
         "agent_enabled": os.getenv("ASSISTANT_AGENT", "true").lower() == "true",
         "web_search_enabled": os.getenv("ASSISTANT_WEB_SEARCH", "true").lower()
         == "true",

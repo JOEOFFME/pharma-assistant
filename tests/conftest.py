@@ -46,3 +46,4 @@ def offline_consumer_default(monkeypatch):
     """Tests never inherit an operator's opt-in paid consumer provider setting."""
     monkeypatch.setenv("ASSISTANT_NLU", "baseline")
     monkeypatch.setenv("ASSISTANT_AGENT", "false")
+    monkeypatch.setenv("ASSISTANT_WEB_FIRST", "false")

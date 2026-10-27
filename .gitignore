@@ -49,3 +49,7 @@ web/node_modules/
 
 # Attributed public contact enrichment.
 !data/pharmacies/contact_enrichment.json
+
+# Attributed historical CNOPS public source, retained byte-for-byte.
+!data/raw/cnops_snapshot/reference.xlsx
+!data/raw/cnops_snapshot/manifest.json
