@@ -59,6 +59,48 @@ successful connection alone. Web search incurs additional OpenRouter charges. No
 additional search key is needed; the OpenRouter account must permit web research.
 The older `scripts/check_openrouter.py` checks basic model access only, not tools.
 
+## Pharmacy web-search update
+
+Named contact and duty requests now take a separate research route. The health-only
+search allowlist was unsuitable for Moroccan pharmacy listings, and the old city
+fallback could replace a valid web-only answer. Both issues are corrected.
+
+`search_pharmacy_web` searches Santé Service, Guide Pharmacies, Telecontact,
+Medicalis, Med.ma and Sobrus pharmacy listings through the same private OpenRouter
+key. Contact requests and duty requests actually invoke this tool before a final
+answer. Health research retains its separate public-health allowlist. Disabling
+`ASSISTANT_WEB_SEARCH` disables both tools.
+
+Named contacts require the city, distinctive pharmacy name and a valid Moroccan
+phone in the cited excerpt. The spelling `pharmacy` is recognized alongside
+`pharmacie`. A subsequent location-only reply retains the preceding named-contact
+request. The Rabat city list no longer replaces these answers.
+
+Duty queries include a date or week interval in Africa/Casablanca time. Cited excerpts
+must name the city and include an explicit date within that interval; undated
+opening hours and stale or other-city pages cannot confirm the requested duty.
+Phones, complete dates and pharmacy names in the generated summary are checked
+against the matching excerpts. Coverage may be partial; a dated published listing
+is not a live guarantee that the pharmacy is open. A failed duty lookup says that
+no dated schedule was verified, rather than repeating ordinary directory results.
+
+The UI shows whether an online search succeeded or did not complete. A verified
+saved contact is labelled as saved, and does not count as a successful web search.
+The public contact enrichment currently includes Pharmacie El Irfane in Rabat,
+checked against two independent listings on 2026-10-27. No duty schedule is cached
+or invented as part of that enrichment.
+
+To check this route with your own key, run:
+
+```powershell
+uv run --frozen python scripts/check_agent.py --pharmacy
+```
+
+This command requires actual business-web citations to report success; the saved
+contact fallback will not pass the live-search check. Source excerpts may be absent
+or incomplete in some provider responses; those responses do not verify a contact
+or duty record. No paid account test was possible during implementation.
+
 ## Conversation reliability update
 
 The directory is retrieved before the model answers when the user supplies a city,
@@ -86,7 +128,8 @@ failures from provider HTTP errors without logging keys, prompts or error bodies
 | --- | --- | --- |
 | `search_pharmacies` | Saved SQLite directory by city/name, or a user-shared position | No inferred GPS, stock or dated guard data; incomplete coverage |
 | `search_medications` | Named-product fuzzy lookup with source country, ingredient and form | Source catalogue, not symptom-based prescribing or proof of Moroccan availability |
-| `search_health_web` | OpenRouter `web` research plugin via Exa | Fixed public-health domains, one research request per chat turn, three results per search |
+| `search_health_web` | OpenRouter `web` research plugin via Exa | Fixed public-health domains |
+| `search_pharmacy_web` | OpenRouter `web` research plugin via Exa | Moroccan business domains; source identity/date checks |
 
 The main model still chooses whether to invoke `search_health_web`. Once invoked,
 the research pass uses OpenRouter's documented `web` plugin, which performs the
@@ -167,3 +210,5 @@ claimed. Stdout contains only protocol messages.
 - Validation: `docs/agent_validation.md`
 
 Latest conversation regression report: [conversation_fix_validation.md](conversation_fix_validation.md).
+
+Latest pharmacy web-routing validation: [pharmacy_web_validation.md](pharmacy_web_validation.md).

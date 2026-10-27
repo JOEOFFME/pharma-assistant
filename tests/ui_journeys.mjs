@@ -19,7 +19,7 @@ window.speechSynthesis = { getVoices: () => [{ lang: 'fr-FR' }, { lang: 'ar-MA' 
 const juryScenarios = JSON.parse(await readFile(resolve(root, 'web/assets/jury-scenarios.json'), 'utf8'));
 const demoQuestions = JSON.parse(await readFile(resolve(root, 'web/assets/demo-questions.json'), 'utf8'));
 let voiceOK = true, nextAnswer = 'Votre demande concerne Doliprane. Le stock reste à confirmer.', deferred, failStatus = 0, tracksStopped = 0, locationRequests = 0, actions = [];
-const payload = () => ({ sources: [
+const payload = () => ({ web_search: { attempted: true, succeeded: true }, sources: [
   { title: '<img src=x onerror=bad()> NHS', url: 'https://www.nhs.uk/conditions/migraine/' },
   { title: 'Unsafe', url: 'javascript:alert(1)' },
   { title: 'Credentials', url: 'https://secret@evil.test' }
@@ -63,6 +63,7 @@ try {
   assert.ok(!window.document.body.textContent.includes('MUST NEVER APPEAR'));
   const citations = window.document.querySelectorAll('.reply-sources a');
   assert.equal(citations.length, 1);
+  assert.ok(window.document.querySelector('.message.assistant').textContent.includes('Recherche web effectuée'));
   assert.equal(citations[0].href, 'https://www.nhs.uk/conditions/migraine/');
   assert.ok(citations[0].textContent.startsWith('<img'));
   assert.equal(citations[0].querySelector('img'), null);

@@ -153,6 +153,11 @@ async function sendRequest(body, isAudio, displayText) {
     if (demoMode && data.synthetic !== true) throw new Error(t('error'));
     if (typeof data.answer !== 'string' || !data.answer.trim()) throw new Error(t('error'));
     pending.remove(); const reply = bubble(data.answer, 'assistant');
+    if (data.web_search && data.web_search.attempted === true) {
+      const badge = document.createElement('p'); badge.className = 'message-label';
+      badge.textContent = data.web_search.succeeded === true ? 'Recherche web effectuée · Sources ci-dessous' : 'Recherche web non aboutie';
+      reply.article.append(badge);
+    }
     addSources(reply, data.sources);
     if (!demoMode) { chatHistory.push({ role: 'user', text: displayText.slice(0,4000) }, { role: 'assistant', text: data.answer.slice(0,4000) }); chatHistory = chatHistory.slice(-10); }
     addPlayback(reply, data.answer, data.language || $('language').value);

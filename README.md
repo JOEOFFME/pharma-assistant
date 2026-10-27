@@ -1,7 +1,7 @@
 # Pharma-AI
 
 Normal chat now supports a **read-only research agent**: pharmacy and medicine lookup,
-trusted health web search, cited answers and an MCP stdio server. See
+trusted health and Moroccan pharmacy web search, cited answers and an MCP stdio server. See
 [agent setup](docs/agent_setup.md) for Windows configuration and the live check.
 General health information is allowed; personal prescribing and dosage advice remain excluded.
 City and confirmation follow-ups retain saved directory results during provider failures;

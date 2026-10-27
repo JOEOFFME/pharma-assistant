@@ -8,6 +8,10 @@ from pharma_assistant.api.schemas import AnalysisResponse
 
 def directory_context(baseline, text, history=None, location=None) -> dict | None:
     """Use explicit user places only; assistant offers supply intent, never facts."""
+    from pharma_assistant.nlp.pharmacy_web import lookup_request
+
+    if lookup_request(baseline, text, history):
+        return None
     current = baseline.analyze(text)
     turns = [t["text"] for t in (history or []) if t["role"] == "user"]
     candidates = [current] + [baseline.analyze(t) for t in reversed(turns)]

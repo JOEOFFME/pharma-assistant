@@ -1,5 +1,6 @@
 """Explicit live rehearsal of the research agent using a non-personal sample."""
 
+import argparse
 import os
 import sys
 from pathlib import Path
@@ -14,6 +15,13 @@ from pharma_assistant.pipeline.text_pipeline import TextPipeline
 
 def main() -> None:
     """Use the private local key; never print secrets or raw provider errors."""
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--pharmacy",
+        action="store_true",
+        help="Check live Moroccan pharmacy contact research",
+    )
+    args = parser.parse_args()
     sys.stdout.reconfigure(encoding="utf-8")
     root = Path(__file__).resolve().parents[1]
     os.chdir(root)
@@ -30,7 +38,11 @@ def main() -> None:
         result = run_agent(
             provider,
             TextPipeline.from_config(),
-            "Vérifie sur le web : chnu smiya dyal dwa dyal la migraine ?",
+            (
+                "contact de pharmacy Al Irfane à Rabat"
+                if args.pharmacy
+                else "Vérifie sur le web : chnu smiya dyal dwa dyal la migraine ?"
+            ),
             "darija_latn",
         )
     except FileNotFoundError:
@@ -47,8 +59,10 @@ def main() -> None:
             "Agent check failed. Check network, model tool/JSON support "
             "and search permissions."
         ) from None
-    if "search_health_web" not in result["tools_used"] or not any(
-        s["kind"] == "web" for s in result["sources"]
+    tool = "search_pharmacy_web" if args.pharmacy else "search_health_web"
+    source_kind = "web_pharmacy" if args.pharmacy else "web"
+    if tool not in result["tools_used"] or not any(
+        s["kind"] == source_kind for s in result["sources"]
     ):
         print(
             "Safe tool diagnostics:",

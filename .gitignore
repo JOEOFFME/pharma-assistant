@@ -46,3 +46,6 @@ web/node_modules/
 
 # Small attributed educational reference cache; no private health data.
 !data/health/references.json
+
+# Attributed public contact enrichment.
+!data/pharmacies/contact_enrichment.json
