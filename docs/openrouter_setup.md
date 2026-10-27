@@ -1,88 +1,113 @@
-# Optional OpenRouter language understanding
+# Main OpenRouter assistant using the pharmacy data
 
-The assistant can use your OpenRouter key to interpret French, Arabic and Darija
-requests. It accepts a structured intent and literal medication/pharmacy/location
-mentions, then looks up and formats facts locally. It does **not** let the model
-invent pharmacy stock, prices, duty schedules or medical advice.
+OpenRouter is the default conversational model, not just an intent extractor. It
+interprets the request, retrieves matching saved pharmacy contacts, and writes the
+reply using those records plus bounded conversation context.
 
-## Windows PowerShell setup
+Defaults:
 
-Stop the old server with Ctrl+C. From the repository directory:
+- Primary: `openai/gpt-4.1`
+- OpenRouter answer-routing fallback: `anthropic/claude-sonnet-4.6`
+- Explicit offline option: `ASSISTANT_NLU=baseline`
+
+You can swap the primary and fallback model IDs to make Claude primary. Both must
+support structured JSON output. These are configurable compatibility choices; no
+live Darija-quality comparison or provider latency benchmark was performed.
+
+## Windows: configure once in .env
+
+Stop the old server with Ctrl+C. From the repository folder:
 
 ```powershell
 git pull origin codex/assistant-answers-voice
-$env:ASSISTANT_NLU="openrouter"
-$env:OPENROUTER_MODEL="openai/gpt-4.1"
-$openRouterSecret = Read-Host "OpenRouter API key" -AsSecureString
-$env:OPENROUTER_API_KEY = [System.Net.NetworkCredential]::new("", $openRouterSecret).Password
-Remove-Variable openRouterSecret
+uv sync --frozen --extra speech
+if (-not (Test-Path .env)) { Copy-Item .env.example .env }
+notepad .env
+```
+
+Put these settings in the local `.env` file, replacing the placeholder privately:
+
+```dotenv
+ASSISTANT_NLU=openrouter
+OPENROUTER_API_KEY=YOUR_PRIVATE_OPENROUTER_KEY
+OPENROUTER_MODEL=openai/gpt-4.1
+OPENROUTER_FALLBACK_MODEL=anthropic/claude-sonnet-4.6
+```
+
+For Claude first, swap the two model IDs. An empty fallback disables model failover.
+`OPENROUTER_API_KEY` is the external model credential. The separate `API_KEY` setting
+is optional local API protection; leave it empty for this local demo unless you use an
+authenticated gateway. The repository ignores `.env`; never put the real key in `.env.example`, the web UI,
+a screenshot, a public commit or chat. Startup now loads `.env` automatically.
+Existing PowerShell environment variables take precedence. If an older terminal has
+`ASSISTANT_NLU=baseline`, set it to `openrouter` or open a new terminal before starting.
+
+```powershell
 uv run --frozen --extra speech python scripts/check_openrouter.py
 uv run --frozen --extra speech python scripts/start_service.py
 ```
 
-The key is entered privately on your machine. It is not part of the command history,
-browser code or repository. These variables apply to this terminal session.
-`.env.example` documents them; the start script does not automatically load `.env`.
-
-`openai/gpt-4.1` is an example model ID whose OpenRouter model page lists structured
-output support. You can replace it with your preferred compatible author/model ID.
-This is a compatibility starting point, not a measured recommendation for Darija.
-The key itself does not choose a model. Current availability and billing depend on
-your OpenRouter account and the selected model/provider.
-
-The explicit check script makes **one API request** using a non-personal example.
-Expected output:
+The check makes **one API request** for a non-personal Panadol example. Expected:
 
 ```text
-OpenRouter connection and structured-output parsing: OK
-Model: openai/gpt-4.1
-Interpreted intent: pharmacy_info_location
+OpenRouter main-model connection and grounded reply: OK
+Model used: <the actual model returned by OpenRouter>
+<the generated answer, normally asking for the city>
 ```
 
-A failed check means authentication, credit, model/provider support, network access or
-interpretation needs review. It does not report connection success without a response.
-The script suppresses raw provider error bodies and never prints the key.
+The script reports safe authentication/credit/rate-limit errors without exposing the
+key or raw provider error bodies. A successful configuration marker alone is not a
+live connection check. No user key was supplied during implementation, so running
+this check with your account is still necessary.
 
-Open http://localhost:8000 and refresh. Keep **Scénario du jury off** to use online
-interpretation with saved directory facts. Voice still uses local transcription;
-review the recognized text and click Send before it is interpreted by OpenRouter.
+Open **http://localhost:8000** and Ctrl+F5. Keep **Scénario du jury off** for real-data
+conversation. Try: `Bonjour , ou je peux trouver panadol?`, then `À Rabat`.
+The current and recent user questions select fresh directory results; past assistant
+messages are not trusted as factual evidence. A new chat clears the page-local history.
 
-## Behavior and boundaries
+## What changed
 
-- `ASSISTANT_NLU=baseline` (default) makes no OpenRouter calls.
-- `ASSISTANT_NLU=openrouter` requires both key and model ID. Missing configuration returns
-  a service error; it is not represented as a successful connection.
-- Consumer mode is independent of the research `NLU_TRACK` setting.
-- The model returns a small JSON plan, not answer prose or factual pharmacy records.
-- Every accepted mention must select the exact original text at its claimed offsets.
-  An invalid/overlapping span, omitted locally recognized city or schema violation causes
-  fallback. Locally detected medication negation is preserved.
-- Request parameters: temperature 0, max 1,200 completion tokens, 12-second network timeout,
-  a bounded response body and one application-level request without paid automatic retries.
-- Invalid, unsupported, truncated, unavailable, rate-limited or unauthorized responses fall
-  back to the local pipeline. A valid schema alone does not prove correct interpretation.
-- Known clinical phrases bypass the model. Newly detected medical requests get the fixed
-  refusal, without a model-generated diagnosis or recommendation.
-- The three fictional jury questions retain their explicit, finite matching and labels;
-  enabling a paid model does not turn them into real stock or duty observations.
-- Confirmed text is sent to OpenRouter when online mode is enabled. Audio files, directory
-  records and separate location fields are not sent by this adapter. The UI privacy dialog
-  discloses the optional online text service.
-- The normal jury preflight uses your selected consumer mode. Run it with baseline mode
-  for offline checks; running it in OpenRouter mode can make multiple paid requests.
-  Pytest forces offline defaults and uses mocked providers in its integration checks.
+- OpenRouter writes the final answer from retrieved records; it no longer only labels
+  an intent while a template supplies every reply.
+- Medicine availability and duty questions can retrieve pharmacy names/phones for the
+  specified city or pharmacy. Missing location prompts for a city rather than guessing.
+- The French unaccented `ou` in `ou je peux trouver Panadol` no longer marks a single
+  medication as an unresolved alternative. `Doliprane ou Spasfon` still does.
+- Missing credentials or provider failure leave a useful saved-directory fallback,
+  with explicit internal fallback metadata and a simple consumer status message.
+- The key and mode persist in `.env` across terminal restarts; shell settings still win.
+- The answer request supplies an OpenAI/Claude model fallback list to OpenRouter.
+- Up to ten recent turns (maximum 4,000 characters each) stay in page memory and are
+  submitted with the next question. They are not persisted as server conversation history.
+- Voice still transcribes locally, requires review/Send, then uses the same main model.
 
-`GET /version` shows `consumer_nlu=openrouter` when configured; that marker is a setting,
-not proof that the remote service answered. Use the explicit check above to test it.
-To return to the offline parser, stop the server, set `$env:ASSISTANT_NLU="baseline"`
-and restart it.
+## Data and model boundaries
 
-## References
+The model receives confirmed text, bounded conversation history and a projection of
+relevant pharmacy records: names, city, recorded phones/hours and source URLs. For a
+shared position it receives computed straight-line distances, not the raw user GPS
+coordinates or original audio. The privacy dialog explains online conversation/data use.
 
-- [OpenRouter HTTP quickstart](https://openrouter.ai/docs/quickstart)
-- [Structured outputs and model compatibility](https://openrouter.ai/docs/guides/features/structured-outputs)
-- [GPT-4.1 model and structured-output support](https://openrouter.ai/openai/gpt-4.1)
+Live stock, verified Moroccan prices and current dated guard schedules are still absent.
+The model is instructed to state this and use real saved contacts, not make positive
+availability claims. Source IDs, cited names, numeric values and common unsupported
+live/clinical statements are checked before showing a generated answer. Rejected output
+falls back to saved-directory text. These checks reduce errors; they do not prove every
+possible natural-language statement correct. Rehearse the selected model with your key.
 
-No real user key was supplied during implementation, so live authentication, billing,
-model availability and Darija accuracy remain unverified. The tests use mocked responses;
-they are adapter/grounding checks, not a model performance benchmark.
+Normal chat uses at most one interpretation call (12-second network timeout, 1,200-token
+completion cap) and one answer call (30-second timeout, 1,600-token cap), without an
+application retry loop. OpenRouter's model failover is provider-side. No specific bill,
+quality or uptime is promised. Pytest forces offline defaults and mocks all paid requests.
+
+The three fictional jury scenarios remain explicitly separate, finite and labeled.
+Research `/v1/analyze/*` endpoints retain their configurable `NLU_TRACK` setting.
+`/version` exposes configuration/model names and key-present status, never the key;
+`answer_source` in API replies distinguishes model output from local fallback.
+
+## Official references
+
+- https://openrouter.ai/docs/quickstart
+- https://openrouter.ai/docs/guides/features/structured-outputs
+- https://openrouter.ai/openai/gpt-4.1
+- https://openrouter.ai/anthropic/claude-sonnet-4.6

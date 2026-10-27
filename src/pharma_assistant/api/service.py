@@ -4,7 +4,7 @@ import os
 import tempfile
 import threading
 from pathlib import Path
-from typing import Annotated
+from typing import Annotated, Literal
 
 from fastapi import APIRouter, File, Form, HTTPException, Query, Request, UploadFile
 from pydantic import BaseModel, ConfigDict, Field
@@ -27,6 +27,14 @@ class Location(BaseModel):
     longitude: float = Field(ge=-180, le=180, allow_inf_nan=False)
 
 
+class ChatTurn(BaseModel):
+    """Bounded page-local conversational context; never a factual data source."""
+
+    model_config = ConfigDict(extra="forbid")
+    role: Literal["user", "assistant"]
+    text: str = Field(min_length=1, max_length=4000)
+
+
 class TextRequest(BaseModel):
     """Bounded text and optional language/location hints."""
 
@@ -34,6 +42,7 @@ class TextRequest(BaseModel):
     text: str = Field(min_length=1, max_length=10000)
     language_hint: Language | None = None
     user_location: Location | None = None
+    history: list[ChatTurn] = Field(default_factory=list, max_length=10)
 
 
 def pipeline(request: Request):
@@ -81,7 +90,7 @@ def pipeline(request: Request):
 
 def grounded_pipeline(request: Request) -> TextPipeline | OpenRouterPipeline:
     """Separate research tracks from opt-in, source-validated consumer planning."""
-    mode = os.getenv("ASSISTANT_NLU", "baseline")
+    mode = os.getenv("ASSISTANT_NLU", "openrouter")
     if mode not in {"baseline", "openrouter"}:
         raise HTTPException(503, "Unknown assistant language setting")
     current = getattr(request.app.state, "pipeline", None)
@@ -96,12 +105,24 @@ def grounded_pipeline(request: Request) -> TextPipeline | OpenRouterPipeline:
                         if isinstance(current, TextPipeline)
                         else TextPipeline.from_config()
                     )
+                    key = os.getenv("OPENROUTER_API_KEY", "").strip()
+                    if mode == "openrouter" and not key:
+                        request.app.state.chat_setup_error = "openrouter_key_missing"
+                        request.app.state.consumer_pipeline = baseline
+                        return baseline
                     request.app.state.consumer_pipeline = (
                         OpenRouterPipeline(
                             baseline,
                             OpenRouterProvider(
-                                os.getenv("OPENROUTER_API_KEY", ""),
-                                os.getenv("OPENROUTER_MODEL", ""),
+                                key,
+                                (
+                                    os.getenv("OPENROUTER_MODEL", "").strip()
+                                    or "openai/gpt-4.1"
+                                ),
+                                os.getenv(
+                                    "OPENROUTER_FALLBACK_MODEL",
+                                    "anthropic/claude-sonnet-4.6",
+                                ),
                             ),
                         )
                         if mode == "openrouter"
@@ -120,8 +141,15 @@ def version() -> dict:
     return {
         "version": "0.2.0",
         "pipeline": "rule_baseline_v1",
-        "consumer_policy": "grounded_v2",
-        "consumer_nlu": os.getenv("ASSISTANT_NLU", "baseline"),
+        "consumer_policy": "retrieval_chat_v3",
+        "consumer_nlu": os.getenv("ASSISTANT_NLU", "openrouter"),
+        "primary_model": (
+            os.getenv("OPENROUTER_MODEL", "").strip() or "openai/gpt-4.1"
+        ),
+        "fallback_model": os.getenv(
+            "OPENROUTER_FALLBACK_MODEL", "anthropic/claude-sonnet-4.6"
+        ),
+        "openrouter_configured": bool(os.getenv("OPENROUTER_API_KEY", "").strip()),
         "voice_flow": "confirm_transcript",
         "jury_matching": "exact_questions_v2",
         "medical_advice": False,
@@ -301,16 +329,24 @@ def voice_status() -> dict:
 @router.post("/v1/assistant/text")
 def assistant_text(body: TextRequest, request: Request) -> dict:
     """Present a bounded, readable answer while keeping the analysis API stable."""
-    from pharma_assistant.api.answers import present_answer
-
     if not body.text.strip():
         raise HTTPException(422, "Text must be nonblank")
-    analysis = grounded_pipeline(request).analyze(
-        body.text, language_hint=body.language_hint
-    )
+    engine = grounded_pipeline(request)
+    analysis = engine.analyze(body.text, language_hint=body.language_hint)
     payload = analysis.model_dump(mode="json", by_alias=True)
     payload["request_id"] = request.state.request_id
-    return present_answer(AnalysisResponse.model_validate(payload), body.user_location)
+    from pharma_assistant.api.data_chat import answer_from_data
+
+    result = answer_from_data(
+        engine,
+        AnalysisResponse.model_validate(payload),
+        body.text,
+        body.user_location,
+        [turn.model_dump() for turn in body.history],
+    )
+    if getattr(request.app.state, "chat_setup_error", None):
+        result["fallback_reason"] = request.app.state.chat_setup_error
+    return result
 
 
 @router.post("/v1/assistant/voice")
@@ -322,8 +358,6 @@ async def assistant_voice(
     """Use the same answer presenter for voice, with visible transcript evidence."""
     from starlette.concurrency import run_in_threadpool
 
-    from pharma_assistant.api.answers import present_answer
-
     evidence = await transcribe_upload(request, file, language_hint)
     analysis = await run_in_threadpool(
         grounded_pipeline(request).analyze, evidence.text, language_hint=language_hint
@@ -331,7 +365,13 @@ async def assistant_voice(
     payload = analysis.model_dump(mode="json", by_alias=True)
     payload["input"].update(modality="voice", raw_text="", transcript=evidence.text)
     payload["request_id"] = request.state.request_id
-    return present_answer(AnalysisResponse.model_validate(payload))
+    from pharma_assistant.api.data_chat import answer_from_data
+
+    return answer_from_data(
+        grounded_pipeline(request),
+        AnalysisResponse.model_validate(payload),
+        evidence.text,
+    )
 
 
 @router.post("/v1/demo/assistant/text")

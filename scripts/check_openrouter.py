@@ -1,30 +1,57 @@
-"""Explicit single-request OpenRouter smoke check; requires the user's local key."""
+"""One explicit request to check the configured data-grounded main model."""
 
 import os
+from pathlib import Path
+from urllib.error import HTTPError
 
-from pharma_assistant.nlp.openrouter import OpenRouterProvider
+from dotenv import load_dotenv
+
+from pharma_assistant.api.data_chat import validate_reply
+from pharma_assistant.nlp.openrouter import OpenRouterProvider, compose_reply
 
 
 def main() -> None:
-    """Make one paid-provider request without displaying credentials or HTTP bodies."""
+    """Use a public sample question; never display credentials or error bodies."""
+    load_dotenv(Path(__file__).resolve().parents[1] / ".env", override=False)
     try:
         provider = OpenRouterProvider(
-            os.getenv("OPENROUTER_API_KEY", ""), os.getenv("OPENROUTER_MODEL", "")
+            os.getenv("OPENROUTER_API_KEY", ""),
+            (os.getenv("OPENROUTER_MODEL", "").strip() or "openai/gpt-4.1"),
+            os.getenv("OPENROUTER_FALLBACK_MODEL", "anthropic/claude-sonnet-4.6"),
         )
     except ValueError:
-        raise SystemExit("Set OPENROUTER_API_KEY and OPENROUTER_MODEL first.") from None
+        raise SystemExit("Add OPENROUTER_API_KEY to .env first.") from None
+    text = "Bonjour, où je peux trouver Panadol ?"
+    context = {
+        "pharmacies": [],
+        "live_stock": "unverified",
+        "current_duty": "unverified",
+    }
     try:
-        result = provider.plan("3tini list dyal a9rab les pharmacy lya")
+        reply, model = compose_reply(provider, text, context, [], "fr")
+        validate_reply(reply, context, text)
+    except HTTPError as error:
+        explanations = {
+            401: "Key rejected: check OPENROUTER_API_KEY.",
+            402: "OpenRouter credits are required for this request.",
+            403: "This key or account is not permitted to use this model.",
+            404: "No compatible model/provider endpoint was found.",
+            429: "OpenRouter rate limit reached; retry later.",
+        }
+        raise SystemExit(
+            explanations.get(
+                error.code,
+                f"OpenRouter HTTP {error.code}: retry or check the model/provider.",
+            )
+        ) from None
     except (ValueError, OSError):
         raise SystemExit(
-            "OpenRouter check failed. Check your model's structured-output support, "
-            "key, account credit, provider availability and network connection."
+            "OpenRouter check failed. Check the key, account credit, model's JSON "
+            "support, provider availability and network. No secret is displayed."
         ) from None
-    print("OpenRouter connection and structured-output parsing: OK")
-    print(f"Model: {provider.model}")
-    print(f"Interpreted intent: {result.intent}")
-    if result.intent != "pharmacy_info_location":
-        raise SystemExit("Connection worked, but the sample intent needs review.")
+    print("OpenRouter main-model connection and grounded reply: OK")
+    print(f"Model used: {model}")
+    print(reply.answer)
 
 
 if __name__ == "__main__":

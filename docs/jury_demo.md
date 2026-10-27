@@ -65,8 +65,9 @@ automatically after 55 seconds, and audio files can also be attached. No human-a
 or cross-browser microphone success is claimed; rehearse these exact spoken prompts on
 the presentation laptop before relying on voice.
 
-Each preset is a complete independent request. Chat history is visible, but follow-up
-messages such as “and tomorrow?” do not carry prior context. Use the complete questions.
+Each preset is a complete independent request. Main OpenRouter chat also receives up
+to ten bounded recent turns for follow-ups and retrieves fresh directory contacts.
+The fictional jury mode still requires its complete rehearsed questions.
 
 ## Ten questions and expected replies
 

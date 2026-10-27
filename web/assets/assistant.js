@@ -2,13 +2,13 @@
 const $ = id => document.getElementById(id);
 const STRINGS = {
   fr: {
-    transcribing: 'Je transcris votre message…', reviewTranscript: 'Vérifiez le texte reconnu ci-dessous, corrigez-le si besoin, puis appuyez sur Envoyer.', scenarioMode: 'Scénario du jury', scenarioBanner: 'DÉMONSTRATION — Pharmacies, adresses, distances, stocks et gardes fictifs. Point de départ simulé : Al Irfane. Aucun résultat ne confirme une disponibilité réelle.', examples: 'Exemples à essayer', demoIntro: 'Choisissez une question, puis envoyez-la ou prononcez-la au micro. Chaque exemple est une demande complète.', autoSpeak: 'Lecture vocale', listen: 'Écouter la réponse', stopSpeaking: 'Arrêter la lecture', speechOff: 'La lecture vocale est indisponible dans ce navigateur.', cancelRecording: 'Annuler l’enregistrement', retryVoice: 'Réessayer le micro',
+    limitedService: 'Le service de conversation est momentanément indisponible. Voici les informations du répertoire enregistré.', transcribing: 'Je transcris votre message…', reviewTranscript: 'Vérifiez le texte reconnu ci-dessous, corrigez-le si besoin, puis appuyez sur Envoyer.', scenarioMode: 'Scénario du jury', scenarioBanner: 'DÉMONSTRATION — Pharmacies, adresses, distances, stocks et gardes fictifs. Point de départ simulé : Al Irfane. Aucun résultat ne confirme une disponibilité réelle.', examples: 'Exemples à essayer', demoIntro: 'Choisissez une question, puis envoyez-la ou prononcez-la au micro. Chaque exemple est une demande complète.', autoSpeak: 'Lecture vocale', listen: 'Écouter la réponse', stopSpeaking: 'Arrêter la lecture', speechOff: 'La lecture vocale est indisponible dans ce navigateur.', cancelRecording: 'Annuler l’enregistrement', retryVoice: 'Réessayer le micro',
     headerNote: 'Un coup de main, tout simplement.', virtual: 'Votre assistant virtuel', language: 'Langue', newChat: 'Nouvelle conversation', findPharmacy: 'Trouver une pharmacie', privacy: 'Confidentialité',
     welcomeEyebrow: 'BIENVENUE DANS VOTRE ESPACE', welcomeTitle: 'Bonjour, je suis Pharma-AI.', welcomeText: 'Je vous aide à préparer votre demande de médicament et à trouver une pharmacie. Comment puis-je vous aider aujourd’hui ?',
     medicationSuggestion: 'Une demande de médicament', pharmacySuggestion: 'Une pharmacie près de moi', priceSuggestion: 'Une question sur un prix', disclaimer: 'Pour vos demandes en pharmacie. Sans conseil médical ni confirmation de stock.',
     companionBadge: 'À vos côtés', virtualTag: 'VIRTUEL', companionSubtitle: 'Votre espace pharmacie,\nen toute simplicité.', nearYou: 'Autour de vous, en quelques clics', footer: 'Français, العربية, الدارجة — parlons comme vous.',
     mapEyebrow: 'À PROXIMITÉ', mapTitle: 'Votre prochaine pharmacie', city: 'Ville', distance: 'À moins de', search: 'Rechercher', aroundMe: 'Autour de moi', mapDisclaimer: 'Distances à vol d’oiseau. Certaines pharmacies peuvent ne pas apparaître. Appelez pour confirmer les horaires.',
-    privacyText: 'Votre conversation reste dans cette page et n’est pas enregistrée dans l’historique de l’assistant. Les enregistrements vocaux sont supprimés après traitement. Votre position n’est utilisée que si vous choisissez de la partager. La carte utilise un service cartographique externe. Si l’assistance linguistique en ligne est activée, votre texte est envoyé au service de langage configuré. La lecture vocale dépend des voix de votre appareil, qui peuvent utiliser un service externe. Évitez de partager des informations médicales personnelles.',
+    privacyText: 'Votre conversation reste dans cette page et n’est pas enregistrée dans l’historique de l’assistant. Les enregistrements vocaux sont supprimés après traitement. Votre position n’est utilisée que si vous choisissez de la partager. La carte utilise un service cartographique externe. Si l’assistance linguistique en ligne est activée, votre conversation et les informations utiles du répertoire sont envoyées au service de langage configuré. La lecture vocale dépend des voix de votre appareil, qui peuvent utiliser un service externe. Évitez de partager des informations médicales personnelles.',
     placeholder: 'Écrivez votre message…', send: 'Envoyer le message', record: 'Enregistrer un message vocal', stop: 'Arrêter et envoyer', attach: 'Joindre un message vocal', you: 'Vous', modify: 'Corriger ce message', empty: 'Écrivez votre message avant de l’envoyer.',
     waiting: 'Je prépare votre réponse…', voiceOff: 'Les messages vocaux sont indisponibles pour le moment. Vous pouvez m’écrire.', noMic: 'Le microphone n’est pas disponible dans ce navigateur. Vous pouvez m’écrire.', denied: 'Autorisez le microphone dans les paramètres du site pour enregistrer un message.', recording: 'Je vous écoute… Arrêtez l’enregistrement pour envoyer.', audioMessage: 'Message vocal', audioEmpty: 'Je n’ai pas reçu de son. Essayez un nouvel enregistrement.', audioLarge: 'Ce message vocal est trop long ou trop volumineux. Essayez un enregistrement plus court.',
     error: 'Je n’ai pas pu répondre pour le moment. Réessayez dans un instant.', network: 'La connexion a été interrompue. Réessayez dans un instant.', reserved: 'Cet espace est réservé. Contactez la personne qui vous a donné accès à cet assistant.', tooMany: 'Un petit instant… Vous pourrez réessayer dans une minute.', audioInvalid: 'Je n’arrive pas à lire cet enregistrement. Essayez un autre fichier ou enregistrez un nouveau message.', unclear: 'Je n’ai pas bien compris. Pouvez-vous reformuler ou réenregistrer votre demande ?',
@@ -16,11 +16,11 @@ const STRINGS = {
     medicationPrompt: 'Est-ce que Doliprane est disponible ?', pricePrompt: 'Quel est le prix de Doliprane ?'
   },
   ar: {
-    transcribing: 'أحوّل رسالتك إلى نص…', reviewTranscript: 'راجع النص أدناه وصححه عند الحاجة، ثم اضغط إرسال.', scenarioMode: 'سيناريو العرض', scenarioBanner: 'عرض توضيحي — الصيدليات والعناوين والمسافات والمخزون والحراسة افتراضية. نقطة الانطلاق محاكاة. النتائج لا تؤكد توفراً حقيقياً.', examples: 'أمثلة للتجربة', demoIntro: 'اختر سؤالاً ثم أرسله أو اقرأه بالميكروفون. كل مثال طلب كامل.', autoSpeak: 'قراءة صوتية', listen: 'استمع للإجابة', stopSpeaking: 'أوقف القراءة', speechOff: 'القراءة الصوتية غير متاحة في هذا المتصفح.', cancelRecording: 'إلغاء التسجيل', retryVoice: 'أعد تجربة الميكروفون',
+    limitedService: 'خدمة المحادثة غير متاحة حالياً. هذه معلومات من الدليل المحفوظ.', transcribing: 'أحوّل رسالتك إلى نص…', reviewTranscript: 'راجع النص أدناه وصححه عند الحاجة، ثم اضغط إرسال.', scenarioMode: 'سيناريو العرض', scenarioBanner: 'عرض توضيحي — الصيدليات والعناوين والمسافات والمخزون والحراسة افتراضية. نقطة الانطلاق محاكاة. النتائج لا تؤكد توفراً حقيقياً.', examples: 'أمثلة للتجربة', demoIntro: 'اختر سؤالاً ثم أرسله أو اقرأه بالميكروفون. كل مثال طلب كامل.', autoSpeak: 'قراءة صوتية', listen: 'استمع للإجابة', stopSpeaking: 'أوقف القراءة', speechOff: 'القراءة الصوتية غير متاحة في هذا المتصفح.', cancelRecording: 'إلغاء التسجيل', retryVoice: 'أعد تجربة الميكروفون',
     headerNote: 'مساعدتك بكل بساطة.', virtual: 'مساعدك الافتراضي', language: 'اللغة', newChat: 'محادثة جديدة', findPharmacy: 'ابحث عن صيدلية', privacy: 'الخصوصية',
     welcomeEyebrow: 'مرحباً بك في مساحتك', welcomeTitle: 'مرحباً، أنا Pharma-AI.', welcomeText: 'أساعدك في صياغة طلب دواء والعثور على معلومات الصيدليات. كيف أستطيع مساعدتك اليوم؟', medicationSuggestion: 'طلب دواء', pharmacySuggestion: 'صيدلية بالقرب مني', priceSuggestion: 'سؤال عن السعر', disclaimer: 'لمساعدتك في طلبات الصيدلية. دون نصائح طبية أو تأكيد للمخزون.',
     companionBadge: 'بجانبك', virtualTag: 'افتراضي', companionSubtitle: 'طلبات الصيدلية،\nبكل بساطة.', nearYou: 'بالقرب منك، بخطوات بسيطة', footer: 'العربية، الدارجة، Français — نتحدث بلغتك.', mapEyebrow: 'بالقرب منك', mapTitle: 'اعثر على صيدلية', city: 'المدينة', distance: 'ضمن مسافة', search: 'ابحث', aroundMe: 'بالقرب مني', mapDisclaimer: 'المسافات بخط مستقيم. قد لا تظهر بعض الصيدليات. اتصل للتأكد من المواعيد.',
-    privacyText: 'تبقى محادثتك في هذه الصفحة ولا تُحفظ في سجل المساعد. تُحذف التسجيلات بعد معالجتها. لا يُستخدم موقعك إلا إذا اخترت مشاركته. تستخدم الخريطة خدمة خارجية. عند تفعيل خدمة فهم اللغة عبر الإنترنت، يُرسل النص إلى الخدمة المخصصة. تعتمد القراءة الصوتية على أصوات جهازك وقد تستخدم خدمة خارجية. تجنب مشاركة معلومات طبية شخصية.',
+    privacyText: 'تبقى محادثتك في هذه الصفحة ولا تُحفظ في سجل المساعد. تُحذف التسجيلات بعد معالجتها. لا يُستخدم موقعك إلا إذا اخترت مشاركته. تستخدم الخريطة خدمة خارجية. عند تفعيل خدمة فهم اللغة عبر الإنترنت، تُرسل المحادثة ومعلومات الدليل المفيدة إلى الخدمة المخصصة. تعتمد القراءة الصوتية على أصوات جهازك وقد تستخدم خدمة خارجية. تجنب مشاركة معلومات طبية شخصية.',
     placeholder: 'اكتب رسالتك…', send: 'أرسل الرسالة', record: 'سجل رسالة صوتية', stop: 'أوقف وأرسل', attach: 'أرفق رسالة صوتية', you: 'أنت', modify: 'صحح الرسالة', empty: 'اكتب رسالتك أولاً.', waiting: 'أجهز إجابتك…', voiceOff: 'الصوت غير متاح حالياً. يمكنك الكتابة لي.', noMic: 'الميكروفون غير متاح في هذا المتصفح. يمكنك الكتابة.', denied: 'اسمح للمتصفح باستخدام الميكروفون لتسجيل رسالتك.', recording: 'أستمع إليك… أوقف التسجيل لإرساله.', audioMessage: 'رسالة صوتية', audioEmpty: 'لم أستقبل صوتاً. جرب تسجيلاً جديداً.', audioLarge: 'التسجيل طويل أو حجمه كبير. جرب رسالة أقصر.',
     error: 'لم أتمكن من الإجابة الآن. حاول بعد قليل.', network: 'انقطع الاتصال. حاول بعد قليل.', reserved: 'هذه المساحة مخصصة للمصرح لهم. تواصل مع الشخص الذي منحك الوصول.', tooMany: 'انتظر قليلاً، ثم حاول بعد دقيقة.', audioInvalid: 'تعذر تشغيل هذا التسجيل. أرسل ملفاً آخر أو سجل رسالة جديدة.', unclear: 'لم أفهم جيداً. هل يمكنك إعادة الصياغة أو التسجيل؟', locating: 'أبحث عن موقعك…', locationOff: 'تعذر تحديد موقعك. يمكنك اختيار مدينة بدلاً من ذلك.', myPosition: 'موقعي', searching: 'أبحث عن الصيدليات القريبة…', noPharmacies: 'لم أجد صيدليات هنا. جرب مسافة أكبر.', found: '{count} صيدلية ضمن {radius} كم.', mapOff: 'تعذر عرض الخريطة. يمكنك الاطلاع على القائمة.', unnamed: 'صيدلية', phoneUnknown: 'الهاتف غير مسجل', hoursUnknown: 'المواعيد غير مسجلة', call: 'اتصل', place: 'اعرض الموقع', close: 'أغلق', medicationPrompt: 'هل دوليبران متوفر؟', pricePrompt: 'ما سعر دوليبران؟'
   },
@@ -38,6 +38,7 @@ function t(key, values = {}) {
   for (const [name, value] of Object.entries(values)) text = text.replaceAll(`{${name}}`, String(value));
   return text;
 }
+let chatHistory = [];
 let demoMode = false;
 let autoSpeak = false;
 let speakingButton = null, activeUtterance = null;
@@ -138,6 +139,7 @@ async function sendRequest(body, isAudio, displayText) {
     if (demoMode && data.synthetic !== true) throw new Error(t('error'));
     if (typeof data.answer !== 'string' || !data.answer.trim()) throw new Error(t('error'));
     pending.remove(); const reply = bubble(data.answer, 'assistant');
+    if (!demoMode) { chatHistory.push({ role: 'user', text: displayText.slice(0,4000) }, { role: 'assistant', text: data.answer.slice(0,4000) }); chatHistory = chatHistory.slice(-10); }
     addPlayback(reply, data.answer, data.language || $('language').value);
     if (Array.isArray(data.actions)) {
       const controls = document.createElement('div'); controls.className = 'reply-actions';
@@ -155,7 +157,7 @@ async function sendRequest(body, isAudio, displayText) {
       if (controls.childElementCount) reply.article.append(controls);
     }
     scrollChat();
-    $('status').textContent = '';
+    $('status').textContent = data.fallback_reason ? t('limitedService') : '';
   } catch (error) {
     if (id !== requestNumber) return;
     pending.remove(); bubble(error instanceof TypeError || error.name === 'AbortError' ? t('network') : error.message, 'assistant'); $('status').textContent = '';
@@ -168,7 +170,7 @@ function submitText() {
   const text = $('message').value.trim(); if (!text) { $('status').textContent = t('empty'); return; }
   if (busy || recording) return;
   $('message').value = ''; resizeComposer();
-  const body = { text, language_hint: $('language').value || null };
+  const body = { text, language_hint: $('language').value || null, history: demoMode ? [] : chatHistory };
   if (sharedLocation && !demoMode) body.user_location = { latitude: sharedLocation.lat, longitude: sharedLocation.lon };
   sendRequest(body, false, text);
 }
@@ -219,7 +221,7 @@ async function checkVoice() {
 function newConversation() {
   stopSpeaking(); requestNumber++; activeRequest?.abort(); activeRequest = null;
   if (recording) { const session = recording; session.cancelled = true; if (session.recorder.state === 'recording') session.recorder.stop(); releaseRecording(session); }
-  busy = false; sharedLocation = null;
+  busy = false; sharedLocation = null; chatHistory = [];
   for (const node of $('conversation').querySelectorAll('.message')) node.remove();
   $('welcome').hidden = false; $('message').value = ''; resizeComposer(); $('main-menu').hidden = true; $('menu-button').setAttribute('aria-expanded', 'false');
   $('status').textContent = voiceReady ? '' : t('voiceOff'); updateControls(); $('message').focus();

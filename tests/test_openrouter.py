@@ -10,6 +10,7 @@ from pharma_assistant.api.answers import present_answer
 from pharma_assistant.api.app import create_app
 from pharma_assistant.nlp.openrouter import (
     ENDPOINT,
+    GroundedReply,
     OpenRouterPipeline,
     OpenRouterProvider,
     QueryPlan,
@@ -221,6 +222,19 @@ def test_openrouter_is_used_by_consumer_route_only_when_explicitly_enabled(
         return plan(value, medications=["Panadol"], pharmacies=["al Irfane"])
 
     monkeypatch.setattr(OpenRouterProvider, "plan", fake_plan)
+    monkeypatch.setattr(
+        "pharma_assistant.api.data_chat.compose_reply",
+        lambda *args, **kwargs: (
+            GroundedReply(
+                answer="Panadol : stock non confirmé.",
+                source_ids=[],
+                stock_status="unverified",
+                duty_status="unverified",
+                medical_refusal=False,
+            ),
+            "author/model",
+        ),
+    )
     app = create_app()
     app.state.pipeline = pipeline
     with TestClient(app) as client:
@@ -242,9 +256,10 @@ def test_missing_openrouter_settings_are_not_silently_reported_as_connected(
     app = create_app()
     app.state.pipeline = pipeline
     with TestClient(app) as client:
-        assert (
-            client.post("/v1/assistant/text", json={"text": "salam"}).status_code == 503
-        )
+        response = client.post("/v1/assistant/text", json={"text": "salam"})
+        assert response.status_code == 200
+        assert response.json()["model"] is None
+        assert response.json()["fallback_reason"] == "openrouter_key_missing"
 
 
 @pytest.mark.parametrize("status", [401, 402, 429, 503])

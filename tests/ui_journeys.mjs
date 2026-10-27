@@ -58,6 +58,7 @@ try {
   assert.equal(window.document.querySelector('.message.assistant .message-text').textContent, nextAnswer);
   assert.ok(!window.document.body.textContent.includes('MUST NEVER APPEAR'));
   assert.equal(JSON.parse(calls.find(c => c.url === '/v1/assistant/text').options.body).text, 'Wach kayn Doliprane ?');
+  // Subsequent requests carry only bounded page-local history.
   // User-initiated playback and automatic playback are separate controls.
   assert.equal(spoken.length, 0);
   window.document.querySelector('.playback-button').click();
@@ -68,6 +69,10 @@ try {
   assert.ok(speechCancelled > 0);
   $('auto-speak').click(); assert.equal($('auto-speak').getAttribute('aria-pressed'), 'true');
   submit('salam'); await settle(); assert.equal(spoken.length, 2);
+  const conversationalBody = JSON.parse(calls.filter(c => c.url === '/v1/assistant/text').at(-1).options.body);
+  assert.equal(conversationalBody.history.length, 2);
+  assert.equal(conversationalBody.history[0].role, 'user');
+  assert.equal(conversationalBody.history[1].text, nextAnswer);
   $('auto-speak').click();
   // Demo choices fill a normal editable request; they never inject an answer.
   const requestsBefore = calls.filter(c => c.url === '/v1/assistant/text').length;
@@ -181,5 +186,6 @@ try {
   assert.equal(window.document.querySelectorAll('.message').length, 0);
   submit('salam'); await settle();
   assert.equal(calls.at(-1).url, '/v1/assistant/text');
+  assert.deepEqual(JSON.parse(calls.at(-1).options.body).history, []);
   console.log('PASS: consumer text, safe rendering, private errors, Arabic, composition, reset/race, voice/correction, map/location/consent and unavailable-voice journeys');
 } finally { window.happyDOM.abort(); window.close(); }

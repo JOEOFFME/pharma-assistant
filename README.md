@@ -6,6 +6,11 @@ medical advice, dosage recommendations, diagnosis, substitutions or live stock**
 
 ## Run the demo
 
+**The main chat model is now OpenRouter**, using GPT-4.1 with Claude Sonnet 4.6
+as answer-routing fallback. [Add your key once to the local .env file](docs/openrouter_setup.md).
+The model writes answers from retrieved pharmacy records; missing credentials or a
+provider failure keep saved-directory lookup available with explicit fallback status.
+
 Python 3.11, pinned `uv==0.13.4`, and ffmpeg/ffprobe are required.
 
 ```bash
@@ -76,7 +81,7 @@ make scenarios         # 40 multilingual scenarios; failures are retained
 uv run --frozen python scripts/run_ablations.py
 ```
 
-Default `NLU_TRACK=baseline`. After `make train-nlu`, `NLU_TRACK=hybrid` uses
+For the structured research analysis API, default `NLU_TRACK=baseline`. After `make train-nlu`, `NLU_TRACK=hybrid` uses
 `models/char_wb/model.pkl` (override with `NLU_MODEL_PATH`). Load only trusted
 locally trained pickle files, never uploaded or downloaded arbitrary files.
 The hybrid keeps baseline extraction and safety routing.
@@ -104,7 +109,7 @@ scores are preserved. See [evaluation](docs/10_evaluation.md),
 
 ## Consumer chat interface
 
-The demo uses a blue two-panel conversation layout with a virtual companion,
+The demo uses a full-viewport conversation layout with a compact virtual avatar,
 a message composer, audio attachment and microphone controls. Replies appear as
 ordinary chat messages in French, Arabic or Darija. No JSON, entity labels,
 confidence scores, API-key field, setup commands or raw coordinates are exposed
@@ -112,10 +117,10 @@ in the consumer interface. The pharmacy map opens from **Trouver une pharmacie**
 using city, distance and optional **Autour de moi** controls. Conversation text is
 kept in page memory only; **Nouvelle conversation** clears it.
 
-The companion panel uses the owner-provided pharmacy-robot image, with its
+The avatar uses the owner-provided pharmacy-robot image, with its
 source markings preserved. It represents a virtual assistant. Local assets are served under `/ui/`. Plotly loads
 only when the map is opened. Responsive layouts include a compact mobile
-companion strip, reduced-motion preferences and Arabic text direction.
+header, reduced-motion preferences and Arabic text direction.
 
 `POST /v1/assistant/text` and `/v1/assistant/voice` return readable `answer`,
 `language`, `transcript`, source-backed `pharmacies`, `analysis` and `disclaimer`.
@@ -127,9 +132,11 @@ records within 10 km, sorted by straight-line distance. Without a position or
 city it asks for one. Unrecognized requests get clarification; only detected
 medical-advice requests receive the clinical refusal.
 The existing `/v1/analyze/*` machine-consumer schemas remain unchanged.
-Answers are localized templates, not unrestricted chat or medical advice. They
-never confirm live stock, invent Moroccan prices, send orders or recommend doses.
-Each request is analyzed independently; the visible transcript is not LLM memory.
+OpenRouter normally writes the natural-language reply from retrieved saved records.
+Local templates serve explicit offline and failure paths. Stock, current duty and
+Moroccan prices remain unverified. The page sends up to ten bounded recent turns as
+conversation context; location/pharmacy follow-ups retrieve fresh records. History is
+cleared on new chat/mode change and is not persisted server-side.
 
 Technical setup belongs to the operator and this README. A voice service that is
 not ready shows a simple unavailability message and leaves typing available.
@@ -269,19 +276,19 @@ the default. Both text and voice support the same isolated scenario.
 
 ### Consumer answer safeguards
 
-Consumer chat uses the grounded rule pipeline independently of `NLU_TRACK` research
-settings. Named pharmacy lookups also enforce any stated city. Fictional jury facts
+Consumer chat uses a main OpenRouter retrieval-and-answer pipeline independently of
+`NLU_TRACK` research settings; the local rule pipeline supplies safety checks and fallback. Named pharmacy lookups also enforce any stated city. Fictional jury facts
 are returned only for complete rehearsed questions; city/date/product changes do not
 inherit fixture answers. Speech fills an editable transcript first: review it and click
 Send to obtain an answer. `/v1/transcribe/voice` never generates a pharmacy answer.
 Legacy machine-consumer voice endpoints remain available for integration clients.
 
 
-### OpenRouter (optional)
+### Main OpenRouter model
 
-Set `ASSISTANT_NLU=openrouter`, `OPENROUTER_API_KEY` and `OPENROUTER_MODEL` in the server
-terminal to use structured online interpretation. [Windows setup and a one-request
-connection check](docs/openrouter_setup.md) explain private key entry and model selection.
-The model extracts source-backed intent/spans; saved data and fixed templates still
-supply factual replies. Invalid responses fall back locally. Baseline remains the
-default, and no OpenRouter credentials or setup controls appear in the consumer UI.
+OpenRouter is the default consumer conversation engine. It interprets the request,
+retrieves relevant saved records and writes a source-constrained answer. Primary and
+fallback model IDs are configurable: GPT-4.1 and Claude Sonnet 4.6 by default. Startup
+loads the ignored local `.env` automatically; see [Windows setup and the live
+connection check](docs/openrouter_setup.md). `ASSISTANT_NLU=baseline` explicitly selects
+the offline path. Technical credentials remain outside the consumer interface.
