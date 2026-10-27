@@ -166,6 +166,7 @@ class PharmacyTools:
         self.web_calls = 0
         self.web_successes = 0
         self.calls = 0
+        self.city = None
 
     def definitions(self) -> list[dict]:
         """Return discoverable, read-only MCP tool definitions."""
@@ -235,9 +236,10 @@ class PharmacyTools:
         if name == "search_pharmacies":
             from pharma_assistant.api.data_chat import retrieved_context
 
-            context, records = retrieved_context(
-                self.baseline.analyze(query), self.location
-            )
+            parsed = self.baseline.analyze(query)
+            if self.city and not any(e.type == "LOCATION" for e in parsed.entities):
+                parsed = self.baseline.analyze(f"{query} à {self.city}")
+            context, records = retrieved_context(parsed, self.location)
             self.records.extend(
                 p for p in records if p["id"] not in {r["id"] for r in self.records}
             )
@@ -496,6 +498,10 @@ def run_agent(provider, baseline, text, language, history=None, location=None) -
 
     prepared = directory_context(baseline, text, history, location)
     if prepared and prepared["wanted"]:
+        resolved = baseline.analyze(prepared["query"])
+        tools.city = next(
+            (e.text for e in resolved.entities if e.type == "LOCATION"), None
+        )
         evidence = tools.call("search_pharmacies", {"query": prepared["query"]})
         messages.insert(
             1,

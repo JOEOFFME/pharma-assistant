@@ -135,6 +135,11 @@ def validate_live_claims(answer: str, allow_general_existence: bool = False) -> 
 def answer_from_data(engine, analysis, text, location=None, history=None) -> dict:
     """OpenRouter writes the main answer; local fallback is explicit on failure."""
     fallback = present_answer(analysis, location)
+    from pharma_assistant.api.price_clarification import presentation_followup
+
+    followup = presentation_followup(text, history)
+    if followup:
+        return {**fallback, **followup}
     if (
         os.getenv("ASSISTANT_AGENT", "true").lower() == "true"
         and os.getenv("ASSISTANT_WEB_FIRST", "true").lower() != "true"
@@ -154,6 +159,8 @@ def answer_from_data(engine, analysis, text, location=None, history=None) -> dic
         from pharma_assistant.nlp.agent import failure_code, run_agent
 
         directory = directory_context(engine.baseline, text, history, location)
+        if not directory or not directory["wanted"]:
+            fallback.update(actions=[], pharmacies=[], sources=[])
         try:
             result = run_agent(
                 provider,
@@ -189,7 +196,11 @@ def answer_from_data(engine, analysis, text, location=None, history=None) -> dic
             if (
                 directory
                 and directory["wanted"]
-                and directory["result"]["pharmacies"]
+                and (
+                    directory["result"]["pharmacies"]
+                    or directory["result"].get("answer_source") == "saved_contact"
+                    or directory["result"]["answer"].startswith("Dans quelle ville")
+                )
                 and not researched
             ):
                 # Keep available records instead of asking permission to search again.

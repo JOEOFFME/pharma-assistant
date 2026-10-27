@@ -163,3 +163,107 @@ def test_shared_year_start_date_can_be_cited_without_fabricating_year():
     from pharma_assistant.nlp.pharmacy_web import dates
 
     assert date(2026, 10, 26) in dates("du 26 octobre – 2 novembre 2026")
+
+
+def test_stock_request_keeps_rabat_not_same_named_pharmacies_elsewhere(pipeline):
+    from pharma_assistant.api.chat_context import directory_context
+
+    history = [{"role": "user", "text": "Rabat"}]
+    result = directory_context(
+        pipeline,
+        "Est-ce que la pharmacie Al Irfane a du Panadol en stock maintenant ?",
+        history,
+    )
+    assert result["wanted"]
+    assert "Oujda" not in result["result"]["answer"]
+    assert "Fès" not in result["result"]["answer"]
+    assert "Rabat" in result["result"]["answer"]
+    assert "stock" in result["result"]["answer"]
+    assert all(p["city"] == "Rabat" for p in result["result"]["pharmacies"])
+
+
+def test_panadol_search_inherits_city_without_inheriting_pharmacy_name(pipeline):
+    from pharma_assistant.api.chat_context import directory_context
+
+    result = directory_context(pipeline, "Où puis-je chercher du Panadol ?", HISTORY)
+    assert result["wanted"]
+    assert result["result"]["pharmacies"]
+    assert all(p["city"] == "Rabat" for p in result["result"]["pharmacies"])
+    assert "général" not in result["result"]["answer"]
+
+
+def test_panadol_search_without_city_asks_for_it(pipeline):
+    from pharma_assistant.api.chat_context import directory_context
+
+    result = directory_context(pipeline, "Où puis-je chercher du Panadol ?")
+    assert result["wanted"]
+    assert "ville" in result["result"]["answer"]
+    assert not result["result"]["pharmacies"]
+
+
+def test_dosage_followup_explains_box_field_without_inference(pipeline):
+    from pharma_assistant.api.price_clarification import presentation_followup
+
+    question = clarify_price("prix amoxiline")["answer"]
+    result = presentation_followup("dosage", [{"role": "assistant", "text": question}])
+    assert "sur la boîte" in result["answer"]
+    assert "pas de la quantité à prendre" in result["answer"]
+    assert presentation_followup("dosage", []) is None
+    assert (
+        presentation_followup(
+            "combien dois-je prendre ?", [{"role": "assistant", "text": question}]
+        )
+        is None
+    )
+
+
+def test_price_clarification_does_not_claim_first_brand_is_requested():
+    result = clarify_price("prix amoxiline")
+    assert "DISPAMOX" not in result["sources"][0]["title"]
+
+
+def test_subsequent_directory_tool_retains_resolved_city(pipeline):
+    from pharma_assistant.nlp.agent import PharmacyTools
+
+    tools = PharmacyTools(pipeline)
+    tools.city = "Rabat"
+    result = tools.call("search_pharmacies", {"query": "pharmacie Al Irfane"})
+    assert all(p["city"] == "Rabat" for p in result["pharmacies"])
+    assert not any(p["city"] == "Oujda" for p in result["pharmacies"])
+
+
+@pytest.mark.parametrize(
+    "text",
+    [
+        "Où puis-je chercher du Panadol ?",
+        "Est-ce que la pharmacie Al Irfane a du Panadol en stock maintenant ?",
+    ],
+)
+def test_latest_finding_requests_return_local_evidence_on_outage(
+    pipeline, monkeypatch, text
+):
+    monkeypatch.setenv("ASSISTANT_AGENT", "true")
+    monkeypatch.setattr(
+        "pharma_assistant.nlp.agent.run_agent",
+        lambda *a, **k: (_ for _ in ()).throw(OSError("simulated outage")),
+    )
+    result = answer_from_data(
+        OpenRouterPipeline(pipeline, PROVIDER),
+        pipeline.analyze(text),
+        text,
+        history=[{"role": "user", "text": "Rabat"}],
+    )
+    assert "Rabat" in result["answer"]
+    assert "Oujda" not in result["answer"]
+    assert "traitement personnel" not in result["answer"]
+
+
+def test_named_stock_without_city_asks_instead_of_mixing_cities(pipeline):
+    from pharma_assistant.api.chat_context import directory_context
+
+    result = directory_context(
+        pipeline, "Est-ce que la pharmacie Al Irfane a du Panadol en stock maintenant ?"
+    )
+    assert not result["result"]["pharmacies"]
+    assert "ville" in result["result"]["answer"]
+    assert "Oujda" not in result["result"]["answer"]

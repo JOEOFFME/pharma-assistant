@@ -46,13 +46,41 @@ def clarify_price(text, language="fr"):
         "model": None,
         "pharmacies": [],
         "actions": [],
-        "source_ids": [row["id"]],
+        "source_ids": ["cnops_reference"],
         "sources": [
             {
-                "id": row["id"],
-                "title": row["name"] + " (CNOPS historique)",
+                "id": "cnops_reference",
+                "title": "Référentiel CNOPS historique — présentations à préciser",
                 "url": row["source_url"],
                 "kind": "cnops_record",
             }
         ],
+    }
+
+
+def presentation_followup(text, history=None):
+    """Explain a requested package field without choosing a personal dose."""
+    if text.casefold().strip(" .?!") not in {
+        "dosage",
+        "le dosage",
+        "c'est quoi dosage",
+        "quel dosage",
+    }:
+        return None
+    turns = history or []
+    if not turns or turns[-1]["role"] != "assistant":
+        return None
+    previous = turns[-1]["text"]
+    if not re.search(r"présentation|taille.*bo[iî]te|forme.*bo[iî]te", previous, re.I):
+        return None
+    return {
+        "answer": "Par « dosage », je parle du nombre en mg ou en g sur la boîte, "
+        "pas de la quantité à prendre. Recopiez le nom commercial, ce nombre, "
+        "la forme et la taille de la boîte pour identifier la bonne présentation.",
+        "answer_source": "presentation_clarification",
+        "pharmacies": [],
+        "sources": [],
+        "source_ids": [],
+        "actions": [],
+        "model": None,
     }

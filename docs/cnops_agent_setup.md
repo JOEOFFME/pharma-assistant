@@ -145,3 +145,10 @@ mentions Rabat. Contact extraction excludes labelled fax and adjacent business
 numbers. Duty source date intervals with a shared explicit year are understood.
 The UI distinguishes retrieved-but-unconfirmed evidence from a failed web request.
 See `docs/latest_transcript_validation.md` for exact regression checks and limits.
+
+City context is resolved independently from pharmacy names: a stock question about
+Al Irfane inherits the user's Rabat rather than matching homonyms across cities.
+Without a city, named stock questions ask for one. A medicine-finding question can
+use saved city contacts during research failure without claiming live stock.
+A one-word `dosage` reply to a package clarification explains the field on the box;
+it does not choose a dose. See `docs/conversation_city_validation.md`.
