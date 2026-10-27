@@ -6,7 +6,20 @@ from pathlib import Path
 
 def main() -> None:
     """Never fetch model weights or public source data during service startup."""
+    import logging
+
     import uvicorn
+    from dotenv import load_dotenv
+
+    load_dotenv(Path(__file__).resolve().parents[1] / ".env", override=False)
+    if (
+        os.getenv("ASSISTANT_NLU", "openrouter") == "openrouter"
+        and not os.getenv("OPENROUTER_API_KEY", "").strip()
+    ):
+        logging.getLogger(__name__).warning(
+            "OpenRouter key missing: add OPENROUTER_API_KEY to .env. "
+            "Saved-directory fallback remains available."
+        )
 
     from pharma_assistant.data_tools.clean_pharmacies import build_directory
     from pharma_assistant.data_tools.fetch_pharmacies import load_config

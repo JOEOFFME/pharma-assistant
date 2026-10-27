@@ -98,10 +98,32 @@ class EntityExtractor:
         ):
             add("LOCATION", start, end)
         generic = {
+            "lya",
+            "liya",
+            "near",
+            "nearby",
+            "me",
+            "is",
+            "in",
+            "around",
+            "dyali",
+            "9rib",
+            "9riba",
             "la",
             "le",
             "de",
             "garde",
+            "li",
+            "lli",
+            "fih",
+            "fiha",
+            "had",
+            "lila",
+            "اللي",
+            "لي",
+            "فيها",
+            "فيه",
+            "المناوبة",
             "plus",
             "proche",
             "est",
@@ -118,7 +140,7 @@ class EntityExtractor:
             "f",
         }
         for match in re.finditer(
-            r"(?:\bpharmacie\b|صيدلية)\s+([^?؟!,;:]+)", text, re.I
+            r"(?:\bpharmacie\b|\bpharmacy\b|صيدلية)\s+([^?؟!,;:]+)", text, re.I
         ):
             words = list(re.finditer(r"\S+", match[1]))
             selected = []

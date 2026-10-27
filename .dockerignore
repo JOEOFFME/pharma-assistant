@@ -12,3 +12,5 @@ __pycache__
 data/medications/*.sqlite3
 data/pharmacies/*.sqlite3
 data/audio/recordings/
+
+web/node_modules

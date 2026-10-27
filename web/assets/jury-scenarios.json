@@ -1,0 +1,38 @@
+[
+  {
+    "id": "nearby",
+    "title": "Les pharmacies les plus proches",
+    "text": "3tini list dyal a9rab les pharmacy lya",
+    "language_hint": "darija_latn",
+    "kind": "nearby",
+    "answer_contains": [
+      "350 m",
+      "800 m",
+      "1200 m"
+    ]
+  },
+  {
+    "id": "stock",
+    "title": "Panadol à Al Irfane",
+    "text": "f pharmacy al Irfane wach n9der nl9a endhom Panadol",
+    "language_hint": "darija_latn",
+    "kind": "stock",
+    "answer_contains": [
+      "Panadol",
+      "12 boîtes",
+      "350 m"
+    ]
+  },
+  {
+    "id": "duty",
+    "title": "La pharmacie de garde",
+    "text": "fin n9der nl9a une pharmachie de garde",
+    "language_hint": "darija_latn",
+    "kind": "duty",
+    "answer_contains": [
+      "Démo Nuit",
+      "1200 m",
+      "20:00–08:00"
+    ]
+  }
+]

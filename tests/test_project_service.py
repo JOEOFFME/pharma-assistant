@@ -63,7 +63,7 @@ def test_text_version_demo_and_schema(client) -> None:
     assert response.json()["disclaimer"]
     assert response.headers["x-request-id"] == response.json()["request_id"]
     assert client.get("/version").json()["version"] == "0.2.0"
-    assert "Pharma Assistant" in client.get("/").text
+    assert "Pharma-AI" in client.get("/").text
     assert "/v1/analyze/voice" in client.get("/openapi.json").json()["paths"]
 
 

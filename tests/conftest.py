@@ -39,3 +39,11 @@ def pipeline(tmp_path_factory: pytest.TempPathFactory) -> TextPipeline:
     config = copy.deepcopy(CONFIG)
     config["lexicon_seed"] = str(ROOT / config["lexicon_seed"])
     return TextPipeline(config, index, {"Rabat": "Rabat", "الرباط": "Rabat"})
+
+
+@pytest.fixture(autouse=True)
+def offline_consumer_default(monkeypatch):
+    """Tests never inherit an operator's opt-in paid consumer provider setting."""
+    monkeypatch.setenv("ASSISTANT_NLU", "baseline")
+    monkeypatch.setenv("ASSISTANT_AGENT", "false")
+    monkeypatch.setenv("ASSISTANT_WEB_FIRST", "false")

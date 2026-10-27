@@ -4,14 +4,16 @@ import os
 import tempfile
 import threading
 from pathlib import Path
-from typing import Annotated
+from typing import Annotated, Literal
 
-from fastapi import APIRouter, File, HTTPException, Query, Request, UploadFile
+from fastapi import APIRouter, File, Form, HTTPException, Query, Request, UploadFile
 from pydantic import BaseModel, ConfigDict, Field
 
 from pharma_assistant.api.schemas import DISCLAIMER, AnalysisResponse, Language
+from pharma_assistant.asr.transcriber import Transcription
 from pharma_assistant.data.pharmacies import PharmacyRepository
 from pharma_assistant.data_tools.fetch_pharmacies import load_config
+from pharma_assistant.nlp.openrouter import OpenRouterPipeline, OpenRouterProvider
 from pharma_assistant.pipeline.text_pipeline import TextPipeline
 
 router = APIRouter()
@@ -25,6 +27,14 @@ class Location(BaseModel):
     longitude: float = Field(ge=-180, le=180, allow_inf_nan=False)
 
 
+class ChatTurn(BaseModel):
+    """Bounded page-local conversational context; never a factual data source."""
+
+    model_config = ConfigDict(extra="forbid")
+    role: Literal["user", "assistant"]
+    text: str = Field(min_length=1, max_length=4000)
+
+
 class TextRequest(BaseModel):
     """Bounded text and optional language/location hints."""
 
@@ -32,6 +42,7 @@ class TextRequest(BaseModel):
     text: str = Field(min_length=1, max_length=10000)
     language_hint: Language | None = None
     user_location: Location | None = None
+    history: list[ChatTurn] = Field(default_factory=list, max_length=10)
 
 
 def pipeline(request: Request):
@@ -77,12 +88,74 @@ def pipeline(request: Request):
     return request.app.state.pipeline
 
 
+def grounded_pipeline(request: Request) -> TextPipeline | OpenRouterPipeline:
+    """Separate research tracks from opt-in, source-validated consumer planning."""
+    mode = os.getenv("ASSISTANT_NLU", "openrouter")
+    if mode not in {"baseline", "openrouter"}:
+        raise HTTPException(503, "Unknown assistant language setting")
+    current = getattr(request.app.state, "pipeline", None)
+    if mode == "baseline" and isinstance(current, TextPipeline):
+        return current
+    if getattr(request.app.state, "consumer_pipeline", None) is None:
+        with _INIT_LOCK:
+            if getattr(request.app.state, "consumer_pipeline", None) is None:
+                try:
+                    baseline = (
+                        current
+                        if isinstance(current, TextPipeline)
+                        else TextPipeline.from_config()
+                    )
+                    key = os.getenv("OPENROUTER_API_KEY", "").strip()
+                    if mode == "openrouter" and not key:
+                        request.app.state.chat_setup_error = "openrouter_key_missing"
+                        request.app.state.consumer_pipeline = baseline
+                        return baseline
+                    request.app.state.consumer_pipeline = (
+                        OpenRouterPipeline(
+                            baseline,
+                            OpenRouterProvider(
+                                key,
+                                (
+                                    os.getenv("OPENROUTER_MODEL", "").strip()
+                                    or "openai/gpt-4.1"
+                                ),
+                                os.getenv(
+                                    "OPENROUTER_FALLBACK_MODEL",
+                                    "anthropic/claude-sonnet-4.6",
+                                ),
+                            ),
+                        )
+                        if mode == "openrouter"
+                        else baseline
+                    )
+                except (FileNotFoundError, ValueError) as error:
+                    raise HTTPException(
+                        503, "Reference database unavailable"
+                    ) from error
+    return request.app.state.consumer_pipeline
+
+
 @router.get("/version")
 def version() -> dict:
     """Distinguish application version from reference/model readiness."""
     return {
         "version": "0.2.0",
         "pipeline": "rule_baseline_v1",
+        "consumer_policy": "cnops_web_first_v8",
+        "web_first": os.getenv("ASSISTANT_WEB_FIRST", "true").lower() == "true",
+        "agent_enabled": os.getenv("ASSISTANT_AGENT", "true").lower() == "true",
+        "web_search_enabled": os.getenv("ASSISTANT_WEB_SEARCH", "true").lower()
+        == "true",
+        "consumer_nlu": os.getenv("ASSISTANT_NLU", "openrouter"),
+        "primary_model": (
+            os.getenv("OPENROUTER_MODEL", "").strip() or "openai/gpt-4.1"
+        ),
+        "fallback_model": os.getenv(
+            "OPENROUTER_FALLBACK_MODEL", "anthropic/claude-sonnet-4.6"
+        ),
+        "openrouter_configured": bool(os.getenv("OPENROUTER_API_KEY", "").strip()),
+        "voice_flow": "confirm_transcript",
+        "jury_matching": "exact_questions_v2",
         "medical_advice": False,
         "disclaimer": DISCLAIMER,
     }
@@ -99,11 +172,10 @@ def analyze_text(body: TextRequest, request: Request) -> AnalysisResponse:
     return AnalysisResponse.model_validate(payload)
 
 
-@router.post("/v1/analyze/voice", response_model=AnalysisResponse)
-async def analyze_voice(
-    request: Request, file: Annotated[UploadFile, File()]
-) -> AnalysisResponse:
-    """Bound uploads and decode audio before optional local-model inference."""
+async def transcribe_upload(
+    request: Request, file: UploadFile, language_hint: Language | None = None
+) -> Transcription:
+    """Decode and transcribe an upload, without interpreting unconfirmed words."""
     from starlette.concurrency import run_in_threadpool
 
     from pharma_assistant.asr.transcriber import WhisperTranscriber
@@ -112,13 +184,19 @@ async def analyze_voice(
     data = await file.read(config["max_bytes"] + 1)
     if not data or len(data) > config["max_bytes"]:
         raise HTTPException(413, "Audio empty or too large")
-    with tempfile.NamedTemporaryFile(suffix=".audio") as handle:
-        handle.write(data)
-        handle.flush()
+    # ffprobe/ffmpeg must reopen this path. An open NamedTemporaryFile is locked
+    # against other processes on Windows, so write and close inside a directory.
+    with tempfile.TemporaryDirectory(prefix="pharma_upload_") as directory:
+        audio_path = Path(directory) / "upload.audio"
+        audio_path.write_bytes(data)
         try:
             from pharma_assistant.asr.transcriber import validate_audio
 
-            await run_in_threadpool(validate_audio, Path(handle.name), config)
+            await run_in_threadpool(validate_audio, audio_path, config)
+        except OSError as error:
+            raise HTTPException(
+                503, "Audio tools unavailable; install ffmpeg and ffprobe and restart"
+            ) from error
         except ValueError as error:
             raise HTTPException(415, str(error)) from error
         try:
@@ -127,7 +205,13 @@ async def analyze_voice(
                     WhisperTranscriber, config
                 )
             evidence = await run_in_threadpool(
-                request.app.state.transcriber.transcribe, Path(handle.name)
+                request.app.state.transcriber.transcribe,
+                audio_path,
+                **(
+                    {"language": "fr" if language_hint == "fr" else "ar"}
+                    if language_hint in {"fr", "ar", "darija_ar", "darija_latn"}
+                    else {}
+                ),
             )
         except (ImportError, RuntimeError, OSError) as error:
             raise HTTPException(
@@ -135,7 +219,35 @@ async def analyze_voice(
             ) from error
         except ValueError as error:
             raise HTTPException(422, str(error)) from error
-    result = await run_in_threadpool(pipeline(request).analyze, evidence.text)
+    if not evidence.text.strip() or len(evidence.text) > 10000:
+        raise HTTPException(422, "No usable speech transcript")
+    return evidence
+
+
+@router.post("/v1/transcribe/voice")
+async def transcribe_voice(
+    request: Request,
+    file: Annotated[UploadFile, File()],
+    language_hint: Annotated[Language | None, Form()] = None,
+) -> dict:
+    """Return unconfirmed speech evidence, never pharmacy or stock assertions."""
+    evidence = await transcribe_upload(request, file, language_hint)
+    return {"transcript": evidence.text, "requires_confirmation": True}
+
+
+@router.post("/v1/analyze/voice", response_model=AnalysisResponse)
+async def analyze_voice(
+    request: Request,
+    file: Annotated[UploadFile, File()],
+    language_hint: Annotated[Language | None, Form()] = None,
+) -> AnalysisResponse:
+    """Retain the machine-consumer voice analysis contract."""
+    from starlette.concurrency import run_in_threadpool
+
+    evidence = await transcribe_upload(request, file, language_hint)
+    result = await run_in_threadpool(
+        pipeline(request).analyze, evidence.text, language_hint=language_hint
+    )
     payload = result.model_dump(mode="json", by_alias=True)
     payload["input"].update(modality="voice", raw_text="", transcript=evidence.text)
     payload["request_id"] = request.state.request_id
@@ -205,3 +317,93 @@ def pharmacies_map(
         "live_duty_status": False,
         "disclaimer": DISCLAIMER,
     }
+
+
+@router.get("/v1/voice/status")
+def voice_status() -> dict:
+    """Check local prerequisites without downloading or loading ASR model weights."""
+    from pharma_assistant.asr.readiness import check_voice
+
+    return {
+        **check_voice(load_config(Path("configs/asr.yaml"))),
+        "disclaimer": DISCLAIMER,
+    }
+
+
+@router.post("/v1/assistant/text")
+def assistant_text(body: TextRequest, request: Request) -> dict:
+    """Present a bounded, readable answer while keeping the analysis API stable."""
+    if not body.text.strip():
+        raise HTTPException(422, "Text must be nonblank")
+    engine = grounded_pipeline(request)
+    interpreter = (
+        engine.baseline
+        if isinstance(engine, OpenRouterPipeline)
+        and os.getenv("ASSISTANT_AGENT", "true").lower() == "true"
+        else engine
+    )
+    analysis = interpreter.analyze(body.text, language_hint=body.language_hint)
+    payload = analysis.model_dump(mode="json", by_alias=True)
+    payload["request_id"] = request.state.request_id
+    from pharma_assistant.api.data_chat import answer_from_data
+
+    result = answer_from_data(
+        engine,
+        AnalysisResponse.model_validate(payload),
+        body.text,
+        body.user_location,
+        [turn.model_dump() for turn in body.history],
+    )
+    if getattr(request.app.state, "chat_setup_error", None):
+        result["fallback_reason"] = request.app.state.chat_setup_error
+    return result
+
+
+@router.post("/v1/assistant/voice")
+async def assistant_voice(
+    request: Request,
+    file: Annotated[UploadFile, File()],
+    language_hint: Annotated[Language | None, Form()] = None,
+) -> dict:
+    """Use the same answer presenter for voice, with visible transcript evidence."""
+    from starlette.concurrency import run_in_threadpool
+
+    evidence = await transcribe_upload(request, file, language_hint)
+    analysis = await run_in_threadpool(
+        grounded_pipeline(request).analyze, evidence.text, language_hint=language_hint
+    )
+    payload = analysis.model_dump(mode="json", by_alias=True)
+    payload["input"].update(modality="voice", raw_text="", transcript=evidence.text)
+    payload["request_id"] = request.state.request_id
+    from pharma_assistant.api.data_chat import answer_from_data
+
+    return answer_from_data(
+        grounded_pipeline(request),
+        AnalysisResponse.model_validate(payload),
+        evidence.text,
+    )
+
+
+@router.post("/v1/demo/assistant/text")
+def demo_assistant_text(body: TextRequest) -> dict:
+    """Explicit fictional scenario; never infer simulated availability in real mode."""
+    from pharma_assistant.api.jury_scenario import scenario_answer
+
+    if not body.text.strip():
+        raise HTTPException(422, "Text must be nonblank")
+    return scenario_answer(body.text, body.language_hint)
+
+
+@router.post("/v1/demo/assistant/voice")
+async def demo_assistant_voice(
+    request: Request,
+    file: Annotated[UploadFile, File()],
+    language_hint: Annotated[Language | None, Form()] = None,
+) -> dict:
+    """Transcribe actual audio, then query the same visibly fictional scenario."""
+    from pharma_assistant.api.jury_scenario import scenario_answer
+
+    evidence = await transcribe_upload(request, file, language_hint)
+    result = scenario_answer(evidence.text, language_hint)
+    result["transcript"] = evidence.text
+    return result

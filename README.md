@@ -1,10 +1,23 @@
-# Pharma Assistant
+# Pharma-AI
+
+Normal chat now uses a **web-first OpenRouter agent** and prefers **CNOPS** for
+Moroccan medicine facts. It can research broader questions, published pharmacy
+contacts and dated duty schedules, then answer with sources. The imported CNOPS
+workbook contains 5,917 historical rows (2014 edition, resource updated in 2017),
+which must never be labelled current prices. See [CNOPS agent setup](docs/cnops_agent_setup.md).
+General health information is allowed; personal prescribing and dosage advice remain excluded.
+
 
 Arabic, Moroccan Darija, French and mixed-language pharmacy-request prototype.
 It structures requests and searches attributed reference data. It provides **no
 medical advice, dosage recommendations, diagnosis, substitutions or live stock**.
 
 ## Run the demo
+
+**The main chat model is now OpenRouter**, using GPT-4.1 with Claude Sonnet 4.6
+as answer-routing fallback. [Add your key once to the local .env file](docs/openrouter_setup.md).
+The model writes answers from retrieved pharmacy records; missing credentials or a
+provider failure keep saved-directory lookup available with explicit fallback status.
 
 Python 3.11, pinned `uv==0.13.4`, and ffmpeg/ffprobe are required.
 
@@ -38,10 +51,10 @@ LOCATION entity or confirm a directory answer from the hint.
 ## Pharmacy map
 
 The demo includes a **Plotly Express + OpenStreetMap** map. Choose Rabat,
-Casablanca, Marrakech, Tanger, Fès or Agadir as a starting point, enter custom
-latitude/longitude, or click **Utiliser ma position** (browser permission and
-localhost/HTTPS required). Set a radius from **0.1 to 100 km** and click
-**Afficher les pharmacies**. The search returns every saved directory record
+Casablanca, Marrakech, Tanger, Fès or Agadir as a starting point, use your
+location through **Autour de moi** (browser permission and
+localhost/HTTPS required). Choose a distance from **1 to 100 km** and click
+**Rechercher**. The search returns every saved directory record
 inside that radius, sorted by straight-line distance, with a center marker,
 perimeter, pharmacy markers and a contact list. City presets are search anchors,
 not administrative region boundaries. Phone/hours remain unknown when absent;
@@ -49,8 +62,9 @@ no live stock or on-duty status is inferred. OSM coverage is incomplete.
 
 No Google Maps key is required. Plotly JavaScript is served from the pinned
 Python package at `/assets/plotly.min.js`; map tiles require Internet/WebGL.
-If the map cannot render, the pharmacy list remains available. The API key input
-also applies to map queries when `API_KEY` is configured.
+If the map cannot render, the pharmacy list remains available. Configured API
+protection applies to map queries as well; authentication is handled by the
+operator, not by a credential field in the chat.
 
 ```bash
 curl 'http://127.0.0.1:8000/v1/pharmacies/map?lat=34.0209&lon=-6.8416&radius_km=5'
@@ -75,7 +89,7 @@ make scenarios         # 40 multilingual scenarios; failures are retained
 uv run --frozen python scripts/run_ablations.py
 ```
 
-Default `NLU_TRACK=baseline`. After `make train-nlu`, `NLU_TRACK=hybrid` uses
+For the structured research analysis API, default `NLU_TRACK=baseline`. After `make train-nlu`, `NLU_TRACK=hybrid` uses
 `models/char_wb/model.pkl` (override with `NLU_MODEL_PATH`). Load only trusted
 locally trained pickle files, never uploaded or downloaded arbitrary files.
 The hybrid keeps baseline extraction and safety routing.
@@ -101,7 +115,63 @@ lightweight supervised variants were actually trained; their poor intent dev
 scores are preserved. See [evaluation](docs/10_evaluation.md),
 [architecture](docs/architecture.md), and [acceptance checklist](docs/11_checklist.md).
 
+## Consumer chat interface
+
+The demo uses a full-viewport conversation layout with a compact virtual avatar,
+a message composer, audio attachment and microphone controls. Replies appear as
+ordinary chat messages in French, Arabic or Darija. No JSON, entity labels,
+confidence scores, API-key field, setup commands or raw coordinates are exposed
+in the consumer interface. The pharmacy map opens from **Trouver une pharmacie**,
+using city, distance and optional **Autour de moi** controls. Conversation text is
+kept in page memory only; **Nouvelle conversation** clears it.
+
+The avatar uses the owner-provided pharmacy-robot image, with its
+source markings preserved. It represents a virtual assistant. Local assets are served under `/ui/`. Plotly loads
+only when the map is opened. Responsive layouts include a compact mobile
+header, reduced-motion preferences and Arabic text direction.
+
+`POST /v1/assistant/text` and `/v1/assistant/voice` return readable `answer`,
+`language`, `transcript`, source-backed `pharmacies`, `analysis` and `disclaimer`.
+The UI consumes the answer/transcript and never renders analysis data.
+Nearest-pharmacy requests offer map and location-sharing actions. Location is
+requested only after a user click; the assistant never infers a position.
+With an explicitly supplied position, directory replies show up to five saved
+records within 10 km, sorted by straight-line distance. Without a position or
+city it asks for one. Unrecognized requests get clarification; only detected
+medical-advice requests receive the clinical refusal.
+The existing `/v1/analyze/*` machine-consumer schemas remain unchanged.
+OpenRouter normally writes the natural-language reply from retrieved saved records.
+Local templates serve explicit offline and failure paths. Stock, current duty and
+Moroccan prices remain unverified. The page sends up to ten bounded recent turns as
+conversation context; location/pharmacy follow-ups retrieve fresh records. History is
+cleared on new chat/mode change and is not persisted server-side.
+
+Technical setup belongs to the operator and this README. A voice service that is
+not ready shows a simple unavailability message and leaves typing available.
+If `API_KEY` is enabled, API protection remains enforced; use an authenticated
+upstream gateway that supplies credentials for approved visitors. Never place
+the server secret in HTML/JavaScript or remove authentication to hide its UI.
+The local default has API-key protection disabled. This UI does not add a login
+service or bypass a configured API key.
+
 ## Voice
+
+For Windows / PowerShell (install FFmpeg once, then reopen the terminal):
+
+```powershell
+winget install --id Gyan.FFmpeg --exact
+```
+
+Inside the project folder, in a new terminal:
+
+```powershell
+$env:PYTHONUTF8 = "1"
+uv sync --frozen --extra speech
+uv run --frozen --extra speech python scripts/cache_asr.py
+uv run --frozen --extra speech python scripts/start_service.py
+```
+
+For Linux/macOS with ffmpeg/ffprobe installed:
 
 ```bash
 make speech-install
@@ -116,6 +186,14 @@ The explicit cache step downloads weights; inference uses local files only.
 The Docker image is text-capable by default; install the speech extra and mount
 complete cached model files/configure a local model directory to enable voice.
 The browser microphone requires localhost or HTTPS and user permission.
+`GET /v1/voice/status` reports missing tools, speech packages or cached weights
+without downloading anything. Only the operator sees setup instructions here;
+consumers see a simple voice-availability message.
+Keep `--extra speech` in voice startup commands. Windows uploads are closed before
+external decoders reopen them. Duration-less MediaRecorder WebM is measured by a
+bounded decode rather than rejected. Uploaded recordings are deleted after use.
+A selected Arabic/Darija or French language is forwarded as an ASR hint, and the
+transcript appears in the user’s voice-message bubble with a correction action.
 
 Actual model inference was smoke-tested on synthetic flite speech. Its poor
 transcript is retained in [asr_smoke.json](docs/asr_smoke.json); this is not a
@@ -154,3 +232,71 @@ reported separately from CI because this workspace has no Docker executable.
 No secrets, real patient data, model weights or generated user recordings belong
 in git. See [final Validation Report](docs/11_validation.md) for actual checks,
 remaining externally dependent validations and exact measured results.
+
+## Optional consumer-interface checks
+
+Node >=20 is needed only for these development checks, not to serve the app:
+
+```bash
+npm ci --prefix web --ignore-scripts --no-audit --no-fund
+npm test --prefix web
+```
+
+See [consumer-interface Validation Report](docs/consumer_interface_validation.md)
+for files, exact results, generated-asset provenance and remaining browser QA.
+
+Duty questions are handled separately from ordinary directory lookups. The
+assistant cannot verify current guard schedules and offers pharmacies to contact,
+without labeling directory records as on duty. Price questions give a single
+clear explanation and a contact option; brand-only requests receive a brief
+product-detail reminder rather than a redundant generic clarification. Neither
+live duty schedules nor verified Moroccan prices have been integrated. See
+[Pharma-AI duty/price Validation Report](docs/duty_price_brand_validation.md).
+
+
+### Jury MVP: ten rehearsed examples
+
+The chat now fills the viewport. **Exemples à essayer** offers ten editable prompts
+through the normal assistant endpoint, including French/Arabic/Darija, a request
+summary, typo matching, saved pharmacy phone/city lookups, and truthful limits.
+Microphone and audio upload include transcript correction; replies offer browser
+voice playback, opt-in automatic playback and stop controls. See
+[the complete questions, expected replies and Windows rehearsal guide](docs/jury_demo.md).
+
+```powershell
+uv run --frozen --extra speech python scripts/check_jury_demo.py --require-voice
+```
+
+This checks all ten replies, real Rabat map results and installed speech prerequisites.
+Rehearse recognition and playback in your browser on the presentation laptop.
+
+
+### Concrete fictional jury scenario
+
+For nearby results, Panadol stock at Al Irfane and a named duty pharmacy with hours,
+enable **Scénario du jury**, then **Exemples à essayer**. This deliberately fictional
+presentation dataset has three pharmacies and a fixed simulated origin. Every reply
+and the visible banner label it fictional; it never changes the real directory or
+claims real stock/duty information. Simulated results have no routing or phone links.
+See [the three exact questions and answers](docs/jury_scenario.md). Normal mode remains
+the default. Both text and voice support the same isolated scenario.
+
+
+### Consumer answer safeguards
+
+Consumer chat uses a main OpenRouter retrieval-and-answer pipeline independently of
+`NLU_TRACK` research settings; the local rule pipeline supplies safety checks and fallback. Named pharmacy lookups also enforce any stated city. Fictional jury facts
+are returned only for complete rehearsed questions; city/date/product changes do not
+inherit fixture answers. Speech fills an editable transcript first: review it and click
+Send to obtain an answer. `/v1/transcribe/voice` never generates a pharmacy answer.
+Legacy machine-consumer voice endpoints remain available for integration clients.
+
+
+### Main OpenRouter model
+
+OpenRouter is the default consumer conversation engine. It interprets the request,
+retrieves relevant saved records and writes a source-constrained answer. Primary and
+fallback model IDs are configurable: GPT-4.1 and Claude Sonnet 4.6 by default. Startup
+loads the ignored local `.env` automatically; see [Windows setup and the live
+connection check](docs/openrouter_setup.md). `ASSISTANT_NLU=baseline` explicitly selects
+the offline path. Technical credentials remain outside the consumer interface.

@@ -21,6 +21,11 @@ LATN_DARIJA = {
     "chokran",
     "n7taj",
     "ntleb",
+    "3tini",
+    "a9rab",
+    "aqrab",
+    "9rib",
+    "9riba",
 }
 AR_DARIJA = {
     "واش",

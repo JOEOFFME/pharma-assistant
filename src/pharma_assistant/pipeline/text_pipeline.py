@@ -48,7 +48,11 @@ class TextPipeline:
         entities, relations, uncertain = self.extractor.extract(text)
         meds = [e for e in entities if e["type"] == "MEDICATION"]
         # Preserve explicit rejected products and unresolved alternatives as evidence.
-        alternatives = bool(re.search(r"\b(?:ou|ولا)\b", text, re.I))
+        ordered_meds = sorted(meds, key=lambda med: med["start"])
+        alternatives = any(
+            re.search(r"\b(?:ou|ولا)\b", text[left["end"] : right["start"]], re.I)
+            for left, right in zip(ordered_meds, ordered_meds[1:], strict=False)
+        )
         for med in meds:
             prefix = text[max(0, med["start"] - 20) : med["start"]]
             if re.search(r"(?:pas|ماشي)\s+$", prefix, re.I):

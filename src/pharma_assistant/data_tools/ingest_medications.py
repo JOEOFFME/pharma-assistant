@@ -42,7 +42,7 @@ def published_dates(page: str, files: dict) -> dict[str, str]:
 
 def read_snapshot(path: Path) -> tuple[dict, dict[str, bytes]]:
     """Validate both archive and original source byte hashes."""
-    manifest = json.loads((path / "manifest.json").read_text())
+    manifest = json.loads((path / "manifest.json").read_text(encoding="utf-8"))
     page = (path / "download_page.html").read_bytes()
     if hashlib.sha256(page).hexdigest() != manifest["download_page_sha256"]:
         raise ValueError("Download-page hash mismatch")
@@ -122,7 +122,7 @@ def fetch_snapshot(
             "archive_sha256": hashlib.sha256(archive).hexdigest(),
         }
     (output / "manifest.json").write_text(
-        json.dumps(manifest, ensure_ascii=False, indent=2) + "\n"
+        json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
     )
 
 
@@ -226,7 +226,9 @@ def build_medications(config: dict) -> dict:
     }
     target = Path(config["metrics_path"])
     target.parent.mkdir(parents=True, exist_ok=True)
-    target.write_text(json.dumps(metrics, ensure_ascii=False, indent=2) + "\n")
+    target.write_text(
+        json.dumps(metrics, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+    )
     logger.info(
         "Loaded %s specialties and %s aliases", metrics["records"], metrics["aliases"]
     )

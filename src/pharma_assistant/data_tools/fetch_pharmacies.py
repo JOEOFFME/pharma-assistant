@@ -149,7 +149,7 @@ def fetch_snapshot(
     """Save immutable raw responses and a manifest; existing snapshots are reused."""
     manifest_path = output_dir / "manifest.json"
     if manifest_path.exists():
-        manifest = json.loads(manifest_path.read_text())
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
         expected_scope = cities or ["Morocco"]
         if manifest["requested_regions"] != expected_scope:
             raise ValueError(
@@ -205,7 +205,9 @@ def fetch_snapshot(
         "scope": "national_area" if cities is None else "selected_bounding_boxes_only",
         "responses": responses,
     }
-    manifest_path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n")
+    manifest_path.write_text(
+        json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+    )
     return manifest_path
 
 

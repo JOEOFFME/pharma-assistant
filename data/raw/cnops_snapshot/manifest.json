@@ -1,0 +1,13 @@
+{
+  "publisher": "CNOPS / Portail Open Data du Maroc",
+  "edition": "2014 (source filename)",
+  "source_updated": "2017-12-18",
+  "retrieved_on": "2026-10-27",
+  "resource_page": "https://data.gov.ma/data/fr/dataset/referentiel-des-medicaments/resource/094733f5-5434-4163-b837-df0e7b665127",
+  "download_url": "https://data.gov.ma/data/dataset/2cdfd9f4-289d-4e9a-8998-50bd03f8e874/resource/094733f5-5434-4163-b837-df0e7b665127/download/ref-des-medicaments-cnops-2014.xlsx",
+  "license": "ODbL",
+  "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+  "sha256": "e625e9f1db6193cde2db9f39853f2261d3a5c1bae03d1cbc4ac4809013f650d3",
+  "bytes": 530243,
+  "warning": "Historical reference. Do not present as current prices or individual entitlement."
+}

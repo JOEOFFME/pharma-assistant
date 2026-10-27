@@ -15,6 +15,7 @@ from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, JSONResponse
 from starlette.exceptions import HTTPException
+from starlette.staticfiles import StaticFiles
 
 from pharma_assistant import __version__
 from pharma_assistant.api.health import router as health_router
@@ -33,7 +34,7 @@ def create_app() -> FastAPI:
     logger.setLevel(os.getenv("LOG_LEVEL", "INFO").upper())
     logger.propagate = False
     application = FastAPI(
-        title="Pharma Assistant", version=__version__, description=DISCLAIMER
+        title="Pharma-AI", version=__version__, description=DISCLAIMER
     )
     application.include_router(health_router)
     application.include_router(service_router)
@@ -76,6 +77,7 @@ def create_app() -> FastAPI:
             "/redoc",
             "/assets/plotly.min.js",
         }
+        public = public or request.url.path.startswith("/ui/")
         public = public or request.method == "OPTIONS"
         key = os.getenv("API_KEY", "")
         if (
@@ -147,7 +149,10 @@ def create_app() -> FastAPI:
 
     @application.get("/", include_in_schema=False)
     def demo():
-        return FileResponse(Path(__file__).resolve().parents[3] / "web" / "index.html")
+        return FileResponse(
+            Path(__file__).resolve().parents[3] / "web" / "index.html",
+            headers={"Cache-Control": "no-store"},
+        )
 
     @application.get("/assets/plotly.min.js", include_in_schema=False)
     def plotly_script():
@@ -159,6 +164,12 @@ def create_app() -> FastAPI:
             media_type="application/javascript",
             headers={"Cache-Control": "public, max-age=3600"},
         )
+
+    application.mount(
+        "/ui",
+        StaticFiles(directory=Path(__file__).resolve().parents[3] / "web" / "assets"),
+        name="assistant-ui",
+    )
 
     return application
 

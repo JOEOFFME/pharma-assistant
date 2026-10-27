@@ -40,3 +40,16 @@ tmp/
 # Unverified draft and review proposals; never final gold.
 !data/nlu/gold_human_draft.txt
 !data/nlu/gold_review.jsonl
+
+# Optional DOM interaction checks
+web/node_modules/
+
+# Small attributed educational reference cache; no private health data.
+!data/health/references.json
+
+# Attributed public contact enrichment.
+!data/pharmacies/contact_enrichment.json
+
+# Attributed historical CNOPS public source, retained byte-for-byte.
+!data/raw/cnops_snapshot/reference.xlsx
+!data/raw/cnops_snapshot/manifest.json

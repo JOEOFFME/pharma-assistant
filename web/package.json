@@ -1,0 +1,8 @@
+{
+  "name": "pharma-assistant-ui-checks",
+  "private": true,
+  "type": "module",
+  "scripts": {"test": "node ../tests/ui_journeys.mjs"},
+  "engines": {"node": ">=20"},
+  "devDependencies": {"happy-dom": "20.0.11"}
+}
