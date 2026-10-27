@@ -391,7 +391,8 @@ def present_answer(analysis: AnalysisResponse, user_location=None) -> dict:
         evidence = analysis.input.transcript or analysis.input.raw_text
         answer = (
             messages["refusal"]
-            if contains_medical_advice(evidence, config)
+            if analysis.contains_out_of_scope_request
+            or contains_medical_advice(evidence, config)
             else help_text["unsupported"]
         )
     elif intent == "greeting_smalltalk":

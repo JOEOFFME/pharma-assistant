@@ -275,3 +275,13 @@ are returned only for complete rehearsed questions; city/date/product changes do
 inherit fixture answers. Speech fills an editable transcript first: review it and click
 Send to obtain an answer. `/v1/transcribe/voice` never generates a pharmacy answer.
 Legacy machine-consumer voice endpoints remain available for integration clients.
+
+
+### OpenRouter (optional)
+
+Set `ASSISTANT_NLU=openrouter`, `OPENROUTER_API_KEY` and `OPENROUTER_MODEL` in the server
+terminal to use structured online interpretation. [Windows setup and a one-request
+connection check](docs/openrouter_setup.md) explain private key entry and model selection.
+The model extracts source-backed intent/spans; saved data and fixed templates still
+supply factual replies. Invalid responses fall back locally. Baseline remains the
+default, and no OpenRouter credentials or setup controls appear in the consumer UI.

@@ -13,6 +13,7 @@ from pharma_assistant.api.schemas import DISCLAIMER, AnalysisResponse, Language
 from pharma_assistant.asr.transcriber import Transcription
 from pharma_assistant.data.pharmacies import PharmacyRepository
 from pharma_assistant.data_tools.fetch_pharmacies import load_config
+from pharma_assistant.nlp.openrouter import OpenRouterPipeline, OpenRouterProvider
 from pharma_assistant.pipeline.text_pipeline import TextPipeline
 
 router = APIRouter()
@@ -78,16 +79,34 @@ def pipeline(request: Request):
     return request.app.state.pipeline
 
 
-def grounded_pipeline(request: Request) -> TextPipeline:
-    """Keep consumer answers independent from optional research/LLM tracks."""
+def grounded_pipeline(request: Request) -> TextPipeline | OpenRouterPipeline:
+    """Separate research tracks from opt-in, source-validated consumer planning."""
+    mode = os.getenv("ASSISTANT_NLU", "baseline")
+    if mode not in {"baseline", "openrouter"}:
+        raise HTTPException(503, "Unknown assistant language setting")
     current = getattr(request.app.state, "pipeline", None)
-    if isinstance(current, TextPipeline):
+    if mode == "baseline" and isinstance(current, TextPipeline):
         return current
     if getattr(request.app.state, "consumer_pipeline", None) is None:
         with _INIT_LOCK:
             if getattr(request.app.state, "consumer_pipeline", None) is None:
                 try:
-                    request.app.state.consumer_pipeline = TextPipeline.from_config()
+                    baseline = (
+                        current
+                        if isinstance(current, TextPipeline)
+                        else TextPipeline.from_config()
+                    )
+                    request.app.state.consumer_pipeline = (
+                        OpenRouterPipeline(
+                            baseline,
+                            OpenRouterProvider(
+                                os.getenv("OPENROUTER_API_KEY", ""),
+                                os.getenv("OPENROUTER_MODEL", ""),
+                            ),
+                        )
+                        if mode == "openrouter"
+                        else baseline
+                    )
                 except (FileNotFoundError, ValueError) as error:
                     raise HTTPException(
                         503, "Reference database unavailable"
@@ -102,6 +121,7 @@ def version() -> dict:
         "version": "0.2.0",
         "pipeline": "rule_baseline_v1",
         "consumer_policy": "grounded_v2",
+        "consumer_nlu": os.getenv("ASSISTANT_NLU", "baseline"),
         "voice_flow": "confirm_transcript",
         "jury_matching": "exact_questions_v2",
         "medical_advice": False,
