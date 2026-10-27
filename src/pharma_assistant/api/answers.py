@@ -5,13 +5,18 @@ from pathlib import Path
 from pharma_assistant.api.schemas import AnalysisResponse
 from pharma_assistant.data.pharmacies import PharmacyRepository
 from pharma_assistant.data_tools.fetch_pharmacies import load_config
-from pharma_assistant.nlp.intent import contains_medical_advice
+from pharma_assistant.data_tools.pharmacy_normalize import (
+    normalize_city,
+    normalize_name,
+)
+from pharma_assistant.nlp.intent import contains_medical_advice, phrase_in
+from pharma_assistant.nlp.normalize import normalize
 
 # These are presentation templates, not medical answers or model-generated claims.
 MESSAGES = {
     "fr": {
         "hello": (
-            "Bonjour ! Je peux vous aider à formuler une demande de "
+            "Bonjour, je suis Pharma-AI. Je peux vous aider à formuler une demande de "
             "médicament ou à trouver les coordonnées d’une pharmacie. Que "
             "recherchez-vous ?"
         ),
@@ -69,7 +74,8 @@ MESSAGES = {
     },
     "ar": {
         "hello": (
-            "مرحباً! يمكنني مساعدتك في صياغة طلب دواء أو العثور على معلومات"
+            "مرحباً، أنا Pharma-AI. يمكنني مساعدتك في صياغة طلب دواء أو "
+            "العثور على معلومات"
             " صيدلية. ماذا تبحث عنه؟"
         ),
         "refusal": (
@@ -116,7 +122,8 @@ MESSAGES = {
     },
     "darija_ar": {
         "hello": (
-            "سلام! نقدر نعاونك تصيغ طلب ديال دوا ولا تلقى معلومات الصيدلية."
+            "سلام، أنا Pharma-AI. نقدر نعاونك تصيغ طلب ديال دوا ولا تلقى "
+            "معلومات الصيدلية."
             " شنو كتقلب عليه؟"
         ),
         "refusal": (
@@ -163,7 +170,8 @@ MESSAGES = {
     },
     "darija_latn": {
         "hello": (
-            "Salam! N9der n3awnek tsayeb talab dyal dwa wla tel9a ma3loumat"
+            "Salam, ana Pharma-AI. N9der n3awnek tsayeb talab dyal dwa wla "
+            "tel9a ma3loumat"
             " pharmacie. Chno kat9elleb 3lih?"
         ),
         "refusal": (
@@ -250,11 +258,85 @@ PRESENTATION_HELP = {
 }
 
 
+SERVICE_HELP = {
+    "fr": {
+        "duty": (
+            "Je ne peux pas confirmer les gardes avec les informations "
+            "disponibles. La carte peut vous aider à trouver des pharmacies"
+            " à contacter, mais elle ne confirme pas leur garde. Appelez "
+            "avant de vous déplacer."
+        ),
+        "duty_location": (
+            "Dans quelle ville ou quel quartier cherchez-vous ? Vous pouvez"
+            " aussi partager votre position."
+        ),
+        "price": (
+            "Je n’ai pas de prix marocain vérifié pour {meds}. Contactez "
+            "une pharmacie pour demander le prix exact de la présentation "
+            "souhaitée."
+        ),
+        "price_hint": (
+            "Pour votre demande à la pharmacie, précisez le dosage, la "
+            "forme et le nombre d’unités dans la boîte."
+        ),
+    },
+    "ar": {
+        "duty": (
+            "لا أستطيع تأكيد صيدليات الحراسة بالمعلومات المتاحة. تساعدك "
+            "الخريطة على العثور على صيدليات للاتصال بها، لكنها لا تؤكد "
+            "الحراسة. اتصل قبل الذهاب."
+        ),
+        "duty_location": "في أي مدينة أو حي تبحث؟ يمكنك أيضاً مشاركة موقعك.",
+        "price": (
+            "ليس لدي سعر مغربي موثّق لـ {meds}. تواصل مع الصيدلية للسؤال عن"
+            " سعر العبوة المطلوبة بالضبط."
+        ),
+        "price_hint": "عند سؤال الصيدلية، حدد التركيز والشكل وعدد الوحدات في العبوة.",
+    },
+    "darija_ar": {
+        "duty": (
+            "ما نقدرش نأكد شكون داير الحراسة بالمعلومات اللي عندي. الخريطة "
+            "كتعاونك تلقى صيدليات تتاصل بيهم، ولكن ما كتأكدش الحراسة. عيط "
+            "قبل ما تمشي."
+        ),
+        "duty_location": "فاش من مدينة ولا حي كتقلب؟ تقدر حتى تشارك الموقع ديالك.",
+        "price": (
+            "ما عنديش ثمن مغربي موثوق ديال {meds}. تواصل مع الصيدلية باش "
+            "تعرف الثمن ديال العلبة اللي بغيتي بالضبط."
+        ),
+        "price_hint": "ملي تسول الصيدلية، وضح التركيز والشكل وشحال من وحدة فالعلبة.",
+    },
+    "darija_latn": {
+        "duty": (
+            "Ma n9derch n2ekked chkoun dayr la garde b lma3loumat li 3ndi. "
+            "La carte t3awnek tel9a pharmacies ttassel bihom, walakin ma "
+            "kat2ekkedch la garde. 3ayet 9bel ma tmchi."
+        ),
+        "duty_location": (
+            "Fach men mdina wla 7ay kat9elleb? T9der tpartagi position " "dyalek."
+        ),
+        "price": (
+            "Ma 3ndich taman maghribi mwetta9 dyal {meds}. Ttassel b "
+            "pharmacie bach t3ref taman dyal lboita li bghiti b ddabt."
+        ),
+        "price_hint": (
+            "Mlli tsowel pharmacie, wde7 dosage, forme w ch7al men unité f " "lboita."
+        ),
+    },
+}
+
+
 def present_answer(analysis: AnalysisResponse, user_location=None) -> dict:
     """Answer the in-scope part without fabricating stock, prices or transactions."""
     language = analysis.input.language
     messages = MESSAGES.get(language, MESSAGES["fr"])
     intent = analysis.intent.label
+    evidence = analysis.input.transcript or analysis.input.raw_text
+    is_duty = intent == "pharmacy_info_hours" and any(
+        phrase_in(normalize(evidence, arabizi=False).text, term)
+        for term in load_config(Path("configs/baseline.yaml")).get("duty_terms", [])
+    )
+    service = SERVICE_HELP.get(language, SERVICE_HELP["fr"])
     medications = [
         e
         for e in analysis.entities
@@ -276,7 +358,22 @@ def present_answer(analysis: AnalysisResponse, user_location=None) -> dict:
         )
     elif intent == "greeting_smalltalk":
         answer = messages["hello"]
-    elif intent in {"check_availability", "request_medication", "price_inquiry"}:
+    elif is_duty:
+        answer = service["duty"]
+        if user_location is None and not any(
+            e.type == "LOCATION" for e in analysis.entities
+        ):
+            answer += "\n\n" + service["duty_location"]
+    elif intent == "price_inquiry":
+        answer = (
+            service["price"].format(meds=names) if medications else messages["missing"]
+        )
+        if medications and not any(
+            e.type in {"DOSAGE", "FORM", "QUANTITY"} and e.assertion == "affirmed"
+            for e in analysis.entities
+        ):
+            answer += " " + service["price_hint"]
+    elif intent in {"check_availability", "request_medication"}:
         kind = {
             "check_availability": "availability",
             "request_medication": "request",
@@ -328,10 +425,19 @@ def present_answer(analysis: AnalysisResponse, user_location=None) -> dict:
                 answer = "\n\n".join(lines) if records else messages["none"]
             except (FileNotFoundError, OSError):
                 answer = messages["unavailable"]
-    if intent == "pharmacy_info_location":
+    if intent in {"pharmacy_info_location", "price_inquiry"} or is_duty:
         actions = [
             {"type": "find_pharmacy", "label": help_text["find"]},
         ]
+        locations = [e.text for e in analysis.entities if e.type == "LOCATION"]
+        if locations:
+            city_aliases = load_config(Path("configs/pharmacies.yaml"))["city_aliases"]
+            city = normalize_city(
+                locations[0],
+                {normalize_name(key): value for key, value in city_aliases.items()},
+            )
+            if city:
+                actions[0]["city"] = city
         if user_location is None:
             actions.append({"type": "share_location", "label": help_text["share"]})
     if analysis.contains_out_of_scope_request and intent != "out_of_scope":

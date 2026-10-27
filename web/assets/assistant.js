@@ -3,7 +3,7 @@ const $ = id => document.getElementById(id);
 const STRINGS = {
   fr: {
     headerNote: 'Un coup de main, tout simplement.', virtual: 'Votre assistant virtuel', language: 'Langue', newChat: 'Nouvelle conversation', findPharmacy: 'Trouver une pharmacie', privacy: 'Confidentialité',
-    welcomeEyebrow: 'BIENVENUE DANS VOTRE ESPACE', welcomeTitle: 'Bonjour, je suis Amine.', welcomeText: 'Je vous aide à préparer votre demande de médicament et à trouver une pharmacie. Comment puis-je vous aider aujourd’hui ?',
+    welcomeEyebrow: 'BIENVENUE DANS VOTRE ESPACE', welcomeTitle: 'Bonjour, je suis Pharma-AI.', welcomeText: 'Je vous aide à préparer votre demande de médicament et à trouver une pharmacie. Comment puis-je vous aider aujourd’hui ?',
     medicationSuggestion: 'Une demande de médicament', pharmacySuggestion: 'Une pharmacie près de moi', priceSuggestion: 'Une question sur un prix', disclaimer: 'Pour vos demandes en pharmacie. Sans conseil médical ni confirmation de stock.',
     companionBadge: 'À vos côtés', virtualTag: 'VIRTUEL', companionSubtitle: 'Votre espace pharmacie,\nen toute simplicité.', nearYou: 'Autour de vous, en quelques clics', footer: 'Français, العربية, الدارجة — parlons comme vous.',
     mapEyebrow: 'À PROXIMITÉ', mapTitle: 'Votre prochaine pharmacie', city: 'Ville', distance: 'À moins de', search: 'Rechercher', aroundMe: 'Autour de moi', mapDisclaimer: 'Distances à vol d’oiseau. Certaines pharmacies peuvent ne pas apparaître. Appelez pour confirmer les horaires.',
@@ -16,17 +16,17 @@ const STRINGS = {
   },
   ar: {
     headerNote: 'مساعدتك بكل بساطة.', virtual: 'مساعدك الافتراضي', language: 'اللغة', newChat: 'محادثة جديدة', findPharmacy: 'ابحث عن صيدلية', privacy: 'الخصوصية',
-    welcomeEyebrow: 'مرحباً بك في مساحتك', welcomeTitle: 'مرحباً، أنا أمين.', welcomeText: 'أساعدك في صياغة طلب دواء والعثور على معلومات الصيدليات. كيف أستطيع مساعدتك اليوم؟', medicationSuggestion: 'طلب دواء', pharmacySuggestion: 'صيدلية بالقرب مني', priceSuggestion: 'سؤال عن السعر', disclaimer: 'لمساعدتك في طلبات الصيدلية. دون نصائح طبية أو تأكيد للمخزون.',
+    welcomeEyebrow: 'مرحباً بك في مساحتك', welcomeTitle: 'مرحباً، أنا Pharma-AI.', welcomeText: 'أساعدك في صياغة طلب دواء والعثور على معلومات الصيدليات. كيف أستطيع مساعدتك اليوم؟', medicationSuggestion: 'طلب دواء', pharmacySuggestion: 'صيدلية بالقرب مني', priceSuggestion: 'سؤال عن السعر', disclaimer: 'لمساعدتك في طلبات الصيدلية. دون نصائح طبية أو تأكيد للمخزون.',
     companionBadge: 'بجانبك', virtualTag: 'افتراضي', companionSubtitle: 'طلبات الصيدلية،\nبكل بساطة.', nearYou: 'بالقرب منك، بخطوات بسيطة', footer: 'العربية، الدارجة، Français — نتحدث بلغتك.', mapEyebrow: 'بالقرب منك', mapTitle: 'اعثر على صيدلية', city: 'المدينة', distance: 'ضمن مسافة', search: 'ابحث', aroundMe: 'بالقرب مني', mapDisclaimer: 'المسافات بخط مستقيم. قد لا تظهر بعض الصيدليات. اتصل للتأكد من المواعيد.',
     privacyText: 'تبقى محادثتك في هذه الصفحة ولا تُحفظ في سجل المساعد. تُحذف التسجيلات بعد معالجتها. لا يُستخدم موقعك إلا إذا اخترت مشاركته. تستخدم الخريطة خدمة خارجية. تجنب مشاركة معلومات طبية شخصية.',
     placeholder: 'اكتب رسالتك…', send: 'أرسل الرسالة', record: 'سجل رسالة صوتية', stop: 'أوقف وأرسل', attach: 'أرفق رسالة صوتية', you: 'أنت', modify: 'صحح الرسالة', empty: 'اكتب رسالتك أولاً.', waiting: 'أجهز إجابتك…', voiceOff: 'الصوت غير متاح حالياً. يمكنك الكتابة لي.', noMic: 'الميكروفون غير متاح في هذا المتصفح. يمكنك الكتابة.', denied: 'اسمح للمتصفح باستخدام الميكروفون لتسجيل رسالتك.', recording: 'أستمع إليك… أوقف التسجيل لإرساله.', audioMessage: 'رسالة صوتية', audioEmpty: 'لم أستقبل صوتاً. جرب تسجيلاً جديداً.', audioLarge: 'التسجيل طويل أو حجمه كبير. جرب رسالة أقصر.',
     error: 'لم أتمكن من الإجابة الآن. حاول بعد قليل.', network: 'انقطع الاتصال. حاول بعد قليل.', reserved: 'هذه المساحة مخصصة للمصرح لهم. تواصل مع الشخص الذي منحك الوصول.', tooMany: 'انتظر قليلاً، ثم حاول بعد دقيقة.', audioInvalid: 'تعذر تشغيل هذا التسجيل. أرسل ملفاً آخر أو سجل رسالة جديدة.', unclear: 'لم أفهم جيداً. هل يمكنك إعادة الصياغة أو التسجيل؟', locating: 'أبحث عن موقعك…', locationOff: 'تعذر تحديد موقعك. يمكنك اختيار مدينة بدلاً من ذلك.', myPosition: 'موقعي', searching: 'أبحث عن الصيدليات القريبة…', noPharmacies: 'لم أجد صيدليات هنا. جرب مسافة أكبر.', found: '{count} صيدلية ضمن {radius} كم.', mapOff: 'تعذر عرض الخريطة. يمكنك الاطلاع على القائمة.', unnamed: 'صيدلية', phoneUnknown: 'الهاتف غير مسجل', hoursUnknown: 'المواعيد غير مسجلة', call: 'اتصل', place: 'اعرض الموقع', close: 'أغلق', medicationPrompt: 'هل دوليبران متوفر؟', pricePrompt: 'ما سعر دوليبران؟'
   },
   darija_ar: {
-    virtual: 'المساعد الافتراضي ديالك', welcomeTitle: 'سلام، أنا أمين.', welcomeText: 'نعاونك تصيغ الطلب ديال الدوا وتلقى معلومات الصيدليات. كيفاش نقدر نعاونك اليوم؟', placeholder: 'كتب الرسالة ديالك…', you: 'نتا', waiting: 'كنوجد ليك الجواب…', voiceOff: 'الصوت ما متوفرش دابا. تقدر تكتب ليا.', medicationPrompt: 'واش كاين دوليبران؟', pricePrompt: 'بشحال دوليبران؟'
+    virtual: 'المساعد الافتراضي ديالك', welcomeTitle: 'سلام، أنا Pharma-AI.', welcomeText: 'نعاونك تصيغ الطلب ديال الدوا وتلقى معلومات الصيدليات. كيفاش نقدر نعاونك اليوم؟', placeholder: 'كتب الرسالة ديالك…', you: 'نتا', waiting: 'كنوجد ليك الجواب…', voiceOff: 'الصوت ما متوفرش دابا. تقدر تكتب ليا.', medicationPrompt: 'واش كاين دوليبران؟', pricePrompt: 'بشحال دوليبران؟'
   },
   darija_latn: {
-    virtual: 'L’assistant dyalek', welcomeTitle: 'Salam, ana Amine.', welcomeText: 'N3awnek tsayeb talab dyal dwa w tel9a ma3loumat pharmacie. Kifach n9der n3awnek lyoum ?', placeholder: 'Kteb message dyalek…', you: 'Nta', waiting: 'Kanwejjed lik ljawab…', voiceOff: 'Sout ma khddamch daba. T9der tkteb lia.', medicationPrompt: 'Wach kayn Doliprane ?', pricePrompt: 'Bch7al Doliprane ?'
+    virtual: 'L’assistant dyalek', welcomeTitle: 'Salam, ana Pharma-AI.', welcomeText: 'N3awnek tsayeb talab dyal dwa w tel9a ma3loumat pharmacie. Kifach n9der n3awnek lyoum ?', placeholder: 'Kteb message dyalek…', you: 'Nta', waiting: 'Kanwejjed lik ljawab…', voiceOff: 'Sout ma khddamch daba. T9der tkteb lia.', medicationPrompt: 'Wach kayn Doliprane ?', pricePrompt: 'Bch7al Doliprane ?'
   }
 };
 function t(key, values = {}) {
@@ -70,7 +70,7 @@ function applyLanguage() {
 function scrollChat() { $('conversation').scrollTop = $('conversation').scrollHeight; }
 function bubble(text, role) {
   const article = document.createElement('article'); article.className = `message ${role}`;
-  const label = document.createElement('span'); label.className = 'message-label'; label.textContent = role === 'user' ? t('you') : 'Amine';
+  const label = document.createElement('span'); label.className = 'message-label'; label.textContent = role === 'user' ? t('you') : 'Pharma-AI';
   const body = document.createElement('p'); body.className = 'message-text'; body.dir = 'auto'; body.textContent = text;
   article.append(label, body); $('conversation').append(article); scrollChat(); return { article, body };
 }
@@ -101,7 +101,11 @@ async function sendRequest(body, isAudio, displayText) {
         if (!['find_pharmacy','share_location'].includes(action.type)) continue;
         const button = document.createElement('button'); button.type = 'button';
         button.textContent = action.label || t(action.type === 'find_pharmacy' ? 'findPharmacy' : 'aroundMe');
-        button.onclick = () => { openMap(action.type !== 'share_location'); if (action.type === 'share_location') locate(); };
+        button.onclick = () => {
+          if (typeof action.city === 'string' && Object.hasOwn(CITIES, action.city)) $('map-city').value = action.city;
+          openMap(action.type !== 'share_location');
+          if (action.type === 'share_location') locate();
+        };
         controls.append(button);
       }
       if (controls.childElementCount) reply.article.append(controls);

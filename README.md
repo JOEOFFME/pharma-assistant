@@ -1,4 +1,4 @@
-# Pharma Assistant
+# Pharma-AI
 
 Arabic, Moroccan Darija, French and mixed-language pharmacy-request prototype.
 It structures requests and searches attributed reference data. It provides **no
@@ -229,3 +229,11 @@ npm test --prefix web
 
 See [consumer-interface Validation Report](docs/consumer_interface_validation.md)
 for files, exact results, generated-asset provenance and remaining browser QA.
+
+Duty questions are handled separately from ordinary directory lookups. The
+assistant cannot verify current guard schedules and offers pharmacies to contact,
+without labeling directory records as on duty. Price questions give a single
+clear explanation and a contact option; brand-only requests receive a brief
+product-detail reminder rather than a redundant generic clarification. Neither
+live duty schedules nor verified Moroccan prices have been integrated. See
+[Pharma-AI duty/price Validation Report](docs/duty_price_brand_validation.md).

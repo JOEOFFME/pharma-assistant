@@ -34,7 +34,7 @@ def create_app() -> FastAPI:
     logger.setLevel(os.getenv("LOG_LEVEL", "INFO").upper())
     logger.propagate = False
     application = FastAPI(
-        title="Pharma Assistant", version=__version__, description=DISCLAIMER
+        title="Pharma-AI", version=__version__, description=DISCLAIMER
     )
     application.include_router(health_router)
     application.include_router(service_router)

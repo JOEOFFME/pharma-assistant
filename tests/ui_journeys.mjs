@@ -40,6 +40,8 @@ const submit = text => { $('message').value = text; $('message-form').dispatchEv
 try {
   await settle();
   assert.equal($('record').disabled, false);
+  assert.ok(window.document.body.textContent.includes('Pharma-AI'));
+  assert.ok(!window.document.body.textContent.includes('Amine'));
   assert.equal(window.document.querySelector('pre'), null);
   assert.equal(window.document.querySelector('input[type="password"]'), null);
   // Sending preserves user evidence and shows readable replies without server internals.
@@ -49,11 +51,16 @@ try {
   assert.ok(!window.document.body.textContent.includes('MUST NEVER APPEAR'));
   assert.equal(JSON.parse(calls.find(c => c.url === '/v1/assistant/text').options.body).text, 'Wach kayn Doliprane ?');
   // A nearby-pharmacy reply offers consent actions without automatically locating.
-  actions = [{ type:'find_pharmacy', label:'Voir les pharmacies' }, { type:'share_location', label:'Partager ma position' }, { type:'untrusted_navigation', label:'Never execute' }];
+  actions = [{ type:'find_pharmacy', label:'Voir les pharmacies', city:'Casablanca' }, { type:'share_location', label:'Partager ma position' }, { type:'untrusted_navigation', label:'Never execute' }];
   submit('3tini a9rab pharmacy lya'); await settle();
   assert.equal(locationRequests, 0);
   const actionButtons = [...window.document.querySelectorAll('.reply-actions button')];
   assert.equal(actionButtons.length, 2);
+  actionButtons[0].click(); await settle();
+  assert.equal($('map-city').value, 'Casablanca');
+  assert.ok(calls.some(c => c.url.includes('lat=33.5731')));
+  assert.equal(locationRequests, 0);
+  $('map-dialog').close();
   actionButtons[1].click(); await settle();
   assert.equal(locationRequests, 1);
   assert.equal($('map-dialog').open, true);
