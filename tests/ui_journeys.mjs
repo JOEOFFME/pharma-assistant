@@ -19,7 +19,8 @@ window.speechSynthesis = { getVoices: () => [{ lang: 'fr-FR' }, { lang: 'ar-MA' 
 const juryScenarios = JSON.parse(await readFile(resolve(root, 'web/assets/jury-scenarios.json'), 'utf8'));
 const demoQuestions = JSON.parse(await readFile(resolve(root, 'web/assets/demo-questions.json'), 'utf8'));
 let voiceOK = true, nextAnswer = 'Votre demande concerne Doliprane. Le stock reste à confirmer.', deferred, failStatus = 0, tracksStopped = 0, locationRequests = 0, actions = [];
-const payload = () => ({ web_search: { attempted: true, succeeded: true }, sources: [
+let responseSource = 'openrouter_agent', responseWeb = { attempted:true, succeeded:true };
+const payload = () => ({ answer_source: responseSource, web_search: responseWeb, sources: [
   { title: '<img src=x onerror=bad()> NHS', url: 'https://www.nhs.uk/conditions/migraine/' },
   { title: 'Unsafe', url: 'javascript:alert(1)' },
   { title: 'Credentials', url: 'https://secret@evil.test' }
@@ -198,5 +199,11 @@ try {
   submit('salam'); await settle();
   assert.equal(calls.at(-1).url, '/v1/assistant/text');
   assert.deepEqual(JSON.parse(calls.at(-1).options.body).history, []);
+  $('new-chat').click();
+  nextAnswer = 'Téléphone publié : +212 537 686317'; responseSource = 'saved_contact'; responseWeb = {attempted:true,succeeded:false};
+  submit('Contact de la pharmacie Al Irfane à Rabat'); await settle();
+  assert.ok(window.document.querySelector('.answer-origin').textContent.includes('Contact men annuaire msajjel'));
+  assert.ok(window.document.querySelector('.answer-origin').textContent.includes('Recherche web ma kmlatch'));
+  assert.equal(window.document.querySelector('.call-action').getAttribute('href'), 'tel:+212537686317');
   console.log('PASS: consumer text, safe rendering, private errors, Arabic, composition, reset/race, voice/correction, map/location/consent and unavailable-voice journeys');
 } finally { window.happyDOM.abort(); window.close(); }

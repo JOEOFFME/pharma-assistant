@@ -29,3 +29,7 @@ body{height:100dvh;min-height:0;overflow:hidden;background:#fff}
 .reply-sources { display:flex; flex-wrap:wrap; gap:8px; margin:12px 0; }
 .reply-sources a { color:#2265a3; border:1px solid #d7e6f8; border-radius:8px; padding:6px 10px; font-size:.8rem; text-decoration:none; overflow-wrap:anywhere; }
 .reply-sources a:hover { background:#edf5ff; }
+
+.answer-origin { color:#53778e; font-size:.8rem; margin:10px 0; }
+.call-action { display:inline-flex; align-items:center; padding:8px 12px; border:1px solid #bedbde; border-radius:8px; color:#136b67; background:#f1faf8; text-decoration:none; font-size:.85rem; }
+.call-action:hover { background:#e1f3ee; }

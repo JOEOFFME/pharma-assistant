@@ -2,6 +2,7 @@
 const $ = id => document.getElementById(id);
 const STRINGS = {
   fr: {
+    webDone: 'Recherche web effectuée · Sources ci-dessous', webFailed: 'Recherche web non aboutie', savedContact: 'Contact issu d’un annuaire enregistré', savedInfo: 'Informations issues des sources enregistrées', callNumber: 'Appeler',
     savedResults: 'Informations issues des sources enregistrées.', limitedService: 'Je n’ai pas pu vérifier toutes les informations pour le moment. Vous pouvez réessayer.', transcribing: 'Je transcris votre message…', reviewTranscript: 'Vérifiez le texte reconnu ci-dessous, corrigez-le si besoin, puis appuyez sur Envoyer.', scenarioMode: 'Scénario du jury', scenarioBanner: 'DÉMONSTRATION — Pharmacies, adresses, distances, stocks et gardes fictifs. Point de départ simulé : Al Irfane. Aucun résultat ne confirme une disponibilité réelle.', examples: 'Exemples à essayer', demoIntro: 'Choisissez une question, puis envoyez-la ou prononcez-la au micro. Chaque exemple est une demande complète.', autoSpeak: 'Lecture vocale', listen: 'Écouter la réponse', stopSpeaking: 'Arrêter la lecture', speechOff: 'La lecture vocale est indisponible dans ce navigateur.', cancelRecording: 'Annuler l’enregistrement', retryVoice: 'Réessayer le micro',
     headerNote: 'Un coup de main, tout simplement.', virtual: 'Votre assistant virtuel', language: 'Langue', newChat: 'Nouvelle conversation', findPharmacy: 'Trouver une pharmacie', privacy: 'Confidentialité',
     welcomeEyebrow: 'BIENVENUE DANS VOTRE ESPACE', welcomeTitle: 'Bonjour, je suis Pharma-AI.', welcomeText: 'Je vous aide à préparer votre demande de médicament et à trouver une pharmacie. Comment puis-je vous aider aujourd’hui ?',
@@ -16,6 +17,7 @@ const STRINGS = {
     medicationPrompt: 'Est-ce que Doliprane est disponible ?', pricePrompt: 'Quel est le prix de Doliprane ?'
   },
   ar: {
+    webDone: 'تم البحث على الإنترنت · المصادر أدناه', webFailed: 'تعذر إكمال البحث على الإنترنت', savedContact: 'معلومات اتصال من دليل محفوظ', savedInfo: 'معلومات من مصادر محفوظة', callNumber: 'اتصل',
     limitedService: 'خدمة المحادثة غير متاحة حالياً. هذه معلومات من الدليل المحفوظ.', transcribing: 'أحوّل رسالتك إلى نص…', reviewTranscript: 'راجع النص أدناه وصححه عند الحاجة، ثم اضغط إرسال.', scenarioMode: 'سيناريو العرض', scenarioBanner: 'عرض توضيحي — الصيدليات والعناوين والمسافات والمخزون والحراسة افتراضية. نقطة الانطلاق محاكاة. النتائج لا تؤكد توفراً حقيقياً.', examples: 'أمثلة للتجربة', demoIntro: 'اختر سؤالاً ثم أرسله أو اقرأه بالميكروفون. كل مثال طلب كامل.', autoSpeak: 'قراءة صوتية', listen: 'استمع للإجابة', stopSpeaking: 'أوقف القراءة', speechOff: 'القراءة الصوتية غير متاحة في هذا المتصفح.', cancelRecording: 'إلغاء التسجيل', retryVoice: 'أعد تجربة الميكروفون',
     headerNote: 'مساعدتك بكل بساطة.', virtual: 'مساعدك الافتراضي', language: 'اللغة', newChat: 'محادثة جديدة', findPharmacy: 'ابحث عن صيدلية', privacy: 'الخصوصية',
     welcomeEyebrow: 'مرحباً بك في مساحتك', welcomeTitle: 'مرحباً، أنا Pharma-AI.', welcomeText: 'أساعدك في صياغة طلب دواء والعثور على معلومات الصيدليات. كيف أستطيع مساعدتك اليوم؟', medicationSuggestion: 'طلب دواء', pharmacySuggestion: 'صيدلية بالقرب مني', priceSuggestion: 'سؤال عن السعر', disclaimer: 'لمساعدتك في طلبات الصيدلية. دون نصائح طبية أو تأكيد للمخزون.',
@@ -28,6 +30,7 @@ const STRINGS = {
     virtual: 'المساعد الافتراضي ديالك', welcomeTitle: 'سلام، أنا Pharma-AI.', welcomeText: 'نعاونك تصيغ الطلب ديال الدوا وتلقى معلومات الصيدليات. كيفاش نقدر نعاونك اليوم؟', placeholder: 'كتب الرسالة ديالك…', you: 'نتا', waiting: 'كنوجد ليك الجواب…', voiceOff: 'الصوت ما متوفرش دابا. تقدر تكتب ليا.', medicationPrompt: 'واش كاين دوليبران؟', pricePrompt: 'بشحال دوليبران؟'
   },
   darija_latn: {
+    webDone: 'Recherche web salat · Sources lte7t', webFailed: 'Recherche web ma kmlatch', savedContact: 'Contact men annuaire msajjel', savedInfo: 'Ma3loumat men sources msajjelin', callNumber: '3ayet',
     virtual: 'L’assistant dyalek', welcomeTitle: 'Salam, ana Pharma-AI.', welcomeText: 'N3awnek tsayeb talab dyal dwa w tel9a ma3loumat pharmacie. Kifach n9der n3awnek lyoum ?', placeholder: 'Kteb message dyalek…', you: 'Nta', waiting: 'Kanwejjed lik ljawab…', voiceOff: 'Sout ma khddamch daba. T9der tkteb lia.', medicationPrompt: 'Wach kayn Doliprane ?', pricePrompt: 'Bch7al Doliprane ?'
   }
 };
@@ -112,16 +115,40 @@ function bubble(text, role) {
 function addSources(reply, sources) {
   if (!Array.isArray(sources)) return;
   const links = document.createElement('div'); links.className = 'reply-sources';
+  const seen = new Set();
   for (const source of sources.slice(0,8)) {
     if (!source || typeof source.url !== 'string') continue;
     let url; try { url = new URL(source.url); } catch { continue; }
-    if (url.protocol !== 'https:' || url.username || url.password) continue;
+    if (url.protocol !== 'https:' || url.username || url.password || seen.has(url.href)) continue;
+    seen.add(url.href);
     const link = document.createElement('a'); link.href = url.href;
     link.target = '_blank'; link.rel = 'noopener noreferrer';
     link.textContent = typeof source.title === 'string' ? source.title.slice(0,150) : url.hostname;
     links.append(link);
   }
   if (links.childElementCount) reply.article.append(links);
+}
+function addProvenance(reply, data) {
+  const labels = [];
+  if (data.web_search?.attempted === true) labels.push(t(data.web_search.succeeded === true ? 'webDone' : 'webFailed'));
+  if (data.answer_source === 'saved_contact') labels.push(t('savedContact'));
+  else if (['local_directory','saved_health_reference'].includes(data.answer_source)) labels.push(t('savedInfo'));
+  if (!labels.length) return;
+  const badge = document.createElement('p'); badge.className = 'answer-origin';
+  badge.textContent = labels.join(' · '); reply.article.append(badge);
+}
+function addContactActions(reply, data) {
+  if (!Array.isArray(data.sources) || !data.sources.length || data.synthetic === true) return;
+  const matches = data.answer.match(/(?:\+212[ .-]*[567](?:[ .-]*\d){8}|0[567](?:[ .-]*\d){8})(?!\d)/g) || [];
+  const numbers = [...new Set(matches.map(number => number.replace(/[ .-]/g, '')))];
+  if (!numbers.length) return;
+  const actions = document.createElement('div'); actions.className = 'reply-actions';
+  for (const number of numbers.slice(0,4)) {
+    const link = document.createElement('a'); link.className = 'call-action';
+    link.href = 'tel:' + number; link.textContent = t('callNumber') + ' ' + number;
+    actions.append(link);
+  }
+  reply.article.append(actions);
 }
 function typingBubble() {
   const { article, body } = bubble('', 'assistant'); body.className = 'typing'; body.setAttribute('aria-label', t('waiting'));
@@ -153,11 +180,8 @@ async function sendRequest(body, isAudio, displayText) {
     if (demoMode && data.synthetic !== true) throw new Error(t('error'));
     if (typeof data.answer !== 'string' || !data.answer.trim()) throw new Error(t('error'));
     pending.remove(); const reply = bubble(data.answer, 'assistant');
-    if (data.web_search && data.web_search.attempted === true) {
-      const badge = document.createElement('p'); badge.className = 'message-label';
-      badge.textContent = data.web_search.succeeded === true ? 'Recherche web effectuée · Sources ci-dessous' : 'Recherche web non aboutie';
-      reply.article.append(badge);
-    }
+    addProvenance(reply, data);
+    addContactActions(reply, data);
     addSources(reply, data.sources);
     if (!demoMode) { chatHistory.push({ role: 'user', text: displayText.slice(0,4000) }, { role: 'assistant', text: data.answer.slice(0,4000) }); chatHistory = chatHistory.slice(-10); }
     addPlayback(reply, data.answer, data.language || $('language').value);
