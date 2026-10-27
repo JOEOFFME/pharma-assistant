@@ -50,3 +50,7 @@ times:
   demain: tomorrow
   غدا: tomorrow
 urgency: [urgent, ضروري, مستعجل, عاجل]
+
+# Nearby intent needs a pharmacy term as well as a proximity expression.
+pharmacy_terms: [pharmacy, pharmacies, pharmacie, saydaliya, saydalia, صيدلية, الصيدلية, صيدليات, الصيدليات]
+nearby_terms: [a9rab, aqrab, 9rib, 9riba, qrib, qriba, near, nearby, nearest]

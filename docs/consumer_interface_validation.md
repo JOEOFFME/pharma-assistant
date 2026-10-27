@@ -1,5 +1,9 @@
 # Consumer chat redesign — Validation Report
 
+The supplied robot image and subsequent nearby-intent correction supersede the
+original companion asset below. See `docs/nearby_request_fix_validation.md` for
+the current image, routing behavior and 562-test validation.
+
 ## Delivered experience
 
 The reference screenshot guided a blue outer frame, a spacious left conversation

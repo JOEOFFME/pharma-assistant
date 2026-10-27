@@ -5,6 +5,7 @@ from pathlib import Path
 from pharma_assistant.api.schemas import AnalysisResponse
 from pharma_assistant.data.pharmacies import PharmacyRepository
 from pharma_assistant.data_tools.fetch_pharmacies import load_config
+from pharma_assistant.nlp.intent import contains_medical_advice
 
 # These are presentation templates, not medical answers or model-generated claims.
 MESSAGES = {
@@ -212,6 +213,43 @@ MESSAGES = {
 }
 
 
+# A domain clarification is different from a medical refusal.
+PRESENTATION_HELP = {
+    "fr": {
+        "unsupported": (
+            "Je n’ai pas compris votre demande. Cherchez-vous un médicament"
+            " ou une pharmacie ? Pouvez-vous préciser ?"
+        ),
+        "find": "Voir les pharmacies",
+        "share": "Partager ma position",
+        "distance": "km",
+    },
+    "ar": {
+        "unsupported": "لم أفهم طلبك. هل تبحث عن دواء أم عن صيدلية؟ هل يمكنك التوضيح؟",
+        "find": "اعرض الصيدليات",
+        "share": "شارك موقعي",
+        "distance": "كم",
+    },
+    "darija_ar": {
+        "unsupported": (
+            "ما فهمتش الطلب ديالك. واش كتقلب على دوا ولا صيدلية؟ وضّح ليا " "شوية."
+        ),
+        "find": "شوف الصيدليات",
+        "share": "شارك الموقع ديالي",
+        "distance": "كم",
+    },
+    "darija_latn": {
+        "unsupported": (
+            "Ma fhemtch talab dyalek. Wach kat9elleb 3la dwa wla pharmacie?"
+            " Wdde7 lia chwiya."
+        ),
+        "find": "Chouf pharmacies",
+        "share": "Partager position dyali",
+        "distance": "km",
+    },
+}
+
+
 def present_answer(analysis: AnalysisResponse, user_location=None) -> dict:
     """Answer the in-scope part without fabricating stock, prices or transactions."""
     language = analysis.input.language
@@ -224,9 +262,18 @@ def present_answer(analysis: AnalysisResponse, user_location=None) -> dict:
     ]
     # Echo only the extracted names. Clinical text from mixed requests is excluded.
     names = ", ".join(f"« {e.text} »" for e in medications)
+    help_text = PRESENTATION_HELP.get(language, PRESENTATION_HELP["fr"])
     records = []
+    distances = {}
+    actions = []
     if intent == "out_of_scope":
-        answer = messages["refusal"]
+        config = load_config(Path("configs/baseline.yaml"))
+        evidence = analysis.input.transcript or analysis.input.raw_text
+        answer = (
+            messages["refusal"]
+            if contains_medical_advice(evidence, config)
+            else help_text["unsupported"]
+        )
     elif intent == "greeting_smalltalk":
         answer = messages["hello"]
     elif intent in {"check_availability", "request_medication", "price_inquiry"}:
@@ -258,18 +305,22 @@ def present_answer(analysis: AnalysisResponse, user_location=None) -> dict:
                 elif locations:
                     records = repository.by_city(locations[0], limit=5)
                 else:
-                    records = [
-                        row.pharmacy
-                        for row in repository.nearest(
-                            user_location.latitude, user_location.longitude, k=5
-                        )
-                    ]
+                    nearby = repository.within_radius(
+                        user_location.latitude, user_location.longitude, radius_km=10
+                    )[:5]
+                    records = [row.pharmacy for row in nearby]
+                    distances = {row.pharmacy.id: row.distance_km for row in nearby}
                 lines = [messages["directory"]]
                 for record in records:
                     phone = ", ".join(record.phones_e164) or messages["unknown"]
                     hours = record.opening_hours or messages["unknown"]
+                    distance = (
+                        f"{distances[record.id]:.2f} {help_text['distance']} — "
+                        if record.id in distances
+                        else ""
+                    )
                     lines.append(
-                        f"{record.name or messages['unnamed']} — "
+                        f"{record.name or messages['unnamed']} — {distance}"
                         f"{messages['phone']}: {phone}; "
                         f"{messages['hours']}: {hours} "
                         f"{record.city or ''}"
@@ -277,10 +328,17 @@ def present_answer(analysis: AnalysisResponse, user_location=None) -> dict:
                 answer = "\n\n".join(lines) if records else messages["none"]
             except (FileNotFoundError, OSError):
                 answer = messages["unavailable"]
+    if intent == "pharmacy_info_location":
+        actions = [
+            {"type": "find_pharmacy", "label": help_text["find"]},
+        ]
+        if user_location is None:
+            actions.append({"type": "share_location", "label": help_text["share"]})
     if analysis.contains_out_of_scope_request and intent != "out_of_scope":
         answer += "\n\n" + messages["refusal"]
     return {
         "answer": answer,
+        "actions": actions,
         "language": language,
         "transcript": analysis.input.transcript,
         "pharmacies": [record.model_dump(mode="json") for record in records],

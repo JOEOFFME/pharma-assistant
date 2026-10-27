@@ -27,6 +27,12 @@ def phrase_in(text: str, phrase: str) -> bool:
     )
 
 
+def contains_medical_advice(text: str, config: dict) -> bool:
+    """Use the shared clinical lexicon without treating unknown text as advice."""
+    normalized = normalize(text, arabizi=False).text
+    return any(phrase_in(normalized, phrase) for phrase in config["medical_advice"])
+
+
 def classify_intent(text: str, config: dict) -> tuple[IntentLabel, bool, bool]:
     """Return primary intent, mixed unsupported clause flag and action ambiguity."""
     normalized = (
@@ -34,12 +40,19 @@ def classify_intent(text: str, config: dict) -> tuple[IntentLabel, bool, bool]:
         if config.get("normalize_entities", True)
         else text.casefold()
     )
-    advice = any(phrase_in(normalized, p) for p in config["medical_advice"])
+    advice = contains_medical_advice(text, config)
     found = [
         label
         for label in PRIORITY
         if any(phrase_in(normalized, p) for p in config["rules"][label])
     ]
+    pharmacy_context = any(
+        phrase_in(normalized, term) for term in config.get("pharmacy_terms", [])
+    )
+    nearby = any(phrase_in(normalized, term) for term in config.get("nearby_terms", []))
+    if pharmacy_context and nearby and "pharmacy_info_location" not in found:
+        found.append("pharmacy_info_location")
+        found.sort(key=PRIORITY.index)
     # Clinical phrases alone cannot become stock requests due to quoted verbs.
     if advice and not any(
         label in found

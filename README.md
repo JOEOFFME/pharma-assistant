@@ -112,14 +112,20 @@ in the consumer interface. The pharmacy map opens from **Trouver une pharmacie**
 using city, distance and optional **Autour de moi** controls. Conversation text is
 kept in page memory only; **Nouvelle conversation** clears it.
 
-The original generated companion portrait is a fictional virtual-service avatar,
-not a clinician endorsement. Local assets are served under `/ui/`. Plotly loads
+The companion panel uses the owner-provided pharmacy-robot image, with its
+source markings preserved. It represents a virtual assistant. Local assets are served under `/ui/`. Plotly loads
 only when the map is opened. Responsive layouts include a compact mobile
 companion strip, reduced-motion preferences and Arabic text direction.
 
 `POST /v1/assistant/text` and `/v1/assistant/voice` return readable `answer`,
 `language`, `transcript`, source-backed `pharmacies`, `analysis` and `disclaimer`.
 The UI consumes the answer/transcript and never renders analysis data.
+Nearest-pharmacy requests offer map and location-sharing actions. Location is
+requested only after a user click; the assistant never infers a position.
+With an explicitly supplied position, directory replies show up to five saved
+records within 10 km, sorted by straight-line distance. Without a position or
+city it asks for one. Unrecognized requests get clarification; only detected
+medical-advice requests receive the clinical refusal.
 The existing `/v1/analyze/*` machine-consumer schemas remain unchanged.
 Answers are localized templates, not unrestricted chat or medical advice. They
 never confirm live stock, invent Moroccan prices, send orders or recommend doses.

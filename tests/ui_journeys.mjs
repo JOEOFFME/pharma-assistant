@@ -13,8 +13,8 @@ for (const dialog of window.document.querySelectorAll('dialog')) {
   dialog.close = () => { dialog.open = false; dialog.dispatchEvent(new window.Event('close')); };
 }
 const calls = [], plots = [];
-let voiceOK = true, nextAnswer = 'Votre demande concerne Doliprane. Le stock reste à confirmer.', deferred, failStatus = 0, tracksStopped = 0;
-const payload = () => ({ answer: nextAnswer, transcript: null, analysis: { secret: 'MUST NEVER APPEAR' } });
+let voiceOK = true, nextAnswer = 'Votre demande concerne Doliprane. Le stock reste à confirmer.', deferred, failStatus = 0, tracksStopped = 0, locationRequests = 0, actions = [];
+const payload = () => ({ answer: nextAnswer, actions, transcript: null, analysis: { secret: 'MUST NEVER APPEAR' } });
 window.fetch = async (url, options = {}) => {
   calls.push({ url, options });
   if (url === '/v1/voice/status') return { ok: true, json: async () => ({ ready: voiceOK, issues: ['SHOULD NOT APPEAR'] }) };
@@ -26,7 +26,7 @@ window.fetch = async (url, options = {}) => {
 };
 window.Plotly = { purge() {}, async newPlot(...args) { plots.push(args); } };
 Object.defineProperty(window.navigator, 'mediaDevices', { value: { getUserMedia: async () => ({ getTracks: () => [{ stop: () => tracksStopped++ }] }) } });
-Object.defineProperty(window.navigator, 'geolocation', { value: { getCurrentPosition(success) { success({ coords: { latitude: 33.97, longitude: -6.86 } }); } } });
+Object.defineProperty(window.navigator, 'geolocation', { value: { getCurrentPosition(success) { locationRequests++; success({ coords: { latitude: 33.97, longitude: -6.86 } }); } } });
 class Recorder {
   static isTypeSupported() { return true; }
   constructor(stream, options) { this.mimeType = options.mimeType; this.state = 'inactive'; }
@@ -48,6 +48,17 @@ try {
   assert.equal(window.document.querySelector('.message.assistant .message-text').textContent, nextAnswer);
   assert.ok(!window.document.body.textContent.includes('MUST NEVER APPEAR'));
   assert.equal(JSON.parse(calls.find(c => c.url === '/v1/assistant/text').options.body).text, 'Wach kayn Doliprane ?');
+  // A nearby-pharmacy reply offers consent actions without automatically locating.
+  actions = [{ type:'find_pharmacy', label:'Voir les pharmacies' }, { type:'share_location', label:'Partager ma position' }, { type:'untrusted_navigation', label:'Never execute' }];
+  submit('3tini a9rab pharmacy lya'); await settle();
+  assert.equal(locationRequests, 0);
+  const actionButtons = [...window.document.querySelectorAll('.reply-actions button')];
+  assert.equal(actionButtons.length, 2);
+  actionButtons[1].click(); await settle();
+  assert.equal(locationRequests, 1);
+  assert.equal($('map-dialog').open, true);
+  assert.ok(calls.some(c => c.url.includes('lat=33.97')));
+  $('map-dialog').close(); actions = [];
   // Untrusted content remains text instead of being inserted as HTML.
   nextAnswer = '<img src=x onerror="alert(1)">'; submit('salam'); await settle();
   assert.equal(window.document.querySelector('.message img'), null);
@@ -87,5 +98,5 @@ try {
   assert.equal($('record').disabled, true); assert.equal($('send').disabled, false);
   assert.ok(!window.document.body.textContent.includes('SHOULD NOT APPEAR'));
   assert.ok(!window.document.body.textContent.includes('FFmpeg'));
-  console.log('PASS: consumer text, safe rendering, private errors, Arabic, composition, reset/race, voice/correction, map/location and unavailable-voice journeys');
+  console.log('PASS: consumer text, safe rendering, private errors, Arabic, composition, reset/race, voice/correction, map/location/consent and unavailable-voice journeys');
 } finally { window.happyDOM.abort(); window.close(); }

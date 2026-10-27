@@ -94,7 +94,19 @@ async function sendRequest(body, isAudio, displayText) {
     if (!response.ok) throw new Error(safeStatus(response.status, isAudio));
     const data = await response.json(); if (id !== requestNumber) return;
     if (typeof data.answer !== 'string' || !data.answer.trim()) throw new Error(t('error'));
-    pending.remove(); bubble(data.answer, 'assistant');
+    pending.remove(); const reply = bubble(data.answer, 'assistant');
+    if (Array.isArray(data.actions)) {
+      const controls = document.createElement('div'); controls.className = 'reply-actions';
+      for (const action of data.actions) {
+        if (!['find_pharmacy','share_location'].includes(action.type)) continue;
+        const button = document.createElement('button'); button.type = 'button';
+        button.textContent = action.label || t(action.type === 'find_pharmacy' ? 'findPharmacy' : 'aroundMe');
+        button.onclick = () => { openMap(action.type !== 'share_location'); if (action.type === 'share_location') locate(); };
+        controls.append(button);
+      }
+      if (controls.childElementCount) reply.article.append(controls);
+    }
+    scrollChat();
     if (isAudio && data.transcript) {
       mine.body.textContent = data.transcript;
       const edit = document.createElement('button'); edit.className = 'message-action'; edit.textContent = t('modify');
@@ -161,12 +173,12 @@ async function checkVoice() {
 function newConversation() {
   requestNumber++; activeRequest?.abort(); activeRequest = null;
   if (recording) { const session = recording; session.cancelled = true; if (session.recorder.state === 'recording') session.recorder.stop(); releaseRecording(session); }
-  busy = false;
+  busy = false; sharedLocation = null;
   for (const node of $('conversation').querySelectorAll('.message')) node.remove();
   $('welcome').hidden = false; $('message').value = ''; resizeComposer(); $('main-menu').hidden = true; $('menu-button').setAttribute('aria-expanded', 'false');
   $('status').textContent = voiceReady ? '' : t('voiceOff'); updateControls(); $('message').focus();
 }
-function openMap() { $('main-menu').hidden = true; $('menu-button').setAttribute('aria-expanded','false'); $('map-dialog').showModal(); searchPharmacies(); }
+function openMap(search = true) { $('main-menu').hidden = true; $('menu-button').setAttribute('aria-expanded','false'); $('map-dialog').showModal(); if (search) searchPharmacies(); }
 async function loadPlotly() {
   if (window.Plotly) return window.Plotly;
   if (!plotlyPromise) plotlyPromise = new Promise((resolve,reject) => {
@@ -220,7 +232,7 @@ $('new-chat').onclick = newConversation;
 $('menu-button').onclick = () => { $('main-menu').hidden = !$('main-menu').hidden; $('menu-button').setAttribute('aria-expanded', String(!$('main-menu').hidden)); };
 document.addEventListener('click', event => { if (!event.target.closest('.menu-wrap')) { $('main-menu').hidden = true; $('menu-button').setAttribute('aria-expanded','false'); } });
 document.addEventListener('keydown', event => { if (event.key === 'Escape') { $('main-menu').hidden = true; $('menu-button').setAttribute('aria-expanded','false'); } });
-for (const id of ['open-map','menu-map','suggest-map']) $(id).onclick = openMap;
+for (const id of ['open-map','menu-map','suggest-map']) $(id).onclick = () => openMap();
 $('privacy-button').onclick = () => { $('main-menu').hidden = true; $('menu-button').setAttribute('aria-expanded','false'); $('privacy-dialog').showModal(); };
 for (const button of document.querySelectorAll('[data-close]')) button.onclick = () => $(button.dataset.close).close();
 $('map-dialog').addEventListener('close', () => { mapRequest++; });

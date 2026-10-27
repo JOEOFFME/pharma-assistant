@@ -57,7 +57,7 @@ def test_assets_public_does_not_expose_protected_analysis(monkeypatch):
     monkeypatch.setenv("API_KEY", "fixture-key")
     with TestClient(create_app()) as client:
         assert client.get("/").status_code == 200
-        for filename in ["assistant.css", "assistant.js", "companion.webp"]:
+        for filename in ["assistant.css", "assistant.js", "pharmacy-robot.webp"]:
             response = client.get("/ui/" + filename)
             assert response.status_code == 200 and response.content
             if filename.endswith((".css", ".js")):
