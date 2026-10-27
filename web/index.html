@@ -1,123 +1,69 @@
-<!doctype html><html lang="fr"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Pharma Assistant</title>
-<style>body{font:16px system-ui;background:#eef5f3;color:#15392e;max-width:900px;margin:3rem auto;padding:1.5rem}main{background:white;padding:2rem;border-radius:20px;box-shadow:0 12px 50px #15392e12}h1{font-size:2.3rem;margin-bottom:.5rem}.note{color:#5d6f68}textarea,input,select,button{font:inherit;padding:.8rem;border:1px solid #c7d9d0;border-radius:8px;margin:.35rem 0}textarea{box-sizing:border-box;width:100%;min-height:130px}button{background:#176f50;color:white;cursor:pointer}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f5f8f6;padding:1rem;border-radius:10px}.row{display:flex;gap:1rem;flex-wrap:wrap}mark{background:#d4f0a7}#status{min-height:1.5rem}label{display:block}.warning{background:#fff5d8;padding:1rem;border-radius:8px}</style>
-<main><p class="note">العربية · الدارجة · Français</p><h1>Pharma Assistant</h1><p>Posez votre question à propos d’un médicament ou d’une pharmacie.</p><p class="warning">Cet assistant ne fournit pas de conseil médical. Aucun diagnostic, posologie, substitution ou stock en direct.</p>
-<label for="text">Votre message</label><textarea id="text" dir="auto" placeholder="واش كاين دوليبران؟"></textarea><div class="row"><select id="lang" aria-label="Langue"><option value="">Détection automatique</option value="darija_ar">Darija العربية</option><option value="darija_latn">Darija Latin</option><option value="ar">العربية</option><option value="fr">Français</option><option value="mixed">Mixte</option></select><input id="key" type="password" placeholder="Clé API si nécessaire" aria-label="Clé API"></div><button id="analyze">Envoyer</button><label>Ou un enregistrement audio<input type="file" id="audio" accept="audio/*"></label><button id="sendAudio">Envoyer l’enregistrement</button> <button id="record">🎙 Enregistrer</button><p class="note">Enregistrez jusqu’à 55 secondes. Autorisez le microphone dans votre navigateur.</p>
-<p id="voice-status" role="status">Vérification de la voix…</p><button id="check-voice" type="button">Vérifier la voix</button>
-<details id="voice-help"><summary>Configurer la voix sur cet ordinateur</summary>
-<p>Une seule fois : installez FFmpeg (avec ffprobe), puis téléchargez le modèle. Sous Windows / PowerShell :</p>
-<pre>winget install --id Gyan.FFmpeg --exact</pre>
-<p>Ouvrez ensuite un nouveau terminal dans le dossier du projet :</p>
-<pre>$env:PYTHONUTF8 = "1"
-uv sync --frozen --extra speech
-uv run --frozen --extra speech python scripts/cache_asr.py
-uv run --frozen --extra speech python scripts/start_service.py</pre>
-<p>Le téléchargement initial nécessite Internet. Gardez <code>--extra speech</code> dans la commande de lancement.</p></details>
-<p id="status" role="status" aria-live="polite"></p>
-<section id="answer-card" hidden aria-label="Réponse"><h2>Réponse</h2><p id="answer" dir="auto" style="white-space:pre-line;line-height:1.7"></p></section>
-<p id="transcript" dir="auto" hidden></p>
-<details id="technical"><summary>Détails techniques (facultatif)</summary><div id="entities" dir="auto"></div><pre id="result">Aucune analyse pour le moment.</pre></details>
-<section aria-labelledby="map-title">
-<h2 id="map-title">Pharmacies autour de vous</h2>
-<p class="note">Choisissez un centre et un rayon. Toutes les pharmacies du répertoire dans ce périmètre sont affichées. Distances à vol d’oiseau ; couverture OSM incomplète. Ni stock ni garde en direct.</p>
-<form id="map-form">
-<label for="city-center">Centre de départ</label>
-<select id="city-center"><option value="34.0209,-6.8416">Rabat</option><option value="33.5731,-7.5898">Casablanca</option><option value="31.6295,-7.9811">Marrakech</option><option value="35.7595,-5.8340">Tanger</option><option value="34.0331,-5.0003">Fès</option><option value="30.4278,-9.5981">Agadir</option><option value="">Coordonnées personnalisées</option></select>
-<div class="row"><label>Latitude<input id="map-lat" type="number" step="any" min="-90" max="90" value="34.0209" required></label><label>Longitude<input id="map-lon" type="number" step="any" min="-180" max="180" value="-6.8416" required></label><label>Rayon (km)<input id="map-radius" type="number" min="0.1" max="100" step="0.1" value="5" required></label></div>
-<button type="submit">Afficher les pharmacies</button> <button type="button" id="locate">Utiliser ma position</button>
-</form>
-<p id="map-status" role="status" aria-live="polite">Lancez une recherche pour afficher la carte.</p>
-<div id="pharmacy-map" aria-label="Carte interactive des pharmacies" style="min-height:480px;max-width:100%"></div>
-<p class="note">© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap contributors</a> · ODbL 1.0. Le fond de carte nécessite Internet. La liste reste disponible si la carte ne charge pas.</p>
-<div id="pharmacy-list"></div>
-</section>
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#b8d9f4">
+  <title>Pharma Assistant — Votre espace pharmacie</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='12' fill='%232b70b5'/%3E%3Cpath d='M20 11v18M11 20h18' stroke='white' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/ui/assistant.css">
+  <script src="/ui/assistant.js" defer></script>
+</head>
+<body>
+<svg class="icon-defs" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-mic" viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M5 11v1a7 7 0 0 0 14 0v-1M12 19v3M8 22h8"/></symbol>
+  <symbol id="i-clip" viewBox="0 0 24 24"><path d="m8 12 6-6a3 3 0 0 1 4 4l-8 8a5 5 0 0 1-7-7l9-9M7 14l8-8"/></symbol>
+  <symbol id="i-send" viewBox="0 0 24 24"><path d="m5 12 14-8-4 16-4-7-6-1ZM11 13l8-9"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M5 6h14M5 12h14M5 18h14"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+  <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="2"/><path d="M12 1v4M12 19v4M1 12h4M19 12h4"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+</defs></svg>
+<header class="page-header">
+  <a class="brand" href="/" aria-label="Pharma Assistant"><span class="brand-mark"><svg><use href="#i-plus"/></svg></span><span>Pharma<span class="brand-light"> Assistant</span></span></a>
+  <span class="header-note" data-i18n="headerNote">Un coup de main, tout simplement.</span>
+</header>
+<main class="app-frame" aria-label="Pharma Assistant">
+  <div class="workspace">
+    <section class="chat-column" aria-label="Conversation">
+      <header class="chat-header">
+        <div class="chat-identity"><span class="small-avatar">A<span class="availability-dot"></span></span><div><strong>Amine</strong><span data-i18n="virtual">Votre assistant virtuel</span></div></div>
+        <label class="language-field"><span class="sr-only" data-i18n="language">Langue</span><select id="language" aria-label="Langue"><option value="">Français · Auto</option><option value="ar">العربية</option><option value="darija_ar">الدارجة</option><option value="darija_latn">Darija</option></select></label>
+        <div class="menu-wrap"><button class="icon-button" id="menu-button" aria-expanded="false" aria-controls="main-menu" aria-label="Menu"><svg><use href="#i-menu"/></svg></button><div class="menu" id="main-menu" hidden><button id="new-chat" data-i18n="newChat">Nouvelle conversation</button><button id="menu-map" data-i18n="findPharmacy">Trouver une pharmacie</button><button id="privacy-button" data-i18n="privacy">Confidentialité</button></div></div>
+      </header>
+      <div class="conversation" id="conversation" role="log" aria-live="polite" aria-relevant="additions" tabindex="0">
+        <div class="welcome" id="welcome"><span class="welcome-eyebrow" data-i18n="welcomeEyebrow">BIENVENUE DANS VOTRE ESPACE</span><h1 data-i18n="welcomeTitle">Bonjour, je suis Amine.</h1><p data-i18n="welcomeText">Je vous aide à préparer votre demande de médicament et à trouver une pharmacie. Comment puis-je vous aider aujourd’hui ?</p><p class="welcome-ar" lang="ar">مرحبا بيك، كيفاش نقدر نعاونك؟</p><div class="suggestions"><button class="suggestion" id="suggest-medication"><span>✦</span><span data-i18n="medicationSuggestion">Une demande de médicament</span></button><button class="suggestion" id="suggest-map"><svg><use href="#i-pin"/></svg><span data-i18n="pharmacySuggestion">Une pharmacie près de moi</span></button><button class="suggestion" id="suggest-price"><span>↗</span><span data-i18n="priceSuggestion">Une question sur un prix</span></button></div></div>
+      </div>
+      <div class="composer-area">
+        <p class="composer-status" id="status" role="status" aria-live="polite"></p>
+        <form id="message-form" class="composer">
+          <input id="audio-file" class="sr-only" type="file" accept="audio/*" tabindex="-1" aria-label="Enregistrement audio">
+          <button class="icon-button attach-button" id="attach" type="button" aria-label="Joindre un message vocal" title="Joindre un message vocal"><svg><use href="#i-clip"/></svg></button>
+          <textarea id="message" rows="1" dir="auto" maxlength="10000" placeholder="Écrivez votre message…" aria-label="Votre message"></textarea>
+          <button class="icon-button mic-button" id="record" type="button" aria-label="Enregistrer un message vocal" aria-pressed="false" title="Enregistrer un message vocal"><svg><use href="#i-mic"/></svg></button>
+          <button class="icon-button send-button" id="send" type="submit" aria-label="Envoyer le message" title="Envoyer"><svg><use href="#i-send"/></svg></button>
+        </form>
+        <p class="conversation-note" data-i18n="disclaimer">Pour vos demandes en pharmacie. Sans conseil médical ni confirmation de stock.</p>
+      </div>
+    </section>
+    <aside class="companion" aria-label="Votre assistant">
+      <img class="companion-portrait" src="/ui/companion.webp" width="640" height="960" alt="Portrait illustrant Amine, un assistant virtuel" fetchpriority="high">
+      <div class="companion-copy"><span class="companion-badge"><span></span><span data-i18n="companionBadge">À vos côtés</span></span><h2>Amine<span class="virtual-tag" data-i18n="virtualTag">VIRTUEL</span></h2><p data-i18n="companionSubtitle">Votre espace pharmacie,<br>en toute simplicité.</p></div>
+      <button class="companion-map" id="open-map"><span class="map-icon"><svg><use href="#i-pin"/></svg></span><span><strong data-i18n="findPharmacy">Trouver une pharmacie</strong><small data-i18n="nearYou">Autour de vous, en quelques clics</small></span><svg class="map-arrow"><use href="#i-arrow"/></svg></button>
+    </aside>
+  </div>
 </main>
-<script src="/assets/plotly.min.js" defer></script>
-<script>
-const $=id=>document.getElementById(id);let recorder,parts=[],recordTimer,recordStream;
-function apiHeaders(json=false){const headers={};if($('key').value)headers['X-API-Key']=$('key').value;if(json)headers['Content-Type']='application/json';return headers}
-function friendlyError(data,status){
- if(status===401)return 'Entrez la clé API du serveur, puis réessayez.';
- if(status===429)return 'Trop de demandes. Patientez une minute puis réessayez.';
- if(status===503){const message=data.error?.message||'';if(/ASR|Audio tools/i.test(message)){ $('voice-help').open=true;return 'La voix n’est pas encore configurée sur ce serveur. Suivez les étapes dans « Configurer la voix ».'}return 'Le service est temporairement indisponible. Réessayez plus tard.'}
- if(status===413)return 'L’enregistrement est vide ou trop volumineux. Envoyez un fichier de moins de 10 Mo.';
- if(status===415)return 'Cet audio ne peut pas être lu. Essayez un fichier WAV, MP3 ou un nouvel enregistrement.';
- if(status===422)return 'La demande n’a pas pu être comprise. Pour un audio, parlez clairement pendant quelques secondes puis réessayez.';
- return 'La demande a échoué. Réessayez dans un instant.';
-}
-async function send(url,body,json=false){
- $('status').textContent='Je traite votre demande…';$('answer-card').hidden=true;$('transcript').hidden=true;$('result').textContent='';$('entities').replaceChildren();
- for(const id of ['analyze','sendAudio','record'])$(id).disabled=true;
- try{
-  const response=await fetch(url,{method:'POST',headers:apiHeaders(json),body:json?JSON.stringify(body):body});const data=await response.json();
-  if(!response.ok)throw Error(friendlyError(data,response.status));
-  $('answer').textContent=data.answer;$('answer-card').hidden=false;$('status').textContent='';
-  const analysis=data.analysis;$('result').textContent=JSON.stringify(analysis,null,2);
-  if(data.transcript){$('transcript').textContent='Transcription : '+data.transcript;$('transcript').hidden=false;$('text').value=data.transcript;}
-  const text=Array.from(analysis.input.transcript||analysis.input.raw_text);let cursor=0;
-  for(const entity of [...analysis.entities].sort((a,b)=>a.start-b.start)){
-   if(entity.start==null)continue;$('entities').append(document.createTextNode(text.slice(cursor,entity.start).join('')));const mark=document.createElement('mark');mark.textContent=text.slice(entity.start,entity.end).join('');mark.title=entity.type;$('entities').append(mark);cursor=entity.end;
-  }
-  $('entities').append(document.createTextNode(text.slice(cursor).join('')));
- }catch(error){$('status').textContent=error instanceof TypeError?'Serveur inaccessible. Vérifiez que le terminal du serveur reste ouvert.':error.message;}
- finally{for(const id of ['analyze','sendAudio','record'])$(id).disabled=false;}
-}
-$('analyze').onclick=()=>{if(!$('text').value.trim()){$('status').textContent='Écrivez votre demande avant de l’envoyer.';return}send('/v1/assistant/text',{text:$('text').value,language_hint:$('lang').value||null},true)};
-function sendBlob(blob,name){if(!blob.size){$('status').textContent='Aucun son enregistré. Parlez quelques secondes puis réessayez.';return}const form=new FormData();form.append('file',blob,name);if($('lang').value)form.append('language_hint',$('lang').value);return send('/v1/assistant/voice',form)}
-$('sendAudio').onclick=()=>{const file=$('audio').files[0];if(file)sendBlob(file,file.name);else $('status').textContent='Choisissez un fichier audio.'};
-function releaseMicrophone(){clearTimeout(recordTimer);recordStream?.getTracks().forEach(track=>track.stop());recordStream=null;$('record').textContent='🎙 Enregistrer';}
-$('record').onclick=async()=>{
- if(recorder?.state==='recording'){recorder.stop();return}
- if(!navigator.mediaDevices?.getUserMedia||!window.MediaRecorder){$('status').textContent='Enregistrement indisponible dans ce navigateur. Ouvrez localhost ou HTTPS, ou envoyez un fichier audio.';return}
- try{
-  recordStream=await navigator.mediaDevices.getUserMedia({audio:true});
-  const mime=['audio/webm;codecs=opus','audio/ogg;codecs=opus','audio/mp4'].find(type=>MediaRecorder.isTypeSupported(type));
-  recorder=new MediaRecorder(recordStream,mime?{mimeType:mime}:{});parts=[];
-  recorder.ondataavailable=event=>{if(event.data.size)parts.push(event.data)};
-  recorder.onerror=()=>{releaseMicrophone();$('status').textContent='L’enregistrement a échoué. Réessayez ou envoyez un fichier.';};
-  recorder.onstop=()=>{const type=recorder.mimeType;releaseMicrophone();const ext=type.includes('mp4')?'m4a':type.includes('ogg')?'ogg':'webm';sendBlob(new Blob(parts,{type}),'recording.'+ext)};
-  recorder.start();$('record').textContent='■ Arrêter et envoyer';$('status').textContent='Je vous écoute… Cliquez sur Arrêter pour envoyer.';
-  recordTimer=setTimeout(()=>{if(recorder?.state==='recording')recorder.stop()},55000);
- }catch(error){releaseMicrophone();$('status').textContent=error.name==='NotAllowedError'?'Microphone refusé. Autorisez-le dans les paramètres du site de votre navigateur.':'Microphone indisponible. Vérifiez sa connexion ou envoyez un fichier audio.';}
-};
-async function checkVoice(){
- $('voice-status').textContent='Vérification de la voix…';
- try{const response=await fetch('/v1/voice/status',{headers:apiHeaders()});const data=await response.json();if(!response.ok)throw Error(friendlyError(data,response.status));
- $('voice-status').textContent=data.ready?'Voix prête. Vous pouvez enregistrer ou envoyer un fichier.':'La voix nécessite une configuration sur ce serveur.';
- if(!data.ready){$('voice-help').open=true;$('voice-status').textContent+=' '+data.issues.map(issue=>({ffmpeg_missing:'FFmpeg absent.',ffprobe_missing:'ffprobe absent.',speech_dependency_missing:'Module vocal absent.',model_not_cached:'Modèle vocal non téléchargé.'}[issue]||'')).join(' ');}
- }catch(error){$('voice-status').textContent=error.message;}
-}
-$('check-voice').onclick=checkVoice;checkVoice();
-
-let mapSearch = 0;
-$('city-center').onchange=()=>{if(!$('city-center').value)return;const [lat,lon]=$('city-center').value.split(',');$('map-lat').value=lat;$('map-lon').value=lon};
-for(const id of ['map-lat','map-lon']) $(id).oninput=()=>{$('city-center').value=''};
-$('locate').onclick=()=>{
- if(!navigator.geolocation){$('map-status').textContent='Géolocalisation indisponible. Entrez vos coordonnées.';return}
- $('map-status').textContent='Localisation en cours…';
- navigator.geolocation.getCurrentPosition(position=>{
-  $('city-center').value='';$('map-lat').value=position.coords.latitude;$('map-lon').value=position.coords.longitude;$('map-form').requestSubmit();
- },()=>{$('map-status').textContent='Position inaccessible. Choisissez une ville ou entrez vos coordonnées.'},{timeout:10000,maximumAge:60000});
-};
-$('map-form').onsubmit=async event=>{
- event.preventDefault();const current=++mapSearch;
- $('map-status').textContent='Recherche en cours…';$('pharmacy-list').replaceChildren();
- if(window.Plotly)Plotly.purge('pharmacy-map');
- try{
-  const params=new URLSearchParams({lat:$('map-lat').value,lon:$('map-lon').value,radius_km:$('map-radius').value});
-  const headers={};if($('key').value)headers['X-API-Key']=$('key').value;
-  const response=await fetch('/v1/pharmacies/map?'+params,{headers});const data=await response.json();if(current!==mapSearch)return;
-  if(!response.ok)throw Error(data.error?.message||'Recherche indisponible');
-  for(const row of data.pharmacies){
-   const p=row.pharmacy,card=document.createElement('article');card.style.cssText='border-top:1px solid #c7d9d0;padding:1rem 0';
-   const title=document.createElement('strong');title.textContent=p.name||'Nom inconnu';card.append(title);
-   const detail=document.createElement('p');detail.textContent=`${row.distance_km.toFixed(2)} km · ${p.city||'Ville inconnue'} · Tél. : ${p.phones_e164.join(', ')||'inconnu'} · Horaires : ${p.opening_hours||'inconnus'} · Garde : non vérifiée`;card.append(detail);
-   const link=document.createElement('a');link.href=`https://www.openstreetmap.org/?mlat=${p.latitude}&mlon=${p.longitude}#map=18/${p.latitude}/${p.longitude}`;link.textContent='Voir sur OpenStreetMap';link.target='_blank';link.rel='noopener noreferrer';card.append(link);$('pharmacy-list').append(card);
-  }
-  const summary=data.count?`${data.count} pharmacie(s) du répertoire dans un rayon de ${data.radius_km} km.`:'Aucune pharmacie du répertoire dans ce périmètre. Essayez un rayon plus grand.';
-  $('map-status').textContent=summary;
-  if(!window.Plotly){$('map-status').textContent=summary+' Carte indisponible ; consultez la liste.';return}
-  try{await Plotly.newPlot('pharmacy-map',data.figure.data,data.figure.layout,{responsive:true,displaylogo:false,scrollZoom:true});}
-  catch(error){$('map-status').textContent=summary+' Carte indisponible ; consultez la liste.';}
- }catch(error){if(current===mapSearch)$('map-status').textContent=error.message;}
-};
-</script></html>
+<p class="page-footer" data-i18n="footer">Français, العربية, الدارجة — parlons comme vous.</p>
+<dialog id="map-dialog" class="map-dialog" aria-labelledby="map-title">
+  <header class="dialog-header"><div><span class="dialog-eyebrow" data-i18n="mapEyebrow">À PROXIMITÉ</span><h2 id="map-title" data-i18n="mapTitle">Votre prochaine pharmacie</h2></div><button class="icon-button close-dialog" data-close="map-dialog" aria-label="Fermer"><svg><use href="#i-close"/></svg></button></header>
+  <form id="map-form" class="map-controls"><label><span data-i18n="city">Ville</span><select id="map-city"><option value="Rabat">Rabat</option><option value="Casablanca">Casablanca</option><option value="Marrakech">Marrakech</option><option value="Tanger">Tanger</option><option value="Fès">Fès</option><option value="Agadir">Agadir</option><option value="position" hidden>Ma position</option></select></label><label><span data-i18n="distance">À moins de</span><select id="map-radius"><option value="1">1 km</option><option value="2">2 km</option><option value="5" selected>5 km</option><option value="10">10 km</option><option value="25">25 km</option><option value="50">50 km</option><option value="100">100 km</option></select></label><button class="primary-button" type="submit" data-i18n="search">Rechercher</button><button class="location-button" id="locate" type="button"><svg><use href="#i-target"/></svg><span data-i18n="aroundMe">Autour de moi</span></button></form>
+  <p id="map-status" class="map-status" role="status" aria-live="polite"></p>
+  <div class="map-content"><div id="pharmacy-map" aria-label="Carte des pharmacies"></div><div id="pharmacy-list" class="pharmacy-list"></div></div>
+  <footer class="map-footer"><p data-i18n="mapDisclaimer">Distances à vol d’oiseau. Certaines pharmacies peuvent ne pas apparaître. Appelez pour confirmer les horaires.</p><a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">© OpenStreetMap contributors</a></footer>
+</dialog>
+<dialog id="privacy-dialog" class="privacy-dialog" aria-labelledby="privacy-title"><header class="dialog-header"><h2 id="privacy-title" data-i18n="privacy">Confidentialité</h2><button class="icon-button close-dialog" data-close="privacy-dialog" aria-label="Fermer"><svg><use href="#i-close"/></svg></button></header><p data-i18n="privacyText">Votre conversation reste dans cette page et n’est pas enregistrée dans l’historique de l’assistant. Les enregistrements vocaux sont supprimés après traitement. Votre position n’est utilisée que si vous choisissez de la partager. La carte utilise un service cartographique externe. Évitez de partager des informations médicales personnelles.</p></dialog>
+<noscript>Activez JavaScript dans votre navigateur pour utiliser cet assistant.</noscript>
+</body>
+</html>

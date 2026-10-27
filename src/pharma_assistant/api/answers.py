@@ -272,7 +272,7 @@ def present_answer(analysis: AnalysisResponse, user_location=None) -> dict:
                         f"{record.name or messages['unnamed']} — "
                         f"{messages['phone']}: {phone}; "
                         f"{messages['hours']}: {hours} "
-                        f"({record.latitude:.5f}, {record.longitude:.5f})"
+                        f"{record.city or ''}"
                     )
                 answer = "\n\n".join(lines) if records else messages["none"]
             except (FileNotFoundError, OSError):

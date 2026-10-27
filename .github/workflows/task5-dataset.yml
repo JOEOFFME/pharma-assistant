@@ -2,6 +2,7 @@ name: Project validation
 on:
   push:
     branches: [main, codex/task5-nlu-dataset]
+  pull_request:
   workflow_dispatch:
 permissions:
   contents: read
@@ -30,6 +31,10 @@ jobs:
           fi
       - name: Install frozen project dependencies
         run: make install
+      - name: Verify consumer interface interactions
+        run: |
+          npm ci --prefix web --ignore-scripts --no-audit --no-fund
+          npm test --prefix web
       - name: Rebuild dataset and verify read-only project checks
         run: |
           make schema

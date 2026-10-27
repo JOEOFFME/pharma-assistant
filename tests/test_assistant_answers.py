@@ -109,8 +109,8 @@ def test_assistant_endpoint_and_optional_json(pipeline):
             not in client.post("/v1/analyze/text", json={"text": "salam"}).json()
         )
         html = client.get("/").text
-        assert '<details id="technical">' in html
-        assert '<section id="answer-card" hidden' in html
+        assert 'id="technical"' not in html
+        assert 'id="conversation"' in html
 
 
 def test_voice_prerequisites_and_hint_passthrough(pipeline, monkeypatch):

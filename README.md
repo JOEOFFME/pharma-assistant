@@ -38,10 +38,10 @@ LOCATION entity or confirm a directory answer from the hint.
 ## Pharmacy map
 
 The demo includes a **Plotly Express + OpenStreetMap** map. Choose Rabat,
-Casablanca, Marrakech, Tanger, Fès or Agadir as a starting point, enter custom
-latitude/longitude, or click **Utiliser ma position** (browser permission and
-localhost/HTTPS required). Set a radius from **0.1 to 100 km** and click
-**Afficher les pharmacies**. The search returns every saved directory record
+Casablanca, Marrakech, Tanger, Fès or Agadir as a starting point, use your
+location through **Autour de moi** (browser permission and
+localhost/HTTPS required). Choose a distance from **1 to 100 km** and click
+**Rechercher**. The search returns every saved directory record
 inside that radius, sorted by straight-line distance, with a center marker,
 perimeter, pharmacy markers and a contact list. City presets are search anchors,
 not administrative region boundaries. Phone/hours remain unknown when absent;
@@ -49,8 +49,9 @@ no live stock or on-duty status is inferred. OSM coverage is incomplete.
 
 No Google Maps key is required. Plotly JavaScript is served from the pinned
 Python package at `/assets/plotly.min.js`; map tiles require Internet/WebGL.
-If the map cannot render, the pharmacy list remains available. The API key input
-also applies to map queries when `API_KEY` is configured.
+If the map cannot render, the pharmacy list remains available. Configured API
+protection applies to map queries as well; authentication is handled by the
+operator, not by a credential field in the chat.
 
 ```bash
 curl 'http://127.0.0.1:8000/v1/pharmacies/map?lat=34.0209&lon=-6.8416&radius_km=5'
@@ -101,20 +102,36 @@ lightweight supervised variants were actually trained; their poor intent dev
 scores are preserved. See [evaluation](docs/10_evaluation.md),
 [architecture](docs/architecture.md), and [acceptance checklist](docs/11_checklist.md).
 
-## Readable answers
+## Consumer chat interface
 
-The demo displays a readable response in French, Arabic or Darija. Structured
-JSON and entity highlighting are tucked inside **Détails techniques (facultatif)**.
-`POST /v1/assistant/text` accepts the same input as `/v1/analyze/text` and returns
-`answer`, `language`, `transcript`, optional source-backed `pharmacies`, `analysis`
-and `disclaimer`. `/v1/assistant/voice` presents the same output for audio uploads.
-The existing `/v1/analyze/*` machine-consumer schemas are unchanged.
+The demo uses a blue two-panel conversation layout with a virtual companion,
+a message composer, audio attachment and microphone controls. Replies appear as
+ordinary chat messages in French, Arabic or Darija. No JSON, entity labels,
+confidence scores, API-key field, setup commands or raw coordinates are exposed
+in the consumer interface. The pharmacy map opens from **Trouver une pharmacie**,
+using city, distance and optional **Autour de moi** controls. Conversation text is
+kept in page memory only; **Nouvelle conversation** clears it.
 
-Answers use deterministic localized templates; this is a pharmacy-request helper,
-not unrestricted chat or a medical adviser. It never confirms live stock, invents
-Moroccan prices, sends orders, or recommends dosages. Directory replies use saved
-records; missing contact fields and on-duty status remain unknown. Ambiguous
-medication names produce a specific product-clarification question.
+The original generated companion portrait is a fictional virtual-service avatar,
+not a clinician endorsement. Local assets are served under `/ui/`. Plotly loads
+only when the map is opened. Responsive layouts include a compact mobile
+companion strip, reduced-motion preferences and Arabic text direction.
+
+`POST /v1/assistant/text` and `/v1/assistant/voice` return readable `answer`,
+`language`, `transcript`, source-backed `pharmacies`, `analysis` and `disclaimer`.
+The UI consumes the answer/transcript and never renders analysis data.
+The existing `/v1/analyze/*` machine-consumer schemas remain unchanged.
+Answers are localized templates, not unrestricted chat or medical advice. They
+never confirm live stock, invent Moroccan prices, send orders or recommend doses.
+Each request is analyzed independently; the visible transcript is not LLM memory.
+
+Technical setup belongs to the operator and this README. A voice service that is
+not ready shows a simple unavailability message and leaves typing available.
+If `API_KEY` is enabled, API protection remains enforced; use an authenticated
+upstream gateway that supplies credentials for approved visitors. Never place
+the server secret in HTML/JavaScript or remove authentication to hide its UI.
+The local default has API-key protection disabled. This UI does not add a login
+service or bypass a configured API key.
 
 ## Voice
 
@@ -149,12 +166,13 @@ The Docker image is text-capable by default; install the speech extra and mount
 complete cached model files/configure a local model directory to enable voice.
 The browser microphone requires localhost or HTTPS and user permission.
 `GET /v1/voice/status` reports missing tools, speech packages or cached weights
-without downloading anything. The UI shows readiness and setup instructions.
+without downloading anything. Only the operator sees setup instructions here;
+consumers see a simple voice-availability message.
 Keep `--extra speech` in voice startup commands. Windows uploads are closed before
 external decoders reopen them. Duration-less MediaRecorder WebM is measured by a
 bounded decode rather than rejected. Uploaded recordings are deleted after use.
 A selected Arabic/Darija or French language is forwarded as an ASR hint, and the
-transcript appears above the optional technical details so users can correct it.
+transcript appears in the user’s voice-message bubble with a correction action.
 
 Actual model inference was smoke-tested on synthetic flite speech. Its poor
 transcript is retained in [asr_smoke.json](docs/asr_smoke.json); this is not a
@@ -193,3 +211,15 @@ reported separately from CI because this workspace has no Docker executable.
 No secrets, real patient data, model weights or generated user recordings belong
 in git. See [final Validation Report](docs/11_validation.md) for actual checks,
 remaining externally dependent validations and exact measured results.
+
+## Optional consumer-interface checks
+
+Node >=20 is needed only for these development checks, not to serve the app:
+
+```bash
+npm ci --prefix web --ignore-scripts --no-audit --no-fund
+npm test --prefix web
+```
+
+See [consumer-interface Validation Report](docs/consumer_interface_validation.md)
+for files, exact results, generated-asset provenance and remaining browser QA.

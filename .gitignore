@@ -40,3 +40,6 @@ tmp/
 # Unverified draft and review proposals; never final gold.
 !data/nlu/gold_human_draft.txt
 !data/nlu/gold_review.jsonl
+
+# Optional DOM interaction checks
+web/node_modules/

@@ -1,5 +1,8 @@
 # Readable answers and voice compatibility — Validation Report
 
+The subsequent consumer redesign removes technical details entirely; see
+`docs/consumer_interface_validation.md` for the current UI and 551-test validation.
+
 ## User-visible changes
 
 The demo now displays a localized readable answer instead of a JSON wall.
