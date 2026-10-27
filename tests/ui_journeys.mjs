@@ -12,11 +12,16 @@ for (const dialog of window.document.querySelectorAll('dialog')) {
   dialog.showModal = () => { dialog.open = true; };
   dialog.close = () => { dialog.open = false; dialog.dispatchEvent(new window.Event('close')); };
 }
-const calls = [], plots = [];
+const calls = [], plots = [], spoken = [];
+let speechCancelled = 0;
+window.SpeechSynthesisUtterance = class { constructor(text) { this.text = text; } };
+window.speechSynthesis = { getVoices: () => [{ lang: 'fr-FR' }, { lang: 'ar-MA' }], speak: utterance => spoken.push(utterance), cancel: () => speechCancelled++ };
+const demoQuestions = JSON.parse(await readFile(resolve(root, 'web/assets/demo-questions.json'), 'utf8'));
 let voiceOK = true, nextAnswer = 'Votre demande concerne Doliprane. Le stock reste à confirmer.', deferred, failStatus = 0, tracksStopped = 0, locationRequests = 0, actions = [];
 const payload = () => ({ answer: nextAnswer, actions, transcript: null, analysis: { secret: 'MUST NEVER APPEAR' } });
 window.fetch = async (url, options = {}) => {
   calls.push({ url, options });
+  if (url === '/ui/demo-questions.json') return { ok: true, json: async () => demoQuestions };
   if (url === '/v1/voice/status') return { ok: true, json: async () => ({ ready: voiceOK, issues: ['SHOULD NOT APPEAR'] }) };
   if (url.startsWith('/v1/pharmacies/map')) return { ok: true, json: async () => ({ count: 1, radius_km: 5, pharmacies: [{ distance_km: .3, pharmacy: { name: '<script>untrusted</script>', phones_e164: [], opening_hours: null, latitude: 34, longitude: -6 } }], figure: { data: [], layout: {} } }) };
   if (deferred) return await new Promise(resolve => { deferred.resolve = resolve; });
@@ -50,6 +55,32 @@ try {
   assert.equal(window.document.querySelector('.message.assistant .message-text').textContent, nextAnswer);
   assert.ok(!window.document.body.textContent.includes('MUST NEVER APPEAR'));
   assert.equal(JSON.parse(calls.find(c => c.url === '/v1/assistant/text').options.body).text, 'Wach kayn Doliprane ?');
+  // User-initiated playback and automatic playback are separate controls.
+  assert.equal(spoken.length, 0);
+  window.document.querySelector('.playback-button').click();
+  assert.equal(spoken.at(-1).text, nextAnswer);
+  assert.equal(spoken.at(-1).lang, 'fr-FR');
+  assert.equal($('stop-speaking').hidden, false);
+  $('stop-speaking').click(); assert.equal($('stop-speaking').hidden, true);
+  assert.ok(speechCancelled > 0);
+  $('auto-speak').click(); assert.equal($('auto-speak').getAttribute('aria-pressed'), 'true');
+  submit('salam'); await settle(); assert.equal(spoken.length, 2);
+  $('auto-speak').click();
+  // Demo choices fill a normal editable request; they never inject an answer.
+  const requestsBefore = calls.filter(c => c.url === '/v1/assistant/text').length;
+  $('open-demo').click(); await settle();
+  const choices = [...window.document.querySelectorAll('#demo-questions button')];
+  assert.equal(choices.length, 10);
+  choices[2].click();
+  assert.equal($('message').value, demoQuestions[2].text);
+  assert.equal($('language').value, 'ar');
+  assert.equal($('demo-dialog').open, false);
+  assert.equal(calls.filter(c => c.url === '/v1/assistant/text').length, requestsBefore);
+  submit($('message').value); await settle();
+  window.document.querySelector('.message.assistant:last-child .playback-button').click();
+  assert.equal(spoken.at(-1).lang, 'ar-MA');
+  $('new-chat').click(); assert.equal($('stop-speaking').hidden, true);
+  $('language').value = ''; $('language').dispatchEvent(new window.Event('change'));
   // A nearby-pharmacy reply offers consent actions without automatically locating.
   actions = [{ type:'find_pharmacy', label:'Voir les pharmacies', city:'Casablanca' }, { type:'share_location', label:'Partager ma position' }, { type:'untrusted_navigation', label:'Never execute' }];
   submit('3tini a9rab pharmacy lya'); await settle();
@@ -100,10 +131,21 @@ try {
   assert.equal($('map-city').value, 'position');
   assert.ok(calls.some(c => c.url.includes('lat=33.97')));
   $('map-dialog').close();
+  // Cancelling recording releases the microphone without uploading audio.
+  const uploadsBefore = calls.filter(c => c.url === '/v1/assistant/voice').length;
+  $('record').click(); await settle();
+  assert.equal($('cancel-recording').hidden, false);
+  $('cancel-recording').click(); await settle();
+  assert.equal(calls.filter(c => c.url === '/v1/assistant/voice').length, uploadsBefore);
+  assert.equal(tracksStopped, 2);
+  assert.equal($('cancel-recording').hidden, true);
   // Voice unavailable is a consumer message and typing remains usable.
   voiceOK = false; window.dispatchEvent(new window.Event('focus')); await settle();
   assert.equal($('record').disabled, true); assert.equal($('send').disabled, false);
   assert.ok(!window.document.body.textContent.includes('SHOULD NOT APPEAR'));
   assert.ok(!window.document.body.textContent.includes('FFmpeg'));
+  voiceOK = true; $('retry-voice').click(); await settle();
+  assert.equal($('record').disabled, false);
+  assert.equal($('retry-voice').hidden, true);
   console.log('PASS: consumer text, safe rendering, private errors, Arabic, composition, reset/race, voice/correction, map/location/consent and unavailable-voice journeys');
 } finally { window.happyDOM.abort(); window.close(); }

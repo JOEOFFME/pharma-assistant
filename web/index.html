@@ -21,23 +21,20 @@
   <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="2"/><path d="M12 1v4M12 19v4M1 12h4M19 12h4"/></symbol>
   <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
 </defs></svg>
-<header class="page-header">
-  <a class="brand" href="/" aria-label="Pharma-AI"><span class="brand-mark"><svg><use href="#i-plus"/></svg></span><span>Pharma<span class="brand-light">-AI</span></span></a>
-  <span class="header-note" data-i18n="headerNote">Un coup de main, tout simplement.</span>
-</header>
+
 <main class="app-frame" aria-label="Pharma-AI">
   <div class="workspace">
     <section class="chat-column" aria-label="Conversation">
       <header class="chat-header">
-        <div class="chat-identity"><span class="small-avatar">P<span class="availability-dot"></span></span><div><strong>Pharma-AI</strong><span data-i18n="virtual">Votre assistant virtuel</span></div></div>
-        <label class="language-field"><span class="sr-only" data-i18n="language">Langue</span><select id="language" aria-label="Langue"><option value="">Français · Auto</option><option value="ar">العربية</option><option value="darija_ar">الدارجة</option><option value="darija_latn">Darija</option></select></label>
+        <div class="chat-identity"><span class="small-avatar"><img src="/ui/pharmacy-robot.webp" alt=""><span class="availability-dot"></span></span><div><strong>Pharma-AI</strong><span data-i18n="virtual">Votre assistant virtuel</span></div></div>
+        <button class="toolbar-button" id="open-demo" type="button" data-i18n="examples">Exemples à essayer</button><button class="toolbar-button" id="open-map" type="button" data-i18n="findPharmacy">Trouver une pharmacie</button><button class="toolbar-button" id="auto-speak" type="button" aria-pressed="false" data-i18n="autoSpeak">Lecture vocale</button><label class="language-field"><span class="sr-only" data-i18n="language">Langue</span><select id="language" aria-label="Langue"><option value="">Français · Auto</option><option value="ar">العربية</option><option value="darija_ar">الدارجة</option><option value="darija_latn">Darija</option></select></label>
         <div class="menu-wrap"><button class="icon-button" id="menu-button" aria-expanded="false" aria-controls="main-menu" aria-label="Menu"><svg><use href="#i-menu"/></svg></button><div class="menu" id="main-menu" hidden><button id="new-chat" data-i18n="newChat">Nouvelle conversation</button><button id="menu-map" data-i18n="findPharmacy">Trouver une pharmacie</button><button id="privacy-button" data-i18n="privacy">Confidentialité</button></div></div>
       </header>
       <div class="conversation" id="conversation" role="log" aria-live="polite" aria-relevant="additions" tabindex="0">
-        <div class="welcome" id="welcome"><span class="welcome-eyebrow" data-i18n="welcomeEyebrow">BIENVENUE DANS VOTRE ESPACE</span><h1 data-i18n="welcomeTitle">Bonjour, je suis Pharma-AI.</h1><p data-i18n="welcomeText">Je vous aide à préparer votre demande de médicament et à trouver une pharmacie. Comment puis-je vous aider aujourd’hui ?</p><p class="welcome-ar" lang="ar">مرحبا بيك، كيفاش نقدر نعاونك؟</p><div class="suggestions"><button class="suggestion" id="suggest-medication"><span>✦</span><span data-i18n="medicationSuggestion">Une demande de médicament</span></button><button class="suggestion" id="suggest-map"><svg><use href="#i-pin"/></svg><span data-i18n="pharmacySuggestion">Une pharmacie près de moi</span></button><button class="suggestion" id="suggest-price"><span>↗</span><span data-i18n="priceSuggestion">Une question sur un prix</span></button></div></div>
+        <div class="welcome" id="welcome"><img class="welcome-robot" src="/ui/pharmacy-robot.webp" width="96" height="96" alt="Robot assistant dans une pharmacie"><span class="welcome-eyebrow" data-i18n="welcomeEyebrow">BIENVENUE DANS VOTRE ESPACE</span><h1 data-i18n="welcomeTitle">Bonjour, je suis Pharma-AI.</h1><p data-i18n="welcomeText">Je vous aide à préparer votre demande de médicament et à trouver une pharmacie. Comment puis-je vous aider aujourd’hui ?</p><p class="welcome-ar" lang="ar">مرحبا بيك، كيفاش نقدر نعاونك؟</p><div class="suggestions"><button class="suggestion" id="suggest-medication"><span>✦</span><span data-i18n="medicationSuggestion">Une demande de médicament</span></button><button class="suggestion" id="suggest-map"><svg><use href="#i-pin"/></svg><span data-i18n="pharmacySuggestion">Une pharmacie près de moi</span></button><button class="suggestion" id="suggest-price"><span>↗</span><span data-i18n="priceSuggestion">Une question sur un prix</span></button></div></div>
       </div>
       <div class="composer-area">
-        <p class="composer-status" id="status" role="status" aria-live="polite"></p>
+        <div class="voice-controls"><button id="cancel-recording" type="button" hidden data-i18n="cancelRecording">Annuler l’enregistrement</button><button id="retry-voice" type="button" hidden data-i18n="retryVoice">Réessayer le micro</button><button id="stop-speaking" type="button" hidden data-i18n="stopSpeaking">Arrêter la lecture</button></div><p class="composer-status" id="status" role="status" aria-live="polite"></p>
         <form id="message-form" class="composer">
           <input id="audio-file" class="sr-only" type="file" accept="audio/*" tabindex="-1" aria-label="Enregistrement audio">
           <button class="icon-button attach-button" id="attach" type="button" aria-label="Joindre un message vocal" title="Joindre un message vocal"><svg><use href="#i-clip"/></svg></button>
@@ -48,14 +45,11 @@
         <p class="conversation-note" data-i18n="disclaimer">Pour vos demandes en pharmacie. Sans conseil médical ni confirmation de stock.</p>
       </div>
     </section>
-    <aside class="companion" aria-label="Votre assistant">
-      <img class="companion-portrait" src="/ui/pharmacy-robot.webp" width="1200" height="672" alt="Robot assistant dans une pharmacie" fetchpriority="high">
-      <div class="companion-copy"><span class="companion-badge"><span></span><span data-i18n="companionBadge">À vos côtés</span></span><h2>Pharma-AI<span class="virtual-tag" data-i18n="virtualTag">VIRTUEL</span></h2><p data-i18n="companionSubtitle">Votre espace pharmacie,<br>en toute simplicité.</p></div>
-      <button class="companion-map" id="open-map"><span class="map-icon"><svg><use href="#i-pin"/></svg></span><span><strong data-i18n="findPharmacy">Trouver une pharmacie</strong><small data-i18n="nearYou">Autour de vous, en quelques clics</small></span><svg class="map-arrow"><use href="#i-arrow"/></svg></button>
-    </aside>
+
   </div>
 </main>
-<p class="page-footer" data-i18n="footer">Français, العربية, الدارجة — parlons comme vous.</p>
+
+<dialog id="demo-dialog" class="demo-dialog" aria-labelledby="demo-title"><header class="dialog-header"><div><span class="dialog-eyebrow">PHARMA-AI</span><h2 id="demo-title" data-i18n="examples">Exemples à essayer</h2></div><button class="icon-button close-dialog" data-close="demo-dialog" aria-label="Fermer"><svg><use href="#i-close"/></svg></button></header><p data-i18n="demoIntro">Choisissez une question, puis envoyez-la ou prononcez-la au micro. Chaque exemple est une demande complète.</p><div id="demo-questions" class="demo-questions"></div><p id="demo-status" role="status"></p></dialog>
 <dialog id="map-dialog" class="map-dialog" aria-labelledby="map-title">
   <header class="dialog-header"><div><span class="dialog-eyebrow" data-i18n="mapEyebrow">À PROXIMITÉ</span><h2 id="map-title" data-i18n="mapTitle">Votre prochaine pharmacie</h2></div><button class="icon-button close-dialog" data-close="map-dialog" aria-label="Fermer"><svg><use href="#i-close"/></svg></button></header>
   <form id="map-form" class="map-controls"><label><span data-i18n="city">Ville</span><select id="map-city"><option value="Rabat">Rabat</option><option value="Casablanca">Casablanca</option><option value="Marrakech">Marrakech</option><option value="Tanger">Tanger</option><option value="Fès">Fès</option><option value="Agadir">Agadir</option><option value="position" hidden>Ma position</option></select></label><label><span data-i18n="distance">À moins de</span><select id="map-radius"><option value="1">1 km</option><option value="2">2 km</option><option value="5" selected>5 km</option><option value="10">10 km</option><option value="25">25 km</option><option value="50">50 km</option><option value="100">100 km</option></select></label><button class="primary-button" type="submit" data-i18n="search">Rechercher</button><button class="location-button" id="locate" type="button"><svg><use href="#i-target"/></svg><span data-i18n="aroundMe">Autour de moi</span></button></form>
@@ -63,7 +57,7 @@
   <div class="map-content"><div id="pharmacy-map" aria-label="Carte des pharmacies"></div><div id="pharmacy-list" class="pharmacy-list"></div></div>
   <footer class="map-footer"><p data-i18n="mapDisclaimer">Distances à vol d’oiseau. Certaines pharmacies peuvent ne pas apparaître. Appelez pour confirmer les horaires.</p><a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">© OpenStreetMap contributors</a></footer>
 </dialog>
-<dialog id="privacy-dialog" class="privacy-dialog" aria-labelledby="privacy-title"><header class="dialog-header"><h2 id="privacy-title" data-i18n="privacy">Confidentialité</h2><button class="icon-button close-dialog" data-close="privacy-dialog" aria-label="Fermer"><svg><use href="#i-close"/></svg></button></header><p data-i18n="privacyText">Votre conversation reste dans cette page et n’est pas enregistrée dans l’historique de l’assistant. Les enregistrements vocaux sont supprimés après traitement. Votre position n’est utilisée que si vous choisissez de la partager. La carte utilise un service cartographique externe. Évitez de partager des informations médicales personnelles.</p></dialog>
+<dialog id="privacy-dialog" class="privacy-dialog" aria-labelledby="privacy-title"><header class="dialog-header"><h2 id="privacy-title" data-i18n="privacy">Confidentialité</h2><button class="icon-button close-dialog" data-close="privacy-dialog" aria-label="Fermer"><svg><use href="#i-close"/></svg></button></header><p data-i18n="privacyText">Votre conversation reste dans cette page et n’est pas enregistrée dans l’historique de l’assistant. Les enregistrements vocaux sont supprimés après traitement. Votre position n’est utilisée que si vous choisissez de la partager. La carte utilise un service cartographique externe. La lecture vocale dépend des voix de votre appareil, qui peuvent utiliser un service externe. Évitez de partager des informations médicales personnelles.</p></dialog>
 <noscript>Activez JavaScript dans votre navigateur pour utiliser cet assistant.</noscript>
 </body>
 </html>

@@ -2,12 +2,13 @@
 const $ = id => document.getElementById(id);
 const STRINGS = {
   fr: {
+    examples: 'Exemples à essayer', demoIntro: 'Choisissez une question, puis envoyez-la ou prononcez-la au micro. Chaque exemple est une demande complète.', autoSpeak: 'Lecture vocale', listen: 'Écouter la réponse', stopSpeaking: 'Arrêter la lecture', speechOff: 'La lecture vocale est indisponible dans ce navigateur.', cancelRecording: 'Annuler l’enregistrement', retryVoice: 'Réessayer le micro',
     headerNote: 'Un coup de main, tout simplement.', virtual: 'Votre assistant virtuel', language: 'Langue', newChat: 'Nouvelle conversation', findPharmacy: 'Trouver une pharmacie', privacy: 'Confidentialité',
     welcomeEyebrow: 'BIENVENUE DANS VOTRE ESPACE', welcomeTitle: 'Bonjour, je suis Pharma-AI.', welcomeText: 'Je vous aide à préparer votre demande de médicament et à trouver une pharmacie. Comment puis-je vous aider aujourd’hui ?',
     medicationSuggestion: 'Une demande de médicament', pharmacySuggestion: 'Une pharmacie près de moi', priceSuggestion: 'Une question sur un prix', disclaimer: 'Pour vos demandes en pharmacie. Sans conseil médical ni confirmation de stock.',
     companionBadge: 'À vos côtés', virtualTag: 'VIRTUEL', companionSubtitle: 'Votre espace pharmacie,\nen toute simplicité.', nearYou: 'Autour de vous, en quelques clics', footer: 'Français, العربية, الدارجة — parlons comme vous.',
     mapEyebrow: 'À PROXIMITÉ', mapTitle: 'Votre prochaine pharmacie', city: 'Ville', distance: 'À moins de', search: 'Rechercher', aroundMe: 'Autour de moi', mapDisclaimer: 'Distances à vol d’oiseau. Certaines pharmacies peuvent ne pas apparaître. Appelez pour confirmer les horaires.',
-    privacyText: 'Votre conversation reste dans cette page et n’est pas enregistrée dans l’historique de l’assistant. Les enregistrements vocaux sont supprimés après traitement. Votre position n’est utilisée que si vous choisissez de la partager. La carte utilise un service cartographique externe. Évitez de partager des informations médicales personnelles.',
+    privacyText: 'Votre conversation reste dans cette page et n’est pas enregistrée dans l’historique de l’assistant. Les enregistrements vocaux sont supprimés après traitement. Votre position n’est utilisée que si vous choisissez de la partager. La carte utilise un service cartographique externe. La lecture vocale dépend des voix de votre appareil, qui peuvent utiliser un service externe. Évitez de partager des informations médicales personnelles.',
     placeholder: 'Écrivez votre message…', send: 'Envoyer le message', record: 'Enregistrer un message vocal', stop: 'Arrêter et envoyer', attach: 'Joindre un message vocal', you: 'Vous', modify: 'Corriger ce message', empty: 'Écrivez votre message avant de l’envoyer.',
     waiting: 'Je prépare votre réponse…', voiceOff: 'Les messages vocaux sont indisponibles pour le moment. Vous pouvez m’écrire.', noMic: 'Le microphone n’est pas disponible dans ce navigateur. Vous pouvez m’écrire.', denied: 'Autorisez le microphone dans les paramètres du site pour enregistrer un message.', recording: 'Je vous écoute… Arrêtez l’enregistrement pour envoyer.', audioMessage: 'Message vocal', audioEmpty: 'Je n’ai pas reçu de son. Essayez un nouvel enregistrement.', audioLarge: 'Ce message vocal est trop long ou trop volumineux. Essayez un enregistrement plus court.',
     error: 'Je n’ai pas pu répondre pour le moment. Réessayez dans un instant.', network: 'La connexion a été interrompue. Réessayez dans un instant.', reserved: 'Cet espace est réservé. Contactez la personne qui vous a donné accès à cet assistant.', tooMany: 'Un petit instant… Vous pourrez réessayer dans une minute.', audioInvalid: 'Je n’arrive pas à lire cet enregistrement. Essayez un autre fichier ou enregistrez un nouveau message.', unclear: 'Je n’ai pas bien compris. Pouvez-vous reformuler ou réenregistrer votre demande ?',
@@ -15,10 +16,11 @@ const STRINGS = {
     medicationPrompt: 'Est-ce que Doliprane est disponible ?', pricePrompt: 'Quel est le prix de Doliprane ?'
   },
   ar: {
+    examples: 'أمثلة للتجربة', demoIntro: 'اختر سؤالاً ثم أرسله أو اقرأه بالميكروفون. كل مثال طلب كامل.', autoSpeak: 'قراءة صوتية', listen: 'استمع للإجابة', stopSpeaking: 'أوقف القراءة', speechOff: 'القراءة الصوتية غير متاحة في هذا المتصفح.', cancelRecording: 'إلغاء التسجيل', retryVoice: 'أعد تجربة الميكروفون',
     headerNote: 'مساعدتك بكل بساطة.', virtual: 'مساعدك الافتراضي', language: 'اللغة', newChat: 'محادثة جديدة', findPharmacy: 'ابحث عن صيدلية', privacy: 'الخصوصية',
     welcomeEyebrow: 'مرحباً بك في مساحتك', welcomeTitle: 'مرحباً، أنا Pharma-AI.', welcomeText: 'أساعدك في صياغة طلب دواء والعثور على معلومات الصيدليات. كيف أستطيع مساعدتك اليوم؟', medicationSuggestion: 'طلب دواء', pharmacySuggestion: 'صيدلية بالقرب مني', priceSuggestion: 'سؤال عن السعر', disclaimer: 'لمساعدتك في طلبات الصيدلية. دون نصائح طبية أو تأكيد للمخزون.',
     companionBadge: 'بجانبك', virtualTag: 'افتراضي', companionSubtitle: 'طلبات الصيدلية،\nبكل بساطة.', nearYou: 'بالقرب منك، بخطوات بسيطة', footer: 'العربية، الدارجة، Français — نتحدث بلغتك.', mapEyebrow: 'بالقرب منك', mapTitle: 'اعثر على صيدلية', city: 'المدينة', distance: 'ضمن مسافة', search: 'ابحث', aroundMe: 'بالقرب مني', mapDisclaimer: 'المسافات بخط مستقيم. قد لا تظهر بعض الصيدليات. اتصل للتأكد من المواعيد.',
-    privacyText: 'تبقى محادثتك في هذه الصفحة ولا تُحفظ في سجل المساعد. تُحذف التسجيلات بعد معالجتها. لا يُستخدم موقعك إلا إذا اخترت مشاركته. تستخدم الخريطة خدمة خارجية. تجنب مشاركة معلومات طبية شخصية.',
+    privacyText: 'تبقى محادثتك في هذه الصفحة ولا تُحفظ في سجل المساعد. تُحذف التسجيلات بعد معالجتها. لا يُستخدم موقعك إلا إذا اخترت مشاركته. تستخدم الخريطة خدمة خارجية. تعتمد القراءة الصوتية على أصوات جهازك وقد تستخدم خدمة خارجية. تجنب مشاركة معلومات طبية شخصية.',
     placeholder: 'اكتب رسالتك…', send: 'أرسل الرسالة', record: 'سجل رسالة صوتية', stop: 'أوقف وأرسل', attach: 'أرفق رسالة صوتية', you: 'أنت', modify: 'صحح الرسالة', empty: 'اكتب رسالتك أولاً.', waiting: 'أجهز إجابتك…', voiceOff: 'الصوت غير متاح حالياً. يمكنك الكتابة لي.', noMic: 'الميكروفون غير متاح في هذا المتصفح. يمكنك الكتابة.', denied: 'اسمح للمتصفح باستخدام الميكروفون لتسجيل رسالتك.', recording: 'أستمع إليك… أوقف التسجيل لإرساله.', audioMessage: 'رسالة صوتية', audioEmpty: 'لم أستقبل صوتاً. جرب تسجيلاً جديداً.', audioLarge: 'التسجيل طويل أو حجمه كبير. جرب رسالة أقصر.',
     error: 'لم أتمكن من الإجابة الآن. حاول بعد قليل.', network: 'انقطع الاتصال. حاول بعد قليل.', reserved: 'هذه المساحة مخصصة للمصرح لهم. تواصل مع الشخص الذي منحك الوصول.', tooMany: 'انتظر قليلاً، ثم حاول بعد دقيقة.', audioInvalid: 'تعذر تشغيل هذا التسجيل. أرسل ملفاً آخر أو سجل رسالة جديدة.', unclear: 'لم أفهم جيداً. هل يمكنك إعادة الصياغة أو التسجيل؟', locating: 'أبحث عن موقعك…', locationOff: 'تعذر تحديد موقعك. يمكنك اختيار مدينة بدلاً من ذلك.', myPosition: 'موقعي', searching: 'أبحث عن الصيدليات القريبة…', noPharmacies: 'لم أجد صيدليات هنا. جرب مسافة أكبر.', found: '{count} صيدلية ضمن {radius} كم.', mapOff: 'تعذر عرض الخريطة. يمكنك الاطلاع على القائمة.', unnamed: 'صيدلية', phoneUnknown: 'الهاتف غير مسجل', hoursUnknown: 'المواعيد غير مسجلة', call: 'اتصل', place: 'اعرض الموقع', close: 'أغلق', medicationPrompt: 'هل دوليبران متوفر؟', pricePrompt: 'ما سعر دوليبران؟'
   },
@@ -36,6 +38,8 @@ function t(key, values = {}) {
   for (const [name, value] of Object.entries(values)) text = text.replaceAll(`{${name}}`, String(value));
   return text;
 }
+let autoSpeak = false;
+let speakingButton = null, activeUtterance = null;
 let busy = false, voiceReady = false, recording = null, requestNumber = 0, activeRequest;
 let selectedCenter = { lat: 34.0209, lon: -6.8416 }, sharedLocation = null, mapRequest = 0, plotlyPromise;
 const CITIES = { Rabat: [34.0209, -6.8416], Casablanca: [33.5731, -7.5898], Marrakech: [31.6295, -7.9811], Tanger: [35.7595, -5.8340], 'Fès': [34.0331, -5.0003], Agadir: [30.4278, -9.5981] };
@@ -68,6 +72,35 @@ function applyLanguage() {
   updateControls();
 }
 function scrollChat() { $('conversation').scrollTop = $('conversation').scrollHeight; }
+function stopSpeaking() {
+  activeUtterance = null;
+  window.speechSynthesis?.cancel();
+  $('stop-speaking').hidden = true;
+  if (speakingButton) speakingButton.setAttribute('aria-pressed', 'false');
+  speakingButton = null;
+}
+function speakAnswer(text, language, button) {
+  stopSpeaking();
+  if (!window.speechSynthesis || !window.SpeechSynthesisUtterance) { $('status').textContent = t('speechOff'); return; }
+  const utterance = new SpeechSynthesisUtterance(text);
+  utterance.lang = ['ar', 'darija_ar'].includes(language) ? 'ar-MA' : 'fr-FR';
+  const voices = window.speechSynthesis.getVoices();
+  const voice = voices.find(v => v.lang === utterance.lang) || voices.find(v => v.lang.startsWith(utterance.lang.slice(0, 2)));
+  if (voice) utterance.voice = voice;
+  activeUtterance = utterance; speakingButton = button; button?.setAttribute('aria-pressed', 'true');
+  $('stop-speaking').hidden = false;
+  utterance.onend = () => { if (activeUtterance === utterance) stopSpeaking(); };
+  utterance.onerror = event => { if (event.error !== 'canceled' && event.error !== 'interrupted') $('status').textContent = t('speechOff'); if (activeUtterance === utterance) stopSpeaking(); };
+  window.speechSynthesis.speak(utterance);
+}
+function addPlayback(reply, text, language) {
+  if (!window.speechSynthesis || !window.SpeechSynthesisUtterance) return;
+  const button = document.createElement('button'); button.type = 'button'; button.className = 'playback-button';
+  button.textContent = '▶ ' + t('listen'); button.setAttribute('aria-pressed', 'false');
+  button.onclick = () => speakingButton === button ? stopSpeaking() : speakAnswer(text, language, button);
+  reply.article.append(button);
+  if (autoSpeak) speakAnswer(text, language, button);
+}
 function bubble(text, role) {
   const article = document.createElement('article'); article.className = `message ${role}`;
   const label = document.createElement('span'); label.className = 'message-label'; label.textContent = role === 'user' ? t('you') : 'Pharma-AI';
@@ -82,7 +115,7 @@ function typingBubble() {
 function resizeComposer() { $('message').style.height = 'auto'; $('message').style.height = Math.min($('message').scrollHeight, 125) + 'px'; }
 async function sendRequest(body, isAudio, displayText) {
   if (busy || recording) return;
-  const id = ++requestNumber; busy = true; updateControls(); $('welcome').hidden = true;
+  stopSpeaking(); const id = ++requestNumber; busy = true; updateControls(); $('welcome').hidden = true;
   const mine = bubble(displayText, 'user'), pending = typingBubble();
   $('status').textContent = t('waiting'); const controller = new AbortController(); activeRequest = controller;
   const timer = setTimeout(() => controller.abort(), 120000);
@@ -95,6 +128,7 @@ async function sendRequest(body, isAudio, displayText) {
     const data = await response.json(); if (id !== requestNumber) return;
     if (typeof data.answer !== 'string' || !data.answer.trim()) throw new Error(t('error'));
     pending.remove(); const reply = bubble(data.answer, 'assistant');
+    addPlayback(reply, data.answer, data.language || $('language').value);
     if (Array.isArray(data.actions)) {
       const controls = document.createElement('div'); controls.className = 'reply-actions';
       for (const action of data.actions) {
@@ -141,14 +175,16 @@ function sendAudio(blob, name) {
   sendRequest(form, true, t('audioMessage'));
 }
 function releaseRecording(session) {
-  clearTimeout(session.timeout); clearInterval(session.ticker); session.stream.getTracks().forEach(track => track.stop());
+  if (session.released) return;
+  session.released = true;
+  $('cancel-recording').hidden = true; clearTimeout(session.timeout); clearInterval(session.ticker); session.stream.getTracks().forEach(track => track.stop());
   if (recording === session) recording = null; updateControls();
 }
 async function toggleRecording() {
   if (recording) { if (recording.recorder.state === 'recording') recording.recorder.stop(); return; }
   if (busy || !voiceReady) return;
   if (!navigator.mediaDevices?.getUserMedia || !window.MediaRecorder) { $('status').textContent = t('noMic'); return; }
-  const number = requestNumber;
+  stopSpeaking(); const number = requestNumber;
   let stream;
   try {
     stream = await navigator.mediaDevices.getUserMedia({ audio: true });
@@ -164,7 +200,7 @@ async function toggleRecording() {
       const extension = type.includes('mp4') ? 'm4a' : type.includes('ogg') ? 'ogg' : 'webm';
       sendAudio(new Blob(session.parts, { type }), `voice.${extension}`);
     };
-    recorder.start(); updateControls(); $('status').textContent = t('recording');
+    recorder.start(); $('cancel-recording').hidden = false; updateControls(); $('status').textContent = t('recording');
     session.ticker = setInterval(() => { session.seconds++; $('status').textContent = `${t('recording')} ${String(Math.floor(session.seconds / 60)).padStart(2,'0')}:${String(session.seconds % 60).padStart(2,'0')}`; }, 1000);
     session.timeout = setTimeout(() => { if (recorder.state === 'recording') recorder.stop(); }, 55000);
   } catch (error) { stream?.getTracks().forEach(track => track.stop()); recording = null; updateControls(); $('status').textContent = error.name === 'NotAllowedError' ? t('denied') : t('noMic'); }
@@ -172,10 +208,11 @@ async function toggleRecording() {
 async function checkVoice() {
   try { const response = await fetch('/v1/voice/status', { credentials: 'same-origin' }); voiceReady = response.ok && (await response.json()).ready === true; }
   catch { voiceReady = false; }
+  $('retry-voice').hidden = voiceReady;
   if (!busy && !recording) $('status').textContent = voiceReady ? '' : t('voiceOff'); updateControls();
 }
 function newConversation() {
-  requestNumber++; activeRequest?.abort(); activeRequest = null;
+  stopSpeaking(); requestNumber++; activeRequest?.abort(); activeRequest = null;
   if (recording) { const session = recording; session.cancelled = true; if (session.recorder.state === 'recording') session.recorder.stop(); releaseRecording(session); }
   busy = false; sharedLocation = null;
   for (const node of $('conversation').querySelectorAll('.message')) node.remove();
@@ -244,6 +281,32 @@ $('map-form').onsubmit = event => { event.preventDefault(); searchPharmacies(); 
 $('locate').onclick = locate;
 $('suggest-medication').onclick = () => { $('message').value = t('medicationPrompt'); resizeComposer(); $('message').focus(); };
 $('suggest-price').onclick = () => { $('message').value = t('pricePrompt'); resizeComposer(); $('message').focus(); };
-window.addEventListener('pagehide', () => { activeRequest?.abort(); if (recording) { recording.cancelled = true; releaseRecording(recording); } });
+window.addEventListener('pagehide', () => { stopSpeaking(); activeRequest?.abort(); if (recording) { recording.cancelled = true; releaseRecording(recording); } });
 window.addEventListener('focus', () => { if (!busy && !recording) checkVoice(); });
+$('cancel-recording').onclick = () => {
+  if (!recording) return;
+  const session = recording; session.cancelled = true;
+  if (session.recorder.state === 'recording') session.recorder.stop();
+  releaseRecording(session); $('status').textContent = '';
+};
+$('retry-voice').onclick = checkVoice;
+$('stop-speaking').onclick = stopSpeaking;
+$('auto-speak').disabled = !window.speechSynthesis || !window.SpeechSynthesisUtterance;
+$('auto-speak').onclick = () => { autoSpeak = !autoSpeak; $('auto-speak').setAttribute('aria-pressed', String(autoSpeak)); if (!autoSpeak) stopSpeaking(); };
+$('open-demo').onclick = async () => {
+  $('demo-dialog').showModal();
+  if ($('demo-questions').childElementCount) return;
+  try {
+    const response = await fetch('/ui/demo-questions.json', { credentials: 'same-origin' });
+    if (!response.ok) throw new Error();
+    for (const item of await response.json()) {
+      const button = document.createElement('button'); button.type = 'button';
+      const title = document.createElement('strong'); title.textContent = item.title;
+      const question = document.createElement('span'); question.textContent = item.text; question.dir = 'auto';
+      button.append(title, question);
+      button.onclick = () => { $('language').value = item.language_hint; applyLanguage(); $('message').value = item.text; resizeComposer(); $('demo-dialog').close(); $('message').focus(); };
+      $('demo-questions').append(button);
+    }
+  } catch { $('demo-status').textContent = t('network'); }
+};
 applyLanguage(); checkVoice();

@@ -326,6 +326,33 @@ SERVICE_HELP = {
 }
 
 
+REQUEST_CLARIFICATIONS = {
+    "fr": {
+        "form": "Quelle forme est indiquée sur la boîte (comprimés, sirop…) ?",
+        "strength": "Quel dosage est inscrit sur la boîte ?",
+        "verify": (
+            "Faites confirmer le nom complet de la présentation sur la boîte "
+            "par le pharmacien."
+        ),
+    },
+    "ar": {
+        "form": "ما الشكل المكتوب على العلبة (أقراص، شراب…)؟",
+        "strength": "ما التركيز المكتوب على العلبة؟",
+        "verify": "اطلب من الصيدلي تأكيد الاسم الكامل للعبوة المطلوبة.",
+    },
+    "darija_ar": {
+        "form": "شنو الشكل اللي مكتوب فالعلبة (أقراص، شراب…)؟",
+        "strength": "شنو التركيز اللي مكتوب فالعلبة؟",
+        "verify": "خلي الصيدلي يأكد ليك السمية الكاملة ديال العلبة المطلوبة.",
+    },
+    "darija_latn": {
+        "form": "Chno forme li maktouba f lboita (comprimés, sirop…) ?",
+        "strength": "Chno dosage li maktoub f lboita ?",
+        "verify": "Khlli pharmacien y2ekked smiya kamla dyal présentation f lboita.",
+    },
+}
+
+
 def present_answer(analysis: AnalysisResponse, user_location=None) -> dict:
     """Answer the in-scope part without fabricating stock, prices or transactions."""
     language = analysis.input.language
@@ -344,6 +371,17 @@ def present_answer(analysis: AnalysisResponse, user_location=None) -> dict:
     ]
     # Echo only the extracted names. Clinical text from mixed requests is excluded.
     names = ", ".join(f"« {e.text} »" for e in medications)
+    # Strength/form/quantity are quoted request details, never dosing advice.
+    # With multiple medicines the parser does not reliably associate each detail;
+    # keep them out of the summary rather than attach them to the wrong product.
+    if len(medications) == 1 and intent in {"check_availability", "request_medication"}:
+        details = [
+            e.text
+            for e in analysis.entities
+            if e.type in {"DOSAGE", "FORM", "QUANTITY"} and e.assertion == "affirmed"
+        ]
+        if details:
+            names += " — " + ", ".join(dict.fromkeys(details))
     help_text = PRESENTATION_HELP.get(language, PRESENTATION_HELP["fr"])
     records = []
     distances = {}
@@ -383,7 +421,19 @@ def present_answer(analysis: AnalysisResponse, user_location=None) -> dict:
             messages[kind].format(meds=names) if medications else messages["missing"]
         )
         if medications and analysis.needs_clarification:
-            answer += "\n\n" + messages["clarify"]
+            supplied = {e.type for e in analysis.entities if e.assertion == "affirmed"}
+            clarification = messages["clarify"]
+            if len(medications) == 1:
+                specific = REQUEST_CLARIFICATIONS.get(
+                    language, REQUEST_CLARIFICATIONS["fr"]
+                )
+                if {"DOSAGE", "FORM"} <= supplied:
+                    clarification = specific["verify"]
+                elif "DOSAGE" in supplied:
+                    clarification = specific["form"]
+                elif "FORM" in supplied:
+                    clarification = specific["strength"]
+            answer += "\n\n" + clarification
     else:
         pharmacy_names = [
             e.text for e in analysis.entities if e.type == "PHARMACY_NAME"

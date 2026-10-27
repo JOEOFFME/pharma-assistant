@@ -237,3 +237,20 @@ clear explanation and a contact option; brand-only requests receive a brief
 product-detail reminder rather than a redundant generic clarification. Neither
 live duty schedules nor verified Moroccan prices have been integrated. See
 [Pharma-AI duty/price Validation Report](docs/duty_price_brand_validation.md).
+
+
+### Jury MVP: ten rehearsed examples
+
+The chat now fills the viewport. **Exemples à essayer** offers ten editable prompts
+through the normal assistant endpoint, including French/Arabic/Darija, a request
+summary, typo matching, saved pharmacy phone/city lookups, and truthful limits.
+Microphone and audio upload include transcript correction; replies offer browser
+voice playback, opt-in automatic playback and stop controls. See
+[the complete questions, expected replies and Windows rehearsal guide](docs/jury_demo.md).
+
+```powershell
+uv run --frozen --extra speech python scripts/check_jury_demo.py --require-voice
+```
+
+This checks all ten replies, real Rabat map results and installed speech prerequisites.
+Rehearse recognition and playback in your browser on the presentation laptop.

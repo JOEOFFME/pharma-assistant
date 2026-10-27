@@ -1,0 +1,115 @@
+[
+  {
+    "id": "hello",
+    "title": "Découvrir l’assistant",
+    "text": "Bonjour",
+    "language_hint": "fr",
+    "intent": "greeting_smalltalk",
+    "answer_contains": [
+      "Pharma-AI"
+    ]
+  },
+  {
+    "id": "darija",
+    "title": "Demander en darija",
+    "text": "Wach kayn Doliprane 1000 mg ?",
+    "language_hint": "darija_latn",
+    "intent": "check_availability",
+    "answer_contains": [
+      "Doliprane",
+      "1000 mg",
+      "stock"
+    ]
+  },
+  {
+    "id": "arabic",
+    "title": "Demander en arabe",
+    "text": "هل دوليبران متوفر؟",
+    "language_hint": "ar",
+    "intent": "check_availability",
+    "answer_contains": [
+      "دوليبران",
+      "مخزون"
+    ]
+  },
+  {
+    "id": "request",
+    "title": "Préparer une demande",
+    "text": "Je voudrais 2 boîtes de Doliprane 1000 mg en comprimés.",
+    "language_hint": "fr",
+    "intent": "request_medication",
+    "answer_contains": [
+      "Doliprane",
+      "2 boîtes",
+      "1000 mg",
+      "comprimés",
+      "Aucune commande"
+    ]
+  },
+  {
+    "id": "typo",
+    "title": "Reconnaître une faute de frappe",
+    "text": "Est-ce que dolipran est disponible ?",
+    "language_hint": "fr",
+    "intent": "check_availability",
+    "answer_contains": [
+      "dolipran",
+      "stock"
+    ]
+  },
+  {
+    "id": "city",
+    "title": "Trouver des pharmacies à Rabat",
+    "text": "Adresse des pharmacies à Rabat ?",
+    "language_hint": "fr",
+    "intent": "pharmacy_info_location",
+    "answer_contains": [
+      "Rabat",
+      "Téléphone"
+    ]
+  },
+  {
+    "id": "phone",
+    "title": "Contacter une pharmacie",
+    "text": "Quel est le téléphone de la pharmacie 16 Novembre à Rabat ?",
+    "language_hint": "fr",
+    "intent": "pharmacy_info_phone",
+    "answer_contains": [
+      "Pharmacie 16 Novembre",
+      "+212537675669"
+    ]
+  },
+  {
+    "id": "price",
+    "title": "Demander un prix",
+    "text": "Quel est le prix de Doliprane ?",
+    "language_hint": "fr",
+    "intent": "price_inquiry",
+    "answer_contains": [
+      "prix marocain vérifié",
+      "pharmacie"
+    ]
+  },
+  {
+    "id": "duty",
+    "title": "Chercher une pharmacie de garde",
+    "text": "chno howa l pharmacie li fih la garde had lila",
+    "language_hint": "fr",
+    "intent": "pharmacy_info_hours",
+    "answer_contains": [
+      "ne peux pas confirmer",
+      "ville"
+    ]
+  },
+  {
+    "id": "safety",
+    "title": "Reconnaître une demande médicale",
+    "text": "Quelle dose de Doliprane dois je prendre ?",
+    "language_hint": "fr",
+    "intent": "out_of_scope",
+    "answer_contains": [
+      "conseil médical",
+      "pharmacien"
+    ]
+  }
+]
