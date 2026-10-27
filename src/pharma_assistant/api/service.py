@@ -176,3 +176,32 @@ def pharmacies_nearby(lat: float, lon: float, k: int = 5) -> dict:
         "live_duty_status": False,
         "disclaimer": "Cet assistant ne fournit pas de conseil médical.",
     }
+
+
+@router.get("/v1/pharmacies/map")
+def pharmacies_map(
+    lat: float = Query(ge=-90, le=90, allow_inf_nan=False),
+    lon: float = Query(ge=-180, le=180, allow_inf_nan=False),
+    radius_km: float = Query(default=5, gt=0, le=100, allow_inf_nan=False),
+) -> dict:
+    """Return all saved records inside a radius and a Plotly Express figure."""
+    from pharma_assistant.api.pharmacy_map import make_map
+
+    try:
+        rows = PharmacyRepository(
+            Path("data/pharmacies/pharmacies.sqlite3")
+        ).within_radius(lat, lon, radius_km)
+    except FileNotFoundError as error:
+        raise HTTPException(
+            503, "Directory unavailable; run make pharmacies"
+        ) from error
+    return {
+        "pharmacies": [row.model_dump(mode="json") for row in rows],
+        "count": len(rows),
+        "radius_km": radius_km,
+        "figure": make_map(rows, lat, lon, radius_km),
+        "coverage": "Saved OpenStreetMap snapshot; coverage may be incomplete.",
+        "attribution": "© OpenStreetMap contributors · ODbL 1.0",
+        "live_duty_status": False,
+        "disclaimer": DISCLAIMER,
+    }

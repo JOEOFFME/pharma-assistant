@@ -189,6 +189,32 @@ class PharmacyRepository:
         ]
         return sorted(rows, key=lambda row: (row.distance_km, row.pharmacy.id))[:k]
 
+    def within_radius(
+        self, latitude: float, longitude: float, radius_km: float
+    ) -> list[NearbyPharmacy]:
+        """Return every saved pharmacy inside an inclusive straight-line radius."""
+        # Reuse coordinate validation; do not truncate before radius filtering.
+        self.nearest(latitude, longitude, k=1)
+        if (
+            isinstance(radius_km, bool)
+            or not math.isfinite(radius_km)
+            or not 0 < radius_km <= 100
+        ):
+            raise ValueError("radius_km must be finite and in (0,100]")
+        rows = [
+            NearbyPharmacy(
+                pharmacy=row,
+                distance_km=haversine_km(
+                    latitude, longitude, row.latitude, row.longitude
+                ),
+            )
+            for row in self.all()
+        ]
+        return sorted(
+            (row for row in rows if row.distance_km <= radius_km),
+            key=lambda row: (row.distance_km, row.pharmacy.id),
+        )
+
     def metadata(self) -> dict[str, object]:
         """Return source-neutral table counts for smoke checks."""
         with closing(self._connect()) as connection:

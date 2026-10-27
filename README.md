@@ -35,6 +35,33 @@ browser origins; it is empty by default. `RATE_LIMIT_PER_MINUTE` defaults to 120
 coordinates in the directory endpoint. Analysis does not invent a geocoded
 LOCATION entity or confirm a directory answer from the hint.
 
+## Pharmacy map
+
+The demo includes a **Plotly Express + OpenStreetMap** map. Choose Rabat,
+Casablanca, Marrakech, Tanger, Fès or Agadir as a starting point, enter custom
+latitude/longitude, or click **Utiliser ma position** (browser permission and
+localhost/HTTPS required). Set a radius from **0.1 to 100 km** and click
+**Afficher les pharmacies**. The search returns every saved directory record
+inside that radius, sorted by straight-line distance, with a center marker,
+perimeter, pharmacy markers and a contact list. City presets are search anchors,
+not administrative region boundaries. Phone/hours remain unknown when absent;
+no live stock or on-duty status is inferred. OSM coverage is incomplete.
+
+No Google Maps key is required. Plotly JavaScript is served from the pinned
+Python package at `/assets/plotly.min.js`; map tiles require Internet/WebGL.
+If the map cannot render, the pharmacy list remains available. The API key input
+also applies to map queries when `API_KEY` is configured.
+
+```bash
+curl 'http://127.0.0.1:8000/v1/pharmacies/map?lat=34.0209&lon=-6.8416&radius_km=5'
+```
+
+Response: `pharmacies`, `count`, `radius_km`, Plotly `figure`, coverage,
+attribution and disclaimer. All matching records are returned, without the
+nearest-search endpoint's `k` limit. No user location is persisted by the map;
+the browser sends selected coordinates to this API and fetches map tiles from
+OpenStreetMap.
+
 ## Text tracks and evaluation
 
 ```bash
