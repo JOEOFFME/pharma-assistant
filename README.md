@@ -101,7 +101,39 @@ lightweight supervised variants were actually trained; their poor intent dev
 scores are preserved. See [evaluation](docs/10_evaluation.md),
 [architecture](docs/architecture.md), and [acceptance checklist](docs/11_checklist.md).
 
+## Readable answers
+
+The demo displays a readable response in French, Arabic or Darija. Structured
+JSON and entity highlighting are tucked inside **Détails techniques (facultatif)**.
+`POST /v1/assistant/text` accepts the same input as `/v1/analyze/text` and returns
+`answer`, `language`, `transcript`, optional source-backed `pharmacies`, `analysis`
+and `disclaimer`. `/v1/assistant/voice` presents the same output for audio uploads.
+The existing `/v1/analyze/*` machine-consumer schemas are unchanged.
+
+Answers use deterministic localized templates; this is a pharmacy-request helper,
+not unrestricted chat or a medical adviser. It never confirms live stock, invents
+Moroccan prices, sends orders, or recommends dosages. Directory replies use saved
+records; missing contact fields and on-duty status remain unknown. Ambiguous
+medication names produce a specific product-clarification question.
+
 ## Voice
+
+For Windows / PowerShell (install FFmpeg once, then reopen the terminal):
+
+```powershell
+winget install --id Gyan.FFmpeg --exact
+```
+
+Inside the project folder, in a new terminal:
+
+```powershell
+$env:PYTHONUTF8 = "1"
+uv sync --frozen --extra speech
+uv run --frozen --extra speech python scripts/cache_asr.py
+uv run --frozen --extra speech python scripts/start_service.py
+```
+
+For Linux/macOS with ffmpeg/ffprobe installed:
 
 ```bash
 make speech-install
@@ -116,6 +148,13 @@ The explicit cache step downloads weights; inference uses local files only.
 The Docker image is text-capable by default; install the speech extra and mount
 complete cached model files/configure a local model directory to enable voice.
 The browser microphone requires localhost or HTTPS and user permission.
+`GET /v1/voice/status` reports missing tools, speech packages or cached weights
+without downloading anything. The UI shows readiness and setup instructions.
+Keep `--extra speech` in voice startup commands. Windows uploads are closed before
+external decoders reopen them. Duration-less MediaRecorder WebM is measured by a
+bounded decode rather than rejected. Uploaded recordings are deleted after use.
+A selected Arabic/Darija or French language is forwarded as an ASR hint, and the
+transcript appears above the optional technical details so users can correct it.
 
 Actual model inference was smoke-tested on synthetic flite speech. Its poor
 transcript is retained in [asr_smoke.json](docs/asr_smoke.json); this is not a

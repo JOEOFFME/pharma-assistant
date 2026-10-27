@@ -1,8 +1,10 @@
 """Bounded audio validation and optional faster-whisper inference."""
 
 import json
+import math
 import subprocess
 import tempfile
+import wave
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -38,9 +40,44 @@ def validate_audio(path: Path, config: dict) -> float:
             check=True,
         )
         data = json.loads(result.stdout)
-        duration = float(data["format"]["duration"])
+        duration_value = data.get("format", {}).get("duration")
+        if not any(s["codec_type"] == "audio" for s in data["streams"]):
+            raise ValueError("Unsupported stream")
+        # MediaRecorder WebM streams often omit duration metadata. Decode a
+        # bounded amount to measure samples instead of rejecting valid speech.
+        if duration_value in (None, "N/A"):
+            with tempfile.TemporaryDirectory(prefix="pharma_probe_") as directory:
+                wav = Path(directory) / "probe.wav"
+                subprocess.run(
+                    [
+                        "ffmpeg",
+                        "-v",
+                        "error",
+                        "-nostdin",
+                        "-i",
+                        str(path.resolve()),
+                        "-t",
+                        str(config["max_duration_s"] + 0.1),
+                        "-vn",
+                        "-ac",
+                        "1",
+                        "-ar",
+                        "16000",
+                        "-c:a",
+                        "pcm_s16le",
+                        str(wav),
+                    ],
+                    capture_output=True,
+                    timeout=20,
+                    check=True,
+                )
+                with wave.open(str(wav)) as stream:
+                    duration = stream.getnframes() / stream.getframerate()
+        else:
+            duration = float(duration_value)
         if (
             not any(s["codec_type"] == "audio" for s in data["streams"])
+            or not math.isfinite(duration)
             or not 0 < duration <= config["max_duration_s"]
         ):
             raise ValueError("Unsupported stream or audio duration")
@@ -50,6 +87,8 @@ def validate_audio(path: Path, config: dict) -> float:
         KeyError,
         TypeError,
         json.JSONDecodeError,
+        wave.Error,
+        EOFError,
     ) as error:
         raise ValueError("Cannot decode audio") from error
 

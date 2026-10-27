@@ -6,7 +6,7 @@ import threading
 from pathlib import Path
 from typing import Annotated
 
-from fastapi import APIRouter, File, HTTPException, Query, Request, UploadFile
+from fastapi import APIRouter, File, Form, HTTPException, Query, Request, UploadFile
 from pydantic import BaseModel, ConfigDict, Field
 
 from pharma_assistant.api.schemas import DISCLAIMER, AnalysisResponse, Language
@@ -101,7 +101,9 @@ def analyze_text(body: TextRequest, request: Request) -> AnalysisResponse:
 
 @router.post("/v1/analyze/voice", response_model=AnalysisResponse)
 async def analyze_voice(
-    request: Request, file: Annotated[UploadFile, File()]
+    request: Request,
+    file: Annotated[UploadFile, File()],
+    language_hint: Annotated[Language | None, Form()] = None,
 ) -> AnalysisResponse:
     """Bound uploads and decode audio before optional local-model inference."""
     from starlette.concurrency import run_in_threadpool
@@ -112,13 +114,19 @@ async def analyze_voice(
     data = await file.read(config["max_bytes"] + 1)
     if not data or len(data) > config["max_bytes"]:
         raise HTTPException(413, "Audio empty or too large")
-    with tempfile.NamedTemporaryFile(suffix=".audio") as handle:
-        handle.write(data)
-        handle.flush()
+    # ffprobe/ffmpeg must reopen this path. An open NamedTemporaryFile is locked
+    # against other processes on Windows, so write and close inside a directory.
+    with tempfile.TemporaryDirectory(prefix="pharma_upload_") as directory:
+        audio_path = Path(directory) / "upload.audio"
+        audio_path.write_bytes(data)
         try:
             from pharma_assistant.asr.transcriber import validate_audio
 
-            await run_in_threadpool(validate_audio, Path(handle.name), config)
+            await run_in_threadpool(validate_audio, audio_path, config)
+        except OSError as error:
+            raise HTTPException(
+                503, "Audio tools unavailable; install ffmpeg and ffprobe and restart"
+            ) from error
         except ValueError as error:
             raise HTTPException(415, str(error)) from error
         try:
@@ -127,7 +135,13 @@ async def analyze_voice(
                     WhisperTranscriber, config
                 )
             evidence = await run_in_threadpool(
-                request.app.state.transcriber.transcribe, Path(handle.name)
+                request.app.state.transcriber.transcribe,
+                audio_path,
+                **(
+                    {"language": "fr" if language_hint == "fr" else "ar"}
+                    if language_hint in {"fr", "ar", "darija_ar", "darija_latn"}
+                    else {}
+                ),
             )
         except (ImportError, RuntimeError, OSError) as error:
             raise HTTPException(
@@ -135,7 +149,9 @@ async def analyze_voice(
             ) from error
         except ValueError as error:
             raise HTTPException(422, str(error)) from error
-    result = await run_in_threadpool(pipeline(request).analyze, evidence.text)
+    result = await run_in_threadpool(
+        pipeline(request).analyze, evidence.text, language_hint=language_hint
+    )
     payload = result.model_dump(mode="json", by_alias=True)
     payload["input"].update(modality="voice", raw_text="", transcript=evidence.text)
     payload["request_id"] = request.state.request_id
@@ -205,3 +221,34 @@ def pharmacies_map(
         "live_duty_status": False,
         "disclaimer": DISCLAIMER,
     }
+
+
+@router.get("/v1/voice/status")
+def voice_status() -> dict:
+    """Check local prerequisites without downloading or loading ASR model weights."""
+    from pharma_assistant.asr.readiness import check_voice
+
+    return {
+        **check_voice(load_config(Path("configs/asr.yaml"))),
+        "disclaimer": DISCLAIMER,
+    }
+
+
+@router.post("/v1/assistant/text")
+def assistant_text(body: TextRequest, request: Request) -> dict:
+    """Present a bounded, readable answer while keeping the analysis API stable."""
+    from pharma_assistant.api.answers import present_answer
+
+    return present_answer(analyze_text(body, request), body.user_location)
+
+
+@router.post("/v1/assistant/voice")
+async def assistant_voice(
+    request: Request,
+    file: Annotated[UploadFile, File()],
+    language_hint: Annotated[Language | None, Form()] = None,
+) -> dict:
+    """Use the same answer presenter for voice, with visible transcript evidence."""
+    from pharma_assistant.api.answers import present_answer
+
+    return present_answer(await analyze_voice(request, file, language_hint))

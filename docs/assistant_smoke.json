@@ -1,0 +1,15 @@
+{
+  "synthetic_audio_only": true,
+  "not_a_benchmark": true,
+  "readiness": {
+    "ready": true,
+    "issues": [],
+    "model": "tiny",
+    "disclaimer": "Cet assistant ne fournit pas de conseil médical."
+  },
+  "text_http": 200,
+  "text_answer": "Kat9elleb 3la: « dolipran ». Ma 3ndich stock dyal pharmacies en direct. Sowel pharmacie bach t2ekked wach kayn.\n\nMomkin kaynin plusieurs présentations. Chno smiya, dosage w forme li maktoubin f lboita?",
+  "voice_http": 200,
+  "actual_asr_transcript": "Hello, I am looking for a pharmacy.",
+  "voice_answer": "Je ne peux pas donner de conseil médical, de diagnostic ou de posologie. Pour cela, adressez-vous à un pharmacien ou à un médecin."
+}

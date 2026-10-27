@@ -309,7 +309,9 @@ def build_directory(manifest_path: Path, config: dict[str, Any]) -> dict[str, An
     }
     metrics_path = Path(config["metrics_path"])
     metrics_path.parent.mkdir(parents=True, exist_ok=True)
-    metrics_path.write_text(json.dumps(metrics, ensure_ascii=False, indent=2) + "\n")
+    metrics_path.write_text(
+        json.dumps(metrics, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+    )
     write_report(metrics, Path(config["report_path"]))
     logger.info("Built %s records into %s", len(records), config["database_path"])
     return metrics
