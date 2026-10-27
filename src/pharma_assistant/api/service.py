@@ -141,7 +141,10 @@ def version() -> dict:
     return {
         "version": "0.2.0",
         "pipeline": "rule_baseline_v1",
-        "consumer_policy": "retrieval_chat_v3",
+        "consumer_policy": "tool_agent_v4",
+        "agent_enabled": os.getenv("ASSISTANT_AGENT", "true").lower() == "true",
+        "web_search_enabled": os.getenv("ASSISTANT_WEB_SEARCH", "true").lower()
+        == "true",
         "consumer_nlu": os.getenv("ASSISTANT_NLU", "openrouter"),
         "primary_model": (
             os.getenv("OPENROUTER_MODEL", "").strip() or "openai/gpt-4.1"
@@ -332,7 +335,13 @@ def assistant_text(body: TextRequest, request: Request) -> dict:
     if not body.text.strip():
         raise HTTPException(422, "Text must be nonblank")
     engine = grounded_pipeline(request)
-    analysis = engine.analyze(body.text, language_hint=body.language_hint)
+    interpreter = (
+        engine.baseline
+        if isinstance(engine, OpenRouterPipeline)
+        and os.getenv("ASSISTANT_AGENT", "true").lower() == "true"
+        else engine
+    )
+    analysis = interpreter.analyze(body.text, language_hint=body.language_hint)
     payload = analysis.model_dump(mode="json", by_alias=True)
     payload["request_id"] = request.state.request_id
     from pharma_assistant.api.data_chat import answer_from_data

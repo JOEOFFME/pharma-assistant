@@ -19,7 +19,11 @@ window.speechSynthesis = { getVoices: () => [{ lang: 'fr-FR' }, { lang: 'ar-MA' 
 const juryScenarios = JSON.parse(await readFile(resolve(root, 'web/assets/jury-scenarios.json'), 'utf8'));
 const demoQuestions = JSON.parse(await readFile(resolve(root, 'web/assets/demo-questions.json'), 'utf8'));
 let voiceOK = true, nextAnswer = 'Votre demande concerne Doliprane. Le stock reste à confirmer.', deferred, failStatus = 0, tracksStopped = 0, locationRequests = 0, actions = [];
-const payload = () => ({ answer: nextAnswer, actions, transcript: null, analysis: { secret: 'MUST NEVER APPEAR' } });
+const payload = () => ({ sources: [
+  { title: '<img src=x onerror=bad()> NHS', url: 'https://www.nhs.uk/conditions/migraine/' },
+  { title: 'Unsafe', url: 'javascript:alert(1)' },
+  { title: 'Credentials', url: 'https://secret@evil.test' }
+], answer: nextAnswer, actions, transcript: null, analysis: { secret: 'MUST NEVER APPEAR' } });
 window.fetch = async (url, options = {}) => {
   calls.push({ url, options });
   if (url === '/ui/jury-scenarios.json') return { ok: true, json: async () => juryScenarios };
@@ -57,6 +61,12 @@ try {
   assert.equal(window.document.querySelectorAll('.message').length, 2);
   assert.equal(window.document.querySelector('.message.assistant .message-text').textContent, nextAnswer);
   assert.ok(!window.document.body.textContent.includes('MUST NEVER APPEAR'));
+  const citations = window.document.querySelectorAll('.reply-sources a');
+  assert.equal(citations.length, 1);
+  assert.equal(citations[0].href, 'https://www.nhs.uk/conditions/migraine/');
+  assert.ok(citations[0].textContent.startsWith('<img'));
+  assert.equal(citations[0].querySelector('img'), null);
+  assert.equal(citations[0].rel, 'noopener noreferrer');
   assert.equal(JSON.parse(calls.find(c => c.url === '/v1/assistant/text').options.body).text, 'Wach kayn Doliprane ?');
   // Subsequent requests carry only bounded page-local history.
   // User-initiated playback and automatic playback are separate controls.

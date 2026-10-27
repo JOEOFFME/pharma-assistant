@@ -25,3 +25,7 @@ body{height:100dvh;min-height:0;overflow:hidden;background:#fff}
 @media(max-width:700px){.chat-header{min-height:70px;padding:10px 14px;gap:7px}.chat-identity{min-width:120px}.chat-identity strong{font-size:14px}.chat-identity div>span{font-size:10px}.small-avatar{width:32px;height:32px}.toolbar-button{font-size:10px;padding:7px 8px}#auto-speak{order:5}#open-map{order:4}.language-field select{font-size:11px}.conversation{padding:22px 20px 15px}.welcome{padding-top:8px}.welcome-robot{width:64px;height:64px;margin-bottom:18px}.welcome>p{font-size:14px}.message-text{font-size:15px}.composer-area{padding-inline:12px}.conversation-note{font-size:9px}.suggestion{font-size:11px;padding:10px 12px}.demo-questions{grid-template-columns:1fr}.demo-dialog{padding:20px}}
 
 .scenario-banner{flex-shrink:0;margin:0;padding:12px 24px;background:#fff4d8;border-bottom:1px solid #edd69b;color:#745313;font-size:12px;line-height:1.6;text-align:center}#demo-mode[aria-pressed=true]{color:#745313;background:#fff0c5;border-color:#d8b763}
+
+.reply-sources { display:flex; flex-wrap:wrap; gap:8px; margin:12px 0; }
+.reply-sources a { color:#2265a3; border:1px solid #d7e6f8; border-radius:8px; padding:6px 10px; font-size:.8rem; text-decoration:none; overflow-wrap:anywhere; }
+.reply-sources a:hover { background:#edf5ff; }

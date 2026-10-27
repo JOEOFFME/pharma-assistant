@@ -2,13 +2,13 @@
 const $ = id => document.getElementById(id);
 const STRINGS = {
   fr: {
-    limitedService: 'Le service de conversation est momentanément indisponible. Voici les informations du répertoire enregistré.', transcribing: 'Je transcris votre message…', reviewTranscript: 'Vérifiez le texte reconnu ci-dessous, corrigez-le si besoin, puis appuyez sur Envoyer.', scenarioMode: 'Scénario du jury', scenarioBanner: 'DÉMONSTRATION — Pharmacies, adresses, distances, stocks et gardes fictifs. Point de départ simulé : Al Irfane. Aucun résultat ne confirme une disponibilité réelle.', examples: 'Exemples à essayer', demoIntro: 'Choisissez une question, puis envoyez-la ou prononcez-la au micro. Chaque exemple est une demande complète.', autoSpeak: 'Lecture vocale', listen: 'Écouter la réponse', stopSpeaking: 'Arrêter la lecture', speechOff: 'La lecture vocale est indisponible dans ce navigateur.', cancelRecording: 'Annuler l’enregistrement', retryVoice: 'Réessayer le micro',
+    limitedService: 'Je n’ai pas pu vérifier toutes les informations pour le moment. Vous pouvez réessayer.', transcribing: 'Je transcris votre message…', reviewTranscript: 'Vérifiez le texte reconnu ci-dessous, corrigez-le si besoin, puis appuyez sur Envoyer.', scenarioMode: 'Scénario du jury', scenarioBanner: 'DÉMONSTRATION — Pharmacies, adresses, distances, stocks et gardes fictifs. Point de départ simulé : Al Irfane. Aucun résultat ne confirme une disponibilité réelle.', examples: 'Exemples à essayer', demoIntro: 'Choisissez une question, puis envoyez-la ou prononcez-la au micro. Chaque exemple est une demande complète.', autoSpeak: 'Lecture vocale', listen: 'Écouter la réponse', stopSpeaking: 'Arrêter la lecture', speechOff: 'La lecture vocale est indisponible dans ce navigateur.', cancelRecording: 'Annuler l’enregistrement', retryVoice: 'Réessayer le micro',
     headerNote: 'Un coup de main, tout simplement.', virtual: 'Votre assistant virtuel', language: 'Langue', newChat: 'Nouvelle conversation', findPharmacy: 'Trouver une pharmacie', privacy: 'Confidentialité',
     welcomeEyebrow: 'BIENVENUE DANS VOTRE ESPACE', welcomeTitle: 'Bonjour, je suis Pharma-AI.', welcomeText: 'Je vous aide à préparer votre demande de médicament et à trouver une pharmacie. Comment puis-je vous aider aujourd’hui ?',
     medicationSuggestion: 'Une demande de médicament', pharmacySuggestion: 'Une pharmacie près de moi', priceSuggestion: 'Une question sur un prix', disclaimer: 'Pour vos demandes en pharmacie. Sans conseil médical ni confirmation de stock.',
     companionBadge: 'À vos côtés', virtualTag: 'VIRTUEL', companionSubtitle: 'Votre espace pharmacie,\nen toute simplicité.', nearYou: 'Autour de vous, en quelques clics', footer: 'Français, العربية, الدارجة — parlons comme vous.',
     mapEyebrow: 'À PROXIMITÉ', mapTitle: 'Votre prochaine pharmacie', city: 'Ville', distance: 'À moins de', search: 'Rechercher', aroundMe: 'Autour de moi', mapDisclaimer: 'Distances à vol d’oiseau. Certaines pharmacies peuvent ne pas apparaître. Appelez pour confirmer les horaires.',
-    privacyText: 'Votre conversation reste dans cette page et n’est pas enregistrée dans l’historique de l’assistant. Les enregistrements vocaux sont supprimés après traitement. Votre position n’est utilisée que si vous choisissez de la partager. La carte utilise un service cartographique externe. Si l’assistance linguistique en ligne est activée, votre conversation et les informations utiles du répertoire sont envoyées au service de langage configuré. La lecture vocale dépend des voix de votre appareil, qui peuvent utiliser un service externe. Évitez de partager des informations médicales personnelles.',
+    privacyText: 'Votre conversation reste dans cette page et n’est pas enregistrée dans l’historique de l’assistant. Les enregistrements vocaux sont supprimés après traitement. Votre position n’est utilisée que si vous choisissez de la partager. La carte utilise un service cartographique externe. Si l’assistance en ligne est activée, votre conversation et les informations utiles du répertoire sont envoyées au service de langage configuré. La recherche web peut transmettre des mots-clés aux services de recherche pour consulter des sources de santé publiques. La lecture vocale dépend des voix de votre appareil, qui peuvent utiliser un service externe. Évitez de partager des informations médicales personnelles.',
     placeholder: 'Écrivez votre message…', send: 'Envoyer le message', record: 'Enregistrer un message vocal', stop: 'Arrêter et envoyer', attach: 'Joindre un message vocal', you: 'Vous', modify: 'Corriger ce message', empty: 'Écrivez votre message avant de l’envoyer.',
     waiting: 'Je prépare votre réponse…', voiceOff: 'Les messages vocaux sont indisponibles pour le moment. Vous pouvez m’écrire.', noMic: 'Le microphone n’est pas disponible dans ce navigateur. Vous pouvez m’écrire.', denied: 'Autorisez le microphone dans les paramètres du site pour enregistrer un message.', recording: 'Je vous écoute… Arrêtez l’enregistrement pour envoyer.', audioMessage: 'Message vocal', audioEmpty: 'Je n’ai pas reçu de son. Essayez un nouvel enregistrement.', audioLarge: 'Ce message vocal est trop long ou trop volumineux. Essayez un enregistrement plus court.',
     error: 'Je n’ai pas pu répondre pour le moment. Réessayez dans un instant.', network: 'La connexion a été interrompue. Réessayez dans un instant.', reserved: 'Cet espace est réservé. Contactez la personne qui vous a donné accès à cet assistant.', tooMany: 'Un petit instant… Vous pourrez réessayer dans une minute.', audioInvalid: 'Je n’arrive pas à lire cet enregistrement. Essayez un autre fichier ou enregistrez un nouveau message.', unclear: 'Je n’ai pas bien compris. Pouvez-vous reformuler ou réenregistrer votre demande ?',
@@ -109,6 +109,20 @@ function bubble(text, role) {
   const body = document.createElement('p'); body.className = 'message-text'; body.dir = 'auto'; body.textContent = text;
   article.append(label, body); $('conversation').append(article); scrollChat(); return { article, body };
 }
+function addSources(reply, sources) {
+  if (!Array.isArray(sources)) return;
+  const links = document.createElement('div'); links.className = 'reply-sources';
+  for (const source of sources.slice(0,8)) {
+    if (!source || typeof source.url !== 'string') continue;
+    let url; try { url = new URL(source.url); } catch { continue; }
+    if (url.protocol !== 'https:' || url.username || url.password) continue;
+    const link = document.createElement('a'); link.href = url.href;
+    link.target = '_blank'; link.rel = 'noopener noreferrer';
+    link.textContent = typeof source.title === 'string' ? source.title.slice(0,150) : url.hostname;
+    links.append(link);
+  }
+  if (links.childElementCount) reply.article.append(links);
+}
 function typingBubble() {
   const { article, body } = bubble('', 'assistant'); body.className = 'typing'; body.setAttribute('aria-label', t('waiting'));
   for (let i = 0; i < 3; i++) body.append(document.createElement('span'));
@@ -139,6 +153,7 @@ async function sendRequest(body, isAudio, displayText) {
     if (demoMode && data.synthetic !== true) throw new Error(t('error'));
     if (typeof data.answer !== 'string' || !data.answer.trim()) throw new Error(t('error'));
     pending.remove(); const reply = bubble(data.answer, 'assistant');
+    addSources(reply, data.sources);
     if (!demoMode) { chatHistory.push({ role: 'user', text: displayText.slice(0,4000) }, { role: 'assistant', text: data.answer.slice(0,4000) }); chatHistory = chatHistory.slice(-10); }
     addPlayback(reply, data.answer, data.language || $('language').value);
     if (Array.isArray(data.actions)) {

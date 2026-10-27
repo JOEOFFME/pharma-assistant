@@ -2,6 +2,7 @@
 
 import json
 import logging
+import os
 import re
 
 from pharma_assistant.api.answers import MESSAGES, present_answer
@@ -98,19 +99,27 @@ def validate_reply(reply: GroundedReply, context: dict, question: str) -> None:
     )
     if not set(re.findall(r"\d+", reply.answer)) <= allowed_numbers:
         raise ValueError("Unsupported numeric claim")
-    for sentence in re.split(r"[.!\n]", reply.answer.casefold()):
+    validate_live_claims(reply.answer)
+
+
+def validate_live_claims(answer: str, allow_general_existence: bool = False) -> None:
+    """Reject common unsupported stock and current-duty assertions in any chat mode."""
+    for sentence in re.split(r"[.!\n]", answer.casefold()):
         if "?" in sentence or re.search(
             r"\b(?:pas|non|sans|cannot|not|unverified|inconnu|inconnue|impossible)\b"
             r"|n.ai|ne peux|ma 3ndich|ma n9der|غير|لا |ليست|ما عند",
             sentence,
         ):
             continue
-        if re.search(
-            r"\b(?:disponible|disponibles|available|kayn|kayna|en stock"
-            r"|de garde|open now"
-            r"|ouvert maintenant)\b|متوفر|كاين|مناوبة",
-            sentence,
-        ):
+        pattern = (
+            r"\b(?:en stock|de garde|open now|ouvert maintenant"
+            r"|available at|disponible (?:chez|à|a)|disponibles (?:chez|à|a))\b"
+            r"|مناوبة|متوفر في|كاين فالصيدلية"
+            if allow_general_existence
+            else r"\b(?:disponible|disponibles|available|kayn|kayna|en stock"
+            r"|de garde|open now|ouvert maintenant)\b|متوفر|كاين|مناوبة"
+        )
+        if re.search(pattern, sentence):
             raise ValueError("Unsupported stock/duty/open-now claim")
 
 
@@ -120,6 +129,46 @@ def answer_from_data(engine, analysis, text, location=None, history=None) -> dic
     provider = getattr(engine, "provider", None)
     if provider is None:
         return {**fallback, "answer_source": "local_directory", "model": None}
+    if os.getenv("ASSISTANT_AGENT", "true").lower() == "true":
+        from pharma_assistant.nlp.agent import run_agent
+
+        try:
+            result = run_agent(
+                provider,
+                engine.baseline,
+                text,
+                analysis.input.language,
+                history=history,
+                location=location,
+            )
+            return {**fallback, **result}
+        except (ValueError, OSError) as error:
+            logger.warning(
+                "Agent fallback: %s, status=%s",
+                type(error).__name__,
+                getattr(error, "code", None),
+            )
+            language = analysis.input.language
+            message = (
+                "Ma 9dertch nverifi had lma3louma daba. T9der t3awed tjarreb; "
+                "n9der n3awnek b ma3loumat 3amma 3la dwa bla ma nkhtar lik 3ilaj."
+                if language == "darija_latn"
+                else (
+                    "تعذر التحقق من هذه المعلومة الآن. يمكنك المحاولة مجددًا. "
+                    "يمكنني شرح معلومات عامة عن الأدوية دون اختيار علاج شخصي."
+                    if language in {"ar", "darija_ar"}
+                    else "Je n’ai pas pu vérifier cette information pour le moment. "
+                    "Réessayez ; je peux expliquer les traitements en général, "
+                    "sans choisir un traitement personnel."
+                )
+            )
+            return {
+                **fallback,
+                "answer": message,
+                "answer_source": "local_fallback",
+                "model": None,
+                "fallback_reason": "agent_unavailable_or_invalid",
+            }
     if (
         contains_medical_advice(text, engine.baseline.config)
         or analysis.contains_out_of_scope_request

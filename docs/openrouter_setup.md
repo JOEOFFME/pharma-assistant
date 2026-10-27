@@ -1,5 +1,11 @@
 # Main OpenRouter assistant using the pharmacy data
 
+**Current tool-agent setup:** see [agent_setup.md](agent_setup.md). The agent is now
+the default normal-chat path, with web research, read-only tools and MCP support.
+The directory-only implementation documented below remains available with
+`ASSISTANT_AGENT=false`; its original request budget applies only to that mode.
+
+
 OpenRouter is the default conversational model, not just an intent extractor. It
 interprets the request, retrieves matching saved pharmacy contacts, and writes the
 reply using those records plus bounded conversation context.
