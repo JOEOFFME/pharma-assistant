@@ -2,7 +2,7 @@
 const $ = id => document.getElementById(id);
 const STRINGS = {
   fr: {
-    examples: 'Exemples à essayer', demoIntro: 'Choisissez une question, puis envoyez-la ou prononcez-la au micro. Chaque exemple est une demande complète.', autoSpeak: 'Lecture vocale', listen: 'Écouter la réponse', stopSpeaking: 'Arrêter la lecture', speechOff: 'La lecture vocale est indisponible dans ce navigateur.', cancelRecording: 'Annuler l’enregistrement', retryVoice: 'Réessayer le micro',
+    scenarioMode: 'Scénario du jury', scenarioBanner: 'DÉMONSTRATION — Pharmacies, adresses, distances, stocks et gardes fictifs. Point de départ simulé : Al Irfane. Aucun résultat ne confirme une disponibilité réelle.', examples: 'Exemples à essayer', demoIntro: 'Choisissez une question, puis envoyez-la ou prononcez-la au micro. Chaque exemple est une demande complète.', autoSpeak: 'Lecture vocale', listen: 'Écouter la réponse', stopSpeaking: 'Arrêter la lecture', speechOff: 'La lecture vocale est indisponible dans ce navigateur.', cancelRecording: 'Annuler l’enregistrement', retryVoice: 'Réessayer le micro',
     headerNote: 'Un coup de main, tout simplement.', virtual: 'Votre assistant virtuel', language: 'Langue', newChat: 'Nouvelle conversation', findPharmacy: 'Trouver une pharmacie', privacy: 'Confidentialité',
     welcomeEyebrow: 'BIENVENUE DANS VOTRE ESPACE', welcomeTitle: 'Bonjour, je suis Pharma-AI.', welcomeText: 'Je vous aide à préparer votre demande de médicament et à trouver une pharmacie. Comment puis-je vous aider aujourd’hui ?',
     medicationSuggestion: 'Une demande de médicament', pharmacySuggestion: 'Une pharmacie près de moi', priceSuggestion: 'Une question sur un prix', disclaimer: 'Pour vos demandes en pharmacie. Sans conseil médical ni confirmation de stock.',
@@ -16,7 +16,7 @@ const STRINGS = {
     medicationPrompt: 'Est-ce que Doliprane est disponible ?', pricePrompt: 'Quel est le prix de Doliprane ?'
   },
   ar: {
-    examples: 'أمثلة للتجربة', demoIntro: 'اختر سؤالاً ثم أرسله أو اقرأه بالميكروفون. كل مثال طلب كامل.', autoSpeak: 'قراءة صوتية', listen: 'استمع للإجابة', stopSpeaking: 'أوقف القراءة', speechOff: 'القراءة الصوتية غير متاحة في هذا المتصفح.', cancelRecording: 'إلغاء التسجيل', retryVoice: 'أعد تجربة الميكروفون',
+    scenarioMode: 'سيناريو العرض', scenarioBanner: 'عرض توضيحي — الصيدليات والعناوين والمسافات والمخزون والحراسة افتراضية. نقطة الانطلاق محاكاة. النتائج لا تؤكد توفراً حقيقياً.', examples: 'أمثلة للتجربة', demoIntro: 'اختر سؤالاً ثم أرسله أو اقرأه بالميكروفون. كل مثال طلب كامل.', autoSpeak: 'قراءة صوتية', listen: 'استمع للإجابة', stopSpeaking: 'أوقف القراءة', speechOff: 'القراءة الصوتية غير متاحة في هذا المتصفح.', cancelRecording: 'إلغاء التسجيل', retryVoice: 'أعد تجربة الميكروفون',
     headerNote: 'مساعدتك بكل بساطة.', virtual: 'مساعدك الافتراضي', language: 'اللغة', newChat: 'محادثة جديدة', findPharmacy: 'ابحث عن صيدلية', privacy: 'الخصوصية',
     welcomeEyebrow: 'مرحباً بك في مساحتك', welcomeTitle: 'مرحباً، أنا Pharma-AI.', welcomeText: 'أساعدك في صياغة طلب دواء والعثور على معلومات الصيدليات. كيف أستطيع مساعدتك اليوم؟', medicationSuggestion: 'طلب دواء', pharmacySuggestion: 'صيدلية بالقرب مني', priceSuggestion: 'سؤال عن السعر', disclaimer: 'لمساعدتك في طلبات الصيدلية. دون نصائح طبية أو تأكيد للمخزون.',
     companionBadge: 'بجانبك', virtualTag: 'افتراضي', companionSubtitle: 'طلبات الصيدلية،\nبكل بساطة.', nearYou: 'بالقرب منك، بخطوات بسيطة', footer: 'العربية، الدارجة، Français — نتحدث بلغتك.', mapEyebrow: 'بالقرب منك', mapTitle: 'اعثر على صيدلية', city: 'المدينة', distance: 'ضمن مسافة', search: 'ابحث', aroundMe: 'بالقرب مني', mapDisclaimer: 'المسافات بخط مستقيم. قد لا تظهر بعض الصيدليات. اتصل للتأكد من المواعيد.',
@@ -38,6 +38,7 @@ function t(key, values = {}) {
   for (const [name, value] of Object.entries(values)) text = text.replaceAll(`{${name}}`, String(value));
   return text;
 }
+let demoMode = false;
 let autoSpeak = false;
 let speakingButton = null, activeUtterance = null;
 let busy = false, voiceReady = false, recording = null, requestNumber = 0, activeRequest;
@@ -120,12 +121,13 @@ async function sendRequest(body, isAudio, displayText) {
   $('status').textContent = t('waiting'); const controller = new AbortController(); activeRequest = controller;
   const timer = setTimeout(() => controller.abort(), 120000);
   try {
-    const response = await fetch(isAudio ? '/v1/assistant/voice' : '/v1/assistant/text', {
+    const response = await fetch(`${demoMode ? '/v1/demo/assistant' : '/v1/assistant'}/${isAudio ? 'voice' : 'text'}`, {
       method: 'POST', body: isAudio ? body : JSON.stringify(body), headers: isAudio ? {} : { 'Content-Type': 'application/json' }, signal: controller.signal, credentials: 'same-origin'
     });
     if (id !== requestNumber) return;
     if (!response.ok) throw new Error(safeStatus(response.status, isAudio));
     const data = await response.json(); if (id !== requestNumber) return;
+    if (demoMode && data.synthetic !== true) throw new Error(t('error'));
     if (typeof data.answer !== 'string' || !data.answer.trim()) throw new Error(t('error'));
     pending.remove(); const reply = bubble(data.answer, 'assistant');
     addPlayback(reply, data.answer, data.language || $('language').value);
@@ -164,7 +166,7 @@ function submitText() {
   if (busy || recording) return;
   $('message').value = ''; resizeComposer();
   const body = { text, language_hint: $('language').value || null };
-  if (sharedLocation) body.user_location = { latitude: sharedLocation.lat, longitude: sharedLocation.lon };
+  if (sharedLocation && !demoMode) body.user_location = { latitude: sharedLocation.lat, longitude: sharedLocation.lon };
   sendRequest(body, false, text);
 }
 function sendAudio(blob, name) {
@@ -293,13 +295,24 @@ $('retry-voice').onclick = checkVoice;
 $('stop-speaking').onclick = stopSpeaking;
 $('auto-speak').disabled = !window.speechSynthesis || !window.SpeechSynthesisUtterance;
 $('auto-speak').onclick = () => { autoSpeak = !autoSpeak; $('auto-speak').setAttribute('aria-pressed', String(autoSpeak)); if (!autoSpeak) stopSpeaking(); };
+$('demo-mode').onclick = () => {
+  demoMode = !demoMode;
+  newConversation();
+  $('demo-mode').setAttribute('aria-pressed', String(demoMode));
+  $('scenario-banner').hidden = !demoMode;
+  $('demo-questions').replaceChildren(); $('demo-status').textContent = '';
+  for (const id of ['open-map', 'menu-map', 'suggest-map']) $(id).disabled = demoMode;
+  if ($('map-dialog').open) $('map-dialog').close();
+};
 $('open-demo').onclick = async () => {
   $('demo-dialog').showModal();
   if ($('demo-questions').childElementCount) return;
   try {
-    const response = await fetch('/ui/demo-questions.json', { credentials: 'same-origin' });
+    const mode = demoMode;
+    const response = await fetch(mode ? '/ui/jury-scenarios.json' : '/ui/demo-questions.json', { credentials: 'same-origin' });
     if (!response.ok) throw new Error();
-    for (const item of await response.json()) {
+    const items = await response.json(); if (mode !== demoMode) return;
+    for (const item of items) {
       const button = document.createElement('button'); button.type = 'button';
       const title = document.createElement('strong'); title.textContent = item.title;
       const question = document.createElement('span'); question.textContent = item.text; question.dir = 'auto';

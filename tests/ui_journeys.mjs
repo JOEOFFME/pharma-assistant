@@ -16,11 +16,14 @@ const calls = [], plots = [], spoken = [];
 let speechCancelled = 0;
 window.SpeechSynthesisUtterance = class { constructor(text) { this.text = text; } };
 window.speechSynthesis = { getVoices: () => [{ lang: 'fr-FR' }, { lang: 'ar-MA' }], speak: utterance => spoken.push(utterance), cancel: () => speechCancelled++ };
+const juryScenarios = JSON.parse(await readFile(resolve(root, 'web/assets/jury-scenarios.json'), 'utf8'));
 const demoQuestions = JSON.parse(await readFile(resolve(root, 'web/assets/demo-questions.json'), 'utf8'));
 let voiceOK = true, nextAnswer = 'Votre demande concerne Doliprane. Le stock reste à confirmer.', deferred, failStatus = 0, tracksStopped = 0, locationRequests = 0, actions = [];
 const payload = () => ({ answer: nextAnswer, actions, transcript: null, analysis: { secret: 'MUST NEVER APPEAR' } });
 window.fetch = async (url, options = {}) => {
   calls.push({ url, options });
+  if (url === '/ui/jury-scenarios.json') return { ok: true, json: async () => juryScenarios };
+  if (url.startsWith('/v1/demo/assistant/')) return { ok: true, json: async () => ({ ...payload(), synthetic: true, answer: 'Démonstration — données fictives. Panadol : 12 boîtes en stock simulé.', transcript: url.endsWith('/voice') ? juryScenarios[1].text : null }) };
   if (url === '/ui/demo-questions.json') return { ok: true, json: async () => demoQuestions };
   if (url === '/v1/voice/status') return { ok: true, json: async () => ({ ready: voiceOK, issues: ['SHOULD NOT APPEAR'] }) };
   if (url.startsWith('/v1/pharmacies/map')) return { ok: true, json: async () => ({ count: 1, radius_km: 5, pharmacies: [{ distance_km: .3, pharmacy: { name: '<script>untrusted</script>', phones_e164: [], opening_hours: null, latitude: 34, longitude: -6 } }], figure: { data: [], layout: {} } }) };
@@ -147,5 +150,27 @@ try {
   voiceOK = true; $('retry-voice').click(); await settle();
   assert.equal($('record').disabled, false);
   assert.equal($('retry-voice').hidden, true);
+  $('language').value = ''; $('language').dispatchEvent(new window.Event('change'));
+  // Fictional jury mode is explicit, resets history and uses isolated endpoints.
+  assert.equal($('scenario-banner').hidden, true);
+  $('demo-mode').click();
+  assert.equal($('scenario-banner').hidden, false);
+  assert.ok($('scenario-banner').textContent.includes('fictifs'));
+  assert.equal(window.document.querySelectorAll('.message').length, 0);
+  assert.equal($('open-map').disabled, true);
+  $('open-demo').click(); await settle();
+  const scenarioChoices = [...window.document.querySelectorAll('#demo-questions button')];
+  assert.equal(scenarioChoices.length, 3);
+  scenarioChoices[1].click(); submit($('message').value); await settle();
+  assert.ok(calls.some(c => c.url === '/v1/demo/assistant/text'));
+  assert.ok(window.document.querySelector('.message.assistant').textContent.includes('données fictives'));
+  $('record').click(); await settle(); $('record').click(); await settle();
+  assert.ok(calls.some(c => c.url === '/v1/demo/assistant/voice'));
+  $('demo-mode').click();
+  assert.equal($('scenario-banner').hidden, true);
+  assert.equal($('open-map').disabled, false);
+  assert.equal(window.document.querySelectorAll('.message').length, 0);
+  submit('salam'); await settle();
+  assert.equal(calls.at(-1).url, '/v1/assistant/text');
   console.log('PASS: consumer text, safe rendering, private errors, Arabic, composition, reset/race, voice/correction, map/location/consent and unavailable-voice journeys');
 } finally { window.happyDOM.abort(); window.close(); }

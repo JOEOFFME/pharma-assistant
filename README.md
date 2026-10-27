@@ -254,3 +254,14 @@ uv run --frozen --extra speech python scripts/check_jury_demo.py --require-voice
 
 This checks all ten replies, real Rabat map results and installed speech prerequisites.
 Rehearse recognition and playback in your browser on the presentation laptop.
+
+
+### Concrete fictional jury scenario
+
+For nearby results, Panadol stock at Al Irfane and a named duty pharmacy with hours,
+enable **Scénario du jury**, then **Exemples à essayer**. This deliberately fictional
+presentation dataset has three pharmacies and a fixed simulated origin. Every reply
+and the visible banner label it fictional; it never changes the real directory or
+claims real stock/duty information. Simulated results have no routing or phone links.
+See [the three exact questions and answers](docs/jury_scenario.md). Normal mode remains
+the default. Both text and voice support the same isolated scenario.

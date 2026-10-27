@@ -252,3 +252,28 @@ async def assistant_voice(
     from pharma_assistant.api.answers import present_answer
 
     return present_answer(await analyze_voice(request, file, language_hint))
+
+
+@router.post("/v1/demo/assistant/text")
+def demo_assistant_text(body: TextRequest) -> dict:
+    """Explicit fictional scenario; never infer simulated availability in real mode."""
+    from pharma_assistant.api.jury_scenario import scenario_answer
+
+    if not body.text.strip():
+        raise HTTPException(422, "Text must be nonblank")
+    return scenario_answer(body.text, body.language_hint)
+
+
+@router.post("/v1/demo/assistant/voice")
+async def demo_assistant_voice(
+    request: Request,
+    file: Annotated[UploadFile, File()],
+    language_hint: Annotated[Language | None, Form()] = None,
+) -> dict:
+    """Transcribe actual audio, then query the same visibly fictional scenario."""
+    from pharma_assistant.api.jury_scenario import scenario_answer
+
+    analysis = await analyze_voice(request, file, language_hint)
+    result = scenario_answer(analysis.input.transcript or "", language_hint)
+    result["transcript"] = analysis.input.transcript
+    return result

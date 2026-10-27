@@ -66,6 +66,16 @@ def classify_intent(text: str, config: dict) -> tuple[IntentLabel, bool, bool]:
     ):
         return "out_of_scope", False, False
     substantive = [label for label in found if label != "greeting_smalltalk"]
+    # A duty request often starts with "fin/ou"; those location words must not
+    # hide the more specific duty intent.
+    if "pharmacy_info_hours" in substantive and any(
+        phrase_in(normalized, term) for term in config.get("duty_terms", [])
+    ):
+        substantive = [
+            label
+            for label in substantive
+            if label not in {"pharmacy_info_location", "pharmacy_info_phone"}
+        ]
     # A price or stock question containing 'voudrais/bghit' is a query about it.
     if "price_inquiry" in substantive or "check_availability" in substantive:
         substantive = [label for label in substantive if label != "request_medication"]

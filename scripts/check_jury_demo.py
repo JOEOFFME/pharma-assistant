@@ -35,6 +35,23 @@ def main() -> None:
                 ok = ok and bool(result.get("pharmacies"))
             print(f"{'PASS' if ok else 'FAIL'} {question['id']}")
             failed += not ok
+        scenarios = json.loads(
+            Path("web/assets/jury-scenarios.json").read_text(encoding="utf-8")
+        )
+        for question in scenarios:
+            response = client.post(
+                "/v1/demo/assistant/text",
+                json={k: question[k] for k in ("text", "language_hint")},
+            )
+            result = response.json()
+            ok = (
+                response.status_code == 200
+                and result.get("synthetic") is True
+                and result["scenario_kind"] == question["kind"]
+                and all(s in result["answer"] for s in question["answer_contains"])
+            )
+            print(f"{'PASS' if ok else 'FAIL'} fictional scenario: {question['id']}")
+            failed += not ok
         response = client.get(
             "/v1/pharmacies/map",
             params={"lat": 34.0209, "lon": -6.8416, "radius_km": 5},

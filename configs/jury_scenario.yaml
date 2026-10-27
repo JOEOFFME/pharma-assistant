@@ -1,0 +1,26 @@
+# Entirely synthetic presentation fixtures, isolated from the real directory.
+synthetic: true
+origin: Point de départ fictif — scénario Al Irfane
+pharmacies:
+  - id: demo_irfane
+    name: Pharmacie Al Irfane (fictive)
+    address: Point A — avenue de démonstration
+    distance_m: 350
+    stock:
+      Panadol: 12
+    night_shift: false
+  - id: demo_atlas
+    name: Pharmacie Démo Atlas (fictive)
+    address: Point B — place de démonstration
+    distance_m: 800
+    stock:
+      Panadol: 0
+    night_shift: false
+  - id: demo_nuit
+    name: Pharmacie Démo Nuit (fictive)
+    address: Point C — boulevard de démonstration
+    distance_m: 1200
+    stock:
+      Panadol: 6
+    night_shift: true
+    shift_hours: 20:00–08:00

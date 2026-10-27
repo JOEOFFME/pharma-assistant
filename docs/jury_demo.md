@@ -1,5 +1,9 @@
 # Pharma-AI: jury demonstration
 
+For the three concrete nearby/Al Irfane stock/duty examples requested later, use
+[the explicitly fictional jury scenario](jury_scenario.md). The ten questions below
+remain the normal-mode script.
+
 This is a focused multilingual pharmacy-assistance MVP. The ten examples below use the
 normal assistant endpoint and the saved source databases. They are a regression-tested
 presentation script, not a measure of unrestricted conversation or speech accuracy.
@@ -30,7 +34,8 @@ In a second terminal, run the rehearsal check:
 uv run --frozen --extra speech python scripts/check_jury_demo.py --require-voice
 ```
 
-Expected: ten `PASS` lines, `PASS Rabat map`, `Voice prerequisites: READY`, exit code 0.
+Expected: ten normal `PASS` lines, three fictional scenario `PASS` lines,
+`PASS Rabat map`, `Voice prerequisites: READY`, exit code 0.
 This verifies the installed server prerequisites, not browser permission or human speech.
 Send “Bonjour” once in the open browser before the jury arrives to warm its text pipeline.
 
