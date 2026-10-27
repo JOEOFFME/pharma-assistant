@@ -29,7 +29,7 @@ window.fetch = async (url, options = {}) => {
   if (url.startsWith('/v1/pharmacies/map')) return { ok: true, json: async () => ({ count: 1, radius_km: 5, pharmacies: [{ distance_km: .3, pharmacy: { name: '<script>untrusted</script>', phones_e164: [], opening_hours: null, latitude: 34, longitude: -6 } }], figure: { data: [], layout: {} } }) };
   if (deferred) return await new Promise(resolve => { deferred.resolve = resolve; });
   if (failStatus) return { ok: false, status: failStatus, json: async () => ({ error: { message: 'PRIVATE_BACKEND_FAILURE' } }) };
-  if (url === '/v1/assistant/voice') return { ok: true, json: async () => ({ ...payload(), transcript: 'Wach kayn Doliprane ?' }) };
+  if (url === '/v1/transcribe/voice') return { ok: true, json: async () => ({ transcript: 'Wach kayn Doliprane ?', requires_confirmation: true }) };
   return { ok: true, json: async () => payload() };
 };
 window.Plotly = { purge() {}, async newPlot(...args) { plots.push(args); } };
@@ -118,13 +118,18 @@ try {
   deferred = {}; submit('سلام'); await settle(); $('new-chat').click();
   deferred.resolve({ ok: true, json: async () => payload() }); deferred = null; await settle();
   assert.equal(window.document.querySelectorAll('.message').length, 0);
-  // Voice start/stop produces one upload, stops tracks and allows correcting evidence.
+  // Speech only fills an editable transcript; no answer is generated before Send.
+  const textCallsBeforeVoice = calls.filter(c => c.url === '/v1/assistant/text').length;
   $('record').click(); await settle(); assert.equal($('record').getAttribute('aria-pressed'), 'true');
   $('record').click(); await settle();
   assert.equal(tracksStopped, 1);
-  assert.ok(calls.some(c => c.url === '/v1/assistant/voice'));
-  const correction = window.document.querySelector('.message-action'); assert.ok(correction); correction.click();
+  assert.ok(calls.some(c => c.url === '/v1/transcribe/voice'));
+  assert.equal(calls.filter(c => c.url === '/v1/assistant/text').length, textCallsBeforeVoice);
+  assert.equal(window.document.querySelectorAll('.message').length, 0);
   assert.equal($('message').value, 'Wach kayn Doliprane ?');
+  assert.ok($('status').textContent.includes('راجع'));
+  submit('Wach kayn Doliprane ?'); await settle();
+  assert.equal(calls.filter(c => c.url === '/v1/assistant/text').length, textCallsBeforeVoice + 1);
   // The map opens separately, uses city/radius controls and never inserts pharmacy markup.
   $('open-map').click(); await settle(); assert.equal($('map-dialog').open, true);
   assert.equal(window.document.querySelector('.pharmacy-card script'), null);
@@ -135,11 +140,11 @@ try {
   assert.ok(calls.some(c => c.url.includes('lat=33.97')));
   $('map-dialog').close();
   // Cancelling recording releases the microphone without uploading audio.
-  const uploadsBefore = calls.filter(c => c.url === '/v1/assistant/voice').length;
+  const uploadsBefore = calls.filter(c => c.url === '/v1/transcribe/voice').length;
   $('record').click(); await settle();
   assert.equal($('cancel-recording').hidden, false);
   $('cancel-recording').click(); await settle();
-  assert.equal(calls.filter(c => c.url === '/v1/assistant/voice').length, uploadsBefore);
+  assert.equal(calls.filter(c => c.url === '/v1/transcribe/voice').length, uploadsBefore);
   assert.equal(tracksStopped, 2);
   assert.equal($('cancel-recording').hidden, true);
   // Voice unavailable is a consumer message and typing remains usable.
@@ -165,7 +170,11 @@ try {
   assert.ok(calls.some(c => c.url === '/v1/demo/assistant/text'));
   assert.ok(window.document.querySelector('.message.assistant').textContent.includes('données fictives'));
   $('record').click(); await settle(); $('record').click(); await settle();
-  assert.ok(calls.some(c => c.url === '/v1/demo/assistant/voice'));
+  const demoCallsBefore = calls.filter(c => c.url === '/v1/demo/assistant/text').length;
+  assert.ok($('message').value);
+  assert.ok(!calls.some(c => c.url === '/v1/demo/assistant/voice'));
+  submit(juryScenarios[1].text); await settle();
+  assert.equal(calls.filter(c => c.url === '/v1/demo/assistant/text').length, demoCallsBefore + 1);
   $('demo-mode').click();
   assert.equal($('scenario-banner').hidden, true);
   assert.equal($('open-map').disabled, false);

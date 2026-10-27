@@ -149,7 +149,10 @@ def create_app() -> FastAPI:
 
     @application.get("/", include_in_schema=False)
     def demo():
-        return FileResponse(Path(__file__).resolve().parents[3] / "web" / "index.html")
+        return FileResponse(
+            Path(__file__).resolve().parents[3] / "web" / "index.html",
+            headers={"Cache-Control": "no-store"},
+        )
 
     @application.get("/assets/plotly.min.js", include_in_schema=False)
     def plotly_script():

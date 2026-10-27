@@ -2,7 +2,7 @@
 const $ = id => document.getElementById(id);
 const STRINGS = {
   fr: {
-    scenarioMode: 'Scénario du jury', scenarioBanner: 'DÉMONSTRATION — Pharmacies, adresses, distances, stocks et gardes fictifs. Point de départ simulé : Al Irfane. Aucun résultat ne confirme une disponibilité réelle.', examples: 'Exemples à essayer', demoIntro: 'Choisissez une question, puis envoyez-la ou prononcez-la au micro. Chaque exemple est une demande complète.', autoSpeak: 'Lecture vocale', listen: 'Écouter la réponse', stopSpeaking: 'Arrêter la lecture', speechOff: 'La lecture vocale est indisponible dans ce navigateur.', cancelRecording: 'Annuler l’enregistrement', retryVoice: 'Réessayer le micro',
+    transcribing: 'Je transcris votre message…', reviewTranscript: 'Vérifiez le texte reconnu ci-dessous, corrigez-le si besoin, puis appuyez sur Envoyer.', scenarioMode: 'Scénario du jury', scenarioBanner: 'DÉMONSTRATION — Pharmacies, adresses, distances, stocks et gardes fictifs. Point de départ simulé : Al Irfane. Aucun résultat ne confirme une disponibilité réelle.', examples: 'Exemples à essayer', demoIntro: 'Choisissez une question, puis envoyez-la ou prononcez-la au micro. Chaque exemple est une demande complète.', autoSpeak: 'Lecture vocale', listen: 'Écouter la réponse', stopSpeaking: 'Arrêter la lecture', speechOff: 'La lecture vocale est indisponible dans ce navigateur.', cancelRecording: 'Annuler l’enregistrement', retryVoice: 'Réessayer le micro',
     headerNote: 'Un coup de main, tout simplement.', virtual: 'Votre assistant virtuel', language: 'Langue', newChat: 'Nouvelle conversation', findPharmacy: 'Trouver une pharmacie', privacy: 'Confidentialité',
     welcomeEyebrow: 'BIENVENUE DANS VOTRE ESPACE', welcomeTitle: 'Bonjour, je suis Pharma-AI.', welcomeText: 'Je vous aide à préparer votre demande de médicament et à trouver une pharmacie. Comment puis-je vous aider aujourd’hui ?',
     medicationSuggestion: 'Une demande de médicament', pharmacySuggestion: 'Une pharmacie près de moi', priceSuggestion: 'Une question sur un prix', disclaimer: 'Pour vos demandes en pharmacie. Sans conseil médical ni confirmation de stock.',
@@ -16,7 +16,7 @@ const STRINGS = {
     medicationPrompt: 'Est-ce que Doliprane est disponible ?', pricePrompt: 'Quel est le prix de Doliprane ?'
   },
   ar: {
-    scenarioMode: 'سيناريو العرض', scenarioBanner: 'عرض توضيحي — الصيدليات والعناوين والمسافات والمخزون والحراسة افتراضية. نقطة الانطلاق محاكاة. النتائج لا تؤكد توفراً حقيقياً.', examples: 'أمثلة للتجربة', demoIntro: 'اختر سؤالاً ثم أرسله أو اقرأه بالميكروفون. كل مثال طلب كامل.', autoSpeak: 'قراءة صوتية', listen: 'استمع للإجابة', stopSpeaking: 'أوقف القراءة', speechOff: 'القراءة الصوتية غير متاحة في هذا المتصفح.', cancelRecording: 'إلغاء التسجيل', retryVoice: 'أعد تجربة الميكروفون',
+    transcribing: 'أحوّل رسالتك إلى نص…', reviewTranscript: 'راجع النص أدناه وصححه عند الحاجة، ثم اضغط إرسال.', scenarioMode: 'سيناريو العرض', scenarioBanner: 'عرض توضيحي — الصيدليات والعناوين والمسافات والمخزون والحراسة افتراضية. نقطة الانطلاق محاكاة. النتائج لا تؤكد توفراً حقيقياً.', examples: 'أمثلة للتجربة', demoIntro: 'اختر سؤالاً ثم أرسله أو اقرأه بالميكروفون. كل مثال طلب كامل.', autoSpeak: 'قراءة صوتية', listen: 'استمع للإجابة', stopSpeaking: 'أوقف القراءة', speechOff: 'القراءة الصوتية غير متاحة في هذا المتصفح.', cancelRecording: 'إلغاء التسجيل', retryVoice: 'أعد تجربة الميكروفون',
     headerNote: 'مساعدتك بكل بساطة.', virtual: 'مساعدك الافتراضي', language: 'اللغة', newChat: 'محادثة جديدة', findPharmacy: 'ابحث عن صيدلية', privacy: 'الخصوصية',
     welcomeEyebrow: 'مرحباً بك في مساحتك', welcomeTitle: 'مرحباً، أنا Pharma-AI.', welcomeText: 'أساعدك في صياغة طلب دواء والعثور على معلومات الصيدليات. كيف أستطيع مساعدتك اليوم؟', medicationSuggestion: 'طلب دواء', pharmacySuggestion: 'صيدلية بالقرب مني', priceSuggestion: 'سؤال عن السعر', disclaimer: 'لمساعدتك في طلبات الصيدلية. دون نصائح طبية أو تأكيد للمخزون.',
     companionBadge: 'بجانبك', virtualTag: 'افتراضي', companionSubtitle: 'طلبات الصيدلية،\nبكل بساطة.', nearYou: 'بالقرب منك، بخطوات بسيطة', footer: 'العربية، الدارجة، Français — نتحدث بلغتك.', mapEyebrow: 'بالقرب منك', mapTitle: 'اعثر على صيدلية', city: 'المدينة', distance: 'ضمن مسافة', search: 'ابحث', aroundMe: 'بالقرب مني', mapDisclaimer: 'المسافات بخط مستقيم. قد لا تظهر بعض الصيدليات. اتصل للتأكد من المواعيد.',
@@ -118,15 +118,23 @@ async function sendRequest(body, isAudio, displayText) {
   if (busy || recording) return;
   stopSpeaking(); const id = ++requestNumber; busy = true; updateControls(); $('welcome').hidden = true;
   const mine = bubble(displayText, 'user'), pending = typingBubble();
-  $('status').textContent = t('waiting'); const controller = new AbortController(); activeRequest = controller;
+  $('status').textContent = t(isAudio ? 'transcribing' : 'waiting'); const controller = new AbortController(); activeRequest = controller;
   const timer = setTimeout(() => controller.abort(), 120000);
   try {
-    const response = await fetch(`${demoMode ? '/v1/demo/assistant' : '/v1/assistant'}/${isAudio ? 'voice' : 'text'}`, {
+    const response = await fetch(isAudio ? '/v1/transcribe/voice' : `${demoMode ? '/v1/demo/assistant' : '/v1/assistant'}/text`, {
       method: 'POST', body: isAudio ? body : JSON.stringify(body), headers: isAudio ? {} : { 'Content-Type': 'application/json' }, signal: controller.signal, credentials: 'same-origin'
     });
     if (id !== requestNumber) return;
     if (!response.ok) throw new Error(safeStatus(response.status, isAudio));
     const data = await response.json(); if (id !== requestNumber) return;
+    if (isAudio) {
+      if (data.requires_confirmation !== true || typeof data.transcript !== 'string' || !data.transcript.trim()) throw new Error(t('unclear'));
+      pending.remove(); mine.article.remove();
+      $('message').value = data.transcript; resizeComposer();
+      $('status').textContent = t('reviewTranscript');
+      if (!$('conversation').querySelector('.message')) $('welcome').hidden = false;
+      return;
+    }
     if (demoMode && data.synthetic !== true) throw new Error(t('error'));
     if (typeof data.answer !== 'string' || !data.answer.trim()) throw new Error(t('error'));
     pending.remove(); const reply = bubble(data.answer, 'assistant');
@@ -147,11 +155,6 @@ async function sendRequest(body, isAudio, displayText) {
       if (controls.childElementCount) reply.article.append(controls);
     }
     scrollChat();
-    if (isAudio && data.transcript) {
-      mine.body.textContent = data.transcript;
-      const edit = document.createElement('button'); edit.className = 'message-action'; edit.textContent = t('modify');
-      edit.onclick = () => { $('message').value = data.transcript; resizeComposer(); $('message').focus(); }; mine.article.append(edit);
-    }
     $('status').textContent = '';
   } catch (error) {
     if (id !== requestNumber) return;

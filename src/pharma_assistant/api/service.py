@@ -10,6 +10,7 @@ from fastapi import APIRouter, File, Form, HTTPException, Query, Request, Upload
 from pydantic import BaseModel, ConfigDict, Field
 
 from pharma_assistant.api.schemas import DISCLAIMER, AnalysisResponse, Language
+from pharma_assistant.asr.transcriber import Transcription
 from pharma_assistant.data.pharmacies import PharmacyRepository
 from pharma_assistant.data_tools.fetch_pharmacies import load_config
 from pharma_assistant.pipeline.text_pipeline import TextPipeline
@@ -77,12 +78,32 @@ def pipeline(request: Request):
     return request.app.state.pipeline
 
 
+def grounded_pipeline(request: Request) -> TextPipeline:
+    """Keep consumer answers independent from optional research/LLM tracks."""
+    current = getattr(request.app.state, "pipeline", None)
+    if isinstance(current, TextPipeline):
+        return current
+    if getattr(request.app.state, "consumer_pipeline", None) is None:
+        with _INIT_LOCK:
+            if getattr(request.app.state, "consumer_pipeline", None) is None:
+                try:
+                    request.app.state.consumer_pipeline = TextPipeline.from_config()
+                except (FileNotFoundError, ValueError) as error:
+                    raise HTTPException(
+                        503, "Reference database unavailable"
+                    ) from error
+    return request.app.state.consumer_pipeline
+
+
 @router.get("/version")
 def version() -> dict:
     """Distinguish application version from reference/model readiness."""
     return {
         "version": "0.2.0",
         "pipeline": "rule_baseline_v1",
+        "consumer_policy": "grounded_v2",
+        "voice_flow": "confirm_transcript",
+        "jury_matching": "exact_questions_v2",
         "medical_advice": False,
         "disclaimer": DISCLAIMER,
     }
@@ -99,13 +120,10 @@ def analyze_text(body: TextRequest, request: Request) -> AnalysisResponse:
     return AnalysisResponse.model_validate(payload)
 
 
-@router.post("/v1/analyze/voice", response_model=AnalysisResponse)
-async def analyze_voice(
-    request: Request,
-    file: Annotated[UploadFile, File()],
-    language_hint: Annotated[Language | None, Form()] = None,
-) -> AnalysisResponse:
-    """Bound uploads and decode audio before optional local-model inference."""
+async def transcribe_upload(
+    request: Request, file: UploadFile, language_hint: Language | None = None
+) -> Transcription:
+    """Decode and transcribe an upload, without interpreting unconfirmed words."""
     from starlette.concurrency import run_in_threadpool
 
     from pharma_assistant.asr.transcriber import WhisperTranscriber
@@ -149,6 +167,32 @@ async def analyze_voice(
             ) from error
         except ValueError as error:
             raise HTTPException(422, str(error)) from error
+    if not evidence.text.strip() or len(evidence.text) > 10000:
+        raise HTTPException(422, "No usable speech transcript")
+    return evidence
+
+
+@router.post("/v1/transcribe/voice")
+async def transcribe_voice(
+    request: Request,
+    file: Annotated[UploadFile, File()],
+    language_hint: Annotated[Language | None, Form()] = None,
+) -> dict:
+    """Return unconfirmed speech evidence, never pharmacy or stock assertions."""
+    evidence = await transcribe_upload(request, file, language_hint)
+    return {"transcript": evidence.text, "requires_confirmation": True}
+
+
+@router.post("/v1/analyze/voice", response_model=AnalysisResponse)
+async def analyze_voice(
+    request: Request,
+    file: Annotated[UploadFile, File()],
+    language_hint: Annotated[Language | None, Form()] = None,
+) -> AnalysisResponse:
+    """Retain the machine-consumer voice analysis contract."""
+    from starlette.concurrency import run_in_threadpool
+
+    evidence = await transcribe_upload(request, file, language_hint)
     result = await run_in_threadpool(
         pipeline(request).analyze, evidence.text, language_hint=language_hint
     )
@@ -239,7 +283,14 @@ def assistant_text(body: TextRequest, request: Request) -> dict:
     """Present a bounded, readable answer while keeping the analysis API stable."""
     from pharma_assistant.api.answers import present_answer
 
-    return present_answer(analyze_text(body, request), body.user_location)
+    if not body.text.strip():
+        raise HTTPException(422, "Text must be nonblank")
+    analysis = grounded_pipeline(request).analyze(
+        body.text, language_hint=body.language_hint
+    )
+    payload = analysis.model_dump(mode="json", by_alias=True)
+    payload["request_id"] = request.state.request_id
+    return present_answer(AnalysisResponse.model_validate(payload), body.user_location)
 
 
 @router.post("/v1/assistant/voice")
@@ -249,9 +300,18 @@ async def assistant_voice(
     language_hint: Annotated[Language | None, Form()] = None,
 ) -> dict:
     """Use the same answer presenter for voice, with visible transcript evidence."""
+    from starlette.concurrency import run_in_threadpool
+
     from pharma_assistant.api.answers import present_answer
 
-    return present_answer(await analyze_voice(request, file, language_hint))
+    evidence = await transcribe_upload(request, file, language_hint)
+    analysis = await run_in_threadpool(
+        grounded_pipeline(request).analyze, evidence.text, language_hint=language_hint
+    )
+    payload = analysis.model_dump(mode="json", by_alias=True)
+    payload["input"].update(modality="voice", raw_text="", transcript=evidence.text)
+    payload["request_id"] = request.state.request_id
+    return present_answer(AnalysisResponse.model_validate(payload))
 
 
 @router.post("/v1/demo/assistant/text")
@@ -273,7 +333,7 @@ async def demo_assistant_voice(
     """Transcribe actual audio, then query the same visibly fictional scenario."""
     from pharma_assistant.api.jury_scenario import scenario_answer
 
-    analysis = await analyze_voice(request, file, language_hint)
-    result = scenario_answer(analysis.input.transcript or "", language_hint)
-    result["transcript"] = analysis.input.transcript
+    evidence = await transcribe_upload(request, file, language_hint)
+    result = scenario_answer(evidence.text, language_hint)
+    result["transcript"] = evidence.text
     return result

@@ -448,7 +448,23 @@ def present_answer(analysis: AnalysisResponse, user_location=None) -> dict:
                     Path(config["database_path"]), config["city_aliases"]
                 )
                 if pharmacy_names:
-                    records = repository.search_by_name(pharmacy_names[0], limit=5)
+                    records = repository.search_by_name(pharmacy_names[0], limit=100)
+                    if locations:
+                        # A same-name pharmacy in another city is not an answer
+                        # to the user's named-location query.
+                        aliases = repository.city_aliases
+                        wanted = normalize_name(
+                            normalize_city(locations[0], aliases) or ""
+                        )
+                        records = [
+                            record
+                            for record in records
+                            if normalize_name(
+                                normalize_city(record.city, aliases) or ""
+                            )
+                            == wanted
+                        ]
+                    records = records[:5]
                 elif locations:
                     records = repository.by_city(locations[0], limit=5)
                 else:

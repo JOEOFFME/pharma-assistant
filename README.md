@@ -265,3 +265,13 @@ and the visible banner label it fictional; it never changes the real directory o
 claims real stock/duty information. Simulated results have no routing or phone links.
 See [the three exact questions and answers](docs/jury_scenario.md). Normal mode remains
 the default. Both text and voice support the same isolated scenario.
+
+
+### Consumer answer safeguards
+
+Consumer chat uses the grounded rule pipeline independently of `NLU_TRACK` research
+settings. Named pharmacy lookups also enforce any stated city. Fictional jury facts
+are returned only for complete rehearsed questions; city/date/product changes do not
+inherit fixture answers. Speech fills an editable transcript first: review it and click
+Send to obtain an answer. `/v1/transcribe/voice` never generates a pharmacy answer.
+Legacy machine-consumer voice endpoints remain available for integration clients.

@@ -1,26 +1,40 @@
-# Entirely synthetic presentation fixtures, isolated from the real directory.
 synthetic: true
 origin: Point de départ fictif — scénario Al Irfane
 pharmacies:
-  - id: demo_irfane
-    name: Pharmacie Al Irfane (fictive)
-    address: Point A — avenue de démonstration
-    distance_m: 350
-    stock:
-      Panadol: 12
-    night_shift: false
-  - id: demo_atlas
-    name: Pharmacie Démo Atlas (fictive)
-    address: Point B — place de démonstration
-    distance_m: 800
-    stock:
-      Panadol: 0
-    night_shift: false
-  - id: demo_nuit
-    name: Pharmacie Démo Nuit (fictive)
-    address: Point C — boulevard de démonstration
-    distance_m: 1200
-    stock:
-      Panadol: 6
-    night_shift: true
-    shift_hours: 20:00–08:00
+- id: demo_irfane
+  name: Pharmacie Al Irfane (fictive)
+  address: Point A — avenue de démonstration
+  distance_m: 350
+  stock:
+    Panadol: 12
+  night_shift: false
+- id: demo_atlas
+  name: Pharmacie Démo Atlas (fictive)
+  address: Point B — place de démonstration
+  distance_m: 800
+  stock:
+    Panadol: 0
+  night_shift: false
+- id: demo_nuit
+  name: Pharmacie Démo Nuit (fictive)
+  address: Point C — boulevard de démonstration
+  distance_m: 1200
+  stock:
+    Panadol: 6
+  night_shift: true
+  shift_hours: 20:00–08:00
+questions:
+  nearby:
+  - 3tini list dyal a9rab les pharmacy lya
+  - Liste des pharmacies les plus proches
+  - فين أقرب صيدلية؟
+  - 3tini a9rab pharmacy lya
+  stock:
+  - f pharmacy al Irfane wach n9der nl9a endhom Panadol
+  - Panadol disponible à la pharmacie Al Irfane ?
+  - Wach Panadol kayn f Alirfane ?
+  - واش بانادول كاين فصيدلية العرفان؟
+  duty:
+  - fin n9der nl9a une pharmachie de garde
+  - Où est une pharmacie de garde ce soir ?
+  - أين توجد صيدلية الحراسة؟

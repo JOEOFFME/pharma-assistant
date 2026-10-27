@@ -49,9 +49,10 @@ Send “Bonjour” once in the open browser before the jury arrives to warm its 
 4. Show **Trouver une pharmacie**, choose Rabat and a radius, then Rechercher. Open one
    location from the results. “Autour de moi” asks browser permission only when clicked.
    Internet is needed for map tiles; the saved pharmacy list remains available without tiles.
-5. Record a short question using the microphone; click again to stop and send. Use a quiet
-   room and select Français or العربية for a language hint. Check the visible transcript;
-   **Corriger ce message** lets you edit and resend recognition errors.
+5. Record a short question using the microphone; click again to stop and transcribe. Use a
+   quiet room and select Français or العربية for a language hint. The recognized text fills
+   the composer. **Check and correct it, then click Send** to request an answer. No answer
+   is generated automatically from unconfirmed speech.
 6. Click **Écouter la réponse**, or enable **Lecture vocale** for subsequent replies.
    **Arrêter la lecture** stops playback. Auto playback starts disabled. Playback depends
    on voices installed in the browser/OS; Darija pronunciation is not guaranteed.

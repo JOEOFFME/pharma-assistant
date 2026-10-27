@@ -1,7 +1,8 @@
 # Three concrete jury scenarios — fictional data
 
 Enable **Scénario du jury** in the chat header, then open **Exemples à essayer**.
-It now offers these three questions. Send or record the complete question. The mode
+It now offers these three questions. Send the complete question. For voice, record it,
+review/correct the text in the composer, then click Send. The mode
 starts disabled and every simulated answer includes a fiction notice, including when
 read aloud. Switching modes clears the conversation and any shared location.
 
@@ -77,6 +78,11 @@ uv run --frozen --extra speech python scripts/check_jury_demo.py --require-voice
 
 Expected: ten normal question checks, three `fictional scenario` checks, Rabat map,
 and voice readiness. This is a functional preflight, not an accuracy evaluation.
+
+Only the complete questions listed in `configs/jury_scenario.yaml` (including a few
+rehearsed language variants) can return fixture facts. Changing a city, pharmacy,
+medicine, date, negation or adding an unrelated clause does not inherit an answer.
+Unsupported formulations ask which supported scenario was intended.
 
 ## Implementation boundary
 
