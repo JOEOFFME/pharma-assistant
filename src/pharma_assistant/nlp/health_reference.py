@@ -14,7 +14,7 @@ def reference_for(text: str, history=None) -> dict | None:
         and len(text) < 100
         and re.search(r"smya|smiya|nom|dyalo|اسم", text, re.I)
     ):
-        recent = [t["text"] for t in (history or []) if t["role"] == "user"][-3:]
+        recent = [t["text"] for t in (history or []) if t["role"] == "user"][-1:]
         matched = any(re.search(topic, t, re.I) for t in recent)
     if not matched:
         return None
@@ -22,7 +22,7 @@ def reference_for(text: str, history=None) -> dict | None:
     return json.loads(path.read_text(encoding="utf-8"))["migraine"]
 
 
-def reference_answer(reference: dict, language: str) -> dict:
+def reference_answer(reference: dict, language: str, concise: bool = False) -> dict:
     """Render a general name from attributed evidence, never a personal prescription."""
     if language == "darija_latn":
         answer = (
@@ -48,6 +48,22 @@ def reference_answer(reference: dict, language: str) -> dict:
             "Il s’agit d’une référence enregistrée, pas d’une nouvelle recherche "
             "web ni d’une confirmation de disponibilité au Maroc."
         )
+    if concise:
+        answer = (
+            "Exemple : le sumatriptan, utilisé contre les crises de migraine "
+            "selon la référence NHS. Le choix pour vous doit être confirmé "
+            "avec un pharmacien ou un médecin."
+        )
+        if language == "darija_latn":
+            answer = (
+                "Exemple : sumatriptan, l crise dyal migraine, 7sab référence NHS. "
+                "Pharmacien wla tbib y2ekked wach monasib lik."
+            )
+        elif language in {"ar", "darija_ar"}:
+            answer = (
+                "مثال: سوماتريبتان لعلاج نوبات الشقيقة حسب مرجع NHS. "
+                "يحدد الصيدلي أو الطبيب مدى ملاءمته لك."
+            )
     return {
         "answer": answer,
         "sources": reference["sources"],

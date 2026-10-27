@@ -135,6 +135,14 @@ def validate_live_claims(answer: str, allow_general_existence: bool = False) -> 
 def answer_from_data(engine, analysis, text, location=None, history=None) -> dict:
     """OpenRouter writes the main answer; local fallback is explicit on failure."""
     fallback = present_answer(analysis, location)
+    if os.getenv("ASSISTANT_AGENT", "true").lower() == "true":
+        from pharma_assistant.api.reply_policy import short_reply
+
+        direct = short_reply(
+            getattr(engine, "baseline", engine), analysis, text, history, location
+        )
+        if direct:
+            return {**fallback, **direct}
     provider = getattr(engine, "provider", None)
     if provider is None:
         return {**fallback, "answer_source": "local_directory", "model": None}

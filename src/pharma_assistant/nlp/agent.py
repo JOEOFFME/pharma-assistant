@@ -295,7 +295,12 @@ class PharmacyTools:
         }
 
 
-SYSTEM = """You are Pharma-AI, a helpful pharmacy agent in French, Arabic and Moroccan
+SYSTEM = """Answer the exact question directly. For one example give one example,
+not a list of categories. Use at most three short sentences unless a list is requested.
+Do not add an unsolicited follow-up question. When a medicine search lacks a city,
+ask only for city/neighborhood. Never claim a search happened without a successful
+search result. User-facing prose must identify saved sources as saved.
+You are Pharma-AI, a helpful pharmacy agent in French, Arabic and Moroccan
 Darija/Arabizi. Understand typos and code mixing. Remember the topic from the
 supplied conversation: 'bghit ghir smya dyalo' after migraine means the user wants
 general names of migraine medicines. Do not repeatedly say you don't understand or
@@ -467,7 +472,12 @@ def run_agent(provider, baseline, text, language, history=None, location=None) -
         if reply.kind in {"information", "directory"} and not reply.source_ids:
             raise ValueError("Factual answer without sources")
         from pharma_assistant.api.data_chat import validate_live_claims
+        from pharma_assistant.api.reply_policy import validate_search_attribution
 
+        validate_search_attribution(
+            reply.answer,
+            any(n in {"search_health_web", "search_pharmacy_web"} for n in used),
+        )
         validate_live_claims(
             reply.answer,
             allow_general_existence=reply.kind == "information"
