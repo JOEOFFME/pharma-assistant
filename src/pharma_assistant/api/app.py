@@ -74,6 +74,7 @@ def create_app() -> FastAPI:
             "/docs",
             "/openapi.json",
             "/redoc",
+            "/assets/plotly.min.js",
         }
         public = public or request.method == "OPTIONS"
         key = os.getenv("API_KEY", "")
@@ -147,6 +148,17 @@ def create_app() -> FastAPI:
     @application.get("/", include_in_schema=False)
     def demo():
         return FileResponse(Path(__file__).resolve().parents[3] / "web" / "index.html")
+
+    @application.get("/assets/plotly.min.js", include_in_schema=False)
+    def plotly_script():
+        """Serve the pinned Plotly bundle locally, without a CDN dependency."""
+        import plotly
+
+        return FileResponse(
+            Path(plotly.__file__).parent / "package_data" / "plotly.min.js",
+            media_type="application/javascript",
+            headers={"Cache-Control": "public, max-age=3600"},
+        )
 
     return application
 

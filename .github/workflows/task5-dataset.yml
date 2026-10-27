@@ -58,6 +58,10 @@ jobs:
             'http://127.0.0.1:8000/v1/medications/search?q=dolipran&k=1' > "$RUNNER_TEMP/pharma_medications.json"
           curl --fail --silent --show-error --max-time 30 \
             'http://127.0.0.1:8000/v1/pharmacies/nearby?lat=34.0209&lon=-6.8416&k=3' > "$RUNNER_TEMP/pharma_pharmacies.json"
+          curl --fail --silent --show-error --max-time 30 \
+            'http://127.0.0.1:8000/v1/pharmacies/map?lat=34.0209&lon=-6.8416&radius_km=5' > "$RUNNER_TEMP/pharma_map.json"
+          curl --fail --silent --show-error --max-time 30 \
+            'http://127.0.0.1:8000/assets/plotly.min.js' > "$RUNNER_TEMP/pharma_plotly.js"
           python3 - <<'PY'
           import json
           import os
@@ -70,5 +74,10 @@ jobs:
           assert result["disclaimer"]
           assert json.loads((root / "pharma_medications.json").read_text())["candidates"]
           assert len(json.loads((root / "pharma_pharmacies.json").read_text())["pharmacies"]) == 3
-          print("Container health, text, medication search and nearby-directory smoke passed")
+          map_result = json.loads((root / "pharma_map.json").read_text())
+          assert map_result["count"] == len(map_result["pharmacies"]) > 0
+          assert all(row["distance_km"] <= 5 for row in map_result["pharmacies"])
+          assert len(map_result["figure"]["data"][0]["lat"]) == map_result["count"]
+          assert (root / "pharma_plotly.js").stat().st_size > 100000
+          print("Container health, text, search, directory and Plotly map smoke passed")
           PY
