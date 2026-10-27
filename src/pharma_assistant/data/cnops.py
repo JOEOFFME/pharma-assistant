@@ -9,6 +9,8 @@ from functools import lru_cache
 from pathlib import Path
 from xml.etree import ElementTree as ET
 
+from rapidfuzz import fuzz, process
+
 from pharma_assistant.matching.medications import strength_tokens
 
 ROOT = Path(__file__).resolve().parents[3]
@@ -106,7 +108,7 @@ def records():
     return output
 
 
-def search(query, k=5):
+def _exact_search(query, k=5):
     """Return literal name/DCI matches; do not invent a match for absent brands."""
     needle = normalized(query)
     matched = []
@@ -133,3 +135,78 @@ def search(query, k=5):
                 continue
             matched.append(record)
     return matched[:k]
+
+
+@lru_cache(maxsize=1)
+def spelling_choices():
+    """Only use names actually present in the reference as spelling candidates."""
+    return sorted(
+        {
+            normalized(r[f])
+            for r in records()
+            for f in ("name", "ingredient")
+            if re.fullmatch(r"[a-z]{6,30}", normalized(r[f]))
+        }
+    )
+
+
+def lookup(query, k=5):
+    """Expose uncertain spelling corrections and presentation ambiguity to the model."""
+    corrected = normalized(query)
+    corrections = []
+    rows = _exact_search(corrected, k=500)
+    if not rows:
+        skip = {
+            "medicament",
+            "medicaments",
+            "recherche",
+            "chercher",
+            "cherche",
+            "quelle",
+            "quelles",
+            "combien",
+            "dosage",
+            "comprime",
+            "comprimés",
+            "presentation",
+            "presentations",
+            "remboursement",
+            "bonjour",
+            "cnops",
+        }
+        for token in re.findall(r"[a-z]{6,30}", corrected):
+            if token in skip:
+                continue
+            choices = process.extract(
+                token, spelling_choices(), scorer=fuzz.ratio, score_cutoff=85, limit=2
+            )
+            if not choices or choices[0][0][:3] != token[:3]:
+                continue
+            if len(choices) > 1 and choices[0][1] - choices[1][1] < 3:
+                continue
+            candidate = choices[0][0]
+            proposed = re.sub(r"\b" + re.escape(token) + r"\b", candidate, corrected)
+            found = _exact_search(proposed, k=500)
+            if found:
+                corrected, rows = proposed, found
+                corrections.append(
+                    {"input": token, "candidate": candidate, "needs_confirmation": True}
+                )
+                break
+    variants = {
+        (r["name"], r["strength"], r["strength_unit"], r["form"], r["presentation"])
+        for r in rows
+    }
+    return {
+        "original_query": query,
+        "matched_query": corrected,
+        "corrections": corrections,
+        "records": rows[:k],
+        "match_count": len(rows),
+        "presentation_ambiguous": len(variants) > 1,
+    }
+
+
+def search(query, k=5):
+    """Return reference candidates; spelling corrections remain explicit in lookup."""
+    return lookup(query, k)["records"]

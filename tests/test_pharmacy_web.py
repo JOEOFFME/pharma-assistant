@@ -64,7 +64,11 @@ def test_named_contact_really_calls_business_web_and_is_not_overwritten(
     assert "+212537686317" in result["answer"]
     assert result["pharmacies"] == []
     assert result["tools_used"] == ["search_pharmacy_web"]
-    assert result["web_search"] == {"attempted": True, "succeeded": True}
+    assert result["web_search"] == {
+        "attempted": True,
+        "retrieved": True,
+        "succeeded": True,
+    }
     assert "santeservice.ma" in bodies[0]["plugins"][0]["include_domains"]
     assert "Rabat" in bodies[0]["messages"][-1]["content"]
     assert directory_context(pipeline, text, HISTORY) is None
@@ -138,7 +142,8 @@ def test_stale_undated_or_wrong_city_cannot_be_a_weekly_duty_answer(
     )
     assert result["answer_source"] == "web_lookup_unavailable"
     assert not result["web_search"]["succeeded"]
-    assert result["sources"] == []
+    assert result["sources"]
+    assert result["web_search"]["retrieved"] is True
     assert "Benyahya" not in result["answer"]
 
 
@@ -153,7 +158,11 @@ def test_search_outage_returns_only_verified_named_contact_cache(pipeline, monke
     assert result["answer_source"] == "saved_contact"
     assert "+212537686317" in result["answer"]
     assert "Source enregistrée" in result["answer"]
-    assert result["web_search"] == {"attempted": True, "succeeded": False}
+    assert result["web_search"] == {
+        "attempted": True,
+        "retrieved": False,
+        "succeeded": False,
+    }
     assert not result["pharmacies"]
 
 
@@ -185,4 +194,8 @@ def test_disabled_web_is_not_advertised_or_reported_successful(pipeline, monkeyp
         PROVIDER, pipeline, "contact de pharmacy Al Irfane à Rabat", "fr"
     )
     assert result["answer_source"] == "saved_contact"
-    assert result["web_search"] == {"attempted": False, "succeeded": False}
+    assert result["web_search"] == {
+        "attempted": False,
+        "retrieved": False,
+        "succeeded": False,
+    }

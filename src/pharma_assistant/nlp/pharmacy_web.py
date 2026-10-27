@@ -29,6 +29,9 @@ def lookup_request(baseline, text, history=None):
     users = [t["text"] for t in (history or []) if t["role"] == "user"]
     candidates = [text] + list(reversed(users))
     city = None
+    current_places = [
+        e.text for e in baseline.analyze(text).entities if e.type == "LOCATION"
+    ]
     for candidate in candidates:
         city = next(
             (
@@ -45,17 +48,25 @@ def lookup_request(baseline, text, history=None):
         re.search(r"contact|t[eé]l[eé]phone|num[eé]ro|نمرة|هاتف", text, re.I)
     )
     query_text = text
-    # A location-only answer continues the preceding named-contact request.
-    if not duty and not contact and city and len(text.split()) <= 10:
-        previous = next(
-            (
-                q
-                for q in reversed(users[-2:])
-                if re.search(r"contact|t[eé]l[eé]phone|num[eé]ro", q, re.I)
-            ),
-            None,
+    # Only a current location statement can continue the immediately prior contact.
+    current_city = current_places[0] if current_places else None
+    place_statement = bool(
+        current_city
+        and (
+            re.match(
+                r"(?:je suis|j.habite|je me trouve|ana|sakan|ساكن|أنا)\b",
+                text.strip(),
+                re.I,
+            )
+            or plain(text).strip().startswith(plain(current_city))
         )
-        if previous:
+    )
+    new_action = re.search(
+        r"\b(?:fin|nl9a|prix|ch7al|bch7al|trouver|chercher|where|price)\b", text, re.I
+    )
+    if not duty and not contact and place_statement and not new_action and users:
+        previous = users[-1]
+        if re.search(r"contact|t[eé]l[eé]phone|num[eé]ro", previous, re.I):
             contact, query_text = True, previous
     if not duty and not contact:
         return None
@@ -122,6 +133,8 @@ def dates(text):
             found.add(date(int(year), months.index(month) + 1, int(day)))
         except ValueError:
             pass
+    for first, last in published_periods(text):
+        found.update((first, last))
     return found
 
 
@@ -138,6 +151,89 @@ def contact_matches(source, request):
         and plain(request["city"] or "") in body
         and all(t in body for t in tokens)
     )
+
+
+def contact_phones(source, request):
+    """Use the requested business block and exclude labelled fax/sibling contacts."""
+    body = plain(source.get("excerpt", ""))
+    tokens = [
+        t
+        for t in re.findall(r"\w+", plain(request["name"] or ""))
+        if t not in {"al", "el", "pharmacie", "pharmacy"}
+    ]
+    if not tokens:
+        return set()
+    anchor = body.find(tokens[-1])
+    if anchor < 0:
+        return set()
+    block = body[anchor:]
+    ends = []
+    footer = re.search(
+        r"list of pharmacies|liste des pharmacies|autres pharmacies"
+        r"|navigation footer|nos services|mentions legales",
+        block,
+        re.I,
+    )
+    if footer:
+        ends.append(footer.start())
+    for heading in re.finditer(r"\bpharmacie\s+", block):
+        name_area = block[heading.end() : heading.end() + 80].split("\n", 1)[0]
+        if not all(token in name_area for token in tokens):
+            ends.append(heading.start())
+            break
+    if ends:
+        block = block[: min(ends)]
+    output = set()
+    for match in phonenumbers.PhoneNumberMatcher(block, "MA"):
+        prefix = block[max(0, match.start - 35) : match.start]
+        if re.search(r"(?:fax|telecopie|فاكس)\s*:?\s*$", prefix):
+            continue
+        if phonenumbers.is_valid_number(match.number):
+            output.add(
+                phonenumbers.format_number(
+                    match.number, phonenumbers.PhoneNumberFormat.E164
+                )
+            )
+    return output
+
+
+def source_period_matches(text, start, end):
+    """Match source dates/ranges without inferring a year from the current date."""
+    return any(start <= d <= end for d in dates(text)) or any(
+        first <= end and last >= start for first, last in published_periods(text)
+    )
+
+
+def published_periods(text):
+    """Read a French date range whose last endpoint states the shared year."""
+    months = {
+        "janvier": 1,
+        "fevrier": 2,
+        "mars": 3,
+        "avril": 4,
+        "mai": 5,
+        "juin": 6,
+        "juillet": 7,
+        "aout": 8,
+        "septembre": 9,
+        "octobre": 10,
+        "novembre": 11,
+        "decembre": 12,
+    }
+    names = "|".join(months)
+    pattern = (
+        r"(\d{1,2})\s+(" + names + r")\s*(?:-|–|—|au)\s*"
+        r"(?:lundi|mardi|mercredi|jeudi|vendredi|samedi|dimanche)?\s*"
+        r"(\d{1,2})\s+(" + names + r")\s+(20\d{2})"
+    )
+    for d1, m1, d2, m2, year in re.findall(pattern, plain(text)):
+        try:
+            last = date(int(year), months[m2], int(d2))
+            first = date(int(year) - (months[m1] > months[m2]), months[m1], int(d1))
+            if first <= last:
+                yield first, last
+        except ValueError:
+            continue
 
 
 def cached_contact(request):
@@ -177,7 +273,7 @@ def lookup_answer(tools, request):
         "tools_used": [],
         "sources": [],
         "tool_failures": [],
-        "web_search": {"attempted": False, "succeeded": False},
+        "web_search": {"attempted": False, "retrieved": False, "succeeded": False},
     }
     if not request["city"]:
         return {
@@ -199,16 +295,20 @@ def lookup_answer(tools, request):
         )
         research = tools.call("search_pharmacy_web", {"query": query})
         sources = research["sources"]
+        base["web_search"]["retrieved"] = True
+        base["sources"] = [
+            {k: v for k, v in source.items() if k != "excerpt"} for source in sources
+        ]
         summary = research["research_summary"]
         if request["kind"] == "contact":
             matching = [
                 s
                 for s in sources
-                if contact_matches(s, request) and phones(s.get("excerpt", ""))
+                if contact_matches(s, request) and contact_phones(s, request)
             ]
             if not matching:
                 raise ValueError("No matching city/name/phone evidence")
-            numbers = sorted(set.union(*(phones(s["excerpt"]) for s in matching)))
+            numbers = sorted(set.union(*(contact_phones(s, request) for s in matching)))
             answer = (
                 f"Pharmacie {request['name']} à {request['city']} — "
                 f"téléphone publié : {', '.join(numbers)}. "
@@ -224,7 +324,7 @@ def lookup_answer(tools, request):
                 for s in sources
                 if plain(request["city"]) in plain(s.get("excerpt", ""))
                 and re.search(r"garde|حراسة", s.get("excerpt", ""), re.I)
-                and any(start <= d <= end for d in dates(s.get("excerpt", "")))
+                and source_period_matches(s.get("excerpt", ""), start, end)
             ]
             if not matching:
                 raise ValueError("No duty source with matching city and dates")
@@ -251,7 +351,7 @@ def lookup_answer(tools, request):
             ],
             "answer_source": "pharmacy_web",
             "tools_used": ["search_pharmacy_web"],
-            "web_search": {"attempted": True, "succeeded": True},
+            "web_search": {"attempted": True, "retrieved": True, "succeeded": True},
         }
     except (ValueError, OSError) as error:
         base["tool_failures"] = [failure_code(error)]

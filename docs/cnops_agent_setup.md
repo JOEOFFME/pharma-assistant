@@ -130,3 +130,18 @@ otherwise. These switches are diagnostic/configuration choices, not consumer UI 
 Availability today, a personal reimbursement decision, medical suitability and live
 model language quality require appropriate current evidence; no universal correctness
 claim is made. Latest validation: `docs/cnops_agent_validation.md`.
+
+## Latest conversation corrections
+
+CNOPS lookup now supplies conservative spelling proposals with
+`needs_confirmation`, the candidate count and presentation ambiguity to the model.
+`amoxiline` can propose `amoxicilline`; this is a question to confirm, not a silent
+medicine identity assertion. A single ambiguous price request asks for trade name,
+strength, form and pack size, including during a provider failure. Explicit price
+comparisons/lists remain research requests.
+
+A new question no longer resumes an old contact merely because it is short and
+mentions Rabat. Contact extraction excludes labelled fax and adjacent business
+numbers. Duty source date intervals with a shared explicit year are understood.
+The UI distinguishes retrieved-but-unconfirmed evidence from a failed web request.
+See `docs/latest_transcript_validation.md` for exact regression checks and limits.

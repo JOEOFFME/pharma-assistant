@@ -163,6 +163,25 @@ def answer_from_data(engine, analysis, text, location=None, history=None) -> dic
                 history=history,
                 location=location,
             )
+            from pharma_assistant.api.price_clarification import clarify_price
+
+            clarification = clarify_price(text, analysis.input.language)
+            if clarification and (
+                re.search(r"\d+[.,]?\d*\s*(?:MAD|DH|dirhams)", result["answer"], re.I)
+                or not re.search(
+                    r"dosage|forme|bo[iî]te|marque|pr[eé]sentation|تركيز|علبة",
+                    result["answer"],
+                    re.I,
+                )
+            ):
+                return {
+                    **fallback,
+                    **clarification,
+                    "web_search": result.get("web_search", {}),
+                    "tools_used": result.get("tools_used", []),
+                }
+            if clarification:
+                return {**fallback, **result}
             researched = (
                 os.getenv("ASSISTANT_WEB_FIRST", "true").lower() == "true"
                 and result.get("web_search", {}).get("succeeded") is True
@@ -191,6 +210,11 @@ def answer_from_data(engine, analysis, text, location=None, history=None) -> dic
                 failure_code(error),
                 type(error).__name__,
             )
+            from pharma_assistant.api.price_clarification import clarify_price
+
+            clarification = clarify_price(text, analysis.input.language)
+            if clarification:
+                return {**fallback, **clarification}
             if directory and directory["wanted"]:
                 return {
                     **directory["result"],

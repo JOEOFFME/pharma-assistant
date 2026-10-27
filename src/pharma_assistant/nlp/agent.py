@@ -197,9 +197,10 @@ class PharmacyTools:
             raise ValueError("Empty query or tool budget exhausted")
         self.calls += 1
         if name == "search_cnops":
-            from pharma_assistant.data.cnops import search
+            from pharma_assistant.data.cnops import lookup
 
-            rows = search(query)
+            match = lookup(query)
+            rows = match["records"]
             for row in rows:
                 self.sources[row["id"]] = {
                     **row,
@@ -209,6 +210,7 @@ class PharmacyTools:
                 }
             result = {
                 "cnops_records": rows,
+                "query_matching": {k: v for k, v in match.items() if k != "records"},
                 "warning": (
                     "Historical 2014 edition, updated 2017. Never current prices, "
                     "stock or entitlement. PPV differs from reimbursement base."
@@ -382,7 +384,11 @@ class PharmacyTools:
         }
 
 
-SYSTEM = """You are a web research agent centered on pharmacy and general information.
+SYSTEM = """For medicine spelling candidates marked needs_confirmation, do not silently
+assume the user's intended medicine. Ask a concise clarification. For a price question
+with multiple presentations, ask for trade name, strength, form and pack. Never choose
+an arbitrary first row or turn a missing presentation into a generic medical refusal.
+You are a web research agent centered on pharmacy and general information.
 Use web research as the main source for factual answers. For Moroccan medicines,
 consult search_cnops first for names, ingredients, forms, pack sizes, PPV, generic
 status and reimbursement bases. Cite CNOPS only when the evidence is actually CNOPS.
