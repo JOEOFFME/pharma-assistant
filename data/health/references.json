@@ -1,0 +1,10 @@
+{
+  "migraine": {
+    "checked_on": "2026-10-27",
+    "sources": [
+      {"id": "reference:nhs-migraine", "title": "NHS — Migraine", "url": "https://www.nhs.uk/conditions/migraine/", "kind": "reference", "source_reviewed": "2026-03-10", "summary": "The NHS lists paracetamol and ibuprofen among painkillers used for migraine symptoms, and also lists triptans. Treatment depends on severity and attack frequency."},
+      {"id": "reference:nhs-sumatriptan", "title": "NHS — Sumatriptan", "url": "https://www.nhs.uk/medicines/sumatriptan/", "kind": "reference", "source_reviewed": "2026-09-24", "summary": "Sumatriptan is used to treat migraine attacks. It is not suitable for everyone and does not prevent attacks from starting."}
+    ],
+    "boundary": "General educational examples only. No personal choice, dose, substitution, or Moroccan stock, prescription-status or price claim. Saved summaries are not a new live web search."
+  }
+}

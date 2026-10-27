@@ -115,12 +115,12 @@ def test_migraine_and_followup_use_research_not_blanket_refusal(
     assert "triptans" in result["answer"]
     assert result["sources"][0]["url"] == URL
     assert result["tools_used"] == ["search_health_web"]
-    assert bodies[1]["tools"][0]["type"] == "openrouter:web_search"
-    assert bodies[1]["tools"][0]["parameters"]["engine"] == "exa"
+    assert bodies[1]["plugins"][0]["id"] == "web"
+    assert bodies[1]["plugins"][0]["engine"] == "exa"
     assert "test-only-secret" not in json.dumps(bodies)
     assert any(m.get("content") == question for m in bodies[0]["messages"])
     if history:
-        assert bodies[0]["messages"][1]["content"] == history[0]["text"]
+        assert any(m["content"] == history[0]["text"] for m in bodies[0]["messages"])
 
 
 def test_consumer_route_does_not_run_refusal_planner_before_agent(

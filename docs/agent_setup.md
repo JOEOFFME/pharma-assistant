@@ -56,8 +56,29 @@ Model used: <actual model>
 The check fails if research has no usable citation or the model does not complete a
 cited web answer. It does not claim clinical correctness or language quality from a
 successful connection alone. Web search incurs additional OpenRouter charges. No
-additional search key is needed; the OpenRouter account must permit the server tool.
+additional search key is needed; the OpenRouter account must permit web research.
 The older `scripts/check_openrouter.py` checks basic model access only, not tools.
+
+## Conversation reliability update
+
+The directory is retrieved before the model answers when the user supplies a city,
+asks for nearby pharmacies, or confirms a previous search offer. Explicit user places
+persist through bounded conversation context; assistant prose supplies intent only.
+`Rabat AL Irfane` and `oui` now retain the Rabat lookup. Model failure or a repeated
+permission question returns actual saved entries and source links. City results do
+not claim to be ranked by proximity within Al Irfane; sharing GPS enables distance
+sorting. Requested quantity, strength and form remain request details, not dosing advice.
+
+A small saved NHS educational reference supports general migraine medicine-name
+questions even if live research fails. Saved information is identified as such and
+linked to its source; it does not masquerade as a fresh search or Moroccan stock data.
+The source summaries were checked on 2026-10-27. They contain no dosage instructions.
+
+Numbered lists, Arabizi words such as `3la`, and formatting a saved phone with spaces
+no longer count as unsupported new numeric facts. Actual unsupported numeric claims
+remain rejected. An unsourced treatment list cannot bypass citation checks merely
+by being labelled a clarification. Safe diagnostic codes distinguish validation
+failures from provider HTTP errors without logging keys, prompts or error bodies.
 
 ## Available tools
 
@@ -65,7 +86,14 @@ The older `scripts/check_openrouter.py` checks basic model access only, not tool
 | --- | --- | --- |
 | `search_pharmacies` | Saved SQLite directory by city/name, or a user-shared position | No inferred GPS, stock or dated guard data; incomplete coverage |
 | `search_medications` | Named-product fuzzy lookup with source country, ingredient and form | Source catalogue, not symptom-based prescribing or proof of Moroccan availability |
-| `search_health_web` | OpenRouter `openrouter:web_search` via Exa | Fixed public-health domains, one research request per chat turn, three total search results |
+| `search_health_web` | OpenRouter `web` research plugin via Exa | Fixed public-health domains, one research request per chat turn, three results per search |
+
+The main model still chooses whether to invoke `search_health_web`. Once invoked,
+the research pass uses OpenRouter's documented `web` plugin, which performs the
+search before answering. This replaces reliance on a second model independently
+choosing to call a beta server tool. It uses `include_domains`, Exa and three results;
+responses still require provider citation annotations. No HTML/model-invented link
+is accepted as proof of a successful live search.
 
 Health domains: NHS, Ameli, WHO, MedlinePlus, NINDS, ANSM, the French public medicine
 database, and Morocco's Ministry of Health. Returned citations must be HTTPS URLs
@@ -91,8 +119,7 @@ At most four main-model turns, eight tool calls and one web research request are
 allowed per user message. The overall application deadline is approximately 85
 seconds, checked between operations; individual main calls have at most 30 seconds
 and research at most 40 seconds within the remaining deadline. OpenRouter may have
-its own internal search executions. The Exa search request caps total results at
-three; do not interpret this as a guaranteed monetary charge cap.
+its own internal search executions. The compatibility plugin requests up to three results in its single research pass; do not interpret this as a guaranteed monetary charge cap.
 
 Unknown tools, extra arguments, invented source IDs, unreferenced factual answers,
 common live-stock/duty claims and obvious dosing-like answers are rejected. Directory
@@ -138,3 +165,5 @@ claimed. Stdout contains only protocol messages.
 - https://openrouter.ai/docs/guides/features/server-tools/web-search
 - https://modelcontextprotocol.io/specification/2025-06-18/server/tools
 - Validation: `docs/agent_validation.md`
+
+Latest conversation regression report: [conversation_fix_validation.md](conversation_fix_validation.md).

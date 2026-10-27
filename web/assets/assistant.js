@@ -2,7 +2,7 @@
 const $ = id => document.getElementById(id);
 const STRINGS = {
   fr: {
-    limitedService: 'Je n’ai pas pu vérifier toutes les informations pour le moment. Vous pouvez réessayer.', transcribing: 'Je transcris votre message…', reviewTranscript: 'Vérifiez le texte reconnu ci-dessous, corrigez-le si besoin, puis appuyez sur Envoyer.', scenarioMode: 'Scénario du jury', scenarioBanner: 'DÉMONSTRATION — Pharmacies, adresses, distances, stocks et gardes fictifs. Point de départ simulé : Al Irfane. Aucun résultat ne confirme une disponibilité réelle.', examples: 'Exemples à essayer', demoIntro: 'Choisissez une question, puis envoyez-la ou prononcez-la au micro. Chaque exemple est une demande complète.', autoSpeak: 'Lecture vocale', listen: 'Écouter la réponse', stopSpeaking: 'Arrêter la lecture', speechOff: 'La lecture vocale est indisponible dans ce navigateur.', cancelRecording: 'Annuler l’enregistrement', retryVoice: 'Réessayer le micro',
+    savedResults: 'Informations issues des sources enregistrées.', limitedService: 'Je n’ai pas pu vérifier toutes les informations pour le moment. Vous pouvez réessayer.', transcribing: 'Je transcris votre message…', reviewTranscript: 'Vérifiez le texte reconnu ci-dessous, corrigez-le si besoin, puis appuyez sur Envoyer.', scenarioMode: 'Scénario du jury', scenarioBanner: 'DÉMONSTRATION — Pharmacies, adresses, distances, stocks et gardes fictifs. Point de départ simulé : Al Irfane. Aucun résultat ne confirme une disponibilité réelle.', examples: 'Exemples à essayer', demoIntro: 'Choisissez une question, puis envoyez-la ou prononcez-la au micro. Chaque exemple est une demande complète.', autoSpeak: 'Lecture vocale', listen: 'Écouter la réponse', stopSpeaking: 'Arrêter la lecture', speechOff: 'La lecture vocale est indisponible dans ce navigateur.', cancelRecording: 'Annuler l’enregistrement', retryVoice: 'Réessayer le micro',
     headerNote: 'Un coup de main, tout simplement.', virtual: 'Votre assistant virtuel', language: 'Langue', newChat: 'Nouvelle conversation', findPharmacy: 'Trouver une pharmacie', privacy: 'Confidentialité',
     welcomeEyebrow: 'BIENVENUE DANS VOTRE ESPACE', welcomeTitle: 'Bonjour, je suis Pharma-AI.', welcomeText: 'Je vous aide à préparer votre demande de médicament et à trouver une pharmacie. Comment puis-je vous aider aujourd’hui ?',
     medicationSuggestion: 'Une demande de médicament', pharmacySuggestion: 'Une pharmacie près de moi', priceSuggestion: 'Une question sur un prix', disclaimer: 'Pour vos demandes en pharmacie. Sans conseil médical ni confirmation de stock.',
@@ -172,7 +172,7 @@ async function sendRequest(body, isAudio, displayText) {
       if (controls.childElementCount) reply.article.append(controls);
     }
     scrollChat();
-    $('status').textContent = data.fallback_reason ? t('limitedService') : '';
+    $('status').textContent = data.fallback_reason ? (['local_directory', 'saved_health_reference'].includes(data.answer_source) ? t('savedResults') : t('limitedService')) : '';
   } catch (error) {
     if (id !== requestNumber) return;
     pending.remove(); bubble(error instanceof TypeError || error.name === 'AbortError' ? t('network') : error.message, 'assistant'); $('status').textContent = '';

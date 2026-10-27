@@ -43,3 +43,6 @@ tmp/
 
 # Optional DOM interaction checks
 web/node_modules/
+
+# Small attributed educational reference cache; no private health data.
+!data/health/references.json

@@ -97,7 +97,16 @@ def validate_reply(reply: GroundedReply, context: dict, question: str) -> None:
     allowed_numbers = set(
         re.findall(r"\d+", json.dumps(facts, ensure_ascii=False) + question)
     )
-    if not set(re.findall(r"\d+", reply.answer)) <= allowed_numbers:
+    # List labels and Arabizi letters are formatting/language, not numeric facts.
+    checked = re.sub(r"(?m)^\s*\(?\d+[.)]\s+", "", reply.answer)
+    for fact in facts:
+        for phone in fact.get("phones", []):
+            digits = re.sub(r"\D", "", phone)
+            if digits:
+                pattern = r"(?<!\d)\+?" + r"[\s().-]*".join(digits) + r"(?!\d)"
+                checked = re.sub(pattern, "", checked)
+    actual_numbers = set(re.findall(r"(?<!\w)\d+(?!\w)", checked))
+    if not actual_numbers <= allowed_numbers:
         raise ValueError("Unsupported numeric claim")
     validate_live_claims(reply.answer)
 
@@ -130,8 +139,10 @@ def answer_from_data(engine, analysis, text, location=None, history=None) -> dic
     if provider is None:
         return {**fallback, "answer_source": "local_directory", "model": None}
     if os.getenv("ASSISTANT_AGENT", "true").lower() == "true":
-        from pharma_assistant.nlp.agent import run_agent
+        from pharma_assistant.api.chat_context import directory_context
+        from pharma_assistant.nlp.agent import failure_code, run_agent
 
+        directory = directory_context(engine.baseline, text, history, location)
         try:
             result = run_agent(
                 provider,
@@ -141,13 +152,45 @@ def answer_from_data(engine, analysis, text, location=None, history=None) -> dic
                 history=history,
                 location=location,
             )
+            if directory and directory["wanted"] and directory["result"]["pharmacies"]:
+                # Keep available records instead of asking permission to search again.
+                if not result.get("pharmacies") or not any(
+                    p["name"] and p["name"] in result["answer"]
+                    for p in directory["result"]["pharmacies"]
+                ):
+                    return {
+                        **directory["result"],
+                        "analysis": fallback["analysis"],
+                        "answer_source": "local_directory",
+                        "model": None,
+                    }
             return {**fallback, **result}
         except (ValueError, OSError) as error:
             logger.warning(
-                "Agent fallback: %s, status=%s",
+                "Agent fallback: code=%s, type=%s",
+                failure_code(error),
                 type(error).__name__,
-                getattr(error, "code", None),
             )
+            if directory and directory["wanted"]:
+                return {
+                    **directory["result"],
+                    "analysis": fallback["analysis"],
+                    "answer_source": "local_directory",
+                    "model": None,
+                    "fallback_reason": "agent_unavailable_or_invalid",
+                }
+            from pharma_assistant.nlp.health_reference import (
+                reference_answer,
+                reference_for,
+            )
+
+            reference = reference_for(text, history)
+            if reference:
+                return {
+                    **fallback,
+                    **reference_answer(reference, analysis.input.language),
+                    "fallback_reason": "agent_unavailable_or_invalid",
+                }
             language = analysis.input.language
             message = (
                 "Ma 9dertch nverifi had lma3louma daba. T9der t3awed tjarreb; "

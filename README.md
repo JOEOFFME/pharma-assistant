@@ -4,6 +4,8 @@ Normal chat now supports a **read-only research agent**: pharmacy and medicine l
 trusted health web search, cited answers and an MCP stdio server. See
 [agent setup](docs/agent_setup.md) for Windows configuration and the live check.
 General health information is allowed; personal prescribing and dosage advice remain excluded.
+City and confirmation follow-ups retain saved directory results during provider failures;
+a source-attributed NHS reference supports general migraine-name questions without live research.
 
 
 Arabic, Moroccan Darija, French and mixed-language pharmacy-request prototype.

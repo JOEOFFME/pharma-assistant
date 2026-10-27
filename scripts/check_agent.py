@@ -30,7 +30,7 @@ def main() -> None:
         result = run_agent(
             provider,
             TextPipeline.from_config(),
-            "chnu smiya dyal dwa dyal la migraine ?",
+            "Vérifie sur le web : chnu smiya dyal dwa dyal la migraine ?",
             "darija_latn",
         )
     except FileNotFoundError:
@@ -50,6 +50,10 @@ def main() -> None:
     if "search_health_web" not in result["tools_used"] or not any(
         s["kind"] == "web" for s in result["sources"]
     ):
+        print(
+            "Safe tool diagnostics:",
+            ", ".join(result.get("tool_failures", [])) or "no successful web call",
+        )
         raise SystemExit(
             "The model did not finish a cited web answer. Research is not validated; "
             "retry or check model/search settings."
